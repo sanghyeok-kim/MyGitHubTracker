@@ -103,8 +103,6 @@
 				1E8FB80B29D08BA000847578 /* AppDelegate.swift */,
 				1E8FB80D29D08BA000847578 /* SceneDelegate.swift */,
 				1E8FB80F29D08BA000847578 /* ViewController.swift */,
-				1E8FB81429D08BA100847578 /* Assets.xcassets */,
-				1E8FB81629D08BA100847578 /* LaunchScreen.storyboard */,
 			);
 			path = MyGitHubTracker;
 			sourceTree = "<group>";
@@ -129,6 +127,8 @@
 		1E8FB83B29D08CEC00847578 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB81429D08BA100847578 /* Assets.xcassets */,
+				1E8FB81629D08BA100847578 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
