@@ -188,8 +188,8 @@
 		1E8FB84629D08EAE00847578 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB84929D08EC100847578 /* Protocol */,
 				1E8FB84A29D08F0500847578 /* CoordinatorType.swift */,
+				1E8FB84929D08EC100847578 /* Protocol */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
