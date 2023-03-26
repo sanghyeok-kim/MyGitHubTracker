@@ -106,8 +106,5 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-### Property List ###
-GitHubClientInfo.plist
-
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods
 

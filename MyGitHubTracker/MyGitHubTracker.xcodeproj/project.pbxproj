@@ -239,7 +239,6 @@
 				CF61DDB75A73B1DFB2FBB5AF /* Pods-MyGitHubTrackerTests.debug.xcconfig */,
 				D018BFBA04ABE55F3E22E27C /* Pods-MyGitHubTrackerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
