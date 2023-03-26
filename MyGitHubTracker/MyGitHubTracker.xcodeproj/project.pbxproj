@@ -41,7 +41,7 @@
 		1E8FB80F29D08BA000847578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1E8FB81429D08BA100847578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E8FB81729D08BA100847578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1E8FB81929D08BA100847578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E8FB81929D08BA100847578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyGitHubTracker/PropertyList/Info.plist; sourceTree = SOURCE_ROOT; };
 		1E8FB81E29D08BA100847578 /* MyGitHubTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGitHubTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB82229D08BA100847578 /* MyGitHubTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGitHubTrackerTests.swift; sourceTree = "<group>"; };
 		1E8FB82829D08BA100847578 /* MyGitHubTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGitHubTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,12 +97,14 @@
 		1E8FB80A29D08BA000847578 /* MyGitHubTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB83C29D08D0500847578 /* PropertyList */,
+				1E8FB83B29D08CEC00847578 /* Resource */,
+				1E8FB83D29D08D1500847578 /* Source */,
 				1E8FB80B29D08BA000847578 /* AppDelegate.swift */,
 				1E8FB80D29D08BA000847578 /* SceneDelegate.swift */,
 				1E8FB80F29D08BA000847578 /* ViewController.swift */,
 				1E8FB81429D08BA100847578 /* Assets.xcassets */,
 				1E8FB81629D08BA100847578 /* LaunchScreen.storyboard */,
-				1E8FB81929D08BA100847578 /* Info.plist */,
 			);
 			path = MyGitHubTracker;
 			sourceTree = "<group>";
@@ -122,6 +124,28 @@
 				1E8FB82E29D08BA100847578 /* MyGitHubTrackerUITestsLaunchTests.swift */,
 			);
 			path = MyGitHubTrackerUITests;
+			sourceTree = "<group>";
+		};
+		1E8FB83B29D08CEC00847578 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		1E8FB83C29D08D0500847578 /* PropertyList */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB81929D08BA100847578 /* Info.plist */,
+			);
+			path = PropertyList;
+			sourceTree = "<group>";
+		};
+		1E8FB83D29D08D1500847578 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -408,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -427,7 +451,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MPN6WL3W3U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyGitHubTracker/Info.plist;
+				INFOPLIST_FILE = MyGitHubTracker/PropertyList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -454,7 +478,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MPN6WL3W3U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyGitHubTracker/Info.plist;
+				INFOPLIST_FILE = MyGitHubTracker/PropertyList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
