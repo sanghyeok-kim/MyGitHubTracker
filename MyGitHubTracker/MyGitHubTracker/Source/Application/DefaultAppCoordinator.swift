@@ -13,6 +13,13 @@ final class DefaultAppCoordinator: AppCoordinator {
     var navigationController: UINavigationController
     let type: CoordinatorType = .app
     
+    private lazy var loginViewController: LoginViewController = {
+        let loginViewController = LoginViewController()
+        let loginViewModel = LoginViewModel(coordinator: self)
+        loginViewController.bind(viewModel: loginViewModel)
+        return loginViewController
+    }()
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -27,7 +34,18 @@ final class DefaultAppCoordinator: AppCoordinator {
     }
     
     func coordinate(by action: AppCoordinateAction) {
-        
+        DispatchQueue.main.async { [weak self] in
+            switch action {
+            case .appDidStart:
+                self?.showLoginViewController()
+            case .loginButtonDidTap(let url):
+                self?.open(url: url)
+            case .userDidAuthorize(let url):
+                self?.loginViewController.viewModel?.userDidAuthorize(callBack: url)
+            case .accessTokenDidfetch:
+                self?.showHomeCoordinatorFlow()
+            }
+        }
     }
 }
 
@@ -35,7 +53,8 @@ final class DefaultAppCoordinator: AppCoordinator {
 
 private extension DefaultAppCoordinator {
     func showLoginViewController() {
-        
+        navigationController.setViewControllers([loginViewController], animated: false)
+        navigationController.setNavigationBarHidden(true, animated: false)
     }
     
     func showHomeCoordinatorFlow() {
