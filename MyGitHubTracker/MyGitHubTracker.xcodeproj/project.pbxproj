@@ -59,6 +59,7 @@
 		1E8FB8BE29D1532300847578 /* DefaultAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BD29D1532300847578 /* DefaultAccountRepository.swift */; };
 		1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BF29D1539800847578 /* RepoListRepository.swift */; };
 		1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C129D153A700847578 /* AccountRepository.swift */; };
+		1E8FB8C429D155AB00847578 /* Rx+transformMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -138,6 +139,7 @@
 		1E8FB8BD29D1532300847578 /* DefaultAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccountRepository.swift; sourceTree = "<group>"; };
 		1E8FB8BF29D1539800847578 /* RepoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListRepository.swift; sourceTree = "<group>"; };
 		1E8FB8C129D153A700847578 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
+		1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+transformMap.swift"; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -338,6 +340,7 @@
 				1E8FB86629D09A8600847578 /* Bundle+GitHubClientKey.swift */,
 				1E8FB8B129D1513400847578 /* String+toDateFormat.swift */,
 				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
+				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				1E8FB8B429D151C600847578 /* DefaultRepoListUseCase.swift in Sources */,
 				1E8FB86229D09A5C00847578 /* UserDefaultsValue.swift in Sources */,
 				1E8FB8B029D150F500847578 /* RepositoryTransformer.swift in Sources */,
+				1E8FB8C429D155AB00847578 /* Rx+transformMap.swift in Sources */,
 				1E8FB85D29D09A2600847578 /* Constant.swift in Sources */,
 				1E8FB8BC29D1530800847578 /* DefaultRepoListRepository.swift in Sources */,
 				1E8FB85629D099E000847578 /* DefaultAppCoordinator.swift in Sources */,

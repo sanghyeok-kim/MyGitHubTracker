@@ -15,6 +15,6 @@ final class DefaultRepoListUseCase: RepoListUseCase {
     func fetchRepositories(perPage: Int, page: Int) -> Single<[RepositoryEntity]> {
         return repoListRepository.fetchRepositories(perPage: perPage, page: page)
             .decodeMap([RepositoryDTO].self)
-            .map { $0.map { self.repoListTransformer.transform($0) } }
+            .transformMap(repoListTransformer)
     }
 }
