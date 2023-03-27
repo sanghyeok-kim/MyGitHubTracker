@@ -20,6 +20,12 @@ final class DefaultAppCoordinator: AppCoordinator {
         return loginViewController
     }()
     
+    private lazy var homeCoordinator: DefaultHomeCoordinator = {
+        let defaultHomeCoordinator = DefaultHomeCoordinator(navigationController: navigationController)
+        add(childCoordinator: defaultHomeCoordinator)
+        return defaultHomeCoordinator
+    }()
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -58,7 +64,9 @@ private extension DefaultAppCoordinator {
     }
     
     func showHomeCoordinatorFlow() {
-        
+        let homeCoordinator = DefaultHomeCoordinator(navigationController: navigationController)
+        add(childCoordinator: homeCoordinator)
+        homeCoordinator.start()
     }
     
     func open(url: URL) {
