@@ -55,12 +55,7 @@ final class DefaultLoginUseCase: LoginUseCase {
         let tempCode = url.absoluteString.components(separatedBy: "code=").last ?? ""
         
         return loginRepository.fetchAccessToken(clientID: clientID, clientSecret: clientSecret, tempCode: tempCode)
-            .map { data -> TokenDTO in
-                guard let token = try? JSONDecoder().decode(TokenDTO.self, from: data) else {
-                    throw NetworkError.decodeError
-                }
-                return token
-            }
+            .decodeMap(TokenDTO.self)
             .do { AccessToken.value = $0.accessToken }
     }
 }
