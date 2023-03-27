@@ -9,6 +9,7 @@ import Foundation
 
 enum CoordinatorType: Hashable {
     case app
+    case home
     case repoList
     case account
 }
