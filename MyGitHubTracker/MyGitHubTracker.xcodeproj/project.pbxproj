@@ -72,6 +72,7 @@
 		1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */; };
 		1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */; };
 		1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E129D167BE00847578 /* ToastLabel.swift */; };
+		1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8EB29D254CE00847578 /* ToastError.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -164,6 +165,7 @@
 		1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8E129D167BE00847578 /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
+		1E8FB8EB29D254CE00847578 /* ToastError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastError.swift; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -395,10 +397,10 @@
 		1E8FB86E29D12BFB00847578 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB8EA29D254C400847578 /* Error */,
 				1E8FB87029D12C4000847578 /* GitHubAPI.swift */,
 				1E8FB87229D12C5000847578 /* HTTPMethod.swift */,
 				1E8FB87429D12C5800847578 /* TargetType.swift */,
-				1E8FB87629D12C6400847578 /* NetworkError.swift */,
 				1E8FB87829D12CAA00847578 /* Service */,
 				1E8FB88E29D12F1D00847578 /* Repository */,
 				1E8FB87D29D12D7400847578 /* DTO */,
@@ -550,6 +552,23 @@
 				1E8FB8E129D167BE00847578 /* ToastLabel.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		1E8FB8E729D2515000847578 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB8E329D250FD00847578 /* CustomLogger.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		1E8FB8EA29D254C400847578 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB87629D12C6400847578 /* NetworkError.swift */,
+				1E8FB8EB29D254CE00847578 /* ToastError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
@@ -860,6 +879,7 @@
 				1E8FB8C929D1583200847578 /* RepoListViewModel.swift in Sources */,
 				1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */,
 				1E8FB8A129D14F5D00847578 /* UserDTO.swift in Sources */,
+				1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */,
 				1E8FB89629D12FA700847578 /* Container.swift in Sources */,
 				1E8FB8AA29D150CB00847578 /* UserEntity.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
