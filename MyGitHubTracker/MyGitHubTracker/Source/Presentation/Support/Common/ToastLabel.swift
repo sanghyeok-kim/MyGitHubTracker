@@ -55,15 +55,22 @@ final class ToastLabel: UILabel {
     func show(message: String) {
         text = message
         sizeToFit()
-        
+        fadeIn(completion: delayedFadeOut)
+    }
+    
+    private func fadeIn(completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             self?.alpha = 1.0
-        }) { [weak self] _ in
-            UIView.animate(withDuration: 0.5, delay: 3.0, options: .curveEaseIn, animations: {
-                self?.alpha = .zero
-            }, completion: { [weak self] _ in
-                self?.removeFromSuperview()
-            })
-        }
+        }, completion: { _ in
+            completion()
+        })
+    }
+    
+    private func delayedFadeOut() {
+        UIView.animate(withDuration: 0.5, delay: 3.0, options: .curveEaseIn, animations: { [weak self] in
+            self?.alpha = .zero
+        }, completion: { [weak self] _ in
+            self?.removeFromSuperview()
+        })
     }
 }
