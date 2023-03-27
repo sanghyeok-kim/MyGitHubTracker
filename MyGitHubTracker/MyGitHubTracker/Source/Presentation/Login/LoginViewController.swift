@@ -23,6 +23,8 @@ class LoginViewController: UIViewController, ViewType {
         $0.configuration = configuration
     }
     
+    private let errorToastMessageLabel = ToastLabel()
+    
     var viewModel: LoginViewModel?
     private let disposeBag = DisposeBag()
     
@@ -43,27 +45,37 @@ class LoginViewController: UIViewController, ViewType {
     func bindOutput(from viewModel: LoginViewModel) {
         let output = viewModel.output
         
+        output.showErrorMessage
+            .bind(onNext: errorToastMessageLabel.show)
+            .disposed(by: disposeBag)
     }
 }
 
 // MARK: - UI Configuration
+
 private extension LoginViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
     }
 }
 
-
 // MARK: - UI Layout
 
 private extension LoginViewController {
     func layoutUI() {
         view.addSubview(gitHubLoginButton)
+        view.addSubview(errorToastMessageLabel)
         
         gitHubLoginButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(56)
+        }
+        
+        errorToastMessageLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(12)
+            make.width.lessThanOrEqualTo(view.snp.width).multipliedBy(0.8)
         }
     }
 }

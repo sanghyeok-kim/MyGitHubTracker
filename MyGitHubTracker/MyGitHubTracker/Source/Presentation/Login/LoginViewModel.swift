@@ -16,7 +16,7 @@ final class LoginViewModel: ViewModelType {
     }
     
     struct Output {
-        
+        let showErrorMessage = PublishRelay<String>()
     }
     
     let input = Input()
@@ -40,17 +40,27 @@ final class LoginViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        input.userDidAuthorize
+        let userDidAuthorize = input.userDidAuthorize
             .withUnretained(self)
             .flatMapLatest { `self`, url in
                 self.loginUseCase.fetchAndStoreAccessToken(with: url)
             }
-            .subscribe { _ in
+            .materialize()
+            .share()
+        
+        userDidAuthorize
+            .compactMap { $0.element }
+            .bind { _ in
                 coordinator.coordinate(by: .accessTokenDidfetch)
-            } onError: { error in
-                // FIXME: 에러 처리하기
-                print(error.localizedDescription)
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
+        
+        userDidAuthorize
+            .observe(on: MainScheduler.instance)
+            .compactMap { $0.error }
+            .logErrorAndMapToastMessage(to: .failToFetchAccessToken, logCategory: .network)
+            .bind(to: output.showErrorMessage)
+            .disposed(by: disposeBag)
     }
 }
 
