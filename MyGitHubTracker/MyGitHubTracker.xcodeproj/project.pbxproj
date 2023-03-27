@@ -32,6 +32,8 @@
 		1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87229D12C5000847578 /* HTTPMethod.swift */; };
 		1E8FB87529D12C5800847578 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87429D12C5800847578 /* TargetType.swift */; };
 		1E8FB87729D12C6400847578 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87629D12C6400847578 /* NetworkError.swift */; };
+		1E8FB87A29D12CE900847578 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87929D12CE900847578 /* URLSessionNetworkService.swift */; };
+		1E8FB87C29D12CF800847578 /* DefaultGitHubAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -84,6 +86,8 @@
 		1E8FB87229D12C5000847578 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		1E8FB87429D12C5800847578 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		1E8FB87629D12C6400847578 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		1E8FB87929D12CE900847578 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
+		1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGitHubAuthorizationService.swift; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +313,7 @@
 				1E8FB87229D12C5000847578 /* HTTPMethod.swift */,
 				1E8FB87429D12C5800847578 /* TargetType.swift */,
 				1E8FB87629D12C6400847578 /* NetworkError.swift */,
+				1E8FB87829D12CAA00847578 /* Service */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -318,6 +323,15 @@
 			children = (
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		1E8FB87829D12CAA00847578 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB87929D12CE900847578 /* URLSessionNetworkService.swift */,
+				1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
@@ -598,9 +612,11 @@
 				1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
 				1E8FB84B29D08F0500847578 /* CoordinatorType.swift in Sources */,
+				1E8FB87C29D12CF800847578 /* DefaultGitHubAuthorizationService.swift in Sources */,
 				1E8FB85829D099F500847578 /* AppCoordinator.swift in Sources */,
 				1E8FB85F29D09A4100847578 /* AccessToken.swift in Sources */,
 				1E8FB87729D12C6400847578 /* NetworkError.swift in Sources */,
+				1E8FB87A29D12CE900847578 /* URLSessionNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
