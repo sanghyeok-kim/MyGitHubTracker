@@ -37,5 +37,15 @@ extension Container {
         // Login
         Container.shared.register(service: LoginRepository.self) { DefaultLoginRepository() }
         Container.shared.register(service: LoginUseCase.self) { DefaultLoginUseCase() }
+        
+        // RepoList
+        Container.shared.register(service: RepoListRepository.self) { DefaultRepoListRepository() }
+        Container.shared.register(service: RepoListUseCase.self) { DefaultRepoListUseCase() }
+        Container.shared.register(service: AnyTransformer.self) { AnyTransformer(RepositoryTransformer()) }
+        
+        // Account
+        Container.shared.register(service: AccountUseCase.self) { DefaultAccountUseCase() }
+        Container.shared.register(service: AccountRepository.self) { DefaultAccountRepository() }
+        Container.shared.register(service: AnyTransformer.self) { AnyTransformer(UserTransformer()) }
     }
 }
