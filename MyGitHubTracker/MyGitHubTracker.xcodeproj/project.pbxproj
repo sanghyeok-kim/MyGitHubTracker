@@ -26,6 +26,8 @@
 		1E8FB86229D09A5C00847578 /* UserDefaultsValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB86129D09A5C00847578 /* UserDefaultsValue.swift */; };
 		1E8FB86429D09A6300847578 /* KeychainValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB86329D09A6300847578 /* KeychainValue.swift */; };
 		1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB86629D09A8600847578 /* Bundle+GitHubClientKey.swift */; };
+		1E8FB86B29D12B9600847578 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB86A29D12B9600847578 /* LoginViewController.swift */; };
+		1E8FB86D29D12B9B00847578 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB86C29D12B9B00847578 /* LoginViewModel.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -72,6 +74,8 @@
 		1E8FB86129D09A5C00847578 /* UserDefaultsValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsValue.swift; sourceTree = "<group>"; };
 		1E8FB86329D09A6300847578 /* KeychainValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainValue.swift; sourceTree = "<group>"; };
 		1E8FB86629D09A8600847578 /* Bundle+GitHubClientKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+GitHubClientKey.swift"; sourceTree = "<group>"; };
+		1E8FB86A29D12B9600847578 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1E8FB86C29D12B9B00847578 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +205,7 @@
 		1E8FB83F29D08E0F00847578 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB86929D12B1C00847578 /* Login */,
 				1E8FB84029D08E3100847578 /* Support */,
 				1E8FB84629D08EAE00847578 /* Coordinator */,
 			);
@@ -276,6 +281,15 @@
 				1E8FB85929D099FB00847578 /* AppCoordinateAction.swift */,
 			);
 			path = Action;
+			sourceTree = "<group>";
+		};
+		1E8FB86929D12B1C00847578 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB86A29D12B9600847578 /* LoginViewController.swift */,
+				1E8FB86C29D12B9B00847578 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
@@ -540,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8FB86B29D12B9600847578 /* LoginViewController.swift in Sources */,
 				1E8FB84829D08EBE00847578 /* Coordinator.swift in Sources */,
 				1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */,
 				1E8FB86229D09A5C00847578 /* UserDefaultsValue.swift in Sources */,
@@ -547,6 +562,7 @@
 				1E8FB85629D099E000847578 /* DefaultAppCoordinator.swift in Sources */,
 				1E8FB85A29D099FB00847578 /* AppCoordinateAction.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
+				1E8FB86D29D12B9B00847578 /* LoginViewModel.swift in Sources */,
 				1E8FB86429D09A6300847578 /* KeychainValue.swift in Sources */,
 				1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
