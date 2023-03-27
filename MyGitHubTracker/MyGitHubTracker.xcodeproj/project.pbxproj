@@ -71,6 +71,7 @@
 		1E8FB8D929D158FB00847578 /* RepoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */; };
 		1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */; };
 		1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */; };
+		1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E129D167BE00847578 /* ToastLabel.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -162,6 +163,7 @@
 		1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
+		1E8FB8E129D167BE00847578 /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +306,7 @@
 		1E8FB84029D08E3100847578 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB8E029D167B700847578 /* Common */,
 				1E8FB84129D08E3A00847578 /* Protocol */,
 			);
 			path = Support;
@@ -539,6 +542,14 @@
 				1E8FB8D229D158AF00847578 /* AccountViewModel.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		1E8FB8E029D167B700847578 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB8E129D167BE00847578 /* ToastLabel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
@@ -834,6 +845,7 @@
 				1E8FB8AE29D150F000847578 /* UserTransformer.swift in Sources */,
 				1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */,
 				1E8FB8D729D158E300847578 /* AccountCoordinateAction.swift in Sources */,
+				1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */,
 				1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
 				1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */,
