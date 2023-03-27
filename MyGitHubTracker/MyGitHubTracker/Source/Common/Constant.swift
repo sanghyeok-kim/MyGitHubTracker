@@ -25,3 +25,11 @@ extension Constant {
         static let clientSecret = Bundle.main.object(forGitHubClientKeyDictionaryKey: "ClientSecret") as? String ?? ""
     }
 }
+
+extension Constant {
+    enum OSLogCategory {
+        static let defaultCategory = "Default"
+        static let networkCategory = "Network"
+        static let databaseCategory = "Database"
+    }
+}
