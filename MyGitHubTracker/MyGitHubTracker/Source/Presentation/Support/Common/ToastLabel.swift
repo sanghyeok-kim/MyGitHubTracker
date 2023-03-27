@@ -9,14 +9,18 @@ import UIKit
 
 final class ToastLabel: UILabel {
     
-    private let padding = UIEdgeInsets(
-        top: 8,
-        left: 16,
-        bottom: 8,
-        right: 16
-    )
+    private var padding: UIEdgeInsets
     
-    init() {
+    override var intrinsicContentSize: CGSize {
+        var contentSize = super.intrinsicContentSize
+        if contentSize == .zero { return contentSize }
+        contentSize.height += padding.top + padding.bottom
+        contentSize.width += padding.left + padding.right
+        return contentSize
+    }
+    
+    init(padding: UIEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)) {
+        self.padding = padding
         super.init(frame: .zero)
         configureUI()
     }
@@ -36,20 +40,13 @@ final class ToastLabel: UILabel {
         super.drawText(in: rect.inset(by: padding))
     }
     
-    override var intrinsicContentSize: CGSize {
-        var contentSize = super.intrinsicContentSize
-        if contentSize == .zero { return contentSize }
-        contentSize.height += padding.top + padding.bottom
-        contentSize.width += padding.left + padding.right
-        return contentSize
-    }
-    
     private func configureUI() {
         alpha = .zero
         font = UIFont.systemFont(ofSize: 15)
         textAlignment = .center;
         textColor = UIColor.white
         backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        numberOfLines = .zero
     }
     
     func show(message: String) {
