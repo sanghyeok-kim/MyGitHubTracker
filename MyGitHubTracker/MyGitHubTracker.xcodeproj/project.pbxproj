@@ -60,6 +60,11 @@
 		1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BF29D1539800847578 /* RepoListRepository.swift */; };
 		1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C129D153A700847578 /* AccountRepository.swift */; };
 		1E8FB8C429D155AB00847578 /* Rx+transformMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */; };
+		1E8FB8C929D1583200847578 /* RepoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C829D1583200847578 /* RepoListViewModel.swift */; };
+		1E8FB8CB29D1583C00847578 /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */; };
+		1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */; };
+		1E8FB8D529D158D800847578 /* RepoListCoordinateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D429D158D800847578 /* RepoListCoordinateAction.swift */; };
+		1E8FB8D929D158FB00847578 /* RepoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -140,6 +145,11 @@
 		1E8FB8BF29D1539800847578 /* RepoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListRepository.swift; sourceTree = "<group>"; };
 		1E8FB8C129D153A700847578 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
 		1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+transformMap.swift"; sourceTree = "<group>"; };
+		1E8FB8C829D1583200847578 /* RepoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewModel.swift; sourceTree = "<group>"; };
+		1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
+		1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepoListCoordinator.swift; sourceTree = "<group>"; };
+		1E8FB8D429D158D800847578 /* RepoListCoordinateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListCoordinateAction.swift; sourceTree = "<group>"; };
+		1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListCoordinator.swift; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,8 +308,8 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB84A29D08F0500847578 /* CoordinatorType.swift */,
-				1E8FB86829D09AFB00847578 /* Action */,
 				1E8FB84929D08EC100847578 /* Protocol */,
+				1E8FB86829D09AFB00847578 /* Action */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -309,6 +319,7 @@
 			children = (
 				1E8FB84729D08EBE00847578 /* Coordinator.swift */,
 				1E8FB85729D099F500847578 /* AppCoordinator.swift */,
+				1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -319,8 +330,8 @@
 				1E8FB85C29D09A2600847578 /* Constant.swift */,
 				1E8FB85E29D09A4100847578 /* AccessToken.swift */,
 				1E8FB89429D12FA100847578 /* Dependency */,
-				1E8FB86529D09A7B00847578 /* Extension */,
 				1E8FB86029D09A4F00847578 /* PropertyWrapper */,
+				1E8FB86529D09A7B00847578 /* Extension */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -349,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB85929D099FB00847578 /* AppCoordinateAction.swift */,
+				1E8FB8D429D158D800847578 /* RepoListCoordinateAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -370,8 +382,8 @@
 				1E8FB87429D12C5800847578 /* TargetType.swift */,
 				1E8FB87629D12C6400847578 /* NetworkError.swift */,
 				1E8FB87829D12CAA00847578 /* Service */,
-				1E8FB87D29D12D7400847578 /* DTO */,
 				1E8FB88E29D12F1D00847578 /* Repository */,
+				1E8FB87D29D12D7400847578 /* DTO */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -379,8 +391,8 @@
 		1E8FB86F29D12C1900847578 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB88329D12E3B00847578 /* Transformer */,
 				1E8FB88229D12E3300847578 /* Entity */,
+				1E8FB88329D12E3B00847578 /* Transformer */,
 				1E8FB88429D12E4200847578 /* UseCase */,
 			);
 			path = Domain;
@@ -482,6 +494,16 @@
 				1E8FB8A729D14FE900847578 /* Transformable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1E8FB8C629D1581800847578 /* RepoList */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */,
+				1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */,
+				1E8FB8C829D1583200847578 /* RepoListViewModel.swift */,
+			);
+			path = RepoList;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
@@ -747,6 +769,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8FB89C29D14E6800847578 /* Rx+decodeMap.swift in Sources */,
+				1E8FB8D529D158D800847578 /* RepoListCoordinateAction.swift in Sources */,
 				1E8FB8AC29D150D000847578 /* RepositoryEntity.swift in Sources */,
 				1E8FB8B229D1513400847578 /* String+toDateFormat.swift in Sources */,
 				1E8FB8BE29D1532300847578 /* DefaultAccountRepository.swift in Sources */,
@@ -758,6 +781,7 @@
 				1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */,
 				1E8FB8B429D151C600847578 /* DefaultRepoListUseCase.swift in Sources */,
 				1E8FB86229D09A5C00847578 /* UserDefaultsValue.swift in Sources */,
+				1E8FB8CB29D1583C00847578 /* RepoListViewController.swift in Sources */,
 				1E8FB8B029D150F500847578 /* RepositoryTransformer.swift in Sources */,
 				1E8FB8C429D155AB00847578 /* Rx+transformMap.swift in Sources */,
 				1E8FB85D29D09A2600847578 /* Constant.swift in Sources */,
@@ -767,8 +791,10 @@
 				1E8FB8A529D14FD600847578 /* AnyTransformer.swift in Sources */,
 				1E8FB87129D12C4000847578 /* GitHubAPI.swift in Sources */,
 				1E8FB8A329D14F6700847578 /* RepositoryDTO.swift in Sources */,
+				1E8FB8D929D158FB00847578 /* RepoListCoordinator.swift in Sources */,
 				1E8FB8AE29D150F000847578 /* UserTransformer.swift in Sources */,
 				1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */,
+				1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
 				1E8FB87F29D12DC800847578 /* TokenDTO.swift in Sources */,
 				1E8FB86D29D12B9B00847578 /* LoginViewModel.swift in Sources */,
@@ -778,6 +804,7 @@
 				1E8FB8B829D1521E00847578 /* AccountUseCase.swift in Sources */,
 				1E8FB8A829D14FE900847578 /* Transformable.swift in Sources */,
 				1E8FB8B629D151DC00847578 /* DefaultAccountUseCase.swift in Sources */,
+				1E8FB8C929D1583200847578 /* RepoListViewModel.swift in Sources */,
 				1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */,
 				1E8FB8A129D14F5D00847578 /* UserDTO.swift in Sources */,
 				1E8FB89629D12FA700847578 /* Container.swift in Sources */,
