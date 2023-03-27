@@ -1,0 +1,29 @@
+//
+//  OSLog+LogCategory.swift
+//  MyGitHubTracker
+//
+//  Created by 김상혁 on 2023/03/28.
+//
+
+import OSLog
+
+extension OSLog {
+    static let subsystem = Bundle.main.bundleIdentifier ?? ""
+    
+    enum LogCategory {
+        case `default`
+        case network
+        case database
+        
+        var value: String {
+            switch self {
+            case .`default`:
+                return Constant.OSLogCategory.defaultCategory
+            case .network:
+                return Constant.OSLogCategory.networkCategory
+            case .database:
+                return Constant.OSLogCategory.databaseCategory
+            }
+        }
+    }
+}
