@@ -188,6 +188,8 @@
 				1E8FB85B29D09A1E00847578 /* Common */,
 				1E8FB83E29D08DE800847578 /* Application */,
 				1E8FB83F29D08E0F00847578 /* Presentation */,
+				1E8FB86F29D12C1900847578 /* Domain */,
+				1E8FB86E29D12BFB00847578 /* Data */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -290,6 +292,20 @@
 				1E8FB86C29D12B9B00847578 /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		1E8FB86E29D12BFB00847578 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1E8FB86F29D12C1900847578 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
