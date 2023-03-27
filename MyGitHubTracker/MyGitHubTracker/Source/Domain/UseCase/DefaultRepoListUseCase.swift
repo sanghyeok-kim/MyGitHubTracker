@@ -10,7 +10,7 @@ import RxSwift
 final class DefaultRepoListUseCase: RepoListUseCase {
     
     @Inject private var repoListRepository: RepoListRepository
-    private let repoListTransformer = RepositoryTransformer()
+    @Inject private var repoListTransformer: AnyTransformer<RepositoryDTO, RepositoryEntity>
     
     func fetchRepositories(perPage: Int, page: Int) -> Single<[RepositoryEntity]> {
         return repoListRepository.fetchRepositories(perPage: perPage, page: page)
