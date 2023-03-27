@@ -47,6 +47,7 @@ final class ToastLabel: UILabel {
         textColor = UIColor.white
         backgroundColor = UIColor.black.withAlphaComponent(0.6)
         numberOfLines = .zero
+        lineBreakMode = .byWordWrapping
     }
     
     func show(message: String) {
