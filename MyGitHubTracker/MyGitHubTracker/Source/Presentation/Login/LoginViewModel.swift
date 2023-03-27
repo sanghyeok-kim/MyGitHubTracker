@@ -22,12 +22,35 @@ final class LoginViewModel: ViewModelType {
     let input = Input()
     let output = Output()
     
+    @Inject private var loginUseCase: LoginUseCase
+    
     private weak var coordinator: AppCoordinator?
     private let disposeBag = DisposeBag()
     
     init(coordinator: AppCoordinator) {
         self.coordinator = coordinator
         
+        input.gitHubLoginButtonDidTap
+            .withUnretained(self)
+            .compactMap { `self`, _ in
+                self.loginUseCase.buildGitHubAuthorizationURL()
+            }
+            .bind {
+                coordinator.coordinate(by: .loginButtonDidTap(url: $0))
+            }
+            .disposed(by: disposeBag)
+        
+        input.userDidAuthorize
+            .withUnretained(self)
+            .flatMapLatest { `self`, url in
+                self.loginUseCase.fetchAndStoreAccessToken(with: url)
+            }
+            .subscribe { _ in
+                coordinator.coordinate(by: .accessTokenDidfetch)
+            } onError: { error in
+                // FIXME: 에러 처리하기
+                print(error.localizedDescription)
+            }.disposed(by: disposeBag)
     }
 }
 
