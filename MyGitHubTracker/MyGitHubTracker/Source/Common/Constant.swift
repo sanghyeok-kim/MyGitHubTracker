@@ -7,8 +7,18 @@
 
 import Foundation
 
-enum Constant {
-    
+enum Constant { }
+
+extension Constant {
+    enum UIStrings {
+        static let gitHubLogin = "Sign in with GitHub"
+    }
+}
+
+extension Constant {
+    enum ImageName {
+        static let gitHubIcon = "ic_github"
+    }
 }
 
 extension Constant {
