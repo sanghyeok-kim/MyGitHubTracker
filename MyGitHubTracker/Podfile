@@ -9,6 +9,7 @@ target 'MyGitHubTracker' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxAppState'
+  pod 'RxDataSources'
   pod 'Then'
   pod 'SnapKit'
   pod 'KeychainSwift'
