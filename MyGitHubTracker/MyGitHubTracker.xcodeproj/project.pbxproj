@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
+		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
 		1E8FB81529D08BA100847578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB81429D08BA100847578 /* Assets.xcassets */; };
@@ -99,6 +101,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
+		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FB80D29D08BA000847578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +215,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E66CA6129D2BA5A00EA117A /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				1E66CA5F29D2BA4100EA117A /* Padding.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		1E8FB7FF29D08BA000847578 = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB8E029D167B700847578 /* Common */,
+				1E66CA6129D2BA5A00EA117A /* Enum */,
 				1E8FB84129D08E3A00847578 /* Protocol */,
 			);
 			path = Support;
@@ -559,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB8E129D167BE00847578 /* ToastLabel.swift */,
+				1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -878,6 +892,7 @@
 				1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
 				1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */,
+				1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */,
 				1E8FB87F29D12DC800847578 /* TokenDTO.swift in Sources */,
 				1E8FB86D29D12B9B00847578 /* LoginViewModel.swift in Sources */,
 				1E8FB86429D09A6300847578 /* KeychainValue.swift in Sources */,
@@ -893,6 +908,7 @@
 				1E8FB8A129D14F5D00847578 /* UserDTO.swift in Sources */,
 				1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */,
 				1E8FB89629D12FA700847578 /* Container.swift in Sources */,
+				1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */,
 				1E8FB8AA29D150CB00847578 /* UserEntity.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
 				1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */,
