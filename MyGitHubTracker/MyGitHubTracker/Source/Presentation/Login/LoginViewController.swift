@@ -14,9 +14,8 @@ class LoginViewController: UIViewController, ViewType {
     
     private lazy var gitHubLoginButton = UIButton().then {
         var configuration = UIButton.Configuration.filled()
-        configuration.image = UIImage(named: "ic_github")
-        configuration.title = "Sign in with Github"
-        configuration.baseBackgroundColor = .black
+        configuration.image = UIImage(named: Constant.ImageName.gitHubIcon)
+        configuration.title = Constant.UIStrings.gitHubLogin
         configuration.imagePadding = 8
         configuration.imagePlacement = .leading
         configuration.cornerStyle = .medium
