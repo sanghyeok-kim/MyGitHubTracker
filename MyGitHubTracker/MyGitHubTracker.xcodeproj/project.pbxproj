@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF1E29D44ECA00C718D4 /* CellIdentifiable.swift */; };
+		1E43BF2229D4541000C718D4 /* RepositorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2129D4541000C718D4 /* RepositorySection.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
@@ -107,6 +108,7 @@
 
 /* Begin PBXFileReference section */
 		1E43BF1E29D44ECA00C718D4 /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
+		1E43BF2129D4541000C718D4 /* RepositorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySection.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		1E43BF2029D453CD00C718D4 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				1E43BF2129D4541000C718D4 /* RepositorySection.swift */,
 				1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */,
 				1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */,
 			);
@@ -949,6 +952,7 @@
 				1E8FB87729D12C6400847578 /* NetworkError.swift in Sources */,
 				1E8FB87A29D12CE900847578 /* URLSessionNetworkService.swift in Sources */,
 				1E8FB89329D12F7500847578 /* DefaultLoginRepository.swift in Sources */,
+				1E43BF2229D4541000C718D4 /* RepositorySection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
