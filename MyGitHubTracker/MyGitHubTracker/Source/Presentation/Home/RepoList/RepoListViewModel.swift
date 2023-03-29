@@ -45,6 +45,7 @@ final class RepoListViewModel: ViewModelType {
         
         fetchedRepositories
             .compactMap { $0.error }
+            .logErrorAndMapToastMessage(to: .failToFetchAccessToken, logCategory: .network)
             .bind(to: output.toastErrorMessage)
             .disposed(by: disposeBag)
     }
