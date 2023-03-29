@@ -44,6 +44,5 @@ final class DefaultAccountCoordinator: AccountCoordinator {
 private extension DefaultAccountCoordinator {
     func showAccountViewController() {
         navigationController.setViewControllers([accountViewController], animated: false)
-        navigationController.setNavigationBarHidden(true, animated: false)
     }
 }

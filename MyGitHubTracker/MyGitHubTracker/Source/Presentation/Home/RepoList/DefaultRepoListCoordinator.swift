@@ -43,6 +43,5 @@ final class DefaultRepoListCoordinator: Coordinator, RepoListCoordinator {
 private extension DefaultRepoListCoordinator {
     func showRepoListViewController() {
         navigationController.setViewControllers([repoListViewController], animated: false)
-        navigationController.setNavigationBarHidden(true, animated: false)
     }
 }

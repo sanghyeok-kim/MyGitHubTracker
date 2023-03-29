@@ -49,6 +49,7 @@ final class DefaultHomeCoordinator: Coordinator {
         add(childCoordinator: accountCoordinator)
         repoListCoordinator.start()
         accountCoordinator.start()
+        navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.pushViewController(homeTabBarController, animated: true)
     }
     
