@@ -374,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB8E729D2515000847578 /* Support */,
-				1E8FB85C29D09A2600847578 /* Constant.swift */,
 				1E8FB85E29D09A4100847578 /* AccessToken.swift */,
 				1E8FB89429D12FA100847578 /* Dependency */,
 				1E8FB86029D09A4F00847578 /* PropertyWrapper */,
@@ -428,10 +427,10 @@
 		1E8FB86E29D12BFB00847578 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB8EA29D254C400847578 /* Error */,
 				1E8FB87029D12C4000847578 /* GitHubAPI.swift */,
 				1E8FB87229D12C5000847578 /* HTTPMethod.swift */,
 				1E8FB87429D12C5800847578 /* TargetType.swift */,
+				1E8FB8EA29D254C400847578 /* Error */,
 				1E8FB87829D12CAA00847578 /* Service */,
 				1E8FB88E29D12F1D00847578 /* Repository */,
 				1E8FB87D29D12D7400847578 /* DTO */,
@@ -589,6 +588,7 @@
 		1E8FB8E729D2515000847578 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB85C29D09A2600847578 /* Constant.swift */,
 				1E8FB8E329D250FD00847578 /* CustomLogger.swift */,
 			);
 			path = Support;
