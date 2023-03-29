@@ -87,12 +87,21 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
             .drive(accessLabel.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
-    
-    private func configureUI() {
+}
+
+
+// MARK: - UI Configuration
+
+private extension RepositoryViewCell {
+    func configureUI() {
         
     }
-    
-    private func layoutUI() {
+}
+
+// MARK: - UI Layout
+
+private extension RepositoryViewCell {
+    func layoutUI() {
         contentView.addSubview(titleStackView)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(updatedDateLabel)
@@ -113,4 +122,5 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
             make.bottom.lessThanOrEqualToSuperview().inset(16)
         }
     }
+
 }
