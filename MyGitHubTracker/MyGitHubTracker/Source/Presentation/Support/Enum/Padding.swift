@@ -5,7 +5,7 @@
 //  Created by 김상혁 on 2023/03/28.
 //
 
-import UIKit
+import UIKit.UIGeometry
 
 enum Padding {
     case small
