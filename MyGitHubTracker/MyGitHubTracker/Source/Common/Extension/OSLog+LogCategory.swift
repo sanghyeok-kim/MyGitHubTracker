@@ -12,6 +12,7 @@ extension OSLog {
     
     enum LogCategory {
         case `default`
+        case allocation
         case network
         case database
         
@@ -19,6 +20,8 @@ extension OSLog {
             switch self {
             case .`default`:
                 return Constant.OSLogCategory.defaultCategory
+            case .allocation:
+                return Constant.OSLogCategory.allocation
             case .network:
                 return Constant.OSLogCategory.networkCategory
             case .database:
