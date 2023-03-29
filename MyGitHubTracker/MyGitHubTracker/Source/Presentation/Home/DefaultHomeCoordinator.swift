@@ -51,5 +51,11 @@ final class DefaultHomeCoordinator: Coordinator {
         accountCoordinator.start()
         navigationController.pushViewController(homeTabBarController, animated: true)
     }
+    
+    deinit {
+    #if DEBUG
+        CustomLogger.log(message: "\(self) deallocated", category: .allocation, type: .info)
+    #endif
+    }
 }
 

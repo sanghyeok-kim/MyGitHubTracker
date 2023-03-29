@@ -53,6 +53,12 @@ final class DefaultAppCoordinator: AppCoordinator {
             }
         }
     }
+    
+    deinit {
+    #if DEBUG
+        CustomLogger.log(message: "\(self) deallocated", category: .allocation, type: .info)
+    #endif
+    }
 }
 
 // MARK: - Scene Changing Methods

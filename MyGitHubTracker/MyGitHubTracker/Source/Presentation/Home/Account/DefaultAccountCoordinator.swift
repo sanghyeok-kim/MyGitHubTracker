@@ -32,7 +32,9 @@ final class DefaultAccountCoordinator: AccountCoordinator {
     }
     
     deinit {
-        print("\(self) deinit")
+    #if DEBUG
+        CustomLogger.log(message: "\(self) deallocated", category: .allocation, type: .info)
+    #endif
     }
 }
 
