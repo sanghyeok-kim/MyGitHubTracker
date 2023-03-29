@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E66CA5C29D2A61F00EA117A /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6829D335D400EA117A /* CustomColor.swift */; };
@@ -102,6 +103,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6829D335D400EA117A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB84A29D08F0500847578 /* CoordinatorType.swift */,
+				1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */,
 				1E8FB84929D08EC100847578 /* Protocol */,
 				1E8FB86829D09AFB00847578 /* Action */,
 			);
@@ -910,6 +913,7 @@
 				1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */,
 				1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */,
 				1E8FB8A129D14F5D00847578 /* UserDTO.swift in Sources */,
+				1E66CA5C29D2A61F00EA117A /* CellIdentifiable.swift in Sources */,
 				1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */,
 				1E8FB89629D12FA700847578 /* Container.swift in Sources */,
 				1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */,
