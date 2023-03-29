@@ -10,6 +10,7 @@
 		1E66CA5C29D2A61F00EA117A /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
+		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
 		1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6829D335D400EA117A /* CustomColor.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
@@ -106,6 +107,7 @@
 		1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
+		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
 		1E66CA6829D335D400EA117A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
 				1E8FB8E829D251D500847578 /* Rx+OSLog+logErrorAndMapToastMessage.swift */,
 				1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */,
+				1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				1E8FB89829D12FAA00847578 /* Inject.swift in Sources */,
 				1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */,
 				1E8FB89129D12F4800847578 /* LoginRepository.swift in Sources */,
+				1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */,
 				1E8FB8BA29D1522600847578 /* RepoListUseCase.swift in Sources */,
 				1E8FB86B29D12B9600847578 /* LoginViewController.swift in Sources */,
