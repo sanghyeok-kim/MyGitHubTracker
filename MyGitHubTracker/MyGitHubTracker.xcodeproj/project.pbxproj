@@ -300,7 +300,6 @@
 		1E8FB83D29D08D1500847578 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB8E729D2515000847578 /* Support */,
 				1E8FB85B29D09A1E00847578 /* Common */,
 				1E8FB83E29D08DE800847578 /* Application */,
 				1E8FB83F29D08E0F00847578 /* Presentation */,
@@ -374,6 +373,7 @@
 		1E8FB85B29D09A1E00847578 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB8E729D2515000847578 /* Support */,
 				1E8FB85C29D09A2600847578 /* Constant.swift */,
 				1E8FB85E29D09A4100847578 /* AccessToken.swift */,
 				1E8FB89429D12FA100847578 /* Dependency */,
