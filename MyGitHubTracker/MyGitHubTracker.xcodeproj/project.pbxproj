@@ -11,6 +11,8 @@
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
+		1E66CA6529D31D7300EA117A /* RepositoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */; };
+		1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */; };
 		1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6829D335D400EA117A /* CustomColor.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
@@ -108,6 +110,8 @@
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
+		1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewCell.swift; sourceTree = "<group>"; };
+		1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCellViewModel.swift; sourceTree = "<group>"; };
 		1E66CA6829D335D400EA117A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +225,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E43BF2029D453CD00C718D4 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */,
+				1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		1E66CA6129D2BA5A00EA117A /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +572,7 @@
 		1E8FB8C629D1581800847578 /* RepoList */ = {
 			isa = PBXGroup;
 			children = (
+				1E43BF2029D453CD00C718D4 /* TableView */,
 				1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */,
 				1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */,
 				1E8FB8C829D1583200847578 /* RepoListViewModel.swift */,
@@ -872,10 +886,12 @@
 				1E8FB8D129D1589D00847578 /* AccountViewController.swift in Sources */,
 				1E8FB8B229D1513400847578 /* String+toDateFormat.swift in Sources */,
 				1E8FB8BE29D1532300847578 /* DefaultAccountRepository.swift in Sources */,
+				1E66CA6529D31D7300EA117A /* RepositoryViewCell.swift in Sources */,
 				1E8FB89829D12FAA00847578 /* Inject.swift in Sources */,
 				1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */,
 				1E8FB89129D12F4800847578 /* LoginRepository.swift in Sources */,
 				1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */,
+				1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */,
 				1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */,
 				1E8FB8BA29D1522600847578 /* RepoListUseCase.swift in Sources */,
 				1E8FB86B29D12B9600847578 /* LoginViewController.swift in Sources */,
