@@ -15,6 +15,7 @@
 		1E66CA6529D31D7300EA117A /* RepositoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */; };
 		1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */; };
 		1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6829D335D400EA117A /* CustomColor.swift */; };
+		1E66CA6B29D4004B00EA117A /* RxTableViewDataSourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6A29D4004B00EA117A /* RxTableViewDataSourceGenerator.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
 		1E8FB81529D08BA100847578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB81429D08BA100847578 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewCell.swift; sourceTree = "<group>"; };
 		1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCellViewModel.swift; sourceTree = "<group>"; };
 		1E66CA6829D335D400EA117A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		1E66CA6A29D4004B00EA117A /* RxTableViewDataSourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSourceGenerator.swift; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FB80D29D08BA000847578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -598,6 +600,7 @@
 			children = (
 				1E8FB8E129D167BE00847578 /* ToastLabel.swift */,
 				1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */,
+				1E66CA6A29D4004B00EA117A /* RxTableViewDataSourceGenerator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
 				1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */,
+				1E66CA6B29D4004B00EA117A /* RxTableViewDataSourceGenerator.swift in Sources */,
 				1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */,
 				1E8FB87F29D12DC800847578 /* TokenDTO.swift in Sources */,
 				1E8FB86D29D12B9B00847578 /* LoginViewModel.swift in Sources */,
