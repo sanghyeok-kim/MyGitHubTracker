@@ -15,8 +15,8 @@ final class AccountViewModel: ViewModelType {
     }
     
     struct Output {
-        let userInfo = PublishRelay<UserEntity>()
-        let errorDidOccur = PublishRelay<String>()
+        let fetchedUserInfo = PublishRelay<UserEntity>()
+        let toastErrorMessage = PublishRelay<String>()
     }
     
     let input = Input()
@@ -40,12 +40,12 @@ final class AccountViewModel: ViewModelType {
         
         userInfo
             .compactMap { $0.element }
-            .bind(to: output.userInfo)
+            .bind(to: output.fetchedUserInfo)
             .disposed(by: disposeBag)
         
         userInfo
             .compactMap { $0.error?.localizedDescription }
-            .bind(to: output.errorDidOccur)
+            .bind(to: output.toastErrorMessage)
             .disposed(by: disposeBag)
     }
 }

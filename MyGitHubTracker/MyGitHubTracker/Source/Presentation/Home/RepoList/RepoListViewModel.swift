@@ -15,8 +15,8 @@ final class RepoListViewModel: ViewModelType {
     }
     
     struct Output {
-        let repositories = PublishRelay<[RepositoryEntity]>()
-        let errorDidOccur = PublishRelay<String>()
+        let fetchedRepositories = PublishRelay<[RepositoryEntity]>()
+        let toastErrorMessage = PublishRelay<String>()
     }
     
     let input = Input()
@@ -40,12 +40,12 @@ final class RepoListViewModel: ViewModelType {
         
         fetchedRepositories
             .compactMap { $0.element }
-            .bind(to: output.repositories)
+            .bind(to: output.fetchedRepositories)
             .disposed(by: disposeBag)
         
         fetchedRepositories
-            .compactMap { $0.error?.localizedDescription }
-            .bind(to: output.errorDidOccur)
+            .compactMap { $0.error }
+            .bind(to: output.toastErrorMessage)
             .disposed(by: disposeBag)
     }
 }
