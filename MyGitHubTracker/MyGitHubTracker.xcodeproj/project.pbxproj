@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E66CA5C29D2A61F00EA117A /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */; };
+		1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF1E29D44ECA00C718D4 /* CellIdentifiable.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
@@ -104,7 +104,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
+		1E43BF1E29D44ECA00C718D4 /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
@@ -343,8 +343,8 @@
 		1E8FB84129D08E3A00847578 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */,
 				1E8FB84229D08E4400847578 /* MVVMInterface.swift */,
+				1E43BF1E29D44ECA00C718D4 /* CellIdentifiable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -866,6 +866,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8FB89C29D14E6800847578 /* Rx+decodeMap.swift in Sources */,
+				1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */,
 				1E8FB8D529D158D800847578 /* RepoListCoordinateAction.swift in Sources */,
 				1E8FB8AC29D150D000847578 /* RepositoryEntity.swift in Sources */,
 				1E8FB8D129D1589D00847578 /* AccountViewController.swift in Sources */,
@@ -917,7 +918,6 @@
 				1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */,
 				1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */,
 				1E8FB8A129D14F5D00847578 /* UserDTO.swift in Sources */,
-				1E66CA5C29D2A61F00EA117A /* CellIdentifiable.swift in Sources */,
 				1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */,
 				1E8FB89629D12FA700847578 /* Container.swift in Sources */,
 				1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */,

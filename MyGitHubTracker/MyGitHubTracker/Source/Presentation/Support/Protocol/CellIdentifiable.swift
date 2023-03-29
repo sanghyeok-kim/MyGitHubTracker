@@ -5,7 +5,7 @@
 //  Created by 김상혁 on 2023/03/28.
 //
 
-import Foundation
+import UIKit
 
 protocol CellIdentifiable { }
 
@@ -14,3 +14,6 @@ extension CellIdentifiable {
         return String(describing: self)
     }
 }
+
+extension UITableViewCell: CellIdentifiable { }
+extension UICollectionViewCell: CellIdentifiable { }
