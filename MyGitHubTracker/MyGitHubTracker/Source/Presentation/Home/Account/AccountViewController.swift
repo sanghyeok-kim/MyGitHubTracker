@@ -34,9 +34,11 @@ final class AccountViewController: UIViewController, ViewType {
 }
 
 // MARK: - UI Configuration
+
 private extension AccountViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
+        navigationItem.title = "Account"
     }
 }
 
