@@ -343,6 +343,7 @@
 		1E8FB84129D08E3A00847578 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */,
 				1E8FB84229D08E4400847578 /* MVVMInterface.swift */,
 			);
 			path = Protocol;
@@ -352,7 +353,6 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB84A29D08F0500847578 /* CoordinatorType.swift */,
-				1E66CA5B29D2A61F00EA117A /* CellIdentifiable.swift */,
 				1E8FB84929D08EC100847578 /* Protocol */,
 				1E8FB86829D09AFB00847578 /* Action */,
 			);
