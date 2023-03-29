@@ -14,12 +14,10 @@ import SnapKit
 final class RepoListViewController: UIViewController, ViewType {
     
     private lazy var repositoryTableViewDataSource: RxTableViewSectionedReloadDataSource<RepositorySection> = {
-        let dataSource = RxTableViewSectionedReloadDataSourceGenerator<RepositorySection, RepositoryViewCell>
-            .generate { repositoryViewCell, item in
-                let cellViewModel = RepositoryCellViewModel(repositoryEntity: item)
-                repositoryViewCell.bind(viewModel: cellViewModel)
-            }
-        return dataSource
+        return .init { (cell: RepositoryViewCell, item: RepositoryEntity) in
+            let cellViewModel = RepositoryCellViewModel(repositoryEntity: item)
+            cell.bind(viewModel: cellViewModel)
+        }
     }()
     
     private lazy var repositoryTableView = UITableView().then {
