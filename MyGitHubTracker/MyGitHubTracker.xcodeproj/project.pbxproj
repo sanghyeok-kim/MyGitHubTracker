@@ -10,6 +10,7 @@
 		1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF1E29D44ECA00C718D4 /* CellIdentifiable.swift */; };
 		1E43BF2229D4541000C718D4 /* RepositorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2129D4541000C718D4 /* RepositorySection.swift */; };
 		1E43BF2429D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */; };
+		1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */; };
 		1E43BF2829D53B0E00C718D4 /* OSLoggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2729D53B0E00C718D4 /* OSLoggable.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
@@ -84,7 +85,7 @@
 		1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E129D167BE00847578 /* ToastLabel.swift */; };
 		1E8FB8E429D250FD00847578 /* CustomLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E329D250FD00847578 /* CustomLogger.swift */; };
 		1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */; };
-		1E8FB8E929D251D500847578 /* Rx+OSLog+logErrorAndMapToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E829D251D500847578 /* Rx+OSLog+logErrorAndMapToastMessage.swift */; };
+		1E8FB8E929D251D500847578 /* Rx+catchAndLogError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E829D251D500847578 /* Rx+catchAndLogError.swift */; };
 		1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8EB29D254CE00847578 /* ToastError.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
@@ -112,6 +113,7 @@
 		1E43BF1E29D44ECA00C718D4 /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		1E43BF2129D4541000C718D4 /* RepositorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySection.swift; sourceTree = "<group>"; };
 		1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxTableViewSectionedReloadDataSource+init.swift"; sourceTree = "<group>"; };
+		1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+toastMessageMap.swift"; sourceTree = "<group>"; };
 		1E43BF2729D53B0E00C718D4 /* OSLoggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLoggable.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 		1E8FB8E129D167BE00847578 /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
 		1E8FB8E329D250FD00847578 /* CustomLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogger.swift; sourceTree = "<group>"; };
 		1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+LogCategory.swift"; sourceTree = "<group>"; };
-		1E8FB8E829D251D500847578 /* Rx+OSLog+logErrorAndMapToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+OSLog+logErrorAndMapToastMessage.swift"; sourceTree = "<group>"; };
+		1E8FB8E829D251D500847578 /* Rx+catchAndLogError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+catchAndLogError.swift"; sourceTree = "<group>"; };
 		1E8FB8EB29D254CE00847578 /* ToastError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastError.swift; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -425,7 +427,8 @@
 				1E8FB8B129D1513400847578 /* String+toDateFormat.swift */,
 				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
 				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
-				1E8FB8E829D251D500847578 /* Rx+OSLog+logErrorAndMapToastMessage.swift */,
+				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
+				1E8FB8E829D251D500847578 /* Rx+catchAndLogError.swift */,
 				1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */,
 				1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */,
 				1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */,
@@ -923,7 +926,7 @@
 				1E8FB8BC29D1530800847578 /* DefaultRepoListRepository.swift in Sources */,
 				1E8FB8CF29D1588B00847578 /* DefaultAccountCoordinator.swift in Sources */,
 				1E8FB85629D099E000847578 /* DefaultAppCoordinator.swift in Sources */,
-				1E8FB8E929D251D500847578 /* Rx+OSLog+logErrorAndMapToastMessage.swift in Sources */,
+				1E8FB8E929D251D500847578 /* Rx+catchAndLogError.swift in Sources */,
 				1E8FB85A29D099FB00847578 /* AppCoordinateAction.swift in Sources */,
 				1E8FB8A529D14FD600847578 /* AnyTransformer.swift in Sources */,
 				1E8FB87129D12C4000847578 /* GitHubAPI.swift in Sources */,
@@ -933,6 +936,7 @@
 				1E8FB8AE29D150F000847578 /* UserTransformer.swift in Sources */,
 				1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */,
 				1E8FB8D729D158E300847578 /* AccountCoordinateAction.swift in Sources */,
+				1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */,
 				1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */,
 				1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,

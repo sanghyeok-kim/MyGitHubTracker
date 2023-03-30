@@ -15,8 +15,8 @@ final class RepoListViewModel: ViewModelType {
     }
     
     struct Output {
-        let fetchedRepositories = PublishRelay<[RepositoryEntity]>()
-        let toastErrorMessage = PublishRelay<String>()
+        let fetchedRepositories = BehaviorRelay<[RepositoryEntity]>(value: [])
+        let showErrorMessage = PublishRelay<String>()
     }
     
     let input = Input()
@@ -45,8 +45,9 @@ final class RepoListViewModel: ViewModelType {
         
         fetchedRepositories
             .compactMap { $0.error }
-            .logErrorAndMapToastMessage(to: .failToFetchAccessToken, logCategory: .network)
-            .bind(to: output.toastErrorMessage)
+            .catchAndLogError(logType: .error)
+            .toastMeessageMap(to: .failToFetchRepositories)
+            .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
     }
 }
