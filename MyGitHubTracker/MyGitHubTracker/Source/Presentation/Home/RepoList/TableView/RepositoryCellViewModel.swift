@@ -6,23 +6,23 @@
 //
 
 import RxSwift
-import RxCocoa
+import RxRelay
 
 final class RepositoryCellViewModel: ViewModelType {
     
     struct Input {
-        
+        let cellDidLoad = PublishRelay<Void>()
     }
     
     struct Output {
-        let name: Driver<String>
-        let description: Driver<String?>
-        let updatedDate: Driver<String>
-        let isPrivate: Driver<Bool>
+        let name = BehaviorRelay<String>(value: "")
+        let isPrivate = BehaviorRelay<Bool>(value: false)
+        let description = BehaviorRelay<String?>(value: nil)
+        let updatedDate = BehaviorRelay<String>(value: "")
     }
     
     let input = Input()
-    let output: Output
+    let output = Output()
     
     private let repositoryEntity: RepositoryEntity
     private let disposeBag = DisposeBag()
@@ -30,11 +30,24 @@ final class RepositoryCellViewModel: ViewModelType {
     init(repositoryEntity: RepositoryEntity) {
         self.repositoryEntity = repositoryEntity
         
-        output = Output(
-            name: .just(repositoryEntity.name),
-            description: .just(repositoryEntity.description),
-            updatedDate: .just(repositoryEntity.updatedDate),
-            isPrivate: .just(repositoryEntity.isPrivate)
-        )
+        input.cellDidLoad
+            .map { repositoryEntity.name }
+            .bind(to: output.name)
+            .disposed(by: disposeBag)
+        
+        input.cellDidLoad
+            .map { repositoryEntity.isPrivate }
+            .bind(to: output.isPrivate)
+            .disposed(by: disposeBag)
+        
+        input.cellDidLoad
+            .map { repositoryEntity.description }
+            .bind(to: output.description)
+            .disposed(by: disposeBag)
+        
+        input.cellDidLoad
+            .map { repositoryEntity.updatedDate }
+            .bind(to: output.updatedDate)
+            .disposed(by: disposeBag)
     }
 }

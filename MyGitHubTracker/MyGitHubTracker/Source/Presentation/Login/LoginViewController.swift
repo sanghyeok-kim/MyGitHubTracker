@@ -45,7 +45,8 @@ class LoginViewController: UIViewController, ViewType {
         let output = viewModel.output
         
         output.showErrorMessage
-            .bind(onNext: errorToastMessageLabel.show)
+            .asSignal()
+            .emit(onNext: errorToastMessageLabel.show)
             .disposed(by: disposeBag)
     }
 }

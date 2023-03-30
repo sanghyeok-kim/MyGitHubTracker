@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
@@ -58,31 +59,38 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
     }
     
     func bindInput(to viewModel: RepositoryCellViewModel) {
+        let input = viewModel.input
         
+        defer { input.cellDidLoad.accept(()) }
     }
     
     func bindOutput(from viewModel: RepositoryCellViewModel) {
         let output = viewModel.output
         
         output.name
+            .asDriver()
             .drive(nameLabel.rx.text)
             .disposed(by: disposeBag)
         
         output.description
+            .asDriver()
             .drive(descriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
         output.updatedDate
-            .map { "Last updated on \($0)" }
+            .asDriver()
+            .compactMap { "Last updated on \($0)" }
             .drive(updatedDateLabel.rx.text)
             .disposed(by: disposeBag)
         
         output.isPrivate
+            .asDriver()
             .map { $0 ? "private" : "public" }
             .drive(accessLabel.rx.text)
             .disposed(by: disposeBag)
         
         output.isPrivate
+            .asDriver()
             .map { $0 ? CustomColor.softRed : CustomColor.softGreen }
             .drive(accessLabel.rx.backgroundColor)
             .disposed(by: disposeBag)

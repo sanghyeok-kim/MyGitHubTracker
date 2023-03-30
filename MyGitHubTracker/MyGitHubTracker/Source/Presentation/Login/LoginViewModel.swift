@@ -56,7 +56,6 @@ final class LoginViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         userDidAuthorize
-            .observe(on: MainScheduler.instance)
             .compactMap { $0.error }
             .catchAndLogError(logType: .error)
             .toastMeessageMap(to: .failToFetchAccessToken)

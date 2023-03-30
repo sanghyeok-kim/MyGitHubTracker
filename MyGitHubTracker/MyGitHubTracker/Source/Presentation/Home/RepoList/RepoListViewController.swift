@@ -47,8 +47,9 @@ final class RepoListViewController: UIViewController, ViewType {
         let output = viewModel.output
         
         output.fetchedRepositories
+            .asDriver()
             .map { [RepositorySection(items: $0)] }
-            .bind(to: repositoryTableView.rx.items(dataSource: repositoryTableViewDataSource))
+            .drive(repositoryTableView.rx.items(dataSource: repositoryTableViewDataSource))
             .disposed(by: disposeBag)
     }
 }
