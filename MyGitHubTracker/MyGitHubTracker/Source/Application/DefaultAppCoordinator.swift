@@ -54,13 +54,21 @@ private extension DefaultAppCoordinator {
         loginCoordinator.start()
     }
     
-    func showHomeCoordinatorFlow() {
+    func startHomeCoordinatorFlow() {
         let homeCoordinator = DefaultHomeCoordinator(navigationController: navigationController)
         add(childCoordinator: homeCoordinator)
         homeCoordinator.start()
     }
     
-    func open(url: URL) {
-        UIApplication.shared.open(url)
+    func handleAuthorization(url: URL) {
+        let loginCoordinator = childCoordinatorMap[.login] as? LoginCoordinator
+        loginCoordinator?.coordinate(by: .userDidAuthorize(url: url))
+    }
+}
+
+extension DefaultAppCoordinator: LoginCoordinatorFinishDelegate {
+    func showNextFlow() {
+        remove(childCoordinator: .login)
+        coordinate(by: .accessTokenDidfetch)
     }
 }
