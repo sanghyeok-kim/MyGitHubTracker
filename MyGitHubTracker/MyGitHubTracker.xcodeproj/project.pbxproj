@@ -12,6 +12,10 @@
 		1E43BF2429D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */; };
 		1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */; };
 		1E43BF2829D53B0E00C718D4 /* OSLoggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2729D53B0E00C718D4 /* OSLoggable.swift */; };
+		1E43BF2D29D6774600C718D4 /* DefaultLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2C29D6774600C718D4 /* DefaultLoginCoordinator.swift */; };
+		1E43BF2F29D6776E00C718D4 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF2E29D6776E00C718D4 /* LoginCoordinator.swift */; };
+		1E43BF3129D677B600C718D4 /* LoginCoordinateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF3029D677B600C718D4 /* LoginCoordinateAction.swift */; };
+		1E43BF3329D67A2200C718D4 /* LoginCoordinatorFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF3229D67A2200C718D4 /* LoginCoordinatorFinishDelegate.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
@@ -115,6 +119,10 @@
 		1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxTableViewSectionedReloadDataSource+init.swift"; sourceTree = "<group>"; };
 		1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+toastMessageMap.swift"; sourceTree = "<group>"; };
 		1E43BF2729D53B0E00C718D4 /* OSLoggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLoggable.swift; sourceTree = "<group>"; };
+		1E43BF2C29D6774600C718D4 /* DefaultLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginCoordinator.swift; sourceTree = "<group>"; };
+		1E43BF2E29D6776E00C718D4 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		1E43BF3029D677B600C718D4 /* LoginCoordinateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinateAction.swift; sourceTree = "<group>"; };
+		1E43BF3229D67A2200C718D4 /* LoginCoordinatorFinishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorFinishDelegate.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
@@ -249,6 +257,14 @@
 				1E43BF2729D53B0E00C718D4 /* OSLoggable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1E43BF3429D67BEA00C718D4 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				1E43BF3229D67A2200C718D4 /* LoginCoordinatorFinishDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		1E66CA6129D2BA5A00EA117A /* Enum */ = {
@@ -394,8 +410,10 @@
 			children = (
 				1E8FB84729D08EBE00847578 /* Coordinator.swift */,
 				1E8FB85729D099F500847578 /* AppCoordinator.swift */,
+				1E43BF2E29D6776E00C718D4 /* LoginCoordinator.swift */,
 				1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */,
 				1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */,
+				1E43BF3429D67BEA00C718D4 /* Delegate */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -440,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB85929D099FB00847578 /* AppCoordinateAction.swift */,
+				1E43BF3029D677B600C718D4 /* LoginCoordinateAction.swift */,
 				1E8FB8D429D158D800847578 /* RepoListCoordinateAction.swift */,
 				1E8FB8D629D158E300847578 /* AccountCoordinateAction.swift */,
 			);
@@ -449,6 +468,7 @@
 		1E8FB86929D12B1C00847578 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1E43BF2C29D6774600C718D4 /* DefaultLoginCoordinator.swift */,
 				1E8FB86A29D12B9600847578 /* LoginViewController.swift */,
 				1E8FB86C29D12B9B00847578 /* LoginViewModel.swift */,
 			);
@@ -935,6 +955,7 @@
 				1E8FB8D929D158FB00847578 /* RepoListCoordinator.swift in Sources */,
 				1E8FB8AE29D150F000847578 /* UserTransformer.swift in Sources */,
 				1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */,
+				1E43BF2F29D6776E00C718D4 /* LoginCoordinator.swift in Sources */,
 				1E8FB8D729D158E300847578 /* AccountCoordinateAction.swift in Sources */,
 				1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */,
 				1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */,
@@ -948,6 +969,7 @@
 				1E43BF2429D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift in Sources */,
 				1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */,
 				1E43BF2829D53B0E00C718D4 /* OSLoggable.swift in Sources */,
+				1E43BF3129D677B600C718D4 /* LoginCoordinateAction.swift in Sources */,
 				1E8FB87529D12C5800847578 /* TargetType.swift in Sources */,
 				1E8FB8B829D1521E00847578 /* AccountUseCase.swift in Sources */,
 				1E8FB8A829D14FE900847578 /* Transformable.swift in Sources */,
@@ -969,9 +991,11 @@
 				1E8FB88D29D12EF000847578 /* DefaultLoginUseCase.swift in Sources */,
 				1E8FB85829D099F500847578 /* AppCoordinator.swift in Sources */,
 				1E8FB85F29D09A4100847578 /* AccessToken.swift in Sources */,
+				1E43BF3329D67A2200C718D4 /* LoginCoordinatorFinishDelegate.swift in Sources */,
 				1E8FB87729D12C6400847578 /* NetworkError.swift in Sources */,
 				1E8FB87A29D12CE900847578 /* URLSessionNetworkService.swift in Sources */,
 				1E8FB89329D12F7500847578 /* DefaultLoginRepository.swift in Sources */,
+				1E43BF2D29D6774600C718D4 /* DefaultLoginCoordinator.swift in Sources */,
 				1E43BF2229D4541000C718D4 /* RepositorySection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
