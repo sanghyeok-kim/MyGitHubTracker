@@ -12,10 +12,11 @@ final class RepoListViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoad = PublishRelay<Void>()
+        let cellDidSelect = PublishRelay<IndexPath>()
     }
     
     struct Output {
-        let fetchedRepositories = BehaviorRelay<[RepositoryEntity]>(value: [])
+        let repositoryCellViewModels = BehaviorRelay<[RepositoryCellViewModel]>(value: [])
         let showErrorMessage = PublishRelay<String>()
     }
     
@@ -40,7 +41,8 @@ final class RepoListViewModel: ViewModelType {
         
         fetchedRepositories
             .compactMap { $0.element }
-            .bind(to: output.fetchedRepositories)
+            .map { $0.map { RepositoryCellViewModel(repositoryEntity:$0) } }
+            .bind(to: output.repositoryCellViewModels)
             .disposed(by: disposeBag)
         
         fetchedRepositories

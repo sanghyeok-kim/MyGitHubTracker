@@ -14,8 +14,7 @@ import SnapKit
 final class RepoListViewController: UIViewController, ViewType {
     
     private lazy var repositoryTableViewDataSource: RxTableViewSectionedReloadDataSource<RepositorySection> = {
-        return .init { (cell: RepositoryViewCell, item: RepositoryEntity) in
-            let cellViewModel = RepositoryCellViewModel(repositoryEntity: item)
+        return .init { (cell: RepositoryViewCell, cellViewModel: RepositoryCellViewModel) in
             cell.bind(viewModel: cellViewModel)
         }
     }()
@@ -46,7 +45,7 @@ final class RepoListViewController: UIViewController, ViewType {
     func bindOutput(from viewModel: RepoListViewModel) {
         let output = viewModel.output
         
-        output.fetchedRepositories
+        output.repositoryCellViewModels
             .asDriver()
             .map { [RepositorySection(items: $0)] }
             .drive(repositoryTableView.rx.items(dataSource: repositoryTableViewDataSource))

@@ -8,13 +8,13 @@
 import RxDataSources
 
 struct RepositorySection {
-    var items: [RepositoryEntity]
+    var items: [RepositoryCellViewModel]
 }
 
 extension RepositorySection: SectionModelType {
-    typealias Item = RepositoryEntity
+    typealias Item = RepositoryCellViewModel
     
-    init(original: RepositorySection, items: [RepositoryEntity]) {
+    init(original: RepositorySection, items: [RepositoryCellViewModel]) {
         self = original
         self.items = items
     }
