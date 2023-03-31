@@ -13,19 +13,6 @@ final class DefaultAppCoordinator: AppCoordinator {
     var navigationController: UINavigationController
     let type: CoordinatorType = .app
     
-    private lazy var loginViewController: LoginViewController = {
-        let loginViewController = LoginViewController()
-        let loginViewModel = LoginViewModel(coordinator: self)
-        loginViewController.bind(viewModel: loginViewModel)
-        return loginViewController
-    }()
-    
-    private lazy var homeCoordinator: DefaultHomeCoordinator = {
-        let defaultHomeCoordinator = DefaultHomeCoordinator(navigationController: navigationController)
-        add(childCoordinator: defaultHomeCoordinator)
-        return defaultHomeCoordinator
-    }()
-    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -33,23 +20,19 @@ final class DefaultAppCoordinator: AppCoordinator {
     func start() {
         switch AccessToken.isStored() {
         case true:
-            coordinate(by: .accessTokenDidfetch)
+            startHomeCoordinatorFlow()
         case false:
-            coordinate(by: .appDidStart)
+            startLoginCoordinatorFlow()
         }
     }
     
     func coordinate(by action: AppCoordinateAction) {
         DispatchQueue.main.async { [weak self] in
             switch action {
-            case .appDidStart:
-                self?.showLoginViewController()
-            case .loginButtonDidTap(let url):
-                self?.open(url: url)
             case .userDidAuthorize(let url):
-                self?.loginViewController.viewModel?.userDidAuthorize(callBack: url)
+                self?.handleAuthorization(url: url)
             case .accessTokenDidfetch:
-                self?.showHomeCoordinatorFlow()
+                self?.startHomeCoordinatorFlow()
             }
         }
     }
@@ -61,12 +44,14 @@ final class DefaultAppCoordinator: AppCoordinator {
     }
 }
 
-// MARK: - Scene Changing Methods
+// MARK: - Coordinating Methods
 
 private extension DefaultAppCoordinator {
-    func showLoginViewController() {
-        navigationController.setViewControllers([loginViewController], animated: false)
-        navigationController.setNavigationBarHidden(true, animated: false)
+    
+    func startLoginCoordinatorFlow() {
+        let loginCoordinator = DefaultLoginCoordinator(navigationController: navigationController, finishDelegate: self)
+        add(childCoordinator: loginCoordinator)
+        loginCoordinator.start()
     }
     
     func showHomeCoordinatorFlow() {

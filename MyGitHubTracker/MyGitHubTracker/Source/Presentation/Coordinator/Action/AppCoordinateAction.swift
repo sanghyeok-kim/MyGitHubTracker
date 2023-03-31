@@ -8,8 +8,6 @@
 import Foundation
 
 enum AppCoordinateAction {
-    case appDidStart
-    case loginButtonDidTap(url: URL)
     case userDidAuthorize(url: URL)
     case accessTokenDidfetch
 }
