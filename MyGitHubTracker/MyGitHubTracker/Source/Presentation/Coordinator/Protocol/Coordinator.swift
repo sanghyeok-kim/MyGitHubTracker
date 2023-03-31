@@ -20,7 +20,7 @@ extension Coordinator {
         childCoordinatorMap[childCoordinator.type] = childCoordinator
     }
     
-    func delete(childCoordinator type: CoordinatorType) {
+    func remove(childCoordinator type: CoordinatorType) {
         childCoordinatorMap.removeValue(forKey: type)
     }
 }
