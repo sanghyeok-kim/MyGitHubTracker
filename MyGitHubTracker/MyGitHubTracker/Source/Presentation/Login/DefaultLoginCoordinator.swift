@@ -29,8 +29,7 @@ final class DefaultLoginCoordinator: LoginCoordinator {
             case .loginButtonDidTap(let url):
                 self?.open(url: url)
             case .userDidAuthorize(let url):
-                let loginViewController = self?.navigationController.visibleViewController as? LoginViewController
-                loginViewController?.viewModel?.userDidAuthorize(callBack: url)
+                self?.handleUserAuthorization(with: url)
             case .accessTokenDidfetch:
                 self?.finishDelegate?.showNextFlow()
             }
@@ -44,7 +43,7 @@ final class DefaultLoginCoordinator: LoginCoordinator {
     }
 }
 
-// MARK: - Scene Changing Methods
+// MARK: - Coordinating Methods
 
 private extension DefaultLoginCoordinator {
     func showLoginViewController() {
@@ -57,5 +56,14 @@ private extension DefaultLoginCoordinator {
     
     func open(url: URL) {
         UIApplication.shared.open(url)
+    }
+}
+
+// MARK: - Supporting Methods
+
+private extension DefaultLoginCoordinator {
+    func handleUserAuthorization(with callBackURL: URL) {
+        let loginViewController = navigationController.visibleViewController as? LoginViewController
+        loginViewController?.viewModel?.userDidAuthorize(callBack: callBackURL)
     }
 }
