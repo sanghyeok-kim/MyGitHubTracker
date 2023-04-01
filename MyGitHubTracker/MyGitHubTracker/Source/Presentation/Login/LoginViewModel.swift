@@ -39,7 +39,7 @@ final class LoginViewModel: ViewModelType {
                 coordinator.coordinate(by: .loginButtonDidTap(url: $0))
             }
             .disposed(by: disposeBag)
-
+        
         let userDidAuthorize = input.userDidAuthorize
             .withUnretained(self)
             .flatMapLatest { `self`, url in
@@ -47,14 +47,14 @@ final class LoginViewModel: ViewModelType {
             }
             .materialize()
             .share()
-
+        
         userDidAuthorize
             .compactMap { $0.element }
             .bind { _ in
                 coordinator.coordinate(by: .accessTokenDidfetch)
             }
             .disposed(by: disposeBag)
-
+        
         userDidAuthorize
             .compactMap { $0.error }
             .catchAndLogError(logType: .error)
