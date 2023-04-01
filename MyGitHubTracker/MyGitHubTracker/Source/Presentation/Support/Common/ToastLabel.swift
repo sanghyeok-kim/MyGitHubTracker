@@ -20,7 +20,7 @@ final class ToastLabel: RoundedPaddingLabel {
     }
 }
 
-// MARK: - Interval Methods
+// MARK: - Internal Methods
 
 private extension ToastLabel {
     func configureUI() {
