@@ -66,7 +66,7 @@ private extension DefaultAppCoordinator {
     }
 }
 
-extension DefaultAppCoordinator: LoginCoordinatorFinishDelegate {
+extension DefaultAppCoordinator: LoginCoordinatorCompletionDelegate {
     func showNextFlow() {
         remove(childCoordinator: .login)
         coordinate(by: .accessTokenDidfetch)

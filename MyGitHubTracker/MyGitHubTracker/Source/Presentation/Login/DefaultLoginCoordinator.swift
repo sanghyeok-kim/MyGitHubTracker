@@ -12,11 +12,11 @@ final class DefaultLoginCoordinator: LoginCoordinator {
     var childCoordinatorMap: [CoordinatorType: Coordinator] = [:]
     var navigationController: UINavigationController
     let type: CoordinatorType = .login
-    weak var finishDelegate: LoginCoordinatorFinishDelegate?
+    weak var flowCompletionDelegate: LoginCoordinatorCompletionDelegate?
     
-    init(navigationController: UINavigationController, finishDelegate: LoginCoordinatorFinishDelegate) {
+    init(navigationController: UINavigationController, finishDelegate: LoginCoordinatorCompletionDelegate) {
         self.navigationController = navigationController
-        self.finishDelegate = finishDelegate
+        self.flowCompletionDelegate = finishDelegate
     }
     
     func start() {
@@ -31,7 +31,7 @@ final class DefaultLoginCoordinator: LoginCoordinator {
             case .userDidAuthorize(let url):
                 self?.handleUserAuthorization(with: url)
             case .accessTokenDidfetch:
-                self?.finishDelegate?.showNextFlow()
+                self?.flowCompletionDelegate?.showNextFlow()
             }
         }
     }

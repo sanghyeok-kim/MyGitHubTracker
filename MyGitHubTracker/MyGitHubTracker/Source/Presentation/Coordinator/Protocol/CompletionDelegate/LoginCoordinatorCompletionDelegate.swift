@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol LoginCoordinatorFinishDelegate: AnyObject {
+protocol LoginCoordinatorCompletionDelegate: AnyObject {
     func showNextFlow()
 }

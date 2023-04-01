@@ -9,5 +9,5 @@ import Foundation
 
 protocol LoginCoordinator: Coordinator {
     func coordinate(by action: LoginCoordinateAction)
-    var finishDelegate: LoginCoordinatorFinishDelegate? { get }
+    var flowCompletionDelegate: LoginCoordinatorCompletionDelegate? { get }
 }
