@@ -11,7 +11,9 @@ final class DefaultAccountRepository: AccountRepository {
     
     @Inject private var urlSessionNetworkService: URLSessionNetworkService
     
-    func fetchUserInfo() -> Single<Data> {
-        return urlSessionNetworkService.fetchData(endpoint: GitHubAPI.fetchUserInfo)
+    func fetchUserInfo() -> Single<UserDTO> {
+        return urlSessionNetworkService
+            .fetchData(endpoint: GitHubAPI.fetchUserInfo)
+            .decodeMap(UserDTO.self)
     }
 }

@@ -13,8 +13,8 @@ final class DefaultRepoListUseCase: RepoListUseCase {
     @Inject private var repoListTransformer: AnyTransformer<RepositoryDTO, RepositoryEntity>
     
     func fetchRepositories(perPage: Int, page: Int) -> Single<[RepositoryEntity]> {
-        return repoListRepository.fetchRepositories(perPage: perPage, page: page)
-            .decodeMap([RepositoryDTO].self)
+        return repoListRepository
+            .fetchRepositories(perPage: perPage, page: page)
             .transformMap(repoListTransformer)
     }
 }

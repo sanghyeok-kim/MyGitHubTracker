@@ -11,9 +11,9 @@ final class DefaultRepoListRepository: RepoListRepository {
     
     @Inject private var urlSessionNetworkService: URLSessionNetworkService
     
-    func fetchRepositories(perPage: Int, page: Int) -> Single<Data> {
-        return urlSessionNetworkService.fetchData(
-            endpoint: GitHubAPI.fetchRepositories(perPage: perPage, page: page)
-        )
+    func fetchRepositories(perPage: Int, page: Int) -> Single<[RepositoryDTO]> {
+        return urlSessionNetworkService
+            .fetchData(endpoint: GitHubAPI.fetchRepositories(perPage: perPage, page: page))
+            .decodeMap([RepositoryDTO].self)
     }
 }

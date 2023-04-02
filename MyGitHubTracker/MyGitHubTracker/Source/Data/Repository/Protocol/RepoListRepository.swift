@@ -8,5 +8,5 @@
 import RxSwift
 
 protocol RepoListRepository {
-    func fetchRepositories(perPage: Int, page: Int) -> Single<Data>
+    func fetchRepositories(perPage: Int, page: Int) -> Single<[RepositoryDTO]>
 }

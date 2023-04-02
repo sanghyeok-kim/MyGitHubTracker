@@ -13,9 +13,8 @@ final class DefaultAccountUseCase: AccountUseCase {
     @Inject private var userTransformer: AnyTransformer<UserDTO, UserEntity>
     
     func fetchUserInfo() -> Single<UserEntity> {
-        return accountRepository.fetchUserInfo()
-            .decodeMap(UserDTO.self)
+        return accountRepository
+            .fetchUserInfo()
             .transformMap(userTransformer)
     }
 }
-

@@ -16,28 +16,45 @@ final class DefaultLoginRepository: LoginRepository {
         return gitHubAuthorizationService.buildGitHubAuthorizationURL()
     }
     
-    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String, completion: @escaping ((Result<Data, Error>) -> Void)) {
+    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String, completion: @escaping ((Result<TokenDTO, Error>) -> Void)) {
         urlSessionNetworkService.fetchData(endpoint: GitHubAPI.fetchAccessToken(
             clientID: clientID,
             clientSecret: clientSecret,
             tempCode: tempCode)
         ) { (result: Result<Data, Error>) in
-            completion(result)
+            switch result {
+            case .success(let data):
+                do {
+                    let tokenDTO = try JSONDecoder().decode(TokenDTO.self, from: data)
+                    completion(.success(tokenDTO))
+                } catch {
+                    completion(.failure(NetworkError.decodeError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     
-    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String) async throws -> Data {
+    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String) async throws -> TokenDTO {
         let endpoint = GitHubAPI.fetchAccessToken(clientID: clientID, clientSecret: clientSecret, tempCode: tempCode)
-        let result = try await urlSessionNetworkService.fetchData(endpoint: endpoint)
-        return result
+        let data = try await urlSessionNetworkService.fetchData(endpoint: endpoint)
+        
+        do {
+            let tokenDTO = try JSONDecoder().decode(TokenDTO.self, from: data)
+            return tokenDTO
+        } catch {
+            throw NetworkError.decodeError
+        }
     }
     
-    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String) -> Single<Data> {
+    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String) -> Single<TokenDTO> {
         return urlSessionNetworkService
             .fetchData(endpoint: GitHubAPI.fetchAccessToken(
                 clientID: clientID,
                 clientSecret: clientSecret,
                 tempCode: tempCode)
             )
+            .decodeMap(TokenDTO.self)
     }
 }

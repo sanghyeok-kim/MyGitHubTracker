@@ -24,15 +24,10 @@ final class DefaultLoginUseCase: LoginUseCase {
             tempCode: gitHubAuthorization.tempCode
         ) { result in
             switch result {
-            case .success(let data):
-                guard let token = try? JSONDecoder().decode(TokenDTO.self, from: data) else {
-                    completion(.failure(NetworkError.decodeError))
-                    return
-                }
-                let accessToken = token.accessToken
+            case .success(let tokenDTO):
+                let accessToken = tokenDTO.accessToken
                 AccessToken.value = accessToken
-                
-                completion(.success(token))
+                completion(.success(tokenDTO))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -42,29 +37,24 @@ final class DefaultLoginUseCase: LoginUseCase {
     func fetchAndStoreAccessToken(with url: URL) async throws -> TokenDTO {
         let gitHubAuthorization = GitHubAuthorizationEntity(url: url)
         
-        let data = try await loginRepository.fetchAccessToken(
+        let tokenDTO = try await loginRepository.fetchAccessToken(
             clientID: gitHubAuthorization.clientID,
             clientSecret: gitHubAuthorization.clientSecret,
             tempCode: gitHubAuthorization.tempCode
         )
-        
-        guard let token = try? JSONDecoder().decode(TokenDTO.self, from: data) else {
-            throw NetworkError.decodeError
-        }
-        
-        AccessToken.value = token.accessToken
-        return token
+        AccessToken.value = tokenDTO.accessToken
+        return tokenDTO
     }
     
     func fetchAndStoreAccessToken(with url: URL) -> Single<TokenDTO> {
         let gitHubAuthorization = GitHubAuthorizationEntity(url: url)
         
-        return loginRepository.fetchAccessToken(
-            clientID: gitHubAuthorization.clientID,
-            clientSecret: gitHubAuthorization.clientSecret,
-            tempCode: gitHubAuthorization.tempCode
-        )
-        .decodeMap(TokenDTO.self)
-        .do { AccessToken.value = $0.accessToken }
+        return loginRepository
+            .fetchAccessToken(
+                clientID: gitHubAuthorization.clientID,
+                clientSecret: gitHubAuthorization.clientSecret,
+                tempCode: gitHubAuthorization.tempCode
+            )
+            .do { AccessToken.value = $0.accessToken }
     }
 }
