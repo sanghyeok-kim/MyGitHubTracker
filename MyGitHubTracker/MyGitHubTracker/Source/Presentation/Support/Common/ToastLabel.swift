@@ -44,8 +44,6 @@ private extension ToastLabel {
     func delayedFadeOut() {
         UIView.animate(withDuration: 0.5, delay: 3.0, options: .curveEaseIn, animations: { [weak self] in
             self?.alpha = .zero
-        }, completion: { [weak self] _ in
-            self?.removeFromSuperview()
         })
     }
 }
