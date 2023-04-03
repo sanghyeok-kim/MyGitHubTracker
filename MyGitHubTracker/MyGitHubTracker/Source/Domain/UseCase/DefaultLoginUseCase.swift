@@ -6,8 +6,14 @@
 //
 
 import RxSwift
+import RxRelay
 
 final class DefaultLoginUseCase: LoginUseCase {
+    
+    let errorDidOccur = PublishRelay<ToastError>()
+    let userDidAuthorized = PublishRelay<Void>()
+    
+    private let disposeBag = DisposeBag()
     
     @Inject private var loginRepository: LoginRepository
     
@@ -15,46 +21,20 @@ final class DefaultLoginUseCase: LoginUseCase {
         return loginRepository.buildGitHubAuthorizationURL()
     }
     
-    func fetchAndStoreAccessToken(with url: URL, completion: @escaping (Result<TokenDTO, Error>) -> Void) {
+    func fetchAndStoreAccessToken(with url: URL) {
         let gitHubAuthorization = GitHubAuthorizationEntity(url: url)
         
-        loginRepository.fetchAccessToken(
-            clientID: gitHubAuthorization.clientID,
-            clientSecret: gitHubAuthorization.clientSecret,
-            tempCode: gitHubAuthorization.tempCode
-        ) { result in
-            switch result {
-            case .success(let tokenDTO):
-                let accessToken = tokenDTO.accessToken
-                AccessToken.value = accessToken
-                completion(.success(tokenDTO))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    func fetchAndStoreAccessToken(with url: URL) async throws -> TokenDTO {
-        let gitHubAuthorization = GitHubAuthorizationEntity(url: url)
-        
-        let tokenDTO = try await loginRepository.fetchAccessToken(
-            clientID: gitHubAuthorization.clientID,
-            clientSecret: gitHubAuthorization.clientSecret,
-            tempCode: gitHubAuthorization.tempCode
-        )
-        AccessToken.value = tokenDTO.accessToken
-        return tokenDTO
-    }
-    
-    func fetchAndStoreAccessToken(with url: URL) -> Single<TokenDTO> {
-        let gitHubAuthorization = GitHubAuthorizationEntity(url: url)
-        
-        return loginRepository
+        loginRepository
             .fetchAccessToken(
                 clientID: gitHubAuthorization.clientID,
                 clientSecret: gitHubAuthorization.clientSecret,
                 tempCode: gitHubAuthorization.tempCode
             )
-            .do { AccessToken.value = $0.accessToken }
+            .subscribe(with: self, onSuccess: { `self`, _ in
+                self.userDidAuthorized.accept(())
+            }, onFailure: { `self`, _ in
+                self.errorDidOccur.accept(.failToFetchAccessToken)
+            })
+            .disposed(by: disposeBag)
     }
 }

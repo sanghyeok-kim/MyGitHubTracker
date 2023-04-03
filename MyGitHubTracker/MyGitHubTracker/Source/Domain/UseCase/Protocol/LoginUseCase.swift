@@ -6,10 +6,12 @@
 //
 
 import RxSwift
+import RxRelay
 
 protocol LoginUseCase {
+    var errorDidOccur: PublishRelay<ToastError> { get }
+    var userDidAuthorized: PublishRelay<Void> { get }
+    
     func buildGitHubAuthorizationURL() -> URL?
-    func fetchAndStoreAccessToken(with url: URL, completion: @escaping (Result<TokenDTO, Error>) -> Void)
-    func fetchAndStoreAccessToken(with url: URL) async throws -> TokenDTO
-    func fetchAndStoreAccessToken(with url: URL) -> Single<TokenDTO>
+    func fetchAndStoreAccessToken(with url: URL)
 }
