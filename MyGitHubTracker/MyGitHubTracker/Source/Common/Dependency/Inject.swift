@@ -9,7 +9,13 @@ import Foundation
 
 @propertyWrapper
 struct Inject<Service> {
+    private let component: Service
+
+    init() {
+        self.component = Container.shared.resolve()
+    }
+
     var wrappedValue: Service {
-        return Container.shared.resolve()
+        return component
     }
 }
