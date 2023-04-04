@@ -29,6 +29,8 @@
 		1E800D2929DC668300614811 /* StarringRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2829DC668300614811 /* StarringRepository.swift */; };
 		1E800D2B29DC668800614811 /* StarringUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2A29DC668800614811 /* StarringUseCase.swift */; };
 		1E800D2D29DC687700614811 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2C29DC687700614811 /* NetworkResult.swift */; };
+		1E800D2F29DC68F400614811 /* Rx+validateStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */; };
+		1E800D3129DC68FE00614811 /* Rx+unwrapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
 		1E8FB81529D08BA100847578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB81429D08BA100847578 /* Assets.xcassets */; };
@@ -143,6 +145,8 @@
 		1E800D2829DC668300614811 /* StarringRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarringRepository.swift; sourceTree = "<group>"; };
 		1E800D2A29DC668800614811 /* StarringUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarringUseCase.swift; sourceTree = "<group>"; };
 		1E800D2C29DC687700614811 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+validateStatusCode.swift"; sourceTree = "<group>"; };
+		1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+unwrapData.swift"; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FB80D29D08BA000847578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -518,6 +522,8 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB87929D12CE900847578 /* URLSessionNetworkService.swift */,
+				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
+				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
 				1E800D2C29DC687700614811 /* NetworkResult.swift */,
 				1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */,
 			);
@@ -949,10 +955,12 @@
 				1E8FB8B229D1513400847578 /* String+toDateFormat.swift in Sources */,
 				1E8FB8BE29D1532300847578 /* DefaultAccountRepository.swift in Sources */,
 				1E66CA6529D31D7300EA117A /* RepositoryViewCell.swift in Sources */,
+				1E800D3129DC68FE00614811 /* Rx+unwrapData.swift in Sources */,
 				1E8FB89829D12FAA00847578 /* Inject.swift in Sources */,
 				1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */,
 				1E8FB89129D12F4800847578 /* LoginRepository.swift in Sources */,
 				1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */,
+				1E800D2F29DC68F400614811 /* Rx+validateStatusCode.swift in Sources */,
 				1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */,
 				1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */,
 				1E8FB8BA29D1522600847578 /* RepoListUseCase.swift in Sources */,
