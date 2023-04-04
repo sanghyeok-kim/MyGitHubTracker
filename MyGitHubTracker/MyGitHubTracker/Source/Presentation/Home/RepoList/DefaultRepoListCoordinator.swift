@@ -32,9 +32,7 @@ final class DefaultRepoListCoordinator: Coordinator, RepoListCoordinator {
     }
     
     deinit {
-    #if DEBUG
         CustomLogger.log(message: "\(self) deallocated", category: .allocation, type: .info)
-    #endif
     }
 }
 
