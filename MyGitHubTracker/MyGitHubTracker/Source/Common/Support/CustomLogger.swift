@@ -9,7 +9,9 @@ import OSLog
 
 struct CustomLogger {
     static func log(message: String, category: OSLog.LogCategory, type: OSLogType = .default) {
+        #if DEBUG
         let log = OSLog(subsystem: OSLog.subsystem, category: category.value)
         os_log(type, log: log, "\(message)")
+        #endif
     }
 }
