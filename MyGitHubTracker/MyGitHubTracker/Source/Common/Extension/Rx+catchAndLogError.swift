@@ -11,9 +11,8 @@ import OSLog
 extension ObservableType where Element: Error {
     func catchAndLogError(logType: OSLogType) -> Observable<Void> {
         return self.do { error in
-            let errorMessage = (error as? OSLoggable)?.logMessage ?? error.localizedDescription
+            let errorMessage = error.localizedDescription
             let errorCategory = (error as? OSLoggable)?.category ?? .default
-            
             CustomLogger.log(
                 message: errorMessage,
                 category: errorCategory,

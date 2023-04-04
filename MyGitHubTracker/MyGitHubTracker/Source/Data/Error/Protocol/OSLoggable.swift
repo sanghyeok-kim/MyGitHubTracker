@@ -9,6 +9,5 @@ import Foundation
 import OSLog
 
 protocol OSLoggable {
-    var logMessage: String { get }
     var category: OSLog.LogCategory { get }
 }

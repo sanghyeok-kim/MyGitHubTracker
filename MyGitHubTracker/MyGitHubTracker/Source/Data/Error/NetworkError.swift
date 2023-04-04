@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 
-enum NetworkError: Error {
+enum NetworkError: LocalizedError {
     case objectDeallocated
     case invalidURL
     case invalidResponse
@@ -17,10 +17,8 @@ enum NetworkError: Error {
     case invalidRequest
     case decodeError
     case errorDetected(error: Error)
-}
-
-extension NetworkError: OSLoggable {
-    var logMessage: String {
+    
+    var errorDescription: String? {
         switch self {
         case .objectDeallocated:
             return "Object Deallocated."
@@ -40,7 +38,9 @@ extension NetworkError: OSLoggable {
             return "Error detected: \(error.localizedDescription)"
         }
     }
-    
+}
+
+extension NetworkError: OSLoggable {
     var category: OSLog.LogCategory {
         return .network
     }
