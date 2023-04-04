@@ -13,9 +13,8 @@ final class DefaultLoginUseCase: LoginUseCase {
     let errorDidOccur = PublishRelay<ToastError>()
     let userDidAuthorized = PublishRelay<Void>()
     
-    private let disposeBag = DisposeBag()
-    
     @Inject private var loginRepository: LoginRepository
+    private let disposeBag = DisposeBag()
     
     func buildGitHubAuthorizationURL() -> URL? {
         return loginRepository.buildGitHubAuthorizationURL()
@@ -30,9 +29,12 @@ final class DefaultLoginUseCase: LoginUseCase {
                 clientSecret: gitHubAuthorization.clientSecret,
                 tempCode: gitHubAuthorization.tempCode
             )
+            .do(onError: { error in
+                CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
+            })
             .subscribe(with: self, onSuccess: { `self`, _ in
                 self.userDidAuthorized.accept(())
-            }, onFailure: { `self`, _ in
+            }, onFailure: { `self`, error in
                 self.errorDidOccur.accept(.failToFetchAccessToken)
             })
             .disposed(by: disposeBag)
