@@ -43,6 +43,10 @@ extension Container {
         Container.shared.register(service: RepoListUseCase.self) { DefaultRepoListUseCase() }
         Container.shared.register(service: AnyTransformer.self) { AnyTransformer(RepositoryTransformer()) }
         
+        //Starring
+        Container.shared.register(service: StarringRepository.self) { DefaultStarringRepository() }
+        Container.shared.register(service: StarringUseCase.self) { DefaultStarringUseCase() }
+        
         // Account
         Container.shared.register(service: AccountUseCase.self) { DefaultAccountUseCase() }
         Container.shared.register(service: AccountRepository.self) { DefaultAccountRepository() }
