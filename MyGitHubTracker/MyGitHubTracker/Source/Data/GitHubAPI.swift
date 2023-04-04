@@ -17,6 +17,7 @@ enum GitHubAPI {
     
     // Account
     case fetchUserInfo
+    case checkRepositoryIsStarredByUser(repositoryOwner: String, repositoryName: String)
 }
 
 extension GitHubAPI: TargetType {
@@ -24,7 +25,7 @@ extension GitHubAPI: TargetType {
         switch self {
         case .fetchTempCode, .fetchAccessToken:
             return URL(string: "https://github.com")
-        case .fetchRepositories, .fetchUserInfo:
+        case .fetchRepositories, .fetchUserInfo, .checkRepositoryIsStarredByUser:
             return URL(string: "https://api.github.com")
         }
     }
@@ -39,6 +40,8 @@ extension GitHubAPI: TargetType {
             return "/user"
         case .fetchRepositories:
             return "/user/repos"
+        case .checkRepositoryIsStarredByUser(let repositoryOwner, let repositoryName):
+            return "user/starred/\(repositoryOwner)/\(repositoryName)"
         }
     }
     
@@ -52,6 +55,8 @@ extension GitHubAPI: TargetType {
             return .get
         case .fetchRepositories:
             return .get
+        case .checkRepositoryIsStarredByUser:
+            return .get
         }
     }
     
@@ -62,11 +67,7 @@ extension GitHubAPI: TargetType {
         case .fetchAccessToken:
             return ["Content-Type": "application/json",
                     "Accept": "application/json"]
-        case .fetchUserInfo:
-            return ["Accept": "application/vnd.github+json",
-                    "Authorization": "Bearer \(AccessToken.value ?? "")",
-                    "X-GitHub-Api-Version": "2022-11-28"]
-        case .fetchRepositories:
+        case .fetchUserInfo, .fetchRepositories, .checkRepositoryIsStarredByUser:
             return ["Accept": "application/vnd.github+json",
                     "Authorization": "Bearer \(AccessToken.value ?? "")",
                     "X-GitHub-Api-Version": "2022-11-28"]
@@ -90,6 +91,8 @@ extension GitHubAPI: TargetType {
                     "type": "owner",
                     "per_page": perPage,
                     "page": page]
+        case .checkRepositoryIsStarredByUser:
+            return nil
         }
     }
 }
