@@ -85,51 +85,6 @@ final class DefaultURLSessionService: URLSessionNetworkService {
     }
     
     func fetchData(endpoint: TargetType) -> Single<Data> {
-        return Single.create { [weak self] single -> Disposable in
-            guard let self = self else {
-                single(.failure(NetworkError.objectDeallocated))
-                return Disposables.create()
-            }
-            
-            let request: URLRequest
-            
-            do {
-                request = try self.buildRequest(from: endpoint)
-            } catch {
-                single(.failure(NetworkError.invalidRequest))
-                return Disposables.create()
-            }
-            
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    single(.failure(NetworkError.errorDetected(error: error)))
-                    return
-                }
-                
-                guard let response = response as? HTTPURLResponse else {
-                    single(.failure(NetworkError.invalidResponse))
-                    return
-                }
-                
-                guard 200...299 ~= response.statusCode else {
-                    single(.failure(NetworkError.invalidStatusCode(code: response.statusCode)))
-                    return
-                }
-                
-                guard let data = data else {
-                    single(.failure(NetworkError.invalidResponseData))
-                    return
-                }
-                
-                single(.success(data))
-            }
-            
-            task.resume()
-            
-            return Disposables.create {
-                task.cancel()
-            }
-        }
     }
 }
 
@@ -165,5 +120,43 @@ private extension DefaultURLSessionService {
         }
         
         return request
+    }
+    
+    private func performRequest(endpoint: TargetType) -> Single<NetworkResult> {
+        return Single.create { [weak self] single -> Disposable in
+            guard let self = self else {
+                single(.failure(NetworkError.objectDeallocated))
+                return Disposables.create()
+            }
+            
+            let request: URLRequest
+            
+            do {
+                request = try self.buildRequest(from: endpoint)
+            } catch {
+                single(.failure(NetworkError.invalidRequest))
+                return Disposables.create()
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    single(.failure(NetworkError.errorDetected(error: error)))
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse else {
+                    single(.failure(NetworkError.invalidResponse))
+                    return
+                }
+                
+                single(.success(NetworkResult(data: data, response: response)))
+            }
+            
+            task.resume()
+            
+            return Disposables.create {
+                task.cancel()
+            }
+        }
     }
 }
