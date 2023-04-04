@@ -85,6 +85,10 @@ final class DefaultURLSessionService: URLSessionNetworkService {
     }
     
     func fetchData(endpoint: TargetType) -> Single<Data> {
+        return performRequest(endpoint: endpoint)
+            .validateStatusCode()
+            .unwrapData()
+    }
     }
 }
 
