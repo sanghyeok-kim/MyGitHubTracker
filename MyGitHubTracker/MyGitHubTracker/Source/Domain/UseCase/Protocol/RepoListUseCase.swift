@@ -6,7 +6,10 @@
 //
 
 import RxSwift
+import RxRelay
 
 protocol RepoListUseCase {
-    func fetchRepositories(perPage: Int, page: Int) -> Single<[RepositoryEntity]>
+    var fetchedRepositories: BehaviorRelay<[RepositoryEntity]> { get }
+    var errorDidOccur: PublishRelay<ToastError> { get }
+    func fetchRepositories(perPage: Int, page: Int)
 }
