@@ -28,6 +28,7 @@
 		1E800D2729DC615B00614811 /* StarGazerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2629DC615B00614811 /* StarGazerView.swift */; };
 		1E800D2929DC668300614811 /* StarringRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2829DC668300614811 /* StarringRepository.swift */; };
 		1E800D2B29DC668800614811 /* StarringUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2A29DC668800614811 /* StarringUseCase.swift */; };
+		1E800D2D29DC687700614811 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2C29DC687700614811 /* NetworkResult.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
 		1E8FB81529D08BA100847578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB81429D08BA100847578 /* Assets.xcassets */; };
@@ -141,6 +142,7 @@
 		1E800D2629DC615B00614811 /* StarGazerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarGazerView.swift; sourceTree = "<group>"; };
 		1E800D2829DC668300614811 /* StarringRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarringRepository.swift; sourceTree = "<group>"; };
 		1E800D2A29DC668800614811 /* StarringUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarringUseCase.swift; sourceTree = "<group>"; };
+		1E800D2C29DC687700614811 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FB80D29D08BA000847578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB87929D12CE900847578 /* URLSessionNetworkService.swift */,
+				1E800D2C29DC687700614811 /* NetworkResult.swift */,
 				1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */,
 			);
 			path = Service;
@@ -979,6 +982,7 @@
 				1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */,
 				1E43BF2F29D6776E00C718D4 /* LoginCoordinator.swift in Sources */,
 				1E8FB8D729D158E300847578 /* AccountCoordinateAction.swift in Sources */,
+				1E800D2D29DC687700614811 /* NetworkResult.swift in Sources */,
 				1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */,
 				1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */,
 				1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */,
