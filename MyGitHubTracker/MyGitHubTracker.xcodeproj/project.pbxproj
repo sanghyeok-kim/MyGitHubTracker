@@ -23,6 +23,7 @@
 		1E66CA6529D31D7300EA117A /* RepositoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */; };
 		1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */; };
 		1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6829D335D400EA117A /* CustomColor.swift */; };
+		1E800D2729DC615B00614811 /* StarGazerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2629DC615B00614811 /* StarGazerView.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
 		1E8FB81529D08BA100847578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB81429D08BA100847578 /* Assets.xcassets */; };
@@ -131,6 +132,7 @@
 		1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewCell.swift; sourceTree = "<group>"; };
 		1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCellViewModel.swift; sourceTree = "<group>"; };
 		1E66CA6829D335D400EA117A /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		1E800D2629DC615B00614811 /* StarGazerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarGazerView.swift; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FB80D29D08BA000847578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 			children = (
 				1E8FB8E129D167BE00847578 /* ToastLabel.swift */,
 				1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */,
+				1E800D2629DC615B00614811 /* StarGazerView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -926,6 +929,7 @@
 				1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */,
 				1E8FB8D529D158D800847578 /* RepoListCoordinateAction.swift in Sources */,
 				1E8FB8AC29D150D000847578 /* RepositoryEntity.swift in Sources */,
+				1E800D2729DC615B00614811 /* StarGazerView.swift in Sources */,
 				1E8FB8D129D1589D00847578 /* AccountViewController.swift in Sources */,
 				1E8FB8B229D1513400847578 /* String+toDateFormat.swift in Sources */,
 				1E8FB8BE29D1532300847578 /* DefaultAccountRepository.swift in Sources */,
