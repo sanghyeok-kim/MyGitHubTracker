@@ -20,7 +20,7 @@ final class ToastLabel: RoundedPaddingLabel {
     }
 }
 
-// MARK: - Internal Methods
+// MARK: - UI Configuration
 
 private extension ToastLabel {
     func configureUI() {
@@ -32,7 +32,11 @@ private extension ToastLabel {
         numberOfLines = .zero
         lineBreakMode = .byWordWrapping
     }
-    
+}
+
+// MARK: - Internal Methods
+
+private extension ToastLabel {
     func fadeIn(completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.5, animations: { [weak self] in
             self?.alpha = 1.0
