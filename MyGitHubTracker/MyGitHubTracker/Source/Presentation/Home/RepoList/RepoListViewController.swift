@@ -14,6 +14,8 @@ import SnapKit
 
 final class RepoListViewController: UIViewController, ViewType {
     
+    private let repositoryRefreshControll = UIRefreshControl()
+    
     private lazy var repositoryTableViewDataSource: RxTableViewSectionedReloadDataSource<RepositorySection> = {
         return .init { (cell: RepositoryViewCell, cellViewModel: RepositoryCellViewModel) in
             cell.bind(viewModel: cellViewModel)
@@ -21,6 +23,7 @@ final class RepoListViewController: UIViewController, ViewType {
     }()
     
     private lazy var repositoryTableView = UITableView().then {
+        $0.refreshControl = repositoryRefreshControll
         $0.estimatedRowHeight = 120
         $0.rowHeight = UITableView.automaticDimension
         $0.register(RepositoryViewCell.self, forCellReuseIdentifier: RepositoryViewCell.identifier)
@@ -43,6 +46,10 @@ final class RepoListViewController: UIViewController, ViewType {
         rx.viewDidLoad
             .bind(to: input.viewDidLoad)
             .disposed(by: disposeBag)
+        
+        repositoryRefreshControll.rx.controlEvent(.valueChanged)
+            .bind(to: input.tableViewDidRefresh)
+            .disposed(by: disposeBag)
     }
     
     func bindOutput(from viewModel: RepoListViewModel) {
@@ -57,6 +64,14 @@ final class RepoListViewController: UIViewController, ViewType {
         output.showErrorMessage
             .asSignal()
             .emit(onNext: errorToastMessageLabel.show(message:))
+            .disposed(by: disposeBag)
+        
+        output.endTableViewRefresh
+            .asSignal()
+            .withUnretained(self)
+            .emit { `self`, _ in
+                self.repositoryRefreshControll.endRefreshing()
+            }
             .disposed(by: disposeBag)
     }
 }
