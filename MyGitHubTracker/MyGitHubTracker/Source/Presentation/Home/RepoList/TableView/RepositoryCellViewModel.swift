@@ -70,7 +70,7 @@ final class RepositoryCellViewModel: ViewModelType {
                 )
             }
             .disposed(by: disposeBag)
-
+        
         starringUseCase.isStarred
             .bind(to: output.isStarred)
             .disposed(by: disposeBag)
@@ -79,7 +79,5 @@ final class RepositoryCellViewModel: ViewModelType {
             .map { repositoryEntity.isStarredByUser }
             .bind(to: output.isStarred)
             .disposed(by: disposeBag)
-    }
-}
     }
 }

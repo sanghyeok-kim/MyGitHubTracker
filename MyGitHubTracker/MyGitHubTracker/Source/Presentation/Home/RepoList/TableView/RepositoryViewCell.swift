@@ -35,6 +35,10 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
         $0.numberOfLines = 2
     }
     
+    private lazy var starGazerView = StarGazerView().then {
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
     private lazy var updatedDateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 12)
         $0.textColor = .gray
@@ -77,6 +81,11 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
             .drive(descriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
+        output.starCount
+            .asDriver()
+            .drive(onNext: starGazerView.set(count:))
+            .disposed(by: disposeBag)
+        
         output.updatedDate
             .asDriver()
             .compactMap { "Last updated on \($0)" }
@@ -93,6 +102,11 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
             .asDriver()
             .map { $0 ? CustomColor.softRed : CustomColor.softGreen }
             .drive(accessLabel.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        output.isStarred
+            .asDriver()
+            .drive(onNext: starGazerView.toggleStarMark(isSelected:))
             .disposed(by: disposeBag)
     }
 }
@@ -112,6 +126,7 @@ private extension RepositoryViewCell {
     func layoutUI() {
         contentView.addSubview(titleStackView)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(starGazerView)
         contentView.addSubview(updatedDateLabel)
         
         titleStackView.snp.makeConstraints { make in
@@ -124,11 +139,15 @@ private extension RepositoryViewCell {
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
+        starGazerView.snp.makeConstraints { make in
+            make.centerY.equalTo(updatedDateLabel)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
         updatedDateLabel.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.equalToSuperview().inset(16)
             make.bottom.lessThanOrEqualToSuperview().inset(16)
         }
     }
-
 }
