@@ -50,6 +50,11 @@ final class RepoListViewController: UIViewController, ViewType {
         repositoryRefreshControll.rx.controlEvent(.valueChanged)
             .bind(to: input.tableViewDidRefresh)
             .disposed(by: disposeBag)
+        
+        repositoryTableView.rx.willDisplayCell
+            .map { $0.1 }
+            .bind(to: input.cellWillDisplay)
+            .disposed(by: disposeBag)
     }
     
     func bindOutput(from viewModel: RepoListViewModel) {
