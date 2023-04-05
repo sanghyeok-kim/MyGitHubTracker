@@ -13,12 +13,14 @@ final class RepoListViewModel: ViewModelType {
     struct Input {
         let viewDidLoad = PublishRelay<Void>()
         let cellDidSelect = PublishRelay<IndexPath>()
+        let tableViewDidRefresh = PublishRelay<Void>()
         let cellWillDisplay = PublishRelay<IndexPath>()
     }
     
     struct Output {
         let repositoryCellViewModels = BehaviorRelay<[RepositoryCellViewModel]>(value: [])
         let showErrorMessage = PublishRelay<String>()
+        let endTableViewRefresh = PublishRelay<Void>()
     }
     
     let input = Input()
@@ -44,12 +46,12 @@ final class RepoListViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.tableViewDidRefresh
             .withUnretained(self)
-            .flatMapLatest { `self`, _ in
-                self.repoListUseCase.fetchRepositories(perPage: 10, page: 1)
+            .bind { `self`, _ in
+                self.refreshToInitialPage()
             }
-            .materialize()
-            .share()
+            .disposed(by: disposeBag)
         
         input.cellWillDisplay
             .withUnretained(self)
@@ -74,6 +76,13 @@ final class RepoListViewModel: ViewModelType {
             .map { $0.localizedDescription }
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
+        
+        Observable.merge(
+            repoListUseCase.fetchedRepositories.skip(1).map { _ in },
+            repoListUseCase.errorDidOccur.map { _ in }
+        )
+        .bind(to: output.endTableViewRefresh)
+        .disposed(by: disposeBag)
     }
 }
 
@@ -89,6 +98,13 @@ private extension RepoListViewModel {
             let (perPage, page) = paginationState.parameters
             repoListUseCase.fetchRepositories(perPage: perPage, page: page)
         }
+    }
+    
+    private func refreshToInitialPage() {
+        output.repositoryCellViewModels.accept([])
+        paginationState.resetToInitial()
+        let (perPage, page) = paginationState.parameters
+        repoListUseCase.fetchRepositories(perPage: perPage, page: page)
     }
 }
 
