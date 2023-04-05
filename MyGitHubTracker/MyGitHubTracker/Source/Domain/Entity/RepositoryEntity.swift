@@ -10,6 +10,9 @@ import Foundation
 struct RepositoryEntity {
     let name: String
     let isPrivate: Bool
+    let ownerName: String
     let description: String?
     let updatedDate: String
+    var isStarredByUser: Bool = false
+    let stargazersCount: Int
 }

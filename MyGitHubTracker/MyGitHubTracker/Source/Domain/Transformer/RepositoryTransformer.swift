@@ -12,8 +12,10 @@ struct RepositoryTransformer: Transformable {
         return RepositoryEntity(
             name: repositoryDTO.name,
             isPrivate: repositoryDTO.private,
+            ownerName: repositoryDTO.owner.login,
             description: repositoryDTO.description,
-            updatedDate: repositoryDTO.updatedAt.toDateFormat ?? ""
+            updatedDate: repositoryDTO.updatedAt.toDateFormat ?? "",
+            stargazersCount: repositoryDTO.stargazersCount
         )
     }
 }
