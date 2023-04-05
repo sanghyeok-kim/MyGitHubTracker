@@ -29,6 +29,7 @@ final class RepoListViewModel: ViewModelType {
     private var paginationState = PaginationState()
     
     @Inject private var repoListUseCase: RepoListUseCase
+    @Inject private var starringUseCase: StarringUseCase
     
     private weak var coordinator: RepoListCoordinator?
     private let disposeBag = DisposeBag()
@@ -67,6 +68,20 @@ final class RepoListViewModel: ViewModelType {
             .do(onNext: { [weak self] _ in
                 self?.paginationState.isLoading = false
             })
+            .withUnretained(self)
+            .flatMap { `self`, repositories -> Observable<([RepositoryEntity], [Bool])> in
+                let isStarredObservables = repositories.map { repository -> Observable<Bool> in
+                    return self.starringUseCase.checkRepositoryIsStarred(repositoryOwner: repository.ownerName, repositoryName: repository.name)
+                }
+                return Observable.zip(Observable.just(repositories), Observable.combineLatest(isStarredObservables))
+            }
+            .map { repositories, isStarredByUserArray in
+                return repositories.enumerated().map { index, repository -> RepositoryEntity in
+                    var updatedRepository = repository
+                    updatedRepository.isStarredByUser = isStarredByUserArray[index]
+                    return updatedRepository
+                }
+            }
             .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repositoryEntity: $0) } }
             .withLatestFrom(output.repositoryCellViewModels) { $1 + $0 }
             .bind(to: output.repositoryCellViewModels)

@@ -61,16 +61,6 @@ final class RepositoryCellViewModel: ViewModelType {
             .bind(to: output.updatedDate)
             .disposed(by: disposeBag)
         
-        input.cellDidLoad
-            .withUnretained(self)
-            .bind { `self`, _ in
-                self.starringUseCase.checkRepositoryIsStarred(
-                    repositoryOwner: repositoryEntity.ownerName,
-                    repositoryName: repositoryEntity.name
-                )
-            }
-            .disposed(by: disposeBag)
-        
         starringUseCase.isStarred
             .bind(to: output.isStarred)
             .disposed(by: disposeBag)

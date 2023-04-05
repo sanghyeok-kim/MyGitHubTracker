@@ -16,17 +16,13 @@ final class DefaultStarringUseCase: StarringUseCase {
     @Inject private var starringRepository: StarringRepository
     private let disposeBag = DisposeBag()
     
-    func checkRepositoryIsStarred(repositoryOwner: String, repositoryName: String) {
-        starringRepository
+    func checkRepositoryIsStarred(repositoryOwner: String, repositoryName: String) -> Observable<Bool> {
+        return starringRepository
             .checkRepositoryIsStarred(repositoryOwner: repositoryOwner, repositoryName: repositoryName)
-            .do(onError: { error in
+            .do(onError: { [weak self] error in
                 CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
+                self?.errorDidOccur.accept(.failToFetchRepositories)
             })
-            .subscribe(with: self, onSuccess: { `self`, isStarred in
-                self.isStarred.accept(isStarred)
-            }, onFailure: { `self`, error in
-                self.errorDidOccur.accept(.failToFetchRepositories)
-            })
-            .disposed(by: disposeBag)
+            .asObservable()
     }
 }
