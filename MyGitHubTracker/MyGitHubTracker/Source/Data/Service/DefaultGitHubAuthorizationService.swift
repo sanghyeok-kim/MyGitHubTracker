@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol GitHubAuthorizationService {
-    func buildGitHubAuthorizationURL() -> URL?
-}
-
 final class DefaultGitHubAuthorizationService: GitHubAuthorizationService {
     func buildGitHubAuthorizationURL() -> URL? {
         let target = GitHubAPI.fetchTempCode
