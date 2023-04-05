@@ -71,7 +71,6 @@ extension StarGazerView {
     }
     
     func toggleStarMark(isSelected: Bool) {
-        print(isSelected)
         switch isSelected {
         case true:
             startImageView.image = UIImage(systemName: "star.fill")
