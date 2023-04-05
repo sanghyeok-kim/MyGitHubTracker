@@ -34,7 +34,7 @@ private extension ToastLabel {
     }
 }
 
-// MARK: - Internal Methods
+// MARK: - Supporting Methods
 
 private extension ToastLabel {
     func fadeIn(completion: @escaping () -> Void) {
