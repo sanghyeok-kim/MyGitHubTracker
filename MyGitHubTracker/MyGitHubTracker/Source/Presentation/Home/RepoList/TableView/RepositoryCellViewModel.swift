@@ -17,17 +17,23 @@ final class RepositoryCellViewModel: ViewModelType {
     struct Output {
         let name = BehaviorRelay<String>(value: "")
         let isPrivate = BehaviorRelay<Bool>(value: false)
+        let isStarred = BehaviorRelay<Bool>(value: false)
         let description = BehaviorRelay<String?>(value: nil)
+        let starCount = BehaviorRelay<Int>(value: .zero)
         let updatedDate = BehaviorRelay<String>(value: "")
     }
     
     let input = Input()
     let output = Output()
-    
     private let repositoryEntity: RepositoryEntity
+    
+    @Inject private var starringUseCase: StarringUseCase
+    
+    private weak var coordinator: RepoListCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(repositoryEntity: RepositoryEntity) {
+    init(coordinator: RepoListCoordinator, repositoryEntity: RepositoryEntity) {
+        self.coordinator = coordinator
         self.repositoryEntity = repositoryEntity
         
         input.cellDidLoad
@@ -46,8 +52,34 @@ final class RepositoryCellViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.cellDidLoad
+            .map { repositoryEntity.stargazersCount }
+            .bind(to: output.starCount)
+            .disposed(by: disposeBag)
+        
+        input.cellDidLoad
             .map { repositoryEntity.updatedDate }
             .bind(to: output.updatedDate)
             .disposed(by: disposeBag)
+        
+        input.cellDidLoad
+            .withUnretained(self)
+            .bind { `self`, _ in
+                self.starringUseCase.checkRepositoryIsStarred(
+                    repositoryOwner: repositoryEntity.ownerName,
+                    repositoryName: repositoryEntity.name
+                )
+            }
+            .disposed(by: disposeBag)
+
+        starringUseCase.isStarred
+            .bind(to: output.isStarred)
+            .disposed(by: disposeBag)
+        
+        input.cellDidLoad
+            .map { repositoryEntity.isStarredByUser }
+            .bind(to: output.isStarred)
+            .disposed(by: disposeBag)
+    }
+}
     }
 }
