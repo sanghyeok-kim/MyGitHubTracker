@@ -69,18 +69,13 @@ final class RepoListViewModel: ViewModelType {
                 self?.paginationState.isLoading = false
             })
             .withUnretained(self)
-            .flatMap { `self`, repositories -> Observable<([RepositoryEntity], [Bool])> in
-                let isStarredObservables = repositories.map { repository -> Observable<Bool> in
-                    return self.starringUseCase.checkRepositoryIsStarred(repositoryOwner: repository.ownerName, repositoryName: repository.name)
-                }
-                return Observable.zip(Observable.just(repositories), Observable.combineLatest(isStarredObservables))
+            .flatMap { `self`, repositoryEntities -> Observable<([RepositoryEntity], [Bool])> in
+                self.zipIsStarredByUser(with: repositoryEntities)
             }
-            .map { repositories, isStarredByUserArray in
-                return repositories.enumerated().map { index, repository -> RepositoryEntity in
-                    var updatedRepository = repository
-                    updatedRepository.isStarredByUser = isStarredByUserArray[index]
-                    return updatedRepository
-                }
+            .withUnretained(self)
+            .map { `self`, result -> [RepositoryEntity] in
+                let (repositoryEntities, isStarredByUsers) = result
+                return self.updateIsStarredByUser(of: repositoryEntities, bools: isStarredByUsers)
             }
             .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repositoryEntity: $0) } }
             .withLatestFrom(output.repositoryCellViewModels) { $1 + $0 }
@@ -120,6 +115,21 @@ private extension RepoListViewModel {
         paginationState.resetToInitial()
         let (perPage, page) = paginationState.parameters
         repoListUseCase.fetchRepositories(perPage: perPage, page: page)
+    }
+    
+    func zipIsStarredByUser(with repositories: [RepositoryEntity]) -> Observable<([RepositoryEntity], [Bool])> {
+        let isStarredObservables = repositories.map {
+            starringUseCase.checkRepositoryIsStarred(repositoryOwner: $0.ownerName, repositoryName: $0.name)
+        }
+        return Observable.zip(Observable.just(repositories), Observable.combineLatest(isStarredObservables))
+    }
+    
+    func updateIsStarredByUser(of repositories: [RepositoryEntity], bools: [Bool]) -> [RepositoryEntity] {
+        return repositories.enumerated().map { index, repository -> RepositoryEntity in
+            var updatedRepository = repository
+            updatedRepository.isStarredByUser = bools[index]
+            return updatedRepository
+        }
     }
 }
 
