@@ -461,6 +461,8 @@
 			children = (
 				1E8FB86629D09A8600847578 /* Bundle+GitHubClientKey.swift */,
 				1E8FB8B129D1513400847578 /* String+toDateFormat.swift */,
+				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
+				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
 				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
 				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
 				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
@@ -522,8 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB87929D12CE900847578 /* URLSessionNetworkService.swift */,
-				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
-				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
 				1E800D2C29DC687700614811 /* NetworkResult.swift */,
 				1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */,
 			);
