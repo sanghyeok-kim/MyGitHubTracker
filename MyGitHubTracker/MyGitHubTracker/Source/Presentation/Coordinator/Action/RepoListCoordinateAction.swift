@@ -8,5 +8,5 @@
 import Foundation
 
 enum RepoListCoordinateAction {
-    
+    case cellDidTap(viewModel: RepositoryDetailViewModel)
 }

@@ -12,6 +12,7 @@ final class RepositoryCellViewModel: ViewModelType {
     
     struct Input {
         let cellDidLoad = PublishRelay<Void>()
+        let cellDidTap = PublishRelay<Void>()
     }
     
     struct Output {
@@ -69,5 +70,20 @@ final class RepositoryCellViewModel: ViewModelType {
             .map { repositoryEntity.isStarredByUser }
             .bind(to: output.isStarred)
             .disposed(by: disposeBag)
+        
+        input.cellDidTap
+            .map { RepositoryDetailViewModel(coordinator: coordinator, repository: repositoryEntity) }
+            .bind {
+                coordinator.coordinate(by: .cellDidTap(viewModel: $0))
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - External Methods
+
+extension RepositoryCellViewModel {
+    func cellDidTap() {
+        input.cellDidTap.accept(())
     }
 }

@@ -12,7 +12,7 @@ final class RepoListViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoad = PublishRelay<Void>()
-        let cellDidSelect = PublishRelay<IndexPath>()
+        let cellDidTap = PublishRelay<IndexPath>()
         let tableViewDidRefresh = PublishRelay<Void>()
         let cellWillDisplay = PublishRelay<IndexPath>()
     }
@@ -59,6 +59,14 @@ final class RepoListViewModel: ViewModelType {
             .bind { `self`, indexPath in
                 self.loadNextPageIfNeeded(for: indexPath)
             }
+            .disposed(by: disposeBag)
+        
+        input.cellDidTap
+            .withLatestFrom(output.repositoryCellViewModels) { ($0, $1)  }
+            .map { indexPath, cellViewModel -> RepositoryCellViewModel in
+                return cellViewModel[indexPath.row]
+            }
+            .bind { $0.cellDidTap() }
             .disposed(by: disposeBag)
         
         // MARK: - Event from UseCase

@@ -13,12 +13,6 @@ final class DefaultRepoListCoordinator: Coordinator, RepoListCoordinator {
     var navigationController: UINavigationController
     var type: CoordinatorType = .repoList
     
-    private lazy var repoListViewController: RepoListViewController = {
-        let repoListViewController = RepoListViewController()
-        repoListViewController.bind(viewModel: RepoListViewModel(coordinator: self))
-        return repoListViewController
-    }()
-    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -28,7 +22,10 @@ final class DefaultRepoListCoordinator: Coordinator, RepoListCoordinator {
     }
     
     func coordinate(by action: RepoListCoordinateAction) {
-        
+        switch action {
+        case .cellDidTap(let viewModel):
+            pushRepositoryDetailViewController(with: viewModel)
+        }
     }
     
     deinit {
@@ -36,10 +33,18 @@ final class DefaultRepoListCoordinator: Coordinator, RepoListCoordinator {
     }
 }
 
-// MARK: - Scene Changing Methods
+// MARK: - Coordinating Methods
 
 private extension DefaultRepoListCoordinator {
     func showRepoListViewController() {
+        let repoListViewController = RepoListViewController()
+        repoListViewController.bind(viewModel: RepoListViewModel(coordinator: self))
         navigationController.setViewControllers([repoListViewController], animated: false)
+    }
+    
+    func pushRepositoryDetailViewController(with viewModel: RepositoryDetailViewModel) {
+        let repositoryDetailViewController = RepositoryDetailViewController()
+        repositoryDetailViewController.bind(viewModel: viewModel)
+        navigationController.pushViewController(repositoryDetailViewController, animated: true)
     }
 }

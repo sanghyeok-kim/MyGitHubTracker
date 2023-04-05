@@ -55,6 +55,10 @@ final class RepoListViewController: UIViewController, ViewType {
             .map { $0.1 }
             .bind(to: input.cellWillDisplay)
             .disposed(by: disposeBag)
+
+        repositoryTableView.rx.itemSelected
+            .bind(to: input.cellDidTap)
+            .disposed(by: disposeBag)
     }
     
     func bindOutput(from viewModel: RepoListViewModel) {
