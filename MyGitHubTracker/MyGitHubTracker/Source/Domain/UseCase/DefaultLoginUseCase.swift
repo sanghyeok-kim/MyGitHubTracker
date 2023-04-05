@@ -29,7 +29,9 @@ final class DefaultLoginUseCase: LoginUseCase {
                 clientSecret: gitHubAuthorization.clientSecret,
                 tempCode: gitHubAuthorization.tempCode
             )
-            .do(onError: { error in
+            .do(onSuccess: { tokenDTO in
+                AccessToken.store(value: tokenDTO.accessToken)
+            }, onError: { error in
                 CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
             })
             .subscribe(with: self, onSuccess: { `self`, _ in
