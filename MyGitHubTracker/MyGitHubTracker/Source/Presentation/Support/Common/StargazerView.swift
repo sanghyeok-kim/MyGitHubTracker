@@ -18,8 +18,7 @@ final class StargazerView: UIView {
     
     private lazy var countLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
     
@@ -70,7 +69,7 @@ extension StargazerView {
         countLabel.text = "\(count)"
     }
     
-    func toggleStarMark(isSelected: Bool) {
+    func toggleStarMark(by isSelected: Bool) {
         switch isSelected {
         case true:
             startImageView.image = UIImage(systemName: "star.fill")

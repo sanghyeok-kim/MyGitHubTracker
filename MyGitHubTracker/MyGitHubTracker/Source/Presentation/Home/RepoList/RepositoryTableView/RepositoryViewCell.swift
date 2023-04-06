@@ -106,7 +106,7 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
         
         output.isStarred
             .asDriver()
-            .drive(onNext: starGazerView.toggleStarMark(isSelected:))
+            .drive(onNext: starGazerView.toggleStarMark)
             .disposed(by: disposeBag)
     }
 }
