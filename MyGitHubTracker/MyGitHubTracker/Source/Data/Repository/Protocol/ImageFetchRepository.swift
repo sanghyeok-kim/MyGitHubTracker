@@ -1,12 +1,13 @@
 //
-//  ImageCacheService.swift
+//  ImageFetchRepository.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/04/06.
 //
 
-import UIKit
+import Foundation
+import UIKit.UIImage
 
-protocol ImageCacheService {
+protocol ImageFetchRepository {
     func fetchImage(from url: URL, completion: @escaping (Result<UIImage, ImageNetworkError>) -> ())
 }

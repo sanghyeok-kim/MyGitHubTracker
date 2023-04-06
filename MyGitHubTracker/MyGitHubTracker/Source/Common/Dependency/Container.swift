@@ -30,9 +30,14 @@ final class Container {
 
 extension Container {
     func registerDependencies() {
+        Container.shared.register(service: MemoryCachable.self) { MemoryCache.shared }
+        Container.shared.register(service: DiskCachable.self) { DiskCache.shared }
+        
+        
         // Service
         Container.shared.register(service: URLSessionNetworkService.self) { DefaultURLSessionService.shared }
         Container.shared.register(service: GitHubAuthorizationService.self) { DefaultGitHubAuthorizationService() }
+        Container.shared.register(service: ImageFetchService.self) { URLSessionImageFetchService() }
         
         // Login
         Container.shared.register(service: LoginRepository.self) { DefaultLoginRepository() }
