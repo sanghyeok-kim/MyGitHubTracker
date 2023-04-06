@@ -37,6 +37,8 @@
 		1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3729DDC08700614811 /* RepositoryDetailViewModel.swift */; };
 		1E800D3B29DEBDC800614811 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3A29DEBDC800614811 /* CircularImageView.swift */; };
 		1E800D3D29DEC73E00614811 /* ImageNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */; };
+		1E800D3F29DEC77F00614811 /* URLSessionImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3E29DEC77F00614811 /* URLSessionImageCacheService.swift */; };
+		1E800D4129DEC8A700614811 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D4029DEC8A700614811 /* ImageCacheService.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
 		1E8FB81529D08BA100847578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB81429D08BA100847578 /* Assets.xcassets */; };
@@ -159,6 +161,8 @@
 		1E800D3729DDC08700614811 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		1E800D3A29DEBDC800614811 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkError.swift; sourceTree = "<group>"; };
+		1E800D3E29DEC77F00614811 /* URLSessionImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionImageCacheService.swift; sourceTree = "<group>"; };
+		1E800D4029DEC8A700614811 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FB80D29D08BA000847578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 			children = (
 				1E800D3329DD028100614811 /* URLSessionNetworkService.swift */,
 				1E800D3529DD02CF00614811 /* GitHubAuthorizationService.swift */,
+				1E800D4029DEC8A700614811 /* ImageCacheService.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -556,6 +561,7 @@
 			children = (
 				1E8FB87929D12CE900847578 /* DefaultURLSessionNetworkService.swift */,
 				1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */,
+				1E800D3E29DEC77F00614811 /* URLSessionImageCacheService.swift */,
 				1E800D3229DD027600614811 /* Protocol */,
 			);
 			path = Service;
@@ -999,6 +1005,7 @@
 				1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				1E800D2F29DC68F400614811 /* Rx+validateStatusCode.swift in Sources */,
 				1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */,
+				1E800D4129DEC8A700614811 /* ImageCacheService.swift in Sources */,
 				1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */,
 				1E8FB8BA29D1522600847578 /* RepositorySearchUseCase.swift in Sources */,
 				1E8FB86B29D12B9600847578 /* LoginViewController.swift in Sources */,
@@ -1058,6 +1065,7 @@
 				1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */,
 				1E8FB8AA29D150CB00847578 /* UserEntity.swift in Sources */,
 				1E800D3629DD02CF00614811 /* GitHubAuthorizationService.swift in Sources */,
+				1E800D3F29DEC77F00614811 /* URLSessionImageCacheService.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
 				1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */,
 				1E8FB84B29D08F0500847578 /* CoordinatorType.swift in Sources */,
