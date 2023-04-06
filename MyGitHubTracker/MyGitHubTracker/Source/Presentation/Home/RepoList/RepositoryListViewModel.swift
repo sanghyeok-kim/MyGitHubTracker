@@ -127,7 +127,7 @@ private extension RepositoryListViewModel {
     
     func zipIsStarredByUser(with repositories: [RepositoryEntity]) -> Observable<([RepositoryEntity], [Bool])> {
         let isStarredObservables = repositories.map {
-            starringUseCase.checkRepositoryIsStarred(repositoryOwner: $0.ownerName, repositoryName: $0.name)
+            starringUseCase.checkRepositoryIsStarred(ownerName: $0.ownerName, repositoryName: $0.name)
         }
         return Observable.zip(Observable.just(repositories), Observable.combineLatest(isStarredObservables))
     }

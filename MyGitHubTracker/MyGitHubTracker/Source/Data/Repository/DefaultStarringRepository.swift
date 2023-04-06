@@ -12,11 +12,11 @@ final class DefaultStarringRepository: StarringRepository {
     
     @Inject private var urlSessionNetworkService: URLSessionNetworkService
     
-    func checkRepositoryIsStarred(repositoryOwner: String, repositoryName: String) -> Single<Bool> {
+    func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Single<Bool> {
         return urlSessionNetworkService
             .fetchStatusCode(
                 endpoint: GitHubAPI.checkRepositoryIsStarredByUser(
-                repositoryOwner: repositoryOwner,
+                ownerName: ownerName,
                 repositoryName: repositoryName)
             )
             .map { $0 == 204 }

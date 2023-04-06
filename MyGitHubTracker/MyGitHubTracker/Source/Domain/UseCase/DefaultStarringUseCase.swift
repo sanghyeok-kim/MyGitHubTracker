@@ -16,9 +16,9 @@ final class DefaultStarringUseCase: StarringUseCase {
     @Inject private var starringRepository: StarringRepository
     private let disposeBag = DisposeBag()
     
-    func checkRepositoryIsStarred(repositoryOwner: String, repositoryName: String) -> Observable<Bool> {
+    func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Observable<Bool> {
         return starringRepository
-            .checkRepositoryIsStarred(repositoryOwner: repositoryOwner, repositoryName: repositoryName)
+            .checkRepositoryIsStarred(ownerName: ownerName, repositoryName: repositoryName)
             .do(onError: { [weak self] error in
                 CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
                 self?.errorDidOccur.accept(.failToFetchRepositories)

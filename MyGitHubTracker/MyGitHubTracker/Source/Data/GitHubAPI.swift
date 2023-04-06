@@ -12,12 +12,12 @@ enum GitHubAPI {
     case fetchTempCode
     case fetchAccessToken(clientID: String, clientSecret: String, tempCode: String)
     
-    // RepositoryList
+    // Repository
     case fetchUserRepositories(perPage: Int, page: Int)
+    case fetchRepositoryDetail(ownerName: String, repositoryName: String)
     
     // Account
     case fetchUserInfo
-    case checkRepositoryIsStarredByUser(repositoryOwner: String, repositoryName: String)
 }
 
 extension GitHubAPI: TargetType {
@@ -25,7 +25,7 @@ extension GitHubAPI: TargetType {
         switch self {
         case .fetchTempCode, .fetchAccessToken:
             return URL(string: "https://github.com")
-        case .fetchUserRepositories, .fetchUserInfo, .checkRepositoryIsStarredByUser:
+        case .fetchUserRepositories, .fetchUserInfo, .fetchRepositoryDetail:
             return URL(string: "https://api.github.com")
         }
     }
@@ -40,9 +40,8 @@ extension GitHubAPI: TargetType {
             return "/user"
         case .fetchUserRepositories:
             return "/user/repos"
-        case .checkRepositoryIsStarredByUser(let repositoryOwner, let repositoryName):
-            return "user/starred/\(repositoryOwner)/\(repositoryName)"
-        }
+        case .fetchRepositoryDetail(let ownerName, let repositoryName):
+            return "/repos/\(ownerName)/\(repositoryName)"
     }
     
     var method: HTTPMethod {
@@ -55,7 +54,7 @@ extension GitHubAPI: TargetType {
             return .get
         case .fetchUserRepositories:
             return .get
-        case .checkRepositoryIsStarredByUser:
+        case .fetchRepositoryDetail:
             return .get
         }
     }
@@ -67,7 +66,7 @@ extension GitHubAPI: TargetType {
         case .fetchAccessToken:
             return ["Content-Type": "application/json",
                     "Accept": "application/json"]
-        case .fetchUserInfo, .fetchUserRepositories, .checkRepositoryIsStarredByUser:
+        case .fetchUserInfo, .fetchUserRepositories, .fetchRepositoryDetail:
             return ["Accept": "application/vnd.github+json",
                     "Authorization": "Bearer \(AccessToken.value ?? "")",
                     "X-GitHub-Api-Version": "2022-11-28"]
@@ -91,7 +90,7 @@ extension GitHubAPI: TargetType {
                     "type": "owner",
                     "per_page": perPage,
                     "page": page]
-        case .checkRepositoryIsStarredByUser:
+        case .fetchRepositoryDetail:
             return nil
         }
     }
