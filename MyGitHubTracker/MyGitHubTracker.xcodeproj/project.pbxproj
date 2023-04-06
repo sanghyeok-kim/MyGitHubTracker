@@ -39,6 +39,7 @@
 		1E800D3D29DEC73E00614811 /* ImageNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */; };
 		1E800D3F29DEC77F00614811 /* URLSessionImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3E29DEC77F00614811 /* URLSessionImageCacheService.swift */; };
 		1E800D4129DEC8A700614811 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D4029DEC8A700614811 /* ImageCacheService.swift */; };
+		1E800D4329DEC8EF00614811 /* UIImageView+setImagWithCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D4229DEC8EF00614811 /* UIImageView+setImagWithCaching.swift */; };
 		1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80B29D08BA000847578 /* AppDelegate.swift */; };
 		1E8FB80E29D08BA000847578 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB80D29D08BA000847578 /* SceneDelegate.swift */; };
 		1E8FB81529D08BA100847578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB81429D08BA100847578 /* Assets.xcassets */; };
@@ -163,6 +164,7 @@
 		1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkError.swift; sourceTree = "<group>"; };
 		1E800D3E29DEC77F00614811 /* URLSessionImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionImageCacheService.swift; sourceTree = "<group>"; };
 		1E800D4029DEC8A700614811 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		1E800D4229DEC8EF00614811 /* UIImageView+setImagWithCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+setImagWithCaching.swift"; sourceTree = "<group>"; };
 		1E8FB80829D08BA000847578 /* MyGitHubTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHubTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FB80B29D08BA000847578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FB80D29D08BA000847578 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			children = (
 				1E8FB86629D09A8600847578 /* Bundle+GitHubClientKey.swift */,
 				1E8FB8B129D1513400847578 /* String+toDateFormat.swift */,
+				1E800D4229DEC8EF00614811 /* UIImageView+setImagWithCaching.swift */,
 				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
 				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
 				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
@@ -995,6 +998,7 @@
 				1E800D2729DC615B00614811 /* StargazerView.swift in Sources */,
 				1E43BF2B29D5435400C718D4 /* RepositoryDetailViewController.swift in Sources */,
 				1E8FB8D129D1589D00847578 /* AccountViewController.swift in Sources */,
+				1E800D4329DEC8EF00614811 /* UIImageView+setImagWithCaching.swift in Sources */,
 				1E8FB8B229D1513400847578 /* String+toDateFormat.swift in Sources */,
 				1E8FB8BE29D1532300847578 /* DefaultAccountRepository.swift in Sources */,
 				1E66CA6529D31D7300EA117A /* RepositoryViewCell.swift in Sources */,
