@@ -8,16 +8,16 @@
 import UIKit.UIImageView
 
 extension UIImageView {
-    func setImageWithCaching(from url: URL) {
-        CachedURLDataFetchRepository.shared.fetch(from: url) { result in
-            switch result {
-            case .success(let image):
+    func setImageWithCaching(from url: URL) async {
+        do {
+            let data = try await CachedURLDataFetchRepository.shared.fetchCachedData(from: url)
+            if let image = UIImage(data: data) {
                 DispatchQueue.main.async { [weak self] in
-                    self?.image = UIImage(data: image)
+                    self?.image = image
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
             }
+        } catch {
+            CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
         }
     }
 }
