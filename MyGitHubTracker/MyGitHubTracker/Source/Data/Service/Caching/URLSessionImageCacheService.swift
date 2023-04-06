@@ -25,43 +25,49 @@ final class URLSessionImageCacheService: ImageCacheService {
         return cachedImage
     }
     
-    private func lookUpImageOnDisk(by imageName: String) -> UIImage? {
-        guard let diskCacheDirectoryUrl = self.diskCacheDirectoryUrl else { return nil }
-        let filePath = diskCacheDirectoryUrl.appendingPathComponent(imageName)
+    private func lookUpImageOnDisk(by imageName: String, completion: @escaping (UIImage?) -> Void) {
+        guard let filePath = diskCacheDirectoryUrl?.appendingPathComponent(imageName) else {
+            completion(nil)
+            return
+        }
         
-        if fileManager.fileExists(atPath: filePath.path) {
-            guard let imageData = try? Data(contentsOf: filePath),
-                  let image = UIImage(data: imageData) else { return nil }
-            return image
-        } else {
-            return nil
+        DispatchQueue.global(qos: .userInitiated).async {
+            if self.fileManager.fileExists(atPath: filePath.path),
+               let imageData = try? Data(contentsOf: filePath),
+               let image = UIImage(data: imageData) {
+                completion(image)
+            } else {
+                completion(nil)
+            }
         }
     }
     
     private func downloadImage(from url: URL, completion: @escaping((Result<UIImage?, ImageNetworkError>) -> Void)) {
-        URLSession.shared.downloadTask(with: url) { [weak self] location, response, error in
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             if let error = error {
                 completion(.failure(.errorDetected(error: error)))
                 return
             }
             
-            guard let tempDirectoryUrl = location else {
-                completion(.failure(.invalidFileLocation))
+            guard let imageData = data, let image = UIImage(data: imageData) else {
+                completion(.failure(.invalidImageData))
                 return
             }
             
             let imageName = url.lastPathComponent
             
             //disk caching
-            guard let diskCacheDirectoryUrl = self?.diskCacheDirectoryUrl else { return }
-            let destinationUrl = diskCacheDirectoryUrl.appendingPathComponent(imageName)
-            try? self?.fileManager.copyItem(at: tempDirectoryUrl, to: destinationUrl)
+            if let destinationUrl = self?.diskCacheDirectoryUrl?.appendingPathComponent(imageName) {
+                do {
+                    try imageData.write(to: destinationUrl)
+                } catch {
+                    completion(.failure(.invalidFileLocation))
+                    return
+                }
+            }
             
             //memory caching
-            guard let imageData = try? Data(contentsOf: destinationUrl),
-                  let image = UIImage(data: imageData) else { return }
-            let imageSize = imageData.count
-            self?.memoryCache.setObject(image, forKey: imageName as NSString, cost: imageSize)
+            self?.memoryCache.setObject(image, forKey: imageName as NSString)
             
             completion(.success(image))
         }.resume()
@@ -75,12 +81,13 @@ final class URLSessionImageCacheService: ImageCacheService {
             return
         }
         
-        if let image = lookUpImageOnDisk(by: imageName) {
-            memoryCache.setObject(image, forKey: imageName as NSString)
-            completion(.success(image))
-            return
+        lookUpImageOnDisk(by: imageName) { [weak self] image in
+            if let image = image {
+                self?.memoryCache.setObject(image, forKey: imageName as NSString)
+                completion(.success(image))
+            } else {
+                self?.downloadImage(from: url, completion: completion)
+            }
         }
-        
-        downloadImage(from: url, completion: completion)
     }
 }
