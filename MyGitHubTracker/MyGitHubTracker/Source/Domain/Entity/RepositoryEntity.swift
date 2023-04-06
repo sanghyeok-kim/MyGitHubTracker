@@ -15,4 +15,5 @@ struct RepositoryEntity {
     let updatedDate: String
     var isStarredByUser: Bool = false
     let stargazersCount: Int
+    let avatarImageURL: URL?
 }

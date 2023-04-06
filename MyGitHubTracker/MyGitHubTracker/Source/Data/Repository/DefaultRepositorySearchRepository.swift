@@ -16,4 +16,10 @@ final class DefaultRepositorySearchRepository: RepositorySearchRepository {
             .fetchData(endpoint: GitHubAPI.fetchUserRepositories(perPage: perPage, page: page))
             .decodeMap([RepositoryDTO].self)
     }
+    
+    func fetchRepositoryDetail(ownerName: String, repositoryName: String) -> Single<RepositoryDTO> {
+        urlSessionNetworkService
+            .fetchData(endpoint: GitHubAPI.fetchRepositoryDetail(ownerName: ownerName, repositoryName: repositoryName))
+            .decodeMap(RepositoryDTO.self)
+    }
 }

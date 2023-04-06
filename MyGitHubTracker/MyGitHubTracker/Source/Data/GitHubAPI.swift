@@ -15,6 +15,7 @@ enum GitHubAPI {
     // Repository
     case fetchUserRepositories(perPage: Int, page: Int)
     case fetchRepositoryDetail(ownerName: String, repositoryName: String)
+    case checkRepositoryIsStarredByUser(ownerName: String, repositoryName: String)
     
     // Account
     case fetchUserInfo
@@ -25,7 +26,7 @@ extension GitHubAPI: TargetType {
         switch self {
         case .fetchTempCode, .fetchAccessToken:
             return URL(string: "https://github.com")
-        case .fetchUserRepositories, .fetchUserInfo, .fetchRepositoryDetail:
+        case .fetchUserRepositories, .fetchUserInfo, .fetchRepositoryDetail, .checkRepositoryIsStarredByUser:
             return URL(string: "https://api.github.com")
         }
     }
@@ -42,6 +43,9 @@ extension GitHubAPI: TargetType {
             return "/user/repos"
         case .fetchRepositoryDetail(let ownerName, let repositoryName):
             return "/repos/\(ownerName)/\(repositoryName)"
+        case .checkRepositoryIsStarredByUser(let ownerName, let repositoryName):
+            return "user/starred/\(ownerName)/\(repositoryName)"
+        }
     }
     
     var method: HTTPMethod {
@@ -56,6 +60,8 @@ extension GitHubAPI: TargetType {
             return .get
         case .fetchRepositoryDetail:
             return .get
+        case .checkRepositoryIsStarredByUser:
+            return .get
         }
     }
     
@@ -66,7 +72,7 @@ extension GitHubAPI: TargetType {
         case .fetchAccessToken:
             return ["Content-Type": "application/json",
                     "Accept": "application/json"]
-        case .fetchUserInfo, .fetchUserRepositories, .fetchRepositoryDetail:
+        case .fetchUserInfo, .fetchUserRepositories, .fetchRepositoryDetail, .checkRepositoryIsStarredByUser:
             return ["Accept": "application/vnd.github+json",
                     "Authorization": "Bearer \(AccessToken.value ?? "")",
                     "X-GitHub-Api-Version": "2022-11-28"]
@@ -90,7 +96,7 @@ extension GitHubAPI: TargetType {
                     "type": "owner",
                     "per_page": perPage,
                     "page": page]
-        case .fetchRepositoryDetail:
+        case .fetchRepositoryDetail, .checkRepositoryIsStarredByUser:
             return nil
         }
     }

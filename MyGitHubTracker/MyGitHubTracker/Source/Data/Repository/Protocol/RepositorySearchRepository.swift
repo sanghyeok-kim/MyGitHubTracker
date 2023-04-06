@@ -9,4 +9,5 @@ import RxSwift
 
 protocol RepositorySearchRepository {
     func fetchUserRepositories(perPage: Int, page: Int) -> Single<[RepositoryDTO]>
+    func fetchRepositoryDetail(ownerName: String, repositoryName: String) -> Single<RepositoryDTO>
 }
