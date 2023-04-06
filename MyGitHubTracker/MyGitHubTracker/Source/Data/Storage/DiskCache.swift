@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit.UIImage
 
 final class DiskCache: DiskCachable {
     
@@ -19,27 +18,25 @@ final class DiskCache: DiskCachable {
     
     private init() { }
     
-    func lookUpImage(by imageName: String, completion: @escaping (UIImage?) -> Void) {
-        guard let filePath = diskCacheDirectoryUrl?.appendingPathComponent(imageName) else {
+    func lookUpData(by key: String, completion: @escaping (Data?) -> Void) {
+        guard let filePath = diskCacheDirectoryUrl?.appendingPathComponent(key) else {
             completion(nil)
             return
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
             if self.fileManager.fileExists(atPath: filePath.path),
-               let imageData = try? Data(contentsOf: filePath),
-               let image = UIImage(data: imageData) {
-                completion(image)
+               let data = try? Data(contentsOf: filePath) {
+                completion(data)
             } else {
                 completion(nil)
             }
         }
     }
     
-    func storeImage(_ image: UIImage, forKey key: String) {
-        guard let diskCacheDirectoryUrl = self.diskCacheDirectoryUrl,
-              let imageData = image.pngData() else { return }
+    func storeData(_ data: Data, forKey key: String) {
+        guard let diskCacheDirectoryUrl = self.diskCacheDirectoryUrl else { return }
         let filePath = diskCacheDirectoryUrl.appendingPathComponent(key)
-        try? imageData.write(to: filePath)
+        try? data.write(to: filePath)
     }
 }

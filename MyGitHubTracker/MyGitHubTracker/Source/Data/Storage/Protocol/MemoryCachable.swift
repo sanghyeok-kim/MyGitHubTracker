@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import UIKit.UIImage
 
 protocol MemoryCachable {
-    func lookUpImage(by imageName: String) -> UIImage?
-    func storeImage(_ image: UIImage, forKey key: String)
+    func lookUpData(by key: String) -> Data?
+    func storeData(_ data: Data, forKey key: String)
 }

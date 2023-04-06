@@ -9,11 +9,11 @@ import UIKit.UIImageView
 
 extension UIImageView {
     func setImageWithCaching(from url: URL) {
-        URLSessionImageCacheService.shared.fetchImage(from: url) { result in
+        CachedURLDataFetchRepository.shared.fetch(from: url) { result in
             switch result {
             case .success(let image):
                 DispatchQueue.main.async { [weak self] in
-                    self?.image = image
+                    self?.image = UIImage(data: image)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
