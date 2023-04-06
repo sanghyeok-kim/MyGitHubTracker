@@ -18,6 +18,7 @@ final class RepositoryListViewModel: ViewModelType {
     }
     
     struct Output {
+        let isFetchingData = BehaviorRelay<Bool>(value: true)
         let repositoryCellViewModels = BehaviorRelay<[RepositoryCellViewModel]>(value: [])
         let showErrorMessage = PublishRelay<String>()
         let endTableViewRefresh = PublishRelay<Void>()
@@ -71,7 +72,7 @@ final class RepositoryListViewModel: ViewModelType {
         
         // MARK: - Event from UseCase
         
-        repositorySearchUseCase.fetchedUserRepositories
+        let fetchedUserRepository = repositorySearchUseCase.fetchedUserRepositories
             .filter { !$0.isEmpty }
             .do(onNext: { [weak self] _ in
                 self?.paginationState.isLoading = false
@@ -85,9 +86,18 @@ final class RepositoryListViewModel: ViewModelType {
                 let (repositoryEntities, isStarredByUsers) = result
                 return self.updateIsStarredByUser(of: repositoryEntities, bools: isStarredByUsers)
             }
+            .share()
+        
+        fetchedUserRepository
             .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repositoryEntity: $0) } }
             .withLatestFrom(output.repositoryCellViewModels) { $1 + $0 }
             .bind(to: output.repositoryCellViewModels)
+            .disposed(by: disposeBag)
+        
+        fetchedUserRepository
+            .map { _ in false }
+            .distinctUntilChanged()
+            .bind(to: output.isFetchingData)
             .disposed(by: disposeBag)
         
         repositorySearchUseCase.errorDidOccur

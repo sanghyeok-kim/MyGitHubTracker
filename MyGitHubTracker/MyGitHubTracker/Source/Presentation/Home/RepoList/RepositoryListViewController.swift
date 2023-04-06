@@ -16,6 +16,12 @@ final class RepositoryListViewController: UIViewController, ViewType {
     
     private let repositoryRefreshControll = UIRefreshControl()
     
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     private lazy var repositoryTableViewDataSource: RxTableViewSectionedReloadDataSource<RepositorySection> = {
         return .init { (cell: RepositoryViewCell, cellViewModel: RepositoryCellViewModel) in
             cell.bind(viewModel: cellViewModel)
@@ -64,6 +70,11 @@ final class RepositoryListViewController: UIViewController, ViewType {
     func bindOutput(from viewModel: RepositoryListViewModel) {
         let output = viewModel.output
         
+        output.isFetchingData
+            .asDriver()
+            .drive(loadingIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
         output.repositoryCellViewModels
             .asDriver()
             .map { [RepositorySection(items: $0)] }
@@ -99,11 +110,17 @@ private extension RepositoryListViewController {
 private extension RepositoryListViewController {
     func layoutUI() {
         view.addSubview(repositoryTableView)
+        view.addSubview(loadingIndicator)
         view.addSubview(errorToastMessageLabel)
         
         repositoryTableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         
         errorToastMessageLabel.snp.makeConstraints { make in
