@@ -267,14 +267,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E43BF2029D453CD00C718D4 /* TableView */ = {
+		1E43BF2029D453CD00C718D4 /* RepositoryTableView */ = {
 			isa = PBXGroup;
 			children = (
 				1E43BF2129D4541000C718D4 /* RepositorySection.swift */,
 				1E66CA6429D31D7300EA117A /* RepositoryViewCell.swift */,
 				1E66CA6629D31D9700EA117A /* RepositoryCellViewModel.swift */,
 			);
-			path = TableView;
+			path = RepositoryTableView;
 			sourceTree = "<group>";
 		};
 		1E43BF2929D53B9D00C718D4 /* Protocol */ = {
@@ -665,7 +665,7 @@
 		1E8FB8C629D1581800847578 /* RepoList */ = {
 			isa = PBXGroup;
 			children = (
-				1E43BF2029D453CD00C718D4 /* TableView */,
+				1E43BF2029D453CD00C718D4 /* RepositoryTableView */,
 				1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */,
 				1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */,
 				1E8FB8C829D1583200847578 /* RepoListViewModel.swift */,
