@@ -1,5 +1,5 @@
 //
-//  RepoListViewController.swift
+//  RepositoryListViewController.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/27.
@@ -12,7 +12,7 @@ import RxDataSources
 import Then
 import SnapKit
 
-final class RepoListViewController: UIViewController, ViewType {
+final class RepositoryListViewController: UIViewController, ViewType {
     
     private let repositoryRefreshControll = UIRefreshControl()
     
@@ -31,7 +31,7 @@ final class RepoListViewController: UIViewController, ViewType {
     
     private let errorToastMessageLabel = ToastLabel()
     
-    var viewModel: RepoListViewModel?
+    var viewModel: RepositoryListViewModel?
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ final class RepoListViewController: UIViewController, ViewType {
         layoutUI()
     }
     
-    func bindInput(to viewModel: RepoListViewModel) {
+    func bindInput(to viewModel: RepositoryListViewModel) {
         let input = viewModel.input
         
         rx.viewDidLoad
@@ -61,7 +61,7 @@ final class RepoListViewController: UIViewController, ViewType {
             .disposed(by: disposeBag)
     }
     
-    func bindOutput(from viewModel: RepoListViewModel) {
+    func bindOutput(from viewModel: RepositoryListViewModel) {
         let output = viewModel.output
         
         output.repositoryCellViewModels
@@ -87,7 +87,7 @@ final class RepoListViewController: UIViewController, ViewType {
 
 // MARK: - UI Configuration
 
-private extension RepoListViewController {
+private extension RepositoryListViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Repository"
@@ -96,7 +96,7 @@ private extension RepoListViewController {
 
 // MARK: - UI Layout
 
-private extension RepoListViewController {
+private extension RepositoryListViewController {
     func layoutUI() {
         view.addSubview(repositoryTableView)
         view.addSubview(errorToastMessageLabel)

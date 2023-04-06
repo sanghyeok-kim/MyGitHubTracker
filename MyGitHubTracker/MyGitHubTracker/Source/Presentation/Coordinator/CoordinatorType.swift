@@ -11,6 +11,6 @@ enum CoordinatorType: Hashable {
     case app
     case login
     case home
-    case repoList
+    case repositoryList
     case account
 }

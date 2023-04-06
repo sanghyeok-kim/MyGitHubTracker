@@ -12,8 +12,8 @@ enum GitHubAPI {
     case fetchTempCode
     case fetchAccessToken(clientID: String, clientSecret: String, tempCode: String)
     
-    // RepoList
-    case fetchRepositories(perPage: Int, page: Int)
+    // RepositoryList
+    case fetchUserRepositories(perPage: Int, page: Int)
     
     // Account
     case fetchUserInfo
@@ -25,7 +25,7 @@ extension GitHubAPI: TargetType {
         switch self {
         case .fetchTempCode, .fetchAccessToken:
             return URL(string: "https://github.com")
-        case .fetchRepositories, .fetchUserInfo, .checkRepositoryIsStarredByUser:
+        case .fetchUserRepositories, .fetchUserInfo, .checkRepositoryIsStarredByUser:
             return URL(string: "https://api.github.com")
         }
     }
@@ -38,7 +38,7 @@ extension GitHubAPI: TargetType {
             return "/login/oauth/access_token"
         case .fetchUserInfo:
             return "/user"
-        case .fetchRepositories:
+        case .fetchUserRepositories:
             return "/user/repos"
         case .checkRepositoryIsStarredByUser(let repositoryOwner, let repositoryName):
             return "user/starred/\(repositoryOwner)/\(repositoryName)"
@@ -53,7 +53,7 @@ extension GitHubAPI: TargetType {
             return .post
         case .fetchUserInfo:
             return .get
-        case .fetchRepositories:
+        case .fetchUserRepositories:
             return .get
         case .checkRepositoryIsStarredByUser:
             return .get
@@ -67,7 +67,7 @@ extension GitHubAPI: TargetType {
         case .fetchAccessToken:
             return ["Content-Type": "application/json",
                     "Accept": "application/json"]
-        case .fetchUserInfo, .fetchRepositories, .checkRepositoryIsStarredByUser:
+        case .fetchUserInfo, .fetchUserRepositories, .checkRepositoryIsStarredByUser:
             return ["Accept": "application/vnd.github+json",
                     "Authorization": "Bearer \(AccessToken.value ?? "")",
                     "X-GitHub-Api-Version": "2022-11-28"]
@@ -86,7 +86,7 @@ extension GitHubAPI: TargetType {
                     "code": tempCode]
         case .fetchUserInfo:
             return nil
-        case .fetchRepositories(let perPage, let page):
+        case .fetchUserRepositories(let perPage, let page):
             return ["sort": "created",
                     "type": "owner",
                     "per_page": perPage,

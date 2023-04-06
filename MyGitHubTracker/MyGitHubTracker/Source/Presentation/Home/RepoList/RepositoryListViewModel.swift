@@ -1,5 +1,5 @@
 //
-//  RepoListViewModel.swift
+//  RepositoryListViewModel.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/27.
@@ -8,7 +8,7 @@
 import RxSwift
 import RxRelay
 
-final class RepoListViewModel: ViewModelType {
+final class RepositoryListViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoad = PublishRelay<Void>()
@@ -28,13 +28,13 @@ final class RepoListViewModel: ViewModelType {
     
     private var paginationState = PaginationState()
     
-    @Inject private var repoListUseCase: RepoListUseCase
+    @Inject private var repositorySearchUseCase: RepositorySearchUseCase
     @Inject private var starringUseCase: StarringUseCase
     
-    private weak var coordinator: RepoListCoordinator?
+    private weak var coordinator: RepositoryListCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: RepoListCoordinator) {
+    init(coordinator: RepositoryListCoordinator) {
         self.coordinator = coordinator
         
         // MARK: - Event from View Input
@@ -43,7 +43,7 @@ final class RepoListViewModel: ViewModelType {
             .withUnretained(self)
             .bind { `self`, _ in
                 let (perPage, page) = self.paginationState.parameters
-                self.repoListUseCase.fetchRepositories(perPage: perPage, page: page)
+                self.repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
             }
             .disposed(by: disposeBag)
         
@@ -71,7 +71,7 @@ final class RepoListViewModel: ViewModelType {
         
         // MARK: - Event from UseCase
         
-        repoListUseCase.fetchedRepositories
+        repositorySearchUseCase.fetchedUserRepositories
             .filter { !$0.isEmpty }
             .do(onNext: { [weak self] _ in
                 self?.paginationState.isLoading = false
@@ -90,14 +90,14 @@ final class RepoListViewModel: ViewModelType {
             .bind(to: output.repositoryCellViewModels)
             .disposed(by: disposeBag)
         
-        repoListUseCase.errorDidOccur
+        repositorySearchUseCase.errorDidOccur
             .map { $0.localizedDescription }
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
         Observable.merge(
-            repoListUseCase.fetchedRepositories.skip(1).map { _ in },
-            repoListUseCase.errorDidOccur.map { _ in }
+            repositorySearchUseCase.fetchedUserRepositories.skip(1).map { _ in },
+            repositorySearchUseCase.errorDidOccur.map { _ in }
         )
         .bind(to: output.endTableViewRefresh)
         .disposed(by: disposeBag)
@@ -106,7 +106,7 @@ final class RepoListViewModel: ViewModelType {
 
 // MARK: - Supporting Methods
 
-private extension RepoListViewModel {
+private extension RepositoryListViewModel {
     private func loadNextPageIfNeeded(for indexPath: IndexPath) {
         if paginationState.isLoading { return }
         
@@ -114,7 +114,7 @@ private extension RepoListViewModel {
         if indexPath.row == threshold {
             paginationState.prepareNextPage()
             let (perPage, page) = paginationState.parameters
-            repoListUseCase.fetchRepositories(perPage: perPage, page: page)
+            repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
         }
     }
     
@@ -122,7 +122,7 @@ private extension RepoListViewModel {
         output.repositoryCellViewModels.accept([])
         paginationState.resetToInitial()
         let (perPage, page) = paginationState.parameters
-        repoListUseCase.fetchRepositories(perPage: perPage, page: page)
+        repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
     }
     
     func zipIsStarredByUser(with repositories: [RepositoryEntity]) -> Observable<([RepositoryEntity], [Bool])> {
@@ -141,7 +141,7 @@ private extension RepoListViewModel {
     }
 }
 
-private extension RepoListViewModel {
+private extension RepositoryListViewModel {
     struct PaginationState {
         private let startPage = 1
         private let repositoryCountPerPage: Int = 10

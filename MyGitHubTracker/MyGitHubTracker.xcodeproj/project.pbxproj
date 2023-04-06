@@ -79,24 +79,24 @@
 		1E8FB8AE29D150F000847578 /* UserTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8AD29D150F000847578 /* UserTransformer.swift */; };
 		1E8FB8B029D150F500847578 /* RepositoryTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8AF29D150F500847578 /* RepositoryTransformer.swift */; };
 		1E8FB8B229D1513400847578 /* String+toDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8B129D1513400847578 /* String+toDateFormat.swift */; };
-		1E8FB8B429D151C600847578 /* DefaultRepoListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8B329D151C600847578 /* DefaultRepoListUseCase.swift */; };
+		1E8FB8B429D151C600847578 /* DefaultRepositorySearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8B329D151C600847578 /* DefaultRepositorySearchUseCase.swift */; };
 		1E8FB8B629D151DC00847578 /* DefaultAccountUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8B529D151DC00847578 /* DefaultAccountUseCase.swift */; };
 		1E8FB8B829D1521E00847578 /* AccountUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8B729D1521E00847578 /* AccountUseCase.swift */; };
-		1E8FB8BA29D1522600847578 /* RepoListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8B929D1522600847578 /* RepoListUseCase.swift */; };
-		1E8FB8BC29D1530800847578 /* DefaultRepoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BB29D1530800847578 /* DefaultRepoListRepository.swift */; };
+		1E8FB8BA29D1522600847578 /* RepositorySearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8B929D1522600847578 /* RepositorySearchUseCase.swift */; };
+		1E8FB8BC29D1530800847578 /* DefaultRepositorySearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BB29D1530800847578 /* DefaultRepositorySearchRepository.swift */; };
 		1E8FB8BE29D1532300847578 /* DefaultAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BD29D1532300847578 /* DefaultAccountRepository.swift */; };
-		1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BF29D1539800847578 /* RepoListRepository.swift */; };
+		1E8FB8C029D1539800847578 /* RepositorySearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8BF29D1539800847578 /* RepositorySearchRepository.swift */; };
 		1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C129D153A700847578 /* AccountRepository.swift */; };
 		1E8FB8C429D155AB00847578 /* Rx+transformMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */; };
-		1E8FB8C929D1583200847578 /* RepoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C829D1583200847578 /* RepoListViewModel.swift */; };
-		1E8FB8CB29D1583C00847578 /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */; };
-		1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */; };
+		1E8FB8C929D1583200847578 /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8C829D1583200847578 /* RepositoryListViewModel.swift */; };
+		1E8FB8CB29D1583C00847578 /* RepositoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8CA29D1583C00847578 /* RepositoryListViewController.swift */; };
+		1E8FB8CD29D1584B00847578 /* DefaultRepositoryListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8CC29D1584B00847578 /* DefaultRepositoryListCoordinator.swift */; };
 		1E8FB8CF29D1588B00847578 /* DefaultAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8CE29D1588B00847578 /* DefaultAccountCoordinator.swift */; };
 		1E8FB8D129D1589D00847578 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D029D1589D00847578 /* AccountViewController.swift */; };
 		1E8FB8D329D158AF00847578 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D229D158AF00847578 /* AccountViewModel.swift */; };
-		1E8FB8D529D158D800847578 /* RepoListCoordinateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D429D158D800847578 /* RepoListCoordinateAction.swift */; };
+		1E8FB8D529D158D800847578 /* RepositoryListCoordinateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D429D158D800847578 /* RepositoryListCoordinateAction.swift */; };
 		1E8FB8D729D158E300847578 /* AccountCoordinateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D629D158E300847578 /* AccountCoordinateAction.swift */; };
-		1E8FB8D929D158FB00847578 /* RepoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */; };
+		1E8FB8D929D158FB00847578 /* RepositoryListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8D829D158FB00847578 /* RepositoryListCoordinator.swift */; };
 		1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */; };
 		1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */; };
 		1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E129D167BE00847578 /* ToastLabel.swift */; };
@@ -203,24 +203,24 @@
 		1E8FB8AD29D150F000847578 /* UserTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTransformer.swift; sourceTree = "<group>"; };
 		1E8FB8AF29D150F500847578 /* RepositoryTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTransformer.swift; sourceTree = "<group>"; };
 		1E8FB8B129D1513400847578 /* String+toDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toDateFormat.swift"; sourceTree = "<group>"; };
-		1E8FB8B329D151C600847578 /* DefaultRepoListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepoListUseCase.swift; sourceTree = "<group>"; };
+		1E8FB8B329D151C600847578 /* DefaultRepositorySearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositorySearchUseCase.swift; sourceTree = "<group>"; };
 		1E8FB8B529D151DC00847578 /* DefaultAccountUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccountUseCase.swift; sourceTree = "<group>"; };
 		1E8FB8B729D1521E00847578 /* AccountUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUseCase.swift; sourceTree = "<group>"; };
-		1E8FB8B929D1522600847578 /* RepoListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListUseCase.swift; sourceTree = "<group>"; };
-		1E8FB8BB29D1530800847578 /* DefaultRepoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepoListRepository.swift; sourceTree = "<group>"; };
+		1E8FB8B929D1522600847578 /* RepositorySearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchUseCase.swift; sourceTree = "<group>"; };
+		1E8FB8BB29D1530800847578 /* DefaultRepositorySearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositorySearchRepository.swift; sourceTree = "<group>"; };
 		1E8FB8BD29D1532300847578 /* DefaultAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccountRepository.swift; sourceTree = "<group>"; };
-		1E8FB8BF29D1539800847578 /* RepoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListRepository.swift; sourceTree = "<group>"; };
+		1E8FB8BF29D1539800847578 /* RepositorySearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchRepository.swift; sourceTree = "<group>"; };
 		1E8FB8C129D153A700847578 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
 		1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+transformMap.swift"; sourceTree = "<group>"; };
-		1E8FB8C829D1583200847578 /* RepoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewModel.swift; sourceTree = "<group>"; };
-		1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
-		1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepoListCoordinator.swift; sourceTree = "<group>"; };
+		1E8FB8C829D1583200847578 /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
+		1E8FB8CA29D1583C00847578 /* RepositoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
+		1E8FB8CC29D1584B00847578 /* DefaultRepositoryListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositoryListCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8CE29D1588B00847578 /* DefaultAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAccountCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8D029D1589D00847578 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1E8FB8D229D158AF00847578 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
-		1E8FB8D429D158D800847578 /* RepoListCoordinateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListCoordinateAction.swift; sourceTree = "<group>"; };
+		1E8FB8D429D158D800847578 /* RepositoryListCoordinateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListCoordinateAction.swift; sourceTree = "<group>"; };
 		1E8FB8D629D158E300847578 /* AccountCoordinateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinateAction.swift; sourceTree = "<group>"; };
-		1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListCoordinator.swift; sourceTree = "<group>"; };
+		1E8FB8D829D158FB00847578 /* RepositoryListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeCoordinator.swift; sourceTree = "<group>"; };
 		1E8FB8E129D167BE00847578 /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 				1E8FB85729D099F500847578 /* AppCoordinator.swift */,
 				1E43BF2E29D6776E00C718D4 /* LoginCoordinator.swift */,
 				1E8FB8DA29D1590B00847578 /* AccountCoordinator.swift */,
-				1E8FB8D829D158FB00847578 /* RepoListCoordinator.swift */,
+				1E8FB8D829D158FB00847578 /* RepositoryListCoordinator.swift */,
 				1E43BF3429D67BEA00C718D4 /* CompletionDelegate */,
 			);
 			path = Protocol;
@@ -505,7 +505,7 @@
 			children = (
 				1E8FB85929D099FB00847578 /* AppCoordinateAction.swift */,
 				1E43BF3029D677B600C718D4 /* LoginCoordinateAction.swift */,
-				1E8FB8D429D158D800847578 /* RepoListCoordinateAction.swift */,
+				1E8FB8D429D158D800847578 /* RepositoryListCoordinateAction.swift */,
 				1E8FB8D629D158E300847578 /* AccountCoordinateAction.swift */,
 			);
 			path = Action;
@@ -592,7 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB88C29D12EF000847578 /* DefaultLoginUseCase.swift */,
-				1E8FB8B329D151C600847578 /* DefaultRepoListUseCase.swift */,
+				1E8FB8B329D151C600847578 /* DefaultRepositorySearchUseCase.swift */,
 				1E800D2429DC1A7900614811 /* DefaultStarringUseCase.swift */,
 				1E8FB8B529D151DC00847578 /* DefaultAccountUseCase.swift */,
 				1E8FB88529D12E6000847578 /* Protocol */,
@@ -604,7 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB88629D12E6F00847578 /* LoginUseCase.swift */,
-				1E8FB8B929D1522600847578 /* RepoListUseCase.swift */,
+				1E8FB8B929D1522600847578 /* RepositorySearchUseCase.swift */,
 				1E800D2A29DC668800614811 /* StarringUseCase.swift */,
 				1E8FB8B729D1521E00847578 /* AccountUseCase.swift */,
 			);
@@ -615,7 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB89229D12F7500847578 /* DefaultLoginRepository.swift */,
-				1E8FB8BB29D1530800847578 /* DefaultRepoListRepository.swift */,
+				1E8FB8BB29D1530800847578 /* DefaultRepositorySearchRepository.swift */,
 				1E8FB8BD29D1532300847578 /* DefaultAccountRepository.swift */,
 				1E800D2229DC169300614811 /* DefaultStarringRepository.swift */,
 				1E8FB88F29D12F3E00847578 /* Protocol */,
@@ -627,7 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB89029D12F4800847578 /* LoginRepository.swift */,
-				1E8FB8BF29D1539800847578 /* RepoListRepository.swift */,
+				1E8FB8BF29D1539800847578 /* RepositorySearchRepository.swift */,
 				1E800D2829DC668300614811 /* StarringRepository.swift */,
 				1E8FB8C129D153A700847578 /* AccountRepository.swift */,
 			);
@@ -666,9 +666,9 @@
 			isa = PBXGroup;
 			children = (
 				1E43BF2029D453CD00C718D4 /* RepositoryTableView */,
-				1E8FB8CC29D1584B00847578 /* DefaultRepoListCoordinator.swift */,
-				1E8FB8CA29D1583C00847578 /* RepoListViewController.swift */,
-				1E8FB8C829D1583200847578 /* RepoListViewModel.swift */,
+				1E8FB8CC29D1584B00847578 /* DefaultRepositoryListCoordinator.swift */,
+				1E8FB8CA29D1583C00847578 /* RepositoryListViewController.swift */,
+				1E8FB8C829D1583200847578 /* RepositoryListViewModel.swift */,
 			);
 			path = RepoList;
 			sourceTree = "<group>";
@@ -978,7 +978,7 @@
 				1E800D3429DD028100614811 /* URLSessionNetworkService.swift in Sources */,
 				1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */,
 				1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */,
-				1E8FB8D529D158D800847578 /* RepoListCoordinateAction.swift in Sources */,
+				1E8FB8D529D158D800847578 /* RepositoryListCoordinateAction.swift in Sources */,
 				1E8FB8AC29D150D000847578 /* RepositoryEntity.swift in Sources */,
 				1E800D2729DC615B00614811 /* StargazerView.swift in Sources */,
 				1E43BF2B29D5435400C718D4 /* RepositoryDetailViewController.swift in Sources */,
@@ -994,17 +994,17 @@
 				1E800D2F29DC68F400614811 /* Rx+validateStatusCode.swift in Sources */,
 				1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */,
 				1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */,
-				1E8FB8BA29D1522600847578 /* RepoListUseCase.swift in Sources */,
+				1E8FB8BA29D1522600847578 /* RepositorySearchUseCase.swift in Sources */,
 				1E8FB86B29D12B9600847578 /* LoginViewController.swift in Sources */,
 				1E8FB84829D08EBE00847578 /* Coordinator.swift in Sources */,
 				1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */,
-				1E8FB8B429D151C600847578 /* DefaultRepoListUseCase.swift in Sources */,
+				1E8FB8B429D151C600847578 /* DefaultRepositorySearchUseCase.swift in Sources */,
 				1E8FB86229D09A5C00847578 /* UserDefaultsValue.swift in Sources */,
-				1E8FB8CB29D1583C00847578 /* RepoListViewController.swift in Sources */,
+				1E8FB8CB29D1583C00847578 /* RepositoryListViewController.swift in Sources */,
 				1E8FB8B029D150F500847578 /* RepositoryTransformer.swift in Sources */,
 				1E8FB8C429D155AB00847578 /* Rx+transformMap.swift in Sources */,
 				1E8FB85D29D09A2600847578 /* Constant.swift in Sources */,
-				1E8FB8BC29D1530800847578 /* DefaultRepoListRepository.swift in Sources */,
+				1E8FB8BC29D1530800847578 /* DefaultRepositorySearchRepository.swift in Sources */,
 				1E8FB8CF29D1588B00847578 /* DefaultAccountCoordinator.swift in Sources */,
 				1E43BF3629D7CB1F00C718D4 /* GitHubAuthorizationEntity.swift in Sources */,
 				1E8FB85629D099E000847578 /* DefaultAppCoordinator.swift in Sources */,
@@ -1016,15 +1016,15 @@
 				1E8FB87129D12C4000847578 /* GitHubAPI.swift in Sources */,
 				1E8FB8A329D14F6700847578 /* RepositoryDTO.swift in Sources */,
 				1E8FB8D329D158AF00847578 /* AccountViewModel.swift in Sources */,
-				1E8FB8D929D158FB00847578 /* RepoListCoordinator.swift in Sources */,
+				1E8FB8D929D158FB00847578 /* RepositoryListCoordinator.swift in Sources */,
 				1E8FB8AE29D150F000847578 /* UserTransformer.swift in Sources */,
-				1E8FB8C029D1539800847578 /* RepoListRepository.swift in Sources */,
+				1E8FB8C029D1539800847578 /* RepositorySearchRepository.swift in Sources */,
 				1E43BF2F29D6776E00C718D4 /* LoginCoordinator.swift in Sources */,
 				1E8FB8D729D158E300847578 /* AccountCoordinateAction.swift in Sources */,
 				1E800D2D29DC687700614811 /* NetworkResult.swift in Sources */,
 				1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */,
 				1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */,
-				1E8FB8CD29D1584B00847578 /* DefaultRepoListCoordinator.swift in Sources */,
+				1E8FB8CD29D1584B00847578 /* DefaultRepositoryListCoordinator.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
 				1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */,
 				1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */,
@@ -1040,7 +1040,7 @@
 				1E8FB8B829D1521E00847578 /* AccountUseCase.swift in Sources */,
 				1E8FB8A829D14FE900847578 /* Transformable.swift in Sources */,
 				1E8FB8B629D151DC00847578 /* DefaultAccountUseCase.swift in Sources */,
-				1E8FB8C929D1583200847578 /* RepoListViewModel.swift in Sources */,
+				1E8FB8C929D1583200847578 /* RepositoryListViewModel.swift in Sources */,
 				1E8FB8E429D250FD00847578 /* CustomLogger.swift in Sources */,
 				1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */,
 				1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */,

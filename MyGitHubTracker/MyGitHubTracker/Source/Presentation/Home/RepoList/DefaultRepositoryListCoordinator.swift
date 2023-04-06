@@ -1,5 +1,5 @@
 //
-//  DefaultRepoListCoordinator.swift
+//  DefaultRepositoryListCoordinator.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/27.
@@ -7,21 +7,21 @@
 
 import UIKit
 
-final class DefaultRepoListCoordinator: Coordinator, RepoListCoordinator {
+final class DefaultRepositoryListCoordinator: Coordinator, RepositoryListCoordinator {
     
     var childCoordinatorMap: [CoordinatorType : Coordinator] = [:]
     var navigationController: UINavigationController
-    var type: CoordinatorType = .repoList
+    var type: CoordinatorType = .repositoryList
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        showRepoListViewController()
+        showRepositoryListViewController()
     }
     
-    func coordinate(by action: RepoListCoordinateAction) {
+    func coordinate(by action: RepositoryListCoordinateAction) {
         switch action {
         case .cellDidTap(let viewModel):
             pushRepositoryDetailViewController(with: viewModel)
@@ -35,11 +35,11 @@ final class DefaultRepoListCoordinator: Coordinator, RepoListCoordinator {
 
 // MARK: - Coordinating Methods
 
-private extension DefaultRepoListCoordinator {
-    func showRepoListViewController() {
-        let repoListViewController = RepoListViewController()
-        repoListViewController.bind(viewModel: RepoListViewModel(coordinator: self))
-        navigationController.setViewControllers([repoListViewController], animated: false)
+private extension DefaultRepositoryListCoordinator {
+    func showRepositoryListViewController() {
+        let repositoryListViewController = RepositoryListViewController()
+        repositoryListViewController.bind(viewModel: RepositoryListViewModel(coordinator: self))
+        navigationController.setViewControllers([repositoryListViewController], animated: false)
     }
     
     func pushRepositoryDetailViewController(with viewModel: RepositoryDetailViewModel) {

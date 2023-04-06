@@ -30,10 +30,10 @@ final class RepositoryCellViewModel: ViewModelType {
     
     @Inject private var starringUseCase: StarringUseCase
     
-    private weak var coordinator: RepoListCoordinator?
+    private weak var coordinator: RepositoryListCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: RepoListCoordinator, repositoryEntity: RepositoryEntity) {
+    init(coordinator: RepositoryListCoordinator, repositoryEntity: RepositoryEntity) {
         self.coordinator = coordinator
         self.repositoryEntity = repositoryEntity
         

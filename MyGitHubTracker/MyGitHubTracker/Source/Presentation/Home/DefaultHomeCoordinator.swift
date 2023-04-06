@@ -13,9 +13,9 @@ final class DefaultHomeCoordinator: Coordinator {
     var navigationController: UINavigationController
     var type: CoordinatorType = .home
     
-    private lazy var repoListCoordinator: RepoListCoordinator = {
+    private lazy var repositoryListCoordinator: RepositoryListCoordinator = {
         let rootNavigationController = UINavigationController()
-        let coordinator = DefaultRepoListCoordinator(navigationController: rootNavigationController)
+        let coordinator = DefaultRepositoryListCoordinator(navigationController: rootNavigationController)
         rootNavigationController.tabBarItem = UITabBarItem(
             title: "Repository",
             image: UIImage(systemName: "list.bullet.rectangle.portrait"),
@@ -42,12 +42,12 @@ final class DefaultHomeCoordinator: Coordinator {
     func start() {
         let homeTabBarController = UITabBarController()
         homeTabBarController.viewControllers = [
-            repoListCoordinator.navigationController,
+            repositoryListCoordinator.navigationController,
             accountCoordinator.navigationController
         ]
-        add(childCoordinator: repoListCoordinator)
+        add(childCoordinator: repositoryListCoordinator)
         add(childCoordinator: accountCoordinator)
-        repoListCoordinator.start()
+        repositoryListCoordinator.start()
         accountCoordinator.start()
         navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.setViewControllers([homeTabBarController], animated: true)
