@@ -331,6 +331,14 @@
 			path = RepositoryDetail;
 			sourceTree = "<group>";
 		};
+		1E800D4429DECA6B00614811 /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				1E800D3E29DEC77F00614811 /* URLSessionImageCacheService.swift */,
+			);
+			path = Caching;
+			sourceTree = "<group>";
+		};
 		1E8FB7FF29D08BA000847578 = {
 			isa = PBXGroup;
 			children = (
@@ -562,9 +570,9 @@
 		1E8FB87829D12CAA00847578 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1E800D4429DECA6B00614811 /* Caching */,
 				1E8FB87929D12CE900847578 /* DefaultURLSessionNetworkService.swift */,
 				1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */,
-				1E800D3E29DEC77F00614811 /* URLSessionImageCacheService.swift */,
 				1E800D3229DD027600614811 /* Protocol */,
 			);
 			path = Service;
