@@ -35,7 +35,7 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
         $0.numberOfLines = 2
     }
     
-    private lazy var starGazerView = StarGazerView().then {
+    private lazy var starGazerView = StargazerView().then {
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
@@ -110,7 +110,6 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
             .disposed(by: disposeBag)
     }
 }
-
 
 // MARK: - UI Configuration
 

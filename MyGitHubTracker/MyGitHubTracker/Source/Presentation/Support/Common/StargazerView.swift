@@ -1,5 +1,5 @@
 //
-//  StarGazerView.swift
+//  StarazerView.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/04/04.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StarGazerView: UIView {
+final class StargazerView: UIView {
     
     private lazy var startImageView: UIImageView = {
         let image = UIImage(systemName: "star")
@@ -46,7 +46,7 @@ final class StarGazerView: UIView {
 
 // MARK: - UI Configuration
 
-private extension StarGazerView {
+private extension StargazerView {
     func layoutUI() {
         addSubview(startImageView)
         addSubview(countLabel)
@@ -65,7 +65,7 @@ private extension StarGazerView {
 
 // MARK: - External Methods
 
-extension StarGazerView {
+extension StargazerView {
     func set(count: Int) {
         countLabel.text = "\(count)"
     }
