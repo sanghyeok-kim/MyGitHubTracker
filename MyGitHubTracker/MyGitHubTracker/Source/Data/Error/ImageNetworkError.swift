@@ -10,6 +10,7 @@ import Foundation
 enum ImageNetworkError: LocalizedError {
     case errorDetected(error: Error)
     case invalidFileLocation
+    case invalidImageData
     
     var errorDescription: String? {
         switch self {
@@ -17,6 +18,8 @@ enum ImageNetworkError: LocalizedError {
             return "Error detected: \(error.localizedDescription)"
         case .invalidFileLocation:
             return "Invalid File Location"
+        case .invalidImageData:
+            return "Invalid Image Data"
         }
     }
 }
