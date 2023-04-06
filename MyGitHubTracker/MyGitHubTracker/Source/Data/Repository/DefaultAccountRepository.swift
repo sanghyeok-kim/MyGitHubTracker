@@ -9,7 +9,7 @@ import RxSwift
 
 final class DefaultAccountRepository: AccountRepository {
     
-    @Inject private var urlSessionNetworkService: URLSessionNetworkService
+    @Inject private var urlSessionNetworkService: EndpointService
     
     func fetchUserInfo() -> Single<UserDTO> {
         return urlSessionNetworkService

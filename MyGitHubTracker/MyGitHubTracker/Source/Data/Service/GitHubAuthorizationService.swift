@@ -1,5 +1,5 @@
 //
-//  DefaultGitHubAuthorizationService.swift
+//  GitHubAuthorizationService.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/27.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class DefaultGitHubAuthorizationService: GitHubAuthorizationService {
-    func buildGitHubAuthorizationURL() -> URL? {
+final class GitHubAuthorizationService: AuthorizationService {
+    func buildAuthorizationURL() -> URL? {
         let target = GitHubAPI.fetchTempCode
         
         guard let url = target.baseURL?.appendingPathComponent(target.path) else { return nil }

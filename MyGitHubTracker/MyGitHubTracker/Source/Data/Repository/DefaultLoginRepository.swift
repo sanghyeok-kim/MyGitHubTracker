@@ -9,11 +9,11 @@ import RxSwift
 
 final class DefaultLoginRepository: LoginRepository {
     
-    @Inject private var urlSessionNetworkService: URLSessionNetworkService
-    @Inject private var gitHubAuthorizationService: GitHubAuthorizationService
+    @Inject private var urlSessionNetworkService: EndpointService
+    @Inject private var gitHubAuthorizationService: AuthorizationService
     
     func buildGitHubAuthorizationURL() -> URL? {
-        return gitHubAuthorizationService.buildGitHubAuthorizationURL()
+        return gitHubAuthorizationService.buildAuthorizationURL()
     }
     
     func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String, completion: @escaping ((Result<TokenDTO, Error>) -> Void)) {

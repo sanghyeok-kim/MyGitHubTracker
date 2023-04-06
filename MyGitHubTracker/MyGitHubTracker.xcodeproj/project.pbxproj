@@ -32,8 +32,8 @@
 		1E800D2D29DC687700614811 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2C29DC687700614811 /* NetworkResult.swift */; };
 		1E800D2F29DC68F400614811 /* Rx+validateStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */; };
 		1E800D3129DC68FE00614811 /* Rx+unwrapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */; };
-		1E800D3429DD028100614811 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3329DD028100614811 /* URLSessionNetworkService.swift */; };
-		1E800D3629DD02CF00614811 /* GitHubAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3529DD02CF00614811 /* GitHubAuthorizationService.swift */; };
+		1E800D3429DD028100614811 /* EndpointService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3329DD028100614811 /* EndpointService.swift */; };
+		1E800D3629DD02CF00614811 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3529DD02CF00614811 /* AuthorizationService.swift */; };
 		1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3729DDC08700614811 /* RepositoryDetailViewModel.swift */; };
 		1E800D3B29DEBDC800614811 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3A29DEBDC800614811 /* CircularImageView.swift */; };
 		1E800D3D29DEC73E00614811 /* ImageNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */; };
@@ -71,8 +71,8 @@
 		1E8FB87329D12C5000847578 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87229D12C5000847578 /* HTTPMethod.swift */; };
 		1E8FB87529D12C5800847578 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87429D12C5800847578 /* TargetType.swift */; };
 		1E8FB87729D12C6400847578 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87629D12C6400847578 /* NetworkError.swift */; };
-		1E8FB87A29D12CE900847578 /* DefaultURLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87929D12CE900847578 /* DefaultURLSessionNetworkService.swift */; };
-		1E8FB87C29D12CF800847578 /* DefaultGitHubAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */; };
+		1E8FB87A29D12CE900847578 /* URLSessionEndpointService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87929D12CE900847578 /* URLSessionEndpointService.swift */; };
+		1E8FB87C29D12CF800847578 /* GitHubAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87B29D12CF800847578 /* GitHubAuthorizationService.swift */; };
 		1E8FB87F29D12DC800847578 /* TokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB87E29D12DC800847578 /* TokenDTO.swift */; };
 		1E8FB88729D12E6F00847578 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB88629D12E6F00847578 /* LoginUseCase.swift */; };
 		1E8FB88D29D12EF000847578 /* DefaultLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB88C29D12EF000847578 /* DefaultLoginUseCase.swift */; };
@@ -163,8 +163,8 @@
 		1E800D2C29DC687700614811 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+validateStatusCode.swift"; sourceTree = "<group>"; };
 		1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+unwrapData.swift"; sourceTree = "<group>"; };
-		1E800D3329DD028100614811 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
-		1E800D3529DD02CF00614811 /* GitHubAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAuthorizationService.swift; sourceTree = "<group>"; };
+		1E800D3329DD028100614811 /* EndpointService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointService.swift; sourceTree = "<group>"; };
+		1E800D3529DD02CF00614811 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		1E800D3729DDC08700614811 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		1E800D3A29DEBDC800614811 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkError.swift; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 		1E8FB87229D12C5000847578 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		1E8FB87429D12C5800847578 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		1E8FB87629D12C6400847578 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		1E8FB87929D12CE900847578 /* DefaultURLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURLSessionNetworkService.swift; sourceTree = "<group>"; };
-		1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGitHubAuthorizationService.swift; sourceTree = "<group>"; };
+		1E8FB87929D12CE900847578 /* URLSessionEndpointService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionEndpointService.swift; sourceTree = "<group>"; };
+		1E8FB87B29D12CF800847578 /* GitHubAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAuthorizationService.swift; sourceTree = "<group>"; };
 		1E8FB87E29D12DC800847578 /* TokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDTO.swift; sourceTree = "<group>"; };
 		1E8FB88629D12E6F00847578 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		1E8FB88C29D12EF000847578 /* DefaultLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginUseCase.swift; sourceTree = "<group>"; };
@@ -327,8 +327,8 @@
 		1E800D3229DD027600614811 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				1E800D3329DD028100614811 /* URLSessionNetworkService.swift */,
-				1E800D3529DD02CF00614811 /* GitHubAuthorizationService.swift */,
+				1E800D3329DD028100614811 /* EndpointService.swift */,
+				1E800D3529DD02CF00614811 /* AuthorizationService.swift */,
 				1E8F51FB29DEFC4E0001CA9E /* URLDataService.swift */,
 			);
 			path = Protocol;
@@ -594,8 +594,8 @@
 		1E8FB87829D12CAA00847578 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB87929D12CE900847578 /* DefaultURLSessionNetworkService.swift */,
-				1E8FB87B29D12CF800847578 /* DefaultGitHubAuthorizationService.swift */,
+				1E8FB87929D12CE900847578 /* URLSessionEndpointService.swift */,
+				1E8FB87B29D12CF800847578 /* GitHubAuthorizationService.swift */,
 				1E8F51FD29DEFC590001CA9E /* URLSessionURLDataService.swift */,
 				1E800D3229DD027600614811 /* Protocol */,
 			);
@@ -1024,7 +1024,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8FB89C29D14E6800847578 /* Rx+decodeMap.swift in Sources */,
-				1E800D3429DD028100614811 /* URLSessionNetworkService.swift in Sources */,
+				1E800D3429DD028100614811 /* EndpointService.swift in Sources */,
 				1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */,
 				1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */,
 				1E8FB8D529D158D800847578 /* RepositoryListCoordinateAction.swift in Sources */,
@@ -1107,12 +1107,12 @@
 				1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */,
 				1E8FB8AA29D150CB00847578 /* UserEntity.swift in Sources */,
 				1E8F51F829DEFC120001CA9E /* MemoryCache.swift in Sources */,
-				1E800D3629DD02CF00614811 /* GitHubAuthorizationService.swift in Sources */,
+				1E800D3629DD02CF00614811 /* AuthorizationService.swift in Sources */,
 				1E800D3F29DEC77F00614811 /* CachedURLDataFetchRepository.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
 				1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */,
 				1E8FB84B29D08F0500847578 /* CoordinatorType.swift in Sources */,
-				1E8FB87C29D12CF800847578 /* DefaultGitHubAuthorizationService.swift in Sources */,
+				1E8FB87C29D12CF800847578 /* GitHubAuthorizationService.swift in Sources */,
 				1E8FB88729D12E6F00847578 /* LoginUseCase.swift in Sources */,
 				1E8F51FA29DEFC390001CA9E /* DiskCache.swift in Sources */,
 				1E8FB88D29D12EF000847578 /* DefaultLoginUseCase.swift in Sources */,
@@ -1121,7 +1121,7 @@
 				1E800D2329DC169300614811 /* DefaultStarringRepository.swift in Sources */,
 				1E43BF3329D67A2200C718D4 /* LoginCoordinatorCompletionDelegate.swift in Sources */,
 				1E8FB87729D12C6400847578 /* NetworkError.swift in Sources */,
-				1E8FB87A29D12CE900847578 /* DefaultURLSessionNetworkService.swift in Sources */,
+				1E8FB87A29D12CE900847578 /* URLSessionEndpointService.swift in Sources */,
 				1E8FB89329D12F7500847578 /* DefaultLoginRepository.swift in Sources */,
 				1E43BF2D29D6774600C718D4 /* DefaultLoginCoordinator.swift in Sources */,
 				1E43BF2229D4541000C718D4 /* RepositorySection.swift in Sources */,

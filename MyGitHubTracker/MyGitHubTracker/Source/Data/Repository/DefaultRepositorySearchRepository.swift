@@ -9,7 +9,7 @@ import RxSwift
 
 final class DefaultRepositorySearchRepository: RepositorySearchRepository {
     
-    @Inject private var urlSessionNetworkService: URLSessionNetworkService
+    @Inject private var urlSessionNetworkService: EndpointService
     
     func fetchUserRepositories(perPage: Int, page: Int) -> Single<[RepositoryDTO]> {
         return urlSessionNetworkService

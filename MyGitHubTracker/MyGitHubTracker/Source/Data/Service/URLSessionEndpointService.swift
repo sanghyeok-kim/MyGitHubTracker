@@ -1,5 +1,5 @@
 //
-//  DefaultURLSessionNetworkService.swift
+//  URLSessionEndpointService.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/27.
@@ -7,9 +7,9 @@
 
 import RxSwift
 
-final class DefaultURLSessionService: URLSessionNetworkService {
+final class URLSessionEndpointService: EndpointService {
     
-    static let shared = DefaultURLSessionService()
+    static let shared = URLSessionEndpointService()
     
     private init() {}
     
@@ -92,7 +92,7 @@ final class DefaultURLSessionService: URLSessionNetworkService {
 
 // MARK: - Supporting Methods
 
-private extension DefaultURLSessionService {
+private extension URLSessionEndpointService {
     private func buildRequest(from endpoint: TargetType) throws -> URLRequest {
         guard let url = endpoint.baseURL?.appendingPathComponent(endpoint.path) else {
             throw NetworkError.invalidURL

@@ -35,8 +35,8 @@ extension Container {
         Container.shared.register(service: DiskCachable.self) { DiskCache.shared }
         
         // Service
-        Container.shared.register(service: URLSessionNetworkService.self) { DefaultURLSessionService.shared }
-        Container.shared.register(service: GitHubAuthorizationService.self) { DefaultGitHubAuthorizationService() }
+        Container.shared.register(service: EndpointService.self) { URLSessionEndpointService.shared }
+        Container.shared.register(service: AuthorizationService.self) { GitHubAuthorizationService() }
         Container.shared.register(service: URLDataService.self) { URLSessionURLDataService() }
         
         // Login

@@ -10,7 +10,7 @@ import RxRelay
 
 final class DefaultStarringRepository: StarringRepository {
     
-    @Inject private var urlSessionNetworkService: URLSessionNetworkService
+    @Inject private var urlSessionNetworkService: EndpointService
     
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Single<Bool> {
         return urlSessionNetworkService
