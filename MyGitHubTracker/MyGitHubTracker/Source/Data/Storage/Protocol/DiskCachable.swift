@@ -8,6 +8,6 @@
 import Foundation
 
 protocol DiskCachable {
-    func lookUpData(by key: String, completion: @escaping (Data?) -> Void)
+    func lookUpData(by key: String) async -> Data?
     func storeData(_ data: Data, forKey key: String)
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol URLDataService {
-    func fetchData(from url: URL, completion: @escaping ((Result<Data, NetworkError>) -> Void))
+    func fetchData(from url: URL) async throws -> Data
 }

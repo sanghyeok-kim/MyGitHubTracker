@@ -572,10 +572,10 @@
 				1E8FB87429D12C5800847578 /* TargetType.swift */,
 				1E8FB85E29D09A4100847578 /* AccessToken.swift */,
 				1E800D2C29DC687700614811 /* NetworkResult.swift */,
+				1E8FB88E29D12F1D00847578 /* Repository */,
 				1E8FB8EA29D254C400847578 /* Error */,
 				1E800D4429DECA6B00614811 /* Storage */,
 				1E8FB87829D12CAA00847578 /* Service */,
-				1E8FB88E29D12F1D00847578 /* Repository */,
 				1E8FB87D29D12D7400847578 /* DTO */,
 			);
 			path = Data;

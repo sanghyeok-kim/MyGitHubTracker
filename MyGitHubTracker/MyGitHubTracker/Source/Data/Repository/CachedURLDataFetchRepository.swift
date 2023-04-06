@@ -17,30 +17,25 @@ final class CachedURLDataFetchRepository: URLDataFetchRepository {
     
     private init() { }
     
-    func fetch(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> ()) {
-        let dataName = url.lastPathComponent
+    func fetchCachedData(from url: URL) async throws -> Data {
+        let imageName = url.lastPathComponent
         
-        if let data = memoryCache.lookUpData(by: dataName) {
-            completion(.success(data))
-            return
+        if let imageData = memoryCache.lookUpData(by: imageName) {
+            return imageData
         }
         
-        diskCache.lookUpData(by: dataName) { [weak self] data in
-            if let data = data {
-                self?.memoryCache.storeData(data, forKey: dataName)
-                completion(.success(data))
-            } else {
-                self?.urlDataService.fetchData(from: url) { [weak self] result in
-                    switch result {
-                    case .success(let data):
-                        self?.memoryCache.storeData(data, forKey: dataName)
-                        self?.diskCache.storeData(data, forKey: dataName)
-                        completion(.success(data))
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
-                }
-            }
+        if let data = await diskCache.lookUpData(by: imageName) {
+            memoryCache.storeData(data, forKey: imageName)
+            return data
+        }
+        
+        do {
+            let data = try await urlDataService.fetchData(from: url)
+            memoryCache.storeData(data, forKey: imageName)
+            diskCache.storeData(data, forKey: imageName)
+            return data
+        } catch {
+            throw error
         }
     }
 }

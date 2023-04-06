@@ -8,5 +8,5 @@
 import Foundation
 
 protocol URLDataFetchRepository {
-    func fetch(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> ())
+    func fetchCachedData(from url: URL) async throws -> Data
 }

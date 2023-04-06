@@ -18,19 +18,16 @@ final class DiskCache: DiskCachable {
     
     private init() { }
     
-    func lookUpData(by key: String, completion: @escaping (Data?) -> Void) {
+    func lookUpData(by key: String) async -> Data? {
         guard let filePath = diskCacheDirectoryUrl?.appendingPathComponent(key) else {
-            completion(nil)
-            return
+            return nil
         }
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            if self.fileManager.fileExists(atPath: filePath.path),
-               let data = try? Data(contentsOf: filePath) {
-                completion(data)
-            } else {
-                completion(nil)
-            }
+        if fileManager.fileExists(atPath: filePath.path),
+           let data = try? Data(contentsOf: filePath) {
+            return data
+        } else {
+            return nil
         }
     }
     
