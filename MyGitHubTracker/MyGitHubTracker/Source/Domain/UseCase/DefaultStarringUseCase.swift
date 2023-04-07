@@ -10,7 +10,6 @@ import RxRelay
 
 final class DefaultStarringUseCase: StarringUseCase {
     
-    let isStarred = BehaviorRelay<Bool>(value: false)
     let errorDidOccur = PublishRelay<ToastError>()
     
     @Inject private var starringRepository: StarringRepository

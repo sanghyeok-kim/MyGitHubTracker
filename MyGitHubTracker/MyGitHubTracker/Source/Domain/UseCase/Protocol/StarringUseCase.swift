@@ -9,7 +9,6 @@ import RxSwift
 import RxRelay
 
 protocol StarringUseCase {
-    var isStarred: BehaviorRelay<Bool> { get }
     var errorDidOccur: PublishRelay<ToastError> { get }
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Observable<Bool>
 }

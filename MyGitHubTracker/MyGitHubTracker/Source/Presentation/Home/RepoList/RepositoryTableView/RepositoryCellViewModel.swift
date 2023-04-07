@@ -62,10 +62,6 @@ final class RepositoryCellViewModel: ViewModelType {
             .bind(to: output.updatedDate)
             .disposed(by: disposeBag)
         
-        starringUseCase.isStarred
-            .bind(to: output.isStarred)
-            .disposed(by: disposeBag)
-        
         input.cellDidLoad
             .map { repositoryEntity.isStarredByUser }
             .bind(to: output.isStarred)
