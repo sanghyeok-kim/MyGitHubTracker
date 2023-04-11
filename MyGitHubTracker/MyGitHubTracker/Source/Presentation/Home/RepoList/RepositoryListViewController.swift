@@ -70,7 +70,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
     func bindOutput(from viewModel: RepositoryListViewModel) {
         let output = viewModel.output
         
-        output.isFetchingData
+        output.isLoadingIndicatorVisible
             .asDriver()
             .drive(loadingIndicator.rx.isAnimating)
             .disposed(by: disposeBag)

@@ -18,16 +18,20 @@ final class RepositoryListViewModel: ViewModelType {
     }
     
     struct Output {
-        let isFetchingData = BehaviorRelay<Bool>(value: true)
+        let isLoadingIndicatorVisible = BehaviorRelay<Bool>(value: true)
         let repositoryCellViewModels = BehaviorRelay<[RepositoryCellViewModel]>(value: [])
         let showErrorMessage = PublishRelay<String>()
         let endTableViewRefresh = PublishRelay<Void>()
     }
     
+    struct State {
+        let userRepositories = BehaviorRelay<[RepositoryEntity]>(value: [])
+        fileprivate var paginationState = PaginationState()
+    }
+    
     let input = Input()
     let output = Output()
-    
-    private var paginationState = PaginationState()
+    private var state = State()
     
     @Inject private var repositorySearchUseCase: RepositorySearchUseCase
     @Inject private var starringUseCase: StarringUseCase
@@ -38,44 +42,41 @@ final class RepositoryListViewModel: ViewModelType {
     init(coordinator: RepositoryListCoordinator) {
         self.coordinator = coordinator
         
-        // MARK: - Event from View Input
+        // MARK: - Bind Input: viewDidLoad
         
-        input.viewDidLoad
+        let fetchedUserRepositories = input.viewDidLoad
             .withUnretained(self)
-            .bind { `self`, _ in
-                let (perPage, page) = self.paginationState.parameters
-                self.repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
+            .flatMap { `self`, _ in
+                let (perPage, page) = self.state.paginationState.parameters
+                return self.repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
             }
+            .materialize()
+            .share()
+        
+        fetchedUserRepositories
+            .compactMap { $0.element }
+            .bind(to: state.userRepositories)
             .disposed(by: disposeBag)
         
-        input.tableViewDidRefresh
-            .withUnretained(self)
-            .bind { `self`, _ in
-                self.refreshToInitialPage()
-            }
+        fetchedUserRepositories
+            .compactMap { $0.error }
+            .doLogError(logType: .error)
+            .toastMeessageMap(to: .failToFetchRepositories)
+            .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
-        input.cellWillDisplay
-            .withUnretained(self)
-            .bind { `self`, indexPath in
-                self.loadNextPageIfNeeded(for: indexPath)
-            }
+        fetchedUserRepositories
+            .compactMap { $0.error }
+            .map { _ in false }
+            .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
-        input.cellDidTap
-            .withLatestFrom(output.repositoryCellViewModels) { ($0, $1)  }
-            .map { indexPath, cellViewModel -> RepositoryCellViewModel in
-                return cellViewModel[indexPath.row]
-            }
-            .bind { $0.cellDidTap() }
-            .disposed(by: disposeBag)
+        // MARK: - Bind State: userRepositories
         
-        // MARK: - Event from UseCase
-        
-        let fetchedUserRepository = repositorySearchUseCase.fetchedUserRepositories
+        let fetchedRepositoryEntities = state.userRepositories
             .filter { !$0.isEmpty }
             .do(onNext: { [weak self] _ in
-                self?.paginationState.isLoading = false
+                self?.state.paginationState.isLoading = false
             })
             .withUnretained(self)
             .flatMap { `self`, repositoryEntities -> Observable<([RepositoryEntity], [Bool])> in
@@ -86,53 +87,123 @@ final class RepositoryListViewModel: ViewModelType {
                 let (repositoryEntities, isStarredByUsers) = result
                 return self.updateIsStarredByUser(of: repositoryEntities, bools: isStarredByUsers)
             }
+            .materialize()
             .share()
         
-        fetchedUserRepository
+        fetchedRepositoryEntities
+            .compactMap { $0.element }
             .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repositoryEntity: $0) } }
             .withLatestFrom(output.repositoryCellViewModels) { $1 + $0 }
             .bind(to: output.repositoryCellViewModels)
             .disposed(by: disposeBag)
         
-        fetchedUserRepository
+        fetchedRepositoryEntities
+            .compactMap { $0.element }
             .map { _ in false }
             .distinctUntilChanged()
-            .bind(to: output.isFetchingData)
+            .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
-        repositorySearchUseCase.errorDidOccur
-            .map { $0.localizedDescription }
+        fetchedRepositoryEntities
+            .compactMap { $0.error }
+            .doLogError(logType: .error)
+            .map { _ in ToastError.failToFetchRepositories.localizedDescription }
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
-        Observable.merge(
-            repositorySearchUseCase.fetchedUserRepositories.skip(1).map { _ in },
-            repositorySearchUseCase.errorDidOccur.map { _ in }
-        )
-        .bind(to: output.endTableViewRefresh)
-        .disposed(by: disposeBag)
+        // MARK: - Bind Input: tableViewDidRefresh
+        
+        input.tableViewDidRefresh
+            .withUnretained(self)
+            .bind { `self`, _ in
+                self.refreshToInitialPage()
+            }
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind Input: cellWillDisplay
+        
+        input.cellWillDisplay
+            .withUnretained(self)
+            .bind { `self`, indexPath in
+                self.loadNextPageIfNeeded(for: indexPath)
+            }
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind Input: cellDidTap
+        
+        input.cellDidTap
+            .withLatestFrom(output.repositoryCellViewModels) { ($0, $1)  }
+            .map { indexPath, cellViewModel -> RepositoryCellViewModel in
+                return cellViewModel[indexPath.row]
+            }
+            .bind { $0.cellDidTap() }
+            .disposed(by: disposeBag)
     }
 }
 
 // MARK: - Supporting Methods
 
 private extension RepositoryListViewModel {
-    private func loadNextPageIfNeeded(for indexPath: IndexPath) {
-        if paginationState.isLoading { return }
+    func loadNextPageIfNeeded(for indexPath: IndexPath) {
+        if state.paginationState.isLoading { return }
         
         let threshold = output.repositoryCellViewModels.value.count - 1
         if indexPath.row == threshold {
-            paginationState.prepareNextPage()
-            let (perPage, page) = paginationState.parameters
-            repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
+            state.paginationState.prepareNextPage()
+            let (perPage, page) = state.paginationState.parameters
+            
+            let fetchedUserRepositories = repositorySearchUseCase
+                .fetchUserRepositories(perPage: perPage, page: page)
+                .materialize()
+                .share()
+            
+            fetchedUserRepositories
+                .compactMap { $0.element }
+                .bind(to: state.userRepositories)
+                .disposed(by: disposeBag)
+            
+            fetchedUserRepositories
+                .compactMap { $0.error }
+                .doLogError(logType: .error)
+                .toastMeessageMap(to: .failToFetchRepositories)
+                .bind(to: output.showErrorMessage)
+                .disposed(by: disposeBag)
         }
     }
     
-    private func refreshToInitialPage() {
+    func refreshToInitialPage() {
         output.repositoryCellViewModels.accept([])
-        paginationState.resetToInitial()
-        let (perPage, page) = paginationState.parameters
-        repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
+        state.paginationState.resetToInitial()
+        
+        let (perPage, page) = state.paginationState.parameters
+        let fetchedUserRepositories = repositorySearchUseCase
+            .fetchUserRepositories(perPage: perPage, page: page)
+            .materialize()
+            .share()
+        
+        fetchedUserRepositories
+            .compactMap { $0.element }
+            .bind(to: state.userRepositories)
+            .disposed(by: disposeBag)
+        
+        fetchedUserRepositories
+            .compactMap { $0.element }
+            .map { _ in }
+            .bind(to: output.endTableViewRefresh)
+            .disposed(by: disposeBag)
+        
+        fetchedUserRepositories
+            .compactMap { $0.error }
+            .doLogError(logType: .error)
+            .toastMeessageMap(to: .failToFetchRepositories)
+            .bind(to: output.showErrorMessage)
+            .disposed(by: disposeBag)
+        
+        fetchedUserRepositories
+            .compactMap { $0.error }
+            .map { _ in }
+            .bind(to: output.endTableViewRefresh)
+            .disposed(by: disposeBag)
     }
     
     func zipIsStarredByUser(with repositories: [RepositoryEntity]) -> Observable<([RepositoryEntity], [Bool])> {
@@ -150,6 +221,8 @@ private extension RepositoryListViewModel {
         }
     }
 }
+
+// MARK: - State Models
 
 private extension RepositoryListViewModel {
     struct PaginationState {

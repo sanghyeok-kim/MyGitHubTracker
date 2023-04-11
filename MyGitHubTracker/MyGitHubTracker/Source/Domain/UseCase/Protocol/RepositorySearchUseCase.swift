@@ -6,12 +6,8 @@
 //
 
 import RxSwift
-import RxRelay
 
 protocol RepositorySearchUseCase {
-    var fetchedUserRepositories: BehaviorRelay<[RepositoryEntity]> { get }
-    var fetchedRepositoriyDetail: PublishRelay<RepositoryEntity> { get }
-    var errorDidOccur: PublishRelay<ToastError> { get }
-    func fetchUserRepositories(perPage: Int, page: Int)
-    func fetchRepositoryDetail(ownerName: String, repositoryName: String)
+    func fetchUserRepositories(perPage: Int, page: Int) -> Observable<[RepositoryEntity]>
+    func fetchRepositoryDetail(ownerName: String, repositoryName: String) -> Observable<RepositoryEntity>
 }
