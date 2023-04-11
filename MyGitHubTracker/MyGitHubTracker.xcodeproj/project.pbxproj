@@ -115,7 +115,7 @@
 		1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */; };
 		1E8FB8E929D251D500847578 /* Rx+catchAndLogError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E829D251D500847578 /* Rx+catchAndLogError.swift */; };
 		1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8EB29D254CE00847578 /* ToastError.swift */; };
-		1E90046D29E4FC94008F9895 /* Rx+flatMapCompletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90046C29E4FC94008F9895 /* Rx+flatMapCompletable.swift */; };
+		1E90046D29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */; };
 		1E90047329E59C4C008F9895 /* TokenStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047229E59C4C008F9895 /* TokenStorable.swift */; };
 		1E90047529E59CF0008F9895 /* DefaultTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047429E59CF0008F9895 /* DefaultTokenRepository.swift */; };
 		1E90047729E59CFA008F9895 /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047629E59CFA008F9895 /* TokenRepository.swift */; };
@@ -254,7 +254,7 @@
 		1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+LogCategory.swift"; sourceTree = "<group>"; };
 		1E8FB8E829D251D500847578 /* Rx+catchAndLogError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+catchAndLogError.swift"; sourceTree = "<group>"; };
 		1E8FB8EB29D254CE00847578 /* ToastError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastError.swift; sourceTree = "<group>"; };
-		1E90046C29E4FC94008F9895 /* Rx+flatMapCompletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+flatMapCompletable.swift"; sourceTree = "<group>"; };
+		1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+flatMapCompletableMaterialized.swift"; sourceTree = "<group>"; };
 		1E90047229E59C4C008F9895 /* TokenStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorable.swift; sourceTree = "<group>"; };
 		1E90047429E59CF0008F9895 /* DefaultTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTokenRepository.swift; sourceTree = "<group>"; };
 		1E90047629E59CFA008F9895 /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
@@ -547,7 +547,7 @@
 				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
 				1E8FB8E829D251D500847578 /* Rx+catchAndLogError.swift */,
 				1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */,
-				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletable.swift */,
+				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */,
 				1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */,
 				1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */,
 			);
@@ -1123,7 +1123,7 @@
 				1E8F51F829DEFC120001CA9E /* MemoryCache.swift in Sources */,
 				1E800D3629DD02CF00614811 /* AuthorizationService.swift in Sources */,
 				1E800D3F29DEC77F00614811 /* CachedURLDataFetchRepository.swift in Sources */,
-				1E90046D29E4FC94008F9895 /* Rx+flatMapCompletable.swift in Sources */,
+				1E90046D29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
 				1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */,
 				1E8FB84B29D08F0500847578 /* CoordinatorType.swift in Sources */,
