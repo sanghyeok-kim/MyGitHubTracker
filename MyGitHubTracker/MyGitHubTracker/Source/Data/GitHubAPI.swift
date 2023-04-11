@@ -74,7 +74,7 @@ extension GitHubAPI: TargetType {
                     "Accept": "application/json"]
         case .fetchUserInfo, .fetchUserRepositories, .fetchRepositoryDetail, .checkRepositoryIsStarredByUser:
             return ["Accept": "application/vnd.github+json",
-                    "Authorization": "Bearer \(AccessToken.value ?? "")",
+                    "Authorization": "Bearer \(TokenStorage.shared.accessToken ?? "")",
                     "X-GitHub-Api-Version": "2022-11-28"]
         }
     }
