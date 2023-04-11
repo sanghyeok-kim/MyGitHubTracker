@@ -30,6 +30,11 @@ final class Container {
 
 extension Container {
     func registerDependencies() {
+        
+        // Token Storage
+        Container.shared.register(service: TokenStorable.self) { TokenStorage.shared }
+        Container.shared.register(service: TokenRepository.self) { DefaultTokenRepository() }
+        
         // Cache Storage
         Container.shared.register(service: MemoryCachable.self) { MemoryCache.shared }
         Container.shared.register(service: DiskCachable.self) { DiskCache.shared }

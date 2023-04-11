@@ -9,6 +9,8 @@ import UIKit
 
 final class DefaultAppCoordinator: AppCoordinator {
     
+    @Inject private var tokenStorage: TokenStorable
+    
     var childCoordinatorMap: [CoordinatorType: Coordinator] = [:]
     var navigationController: UINavigationController
     let type: CoordinatorType = .app
@@ -18,7 +20,7 @@ final class DefaultAppCoordinator: AppCoordinator {
     }
     
     func start() {
-        switch AccessToken.isStored() {
+        switch tokenStorage.isStored() {
         case true:
             startHomeCoordinatorFlow()
         case false:
