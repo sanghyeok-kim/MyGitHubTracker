@@ -1,5 +1,5 @@
 //
-//  Rx+catchAndLogError.swift
+//  Rx+doLogError.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/28.
@@ -9,17 +9,11 @@ import RxSwift
 import OSLog
 
 extension ObservableType where Element: Error {
-    func catchAndLogError(logType: OSLogType) -> Observable<Void> {
+    func doLogError(logType: OSLogType) -> Observable<Element> {
         return self.do { error in
             let errorMessage = error.localizedDescription
             let errorCategory = (error as? OSLoggable)?.category ?? .default
-            CustomLogger.log(
-                message: errorMessage,
-                category: errorCategory,
-                type: logType
-            )
+            CustomLogger.log(message: errorMessage, category: errorCategory, type: logType)
         }
-        .map { _ in }
-        .catch { _ in .just(()) }
     }
 }
