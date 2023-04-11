@@ -48,6 +48,7 @@ final class LoginViewModel: ViewModelType {
             .subscribe(with: self, onNext: { `self`, _ in
                 self.coordinator?.coordinate(by: .accessTokenDidfetch)
             }, onError: { `self`, error in
+                CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
                 self.output.showErrorMessage.accept(ToastError.failToFetchAccessToken.localizedDescription)
             })
             .disposed(by: disposeBag)
