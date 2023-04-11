@@ -19,25 +19,32 @@ struct KeychainValue<T: KeychainStorable> {
     let key: String
     let defaultValue: T?
     
+    private let serialQueue = DispatchQueue(label: "TokenStorage.serialQueue")
+    
     init(_ key: String, defaultValue: T? = nil) {
+        keychain.synchronizable = true
         self.key = key
         self.defaultValue = defaultValue
     }
     
     var wrappedValue: T? {
         get {
-            if let data = keychain.getData(key),
-               let value = try? JSONDecoder().decode(T.self, from: data) {
-                return value
+            serialQueue.sync {
+                if let data = keychain.getData(key),
+                   let value = try? JSONDecoder().decode(T.self, from: data) {
+                    return value
+                }
+                return nil
             }
-            return nil
         }
         set {
-            if let newValue = newValue,
-               let data = try? JSONEncoder().encode(newValue) {
-                keychain.set(data, forKey: key)
-            } else {
-                keychain.delete(key)
+            serialQueue.sync {
+                if let newValue = newValue,
+                   let data = try? JSONEncoder().encode(newValue) {
+                    keychain.set(data, forKey: key)
+                } else {
+                    keychain.delete(key)
+                }
             }
         }
     }
