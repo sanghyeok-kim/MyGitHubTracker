@@ -40,17 +40,28 @@ final class LoginViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        input.userDidAuthorize
+        let accessTokenDidFetch = input.userDidAuthorize
+            .debug()
             .withUnretained(self)
             .flatMapCompletable { `self`, url in
                 self.loginUseCase.fetchAndStoreAccessToken(with: url)
             }
-            .subscribe(with: self, onNext: { `self`, _ in
+            .materialize()
+            .share()
+        
+        accessTokenDidFetch
+            .compactMap { $0.element }
+            .withUnretained(self)
+            .bind { `self`, _ in
                 self.coordinator?.coordinate(by: .accessTokenDidfetch)
-            }, onError: { `self`, error in
-                CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
-                self.output.showErrorMessage.accept(ToastError.failToFetchAccessToken.localizedDescription)
-            })
+            }
+            .disposed(by: disposeBag)
+
+        accessTokenDidFetch
+            .compactMap { $0.error }
+            .doLogError(logType: .error)
+            .toastMeessageMap(to: .failToFetchAccessToken)
+            .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
     }
 }
