@@ -41,19 +41,15 @@ final class LoginViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.userDidAuthorize
-            .bind(onNext: loginUseCase.fetchAndStoreAccessToken(with:))
-            .disposed(by: disposeBag)
-        
-        loginUseCase.userDidAuthorized
             .withUnretained(self)
-            .bind { `self`, _ in
-                self.coordinator?.coordinate(by: .accessTokenDidfetch)
+            .flatMap { `self`, url -> Observable<Void> in
+                self.loginUseCase.fetchAndStoreAccessToken(with: url).andThen(.just(()))
             }
-            .disposed(by: disposeBag)
-        
-        loginUseCase.errorDidOccur
-            .map { $0.localizedDescription }
-            .bind(to: output.showErrorMessage)
+            .subscribe(with: self, onNext: { `self`, _ in
+                self.coordinator?.coordinate(by: .accessTokenDidfetch)
+            }, onError: { `self`, error in
+                self.output.showErrorMessage.accept(ToastError.failToFetchAccessToken.localizedDescription)
+            })
             .disposed(by: disposeBag)
     }
 }

@@ -48,7 +48,7 @@ final class DefaultLoginRepository: LoginRepository {
         }
     }
     
-    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String) -> Single<TokenDTO> {
+    func fetchAccessToken(clientID: String, clientSecret: String, tempCode: String) -> Single<String> {
         return urlSessionNetworkService
             .fetchData(endpoint: GitHubAPI.fetchAccessToken(
                 clientID: clientID,
@@ -56,5 +56,6 @@ final class DefaultLoginRepository: LoginRepository {
                 tempCode: tempCode)
             )
             .decodeMap(TokenDTO.self)
+            .map { $0.accessToken }
     }
 }

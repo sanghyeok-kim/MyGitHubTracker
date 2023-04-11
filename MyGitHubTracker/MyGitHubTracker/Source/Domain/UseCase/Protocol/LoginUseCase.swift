@@ -9,9 +9,6 @@ import RxSwift
 import RxRelay
 
 protocol LoginUseCase {
-    var errorDidOccur: PublishRelay<ToastError> { get }
-    var userDidAuthorized: PublishRelay<Void> { get }
-    
     func buildGitHubAuthorizationURL() -> URL?
-    func fetchAndStoreAccessToken(with url: URL)
+    func fetchAndStoreAccessToken(with url: URL) -> Completable
 }
