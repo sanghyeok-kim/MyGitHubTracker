@@ -42,8 +42,8 @@ final class LoginViewModel: ViewModelType {
         
         input.userDidAuthorize
             .withUnretained(self)
-            .flatMap { `self`, url -> Observable<Void> in
-                self.loginUseCase.fetchAndStoreAccessToken(with: url).andThen(.just(()))
+            .flatMapCompletable { `self`, url in
+                self.loginUseCase.fetchAndStoreAccessToken(with: url)
             }
             .subscribe(with: self, onNext: { `self`, _ in
                 self.coordinator?.coordinate(by: .accessTokenDidfetch)
