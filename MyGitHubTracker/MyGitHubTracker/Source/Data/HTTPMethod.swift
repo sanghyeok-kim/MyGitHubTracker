@@ -10,6 +10,8 @@ import Foundation
 enum HTTPMethod: String {
     case get
     case post
+    case put
+    case delete
     
     var value: String {
         return rawValue.uppercased()

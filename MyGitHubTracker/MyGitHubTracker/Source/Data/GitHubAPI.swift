@@ -15,18 +15,28 @@ enum GitHubAPI {
     // Repository
     case fetchUserRepositories(perPage: Int, page: Int)
     case fetchRepositoryDetail(ownerName: String, repositoryName: String)
-    case checkRepositoryIsStarredByUser(ownerName: String, repositoryName: String)
     
     // Account
     case fetchUserInfo
+    
+    // Starring
+    case checkRepositoryIsStarredByUser(ownerName: String, repositoryName: String)
+    case starRepository(ownerName: String, repositoryName: String)
+    case unstarRepository(ownerName: String, repositoryName: String)
 }
 
 extension GitHubAPI: TargetType {
+    
     var baseURL: URL? {
         switch self {
         case .fetchTempCode, .fetchAccessToken:
             return URL(string: "https://github.com")
-        case .fetchUserRepositories, .fetchUserInfo, .fetchRepositoryDetail, .checkRepositoryIsStarredByUser:
+        case .fetchUserRepositories,
+                .fetchUserInfo,
+                .fetchRepositoryDetail,
+                .checkRepositoryIsStarredByUser,
+                .starRepository,
+                .unstarRepository:
             return URL(string: "https://api.github.com")
         }
     }
@@ -43,25 +53,27 @@ extension GitHubAPI: TargetType {
             return "/user/repos"
         case .fetchRepositoryDetail(let ownerName, let repositoryName):
             return "/repos/\(ownerName)/\(repositoryName)"
-        case .checkRepositoryIsStarredByUser(let ownerName, let repositoryName):
+        case .checkRepositoryIsStarredByUser(let ownerName, let repositoryName),
+                .starRepository(let ownerName, let repositoryName),
+                .unstarRepository(let ownerName, let repositoryName):
             return "user/starred/\(ownerName)/\(repositoryName)"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .fetchTempCode:
+        case .fetchTempCode,
+                .fetchUserInfo,
+                .fetchUserRepositories,
+                .fetchRepositoryDetail,
+                .checkRepositoryIsStarredByUser:
             return .get
         case .fetchAccessToken:
             return .post
-        case .fetchUserInfo:
-            return .get
-        case .fetchUserRepositories:
-            return .get
-        case .fetchRepositoryDetail:
-            return .get
-        case .checkRepositoryIsStarredByUser:
-            return .get
+        case .starRepository:
+            return .put
+        case .unstarRepository:
+            return .delete
         }
     }
     
@@ -72,7 +84,12 @@ extension GitHubAPI: TargetType {
         case .fetchAccessToken:
             return ["Content-Type": "application/json",
                     "Accept": "application/json"]
-        case .fetchUserInfo, .fetchUserRepositories, .fetchRepositoryDetail, .checkRepositoryIsStarredByUser:
+        case .fetchUserInfo,
+                .fetchUserRepositories,
+                .fetchRepositoryDetail,
+                .checkRepositoryIsStarredByUser,
+                .starRepository,
+                .unstarRepository:
             return ["Accept": "application/vnd.github+json",
                     "Authorization": "Bearer \(TokenStorage.shared.accessToken ?? "")",
                     "X-GitHub-Api-Version": "2022-11-28"]
@@ -81,6 +98,12 @@ extension GitHubAPI: TargetType {
     
     var parameters: [String: Any]? {
         switch self {
+        case .fetchUserInfo,
+                .fetchRepositoryDetail,
+                .checkRepositoryIsStarredByUser,
+                .starRepository,
+                .unstarRepository:
+            return nil
         case .fetchTempCode:
             return ["client_id": Constant.GitHubClientKey.clientID,
                     "scope": "repo, user"]
@@ -89,15 +112,11 @@ extension GitHubAPI: TargetType {
                     "client_id": clientID,
                     "client_secret": clientSecret,
                     "code": tempCode]
-        case .fetchUserInfo:
-            return nil
         case .fetchUserRepositories(let perPage, let page):
             return ["sort": "created",
                     "type": "owner",
                     "per_page": perPage,
                     "page": page]
-        case .fetchRepositoryDetail, .checkRepositoryIsStarredByUser:
-            return nil
         }
     }
 }
