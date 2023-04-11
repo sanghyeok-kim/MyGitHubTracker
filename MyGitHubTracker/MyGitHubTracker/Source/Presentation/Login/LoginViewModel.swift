@@ -43,10 +43,9 @@ final class LoginViewModel: ViewModelType {
         let accessTokenDidFetch = input.userDidAuthorize
             .debug()
             .withUnretained(self)
-            .flatMapCompletable { `self`, url in
+            .flatMapCompletableMaterialized { `self`, url in
                 self.loginUseCase.fetchAndStoreAccessToken(with: url)
             }
-            .materialize()
             .share()
         
         accessTokenDidFetch
