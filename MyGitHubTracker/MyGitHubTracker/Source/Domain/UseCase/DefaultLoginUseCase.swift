@@ -10,6 +10,7 @@ import RxSwift
 final class DefaultLoginUseCase: LoginUseCase {
     
     @Inject private var loginRepository: LoginRepository
+    @Inject private var tokenRepository: TokenRepository
     
     func buildGitHubAuthorizationURL() -> URL? {
         return loginRepository.buildGitHubAuthorizationURL()
@@ -24,8 +25,8 @@ final class DefaultLoginUseCase: LoginUseCase {
                 clientSecret: gitHubAuthorization.clientSecret,
                 tempCode: gitHubAuthorization.tempCode
             )
-            .do(onSuccess: {
-                AccessToken.store(value: $0)
+            .do(onSuccess: { [weak self] in
+                self?.tokenRepository.store(value: $0)
             })
             .asCompletable()
     }
