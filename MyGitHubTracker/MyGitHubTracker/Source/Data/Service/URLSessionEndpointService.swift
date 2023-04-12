@@ -112,7 +112,7 @@ private extension URLSessionEndpointService {
             throw NetworkError.invalidURL
         }
         
-        var request = URLRequest(url: finalUrl)
+        var request = URLRequest(url: finalUrl, cachePolicy: .reloadRevalidatingCacheData)
         request.httpMethod = endpoint.method.value
         
         if let headers = endpoint.headers {
