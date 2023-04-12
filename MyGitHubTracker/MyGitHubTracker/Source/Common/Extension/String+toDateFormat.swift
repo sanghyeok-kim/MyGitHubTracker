@@ -13,7 +13,7 @@ extension String {
         inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = "MMM d, yyyy"
+        outputFormatter.dateFormat = "M월 d일, yyyy년"
         
         guard let date = inputFormatter.date(from: self) else { return nil }
         return outputFormatter.string(from: date)
