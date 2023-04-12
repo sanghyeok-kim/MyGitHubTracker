@@ -114,7 +114,7 @@
 		1E8FB8E429D250FD00847578 /* CustomLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E329D250FD00847578 /* CustomLogger.swift */; };
 		1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */; };
 		1E8FB8E929D251D500847578 /* Rx+doLogError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E829D251D500847578 /* Rx+doLogError.swift */; };
-		1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8EB29D254CE00847578 /* ToastError.swift */; };
+		1E8FB8EC29D254CE00847578 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8EB29D254CE00847578 /* ToastMessage.swift */; };
 		1E90046D29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */; };
 		1E90047329E59C4C008F9895 /* TokenStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047229E59C4C008F9895 /* TokenStorable.swift */; };
 		1E90047529E59CF0008F9895 /* DefaultTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047429E59CF0008F9895 /* DefaultTokenRepository.swift */; };
@@ -254,7 +254,7 @@
 		1E8FB8E329D250FD00847578 /* CustomLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogger.swift; sourceTree = "<group>"; };
 		1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+LogCategory.swift"; sourceTree = "<group>"; };
 		1E8FB8E829D251D500847578 /* Rx+doLogError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+doLogError.swift"; sourceTree = "<group>"; };
-		1E8FB8EB29D254CE00847578 /* ToastError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastError.swift; sourceTree = "<group>"; };
+		1E8FB8EB29D254CE00847578 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+flatMapCompletableMaterialized.swift"; sourceTree = "<group>"; };
 		1E90047229E59C4C008F9895 /* TokenStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorable.swift; sourceTree = "<group>"; };
 		1E90047429E59CF0008F9895 /* DefaultTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTokenRepository.swift; sourceTree = "<group>"; };
@@ -328,6 +328,7 @@
 		1E66CA6129D2BA5A00EA117A /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB8EB29D254CE00847578 /* ToastMessage.swift */,
 				1E66CA5F29D2BA4100EA117A /* Padding.swift */,
 				1E66CA6829D335D400EA117A /* CustomColor.swift */,
 			);
@@ -769,7 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB87629D12C6400847578 /* NetworkError.swift */,
-				1E8FB8EB29D254CE00847578 /* ToastError.swift */,
+				1E90046829E4457B008F9895 /* CachingError.swift */,
 				1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */,
 				1E43BF2929D53B9D00C718D4 /* Protocol */,
 			);
@@ -1120,7 +1121,7 @@
 				1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */,
 				1E8F51F629DEFC050001CA9E /* DiskCachable.swift in Sources */,
 				1E8FB8A129D14F5D00847578 /* UserDTO.swift in Sources */,
-				1E8FB8EC29D254CE00847578 /* ToastError.swift in Sources */,
+				1E8FB8EC29D254CE00847578 /* ToastMessage.swift in Sources */,
 				1E8FB89629D12FA700847578 /* Container.swift in Sources */,
 				1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */,
 				1E8FB8AA29D150CB00847578 /* UserEntity.swift in Sources */,

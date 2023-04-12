@@ -8,7 +8,7 @@
 import RxSwift
 
 extension ObservableType {
-    func toastMeessageMap(to toastMessage: ToastError) -> Observable<String> {
-        return map { _ in toastMessage.localizedDescription }
+    func toastMeessageMap(to toastMessage: ToastMessage) -> Observable<String> {
+        return map { _ in toastMessage.localized }
     }
 }
