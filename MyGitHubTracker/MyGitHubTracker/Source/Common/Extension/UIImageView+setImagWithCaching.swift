@@ -6,18 +6,31 @@
 //
 
 import UIKit.UIImageView
+import RxSwift
 
 extension UIImageView {
-    func setImageWithCaching(from url: URL) async {
+    func setImageWithCaching(from url: URL, using imageLoader: ImageLoader) async {
         do {
-            let data = try await CachedURLDataFetchRepository.shared.fetchCachedData(from: url)
-            if let image = UIImage(data: data) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.image = image
-                }
+            let image = try await imageLoader.fetchImage(from: url)
+            DispatchQueue.main.async { [weak self] in
+                self?.image = image
             }
         } catch {
+            image = UIImage(systemName: "exclamationmark.triangle")
             CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
         }
+    }
+    
+    func setImageWithCaching(from url: URL, using imageLoader: ImageLoader) -> Disposable {
+        return imageLoader
+            .fetchImage(from: url)
+            .debug()
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self, onSuccess: { `self`, image in
+                self.image = image
+            }, onFailure: { `self`, error in
+                self.image = UIImage(systemName: "exclamationmark.triangle")
+                CustomLogger.log(message: error.localizedDescription, category: .network)
+            })
     }
 }
