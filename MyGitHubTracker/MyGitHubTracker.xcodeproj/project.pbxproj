@@ -605,7 +605,6 @@
 			children = (
 				1E8FB88429D12E4200847578 /* UseCase */,
 				1E8FB88229D12E3300847578 /* Entity */,
-				1E8FB88329D12E3B00847578 /* Transformer */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -684,6 +683,7 @@
 				1E8FB8BD29D1532300847578 /* DefaultAccountRepository.swift */,
 				1E800D2229DC169300614811 /* DefaultStarringRepository.swift */,
 				1E800D3E29DEC77F00614811 /* CachedURLDataFetchRepository.swift */,
+				1E8FB88329D12E3B00847578 /* Transformer */,
 				1E8FB88F29D12F3E00847578 /* Protocol */,
 			);
 			path = Repository;
