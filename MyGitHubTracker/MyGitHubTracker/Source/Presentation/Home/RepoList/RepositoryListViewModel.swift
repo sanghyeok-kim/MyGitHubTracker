@@ -46,11 +46,10 @@ final class RepositoryListViewModel: ViewModelType {
         
         let fetchedUserRepositories = input.viewDidLoad
             .withUnretained(self)
-            .flatMap { `self`, _ in
+            .flatMapMaterialized { `self`, _ in
                 let (perPage, page) = self.state.paginationState.parameters
                 return self.repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
             }
-            .materialize()
             .share()
         
         fetchedUserRepositories
@@ -60,7 +59,7 @@ final class RepositoryListViewModel: ViewModelType {
         
         fetchedUserRepositories
             .compactMap { $0.error }
-            .doLogError(logType: .error)
+            .doLogError()
             .toastMeessageMap(to: .failToFetchRepositories)
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
@@ -79,36 +78,37 @@ final class RepositoryListViewModel: ViewModelType {
                 self?.state.paginationState.isLoading = false
             })
             .withUnretained(self)
-            .flatMap { `self`, repositoryEntities -> Observable<([RepositoryEntity], [Bool])> in
+            .flatMapMaterialized { `self`, repositoryEntities -> Observable<([RepositoryEntity], [Bool])> in
                 self.zipIsStarredByUser(with: repositoryEntities)
             }
+            .share()
+        
+        fetchedRepositoryEntities
+            .compactMap { $0.error }
+            .doLogError()
+            .toastMeessageMap(to: .failToFetchRepositories)
+            .bind(to: output.showErrorMessage)
+            .disposed(by: disposeBag)
+        
+        let updatedIsStarredRepositoryEntities = fetchedRepositoryEntities
+            .compactMap { $0.element }
             .withUnretained(self)
             .map { `self`, result -> [RepositoryEntity] in
                 let (repositoryEntities, isStarredByUsers) = result
                 return self.updateIsStarredByUser(of: repositoryEntities, bools: isStarredByUsers)
             }
-            .materialize()
             .share()
         
-        fetchedRepositoryEntities
-            .compactMap { $0.element }
+        updatedIsStarredRepositoryEntities
             .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repositoryEntity: $0) } }
             .withLatestFrom(output.repositoryCellViewModels) { $1 + $0 }
             .bind(to: output.repositoryCellViewModels)
             .disposed(by: disposeBag)
         
-        fetchedRepositoryEntities
-            .compactMap { $0.element }
+        updatedIsStarredRepositoryEntities
             .map { _ in false }
             .distinctUntilChanged()
             .bind(to: output.isLoadingIndicatorVisible)
-            .disposed(by: disposeBag)
-        
-        fetchedRepositoryEntities
-            .compactMap { $0.error }
-            .doLogError(logType: .error)
-            .map { _ in ToastError.failToFetchRepositories.localizedDescription }
-            .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
         // MARK: - Bind Input: tableViewDidRefresh
@@ -164,7 +164,7 @@ private extension RepositoryListViewModel {
             
             fetchedUserRepositories
                 .compactMap { $0.error }
-                .doLogError(logType: .error)
+                .doLogError()
                 .toastMeessageMap(to: .failToFetchRepositories)
                 .bind(to: output.showErrorMessage)
                 .disposed(by: disposeBag)
@@ -194,7 +194,7 @@ private extension RepositoryListViewModel {
         
         fetchedUserRepositories
             .compactMap { $0.error }
-            .doLogError(logType: .error)
+            .doLogError()
             .toastMeessageMap(to: .failToFetchRepositories)
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
