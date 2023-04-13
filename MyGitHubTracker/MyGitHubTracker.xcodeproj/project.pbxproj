@@ -591,6 +591,7 @@
 				1E8FB87229D12C5000847578 /* HTTPMethod.swift */,
 				1E8FB87429D12C5800847578 /* TargetType.swift */,
 				1E800D2C29DC687700614811 /* NetworkResult.swift */,
+				1E8FB88329D12E3B00847578 /* Transformer */,
 				1E8FB88E29D12F1D00847578 /* Repository */,
 				1E8FB8EA29D254C400847578 /* Error */,
 				1E800D4429DECA6B00614811 /* Storage */,
@@ -684,7 +685,6 @@
 				1E800D2229DC169300614811 /* DefaultStarringRepository.swift */,
 				1E800D3E29DEC77F00614811 /* CachedURLDataFetchRepository.swift */,
 				1E8FB88F29D12F3E00847578 /* Protocol */,
-				1E8FB88329D12E3B00847578 /* Transformer */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
