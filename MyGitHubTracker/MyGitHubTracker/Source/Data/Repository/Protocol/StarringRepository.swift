@@ -6,7 +6,6 @@
 //
 
 import RxSwift
-import RxRelay
 
 protocol StarringRepository {
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Single<Bool>
