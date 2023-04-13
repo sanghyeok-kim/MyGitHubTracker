@@ -36,7 +36,6 @@
 		1E800D3629DD02CF00614811 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3529DD02CF00614811 /* AuthorizationService.swift */; };
 		1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3729DDC08700614811 /* RepositoryDetailViewModel.swift */; };
 		1E800D3B29DEBDC800614811 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3A29DEBDC800614811 /* CircularImageView.swift */; };
-		1E800D3D29DEC73E00614811 /* ImageNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */; };
 		1E800D3F29DEC77F00614811 /* CachedURLDataFetchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D3E29DEC77F00614811 /* CachedURLDataFetchRepository.swift */; };
 		1E800D4329DEC8EF00614811 /* UIImageView+setImagWithCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E800D4229DEC8EF00614811 /* UIImageView+setImagWithCaching.swift */; };
 		1E8F51F429DEFBEB0001CA9E /* MemoryCachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F51F329DEFBEB0001CA9E /* MemoryCachable.swift */; };
@@ -115,10 +114,13 @@
 		1E8FB8E629D2512300847578 /* OSLog+LogCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */; };
 		1E8FB8E929D251D500847578 /* Rx+doLogError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8E829D251D500847578 /* Rx+doLogError.swift */; };
 		1E8FB8EC29D254CE00847578 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB8EB29D254CE00847578 /* ToastMessage.swift */; };
+		1E90046929E4457B008F9895 /* FileSystemError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90046829E4457B008F9895 /* FileSystemError.swift */; };
+		1E90046B29E45717008F9895 /* CachedURLImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90046A29E45717008F9895 /* CachedURLImageLoader.swift */; };
 		1E90046D29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */; };
 		1E90047329E59C4C008F9895 /* TokenStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047229E59C4C008F9895 /* TokenStorable.swift */; };
 		1E90047529E59CF0008F9895 /* DefaultTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047429E59CF0008F9895 /* DefaultTokenRepository.swift */; };
 		1E90047729E59CFA008F9895 /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047629E59CFA008F9895 /* TokenRepository.swift */; };
+		1E90047929E5ACA4008F9895 /* CachedImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047829E5ACA4008F9895 /* CachedImageLoader.swift */; };
 		1E90047B29E6B04C008F9895 /* Rx+flatMapMaterialized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
@@ -172,7 +174,6 @@
 		1E800D3529DD02CF00614811 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		1E800D3729DDC08700614811 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		1E800D3A29DEBDC800614811 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
-		1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkError.swift; sourceTree = "<group>"; };
 		1E800D3E29DEC77F00614811 /* CachedURLDataFetchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedURLDataFetchRepository.swift; sourceTree = "<group>"; };
 		1E800D4229DEC8EF00614811 /* UIImageView+setImagWithCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+setImagWithCaching.swift"; sourceTree = "<group>"; };
 		1E8F51F329DEFBEB0001CA9E /* MemoryCachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCachable.swift; sourceTree = "<group>"; };
@@ -255,10 +256,13 @@
 		1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+LogCategory.swift"; sourceTree = "<group>"; };
 		1E8FB8E829D251D500847578 /* Rx+doLogError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+doLogError.swift"; sourceTree = "<group>"; };
 		1E8FB8EB29D254CE00847578 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		1E90046829E4457B008F9895 /* FileSystemError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemError.swift; sourceTree = "<group>"; };
+		1E90046A29E45717008F9895 /* CachedURLImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedURLImageLoader.swift; sourceTree = "<group>"; };
 		1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+flatMapCompletableMaterialized.swift"; sourceTree = "<group>"; };
 		1E90047229E59C4C008F9895 /* TokenStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorable.swift; sourceTree = "<group>"; };
 		1E90047429E59CF0008F9895 /* DefaultTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTokenRepository.swift; sourceTree = "<group>"; };
 		1E90047629E59CFA008F9895 /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
+		1E90047829E5ACA4008F9895 /* CachedImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageLoader.swift; sourceTree = "<group>"; };
 		1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+flatMapMaterialized.swift"; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -478,6 +482,7 @@
 		1E8FB84029D08E3100847578 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1E90047C29E79045008F9895 /* ImageLoader */,
 				1E8FB8E029D167B700847578 /* Common */,
 				1E66CA6129D2BA5A00EA117A /* Enum */,
 				1E8FB84129D08E3A00847578 /* Protocol */,
@@ -718,8 +723,8 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */,
-				1E800D3929DDC09700614811 /* RepositoryDetail */,
 				1E8FB8C629D1581800847578 /* RepoList */,
+				1E800D3929DDC09700614811 /* RepositoryDetail */,
 				1E8FB8C729D1581F00847578 /* Account */,
 			);
 			path = Home;
@@ -770,11 +775,27 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB87629D12C6400847578 /* NetworkError.swift */,
-				1E90046829E4457B008F9895 /* CachingError.swift */,
-				1E800D3C29DEC73E00614811 /* ImageNetworkError.swift */,
+				1E90046829E4457B008F9895 /* FileSystemError.swift */,
 				1E43BF2929D53B9D00C718D4 /* Protocol */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		1E90047C29E79045008F9895 /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				1E90046A29E45717008F9895 /* CachedURLImageLoader.swift */,
+				1E90047D29E79050008F9895 /* Protocol */,
+			);
+			path = ImageLoader;
+			sourceTree = "<group>";
+		};
+		1E90047D29E79050008F9895 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1E90047829E5ACA4008F9895 /* CachedImageLoader.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
@@ -1090,7 +1111,7 @@
 				1E8FB8C029D1539800847578 /* RepositorySearchRepository.swift in Sources */,
 				1E43BF2F29D6776E00C718D4 /* LoginCoordinator.swift in Sources */,
 				1E8FB8D729D158E300847578 /* AccountCoordinateAction.swift in Sources */,
-				1E800D3D29DEC73E00614811 /* ImageNetworkError.swift in Sources */,
+				1E90046929E4457B008F9895 /* FileSystemError.swift in Sources */,
 				1E800D2D29DC687700614811 /* NetworkResult.swift in Sources */,
 				1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */,
 				1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */,
@@ -1133,8 +1154,10 @@
 				1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */,
 				1E8FB84B29D08F0500847578 /* CoordinatorType.swift in Sources */,
 				1E90047729E59CFA008F9895 /* TokenRepository.swift in Sources */,
+				1E90046B29E45717008F9895 /* CachedURLImageLoader.swift in Sources */,
 				1E8FB87C29D12CF800847578 /* GitHubAuthorizationService.swift in Sources */,
 				1E8FB88729D12E6F00847578 /* LoginUseCase.swift in Sources */,
+				1E90047929E5ACA4008F9895 /* CachedImageLoader.swift in Sources */,
 				1E8F51FA29DEFC390001CA9E /* DiskCache.swift in Sources */,
 				1E8FB88D29D12EF000847578 /* DefaultLoginUseCase.swift in Sources */,
 				1E8FB85829D099F500847578 /* AppCoordinator.swift in Sources */,
