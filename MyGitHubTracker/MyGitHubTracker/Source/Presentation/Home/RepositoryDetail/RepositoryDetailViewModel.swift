@@ -205,8 +205,12 @@ final class RepositoryDetailViewModel: ViewModelType {
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
     }
-    
-    private func zipIsStarredByUser(with repositoryEntity: RepositoryEntity) -> Observable<(RepositoryEntity, Bool)> {
+}
+
+// MARK: - Supporting Methods
+
+private extension RepositoryDetailViewModel {
+    func zipIsStarredByUser(with repositoryEntity: RepositoryEntity) -> Observable<(RepositoryEntity, Bool)> {
         let (ownerName, repositoryName) = (repositoryEntity.ownerName, repositoryEntity.name)
         let isStarredByUserObservable = self.starringUseCase.checkRepositoryIsStarred(
             ownerName: ownerName,
@@ -215,13 +219,13 @@ final class RepositoryDetailViewModel: ViewModelType {
         return Observable.zip(Observable.just(repositoryEntity), isStarredByUserObservable)
     }
     
-    private func updateIsStarredByUser(of repositoryEntity: RepositoryEntity, bool: Bool) -> RepositoryEntity {
+    func updateIsStarredByUser(of repositoryEntity: RepositoryEntity, bool: Bool) -> RepositoryEntity {
         var updatedRepositoryEntity = repositoryEntity
         updatedRepositoryEntity.isStarredByUser = bool
         return updatedRepositoryEntity
     }
     
-    private func updateStargazerCount(of repositoryEntity: RepositoryEntity, count: Int) -> RepositoryEntity {
+    func updateStargazerCount(of repositoryEntity: RepositoryEntity, count: Int) -> RepositoryEntity {
         var updatedRepositoryEntity = repositoryEntity
         updatedRepositoryEntity.stargazersCount = count
         return updatedRepositoryEntity
