@@ -41,7 +41,6 @@ final class LoginViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         let accessTokenDidFetch = input.userDidAuthorize
-            .debug()
             .withUnretained(self)
             .flatMapCompletableMaterialized { `self`, url in
                 self.loginUseCase.fetchAndStoreAccessToken(with: url)
@@ -58,7 +57,7 @@ final class LoginViewModel: ViewModelType {
 
         accessTokenDidFetch
             .compactMap { $0.error }
-            .doLogError(logType: .error)
+            .doLogError()
             .toastMeessageMap(to: .failToFetchAccessToken)
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
