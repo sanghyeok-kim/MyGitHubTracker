@@ -8,5 +8,5 @@
 import RxSwift
 
 protocol AccountRepository {
-    func fetchUserInfo() -> Single<UserDTO>
+    func fetchUserInfo() -> Single<UserEntity>
 }
