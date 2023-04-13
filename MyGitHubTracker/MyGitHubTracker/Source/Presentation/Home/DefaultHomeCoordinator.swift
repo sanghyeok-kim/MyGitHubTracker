@@ -54,7 +54,7 @@ final class DefaultHomeCoordinator: Coordinator {
     }
     
     deinit {
-        CustomLogger.log(message: "\(self) deallocated", category: .allocation, type: .info)
+        CustomLogger.logDeallocation(object: self)
     }
 }
 

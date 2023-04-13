@@ -29,7 +29,7 @@ final class DefaultRepositoryListCoordinator: Coordinator, RepositoryListCoordin
     }
     
     deinit {
-        CustomLogger.log(message: "\(self) deallocated", category: .allocation, type: .info)
+        CustomLogger.logDeallocation(object: self)
     }
 }
 
