@@ -16,7 +16,7 @@ struct RepositoryTransformer: Transformable {
             description: repositoryDTO.description,
             updatedDate: repositoryDTO.updatedAt.toDateFormat ?? "",
             stargazersCount: repositoryDTO.stargazersCount,
-            avatarImageURL: URL(string:  repositoryDTO.owner.avatarURL)
+            avatarImageURL: URL(string: repositoryDTO.owner.avatarURL)
         )
     }
 }
