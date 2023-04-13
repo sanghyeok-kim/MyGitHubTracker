@@ -19,7 +19,7 @@ struct KeychainValue<T: KeychainStorable> {
     let key: String
     let defaultValue: T?
     
-    private let serialQueue = DispatchQueue(label: "TokenStorage.serialQueue")
+    private let serialQueue = DispatchQueue(label: "KeychainValue.serialQueue")
     
     init(_ key: String, defaultValue: T? = nil) {
         keychain.synchronizable = true
