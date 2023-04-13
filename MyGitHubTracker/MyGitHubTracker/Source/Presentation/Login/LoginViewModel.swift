@@ -27,7 +27,7 @@ final class LoginViewModel: ViewModelType {
     private weak var coordinator: LoginCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: LoginCoordinator) {
+    init(coordinator: LoginCoordinator?) {
         self.coordinator = coordinator
         
         input.gitHubLoginButtonDidTap
@@ -36,7 +36,7 @@ final class LoginViewModel: ViewModelType {
                 self.loginUseCase.buildGitHubAuthorizationURL()
             }
             .bind {
-                coordinator.coordinate(by: .loginButtonDidTap(url: $0))
+                coordinator?.coordinate(by: .loginButtonDidTap(url: $0))
             }
             .disposed(by: disposeBag)
         

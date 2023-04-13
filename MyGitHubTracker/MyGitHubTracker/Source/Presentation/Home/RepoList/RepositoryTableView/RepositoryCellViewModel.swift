@@ -33,7 +33,7 @@ final class RepositoryCellViewModel: ViewModelType {
     private weak var coordinator: RepositoryListCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: RepositoryListCoordinator, repositoryEntity: RepositoryEntity) {
+    init(coordinator: RepositoryListCoordinator?, repositoryEntity: RepositoryEntity) {
         self.coordinator = coordinator
         self.repositoryEntity = repositoryEntity
         
@@ -70,7 +70,7 @@ final class RepositoryCellViewModel: ViewModelType {
         input.cellDidTap
             .map { RepositoryDetailViewModel(coordinator: coordinator, repository: repositoryEntity) }
             .bind {
-                coordinator.coordinate(by: .cellDidTap(viewModel: $0))
+                coordinator?.coordinate(by: .cellDidTap(viewModel: $0))
             }
             .disposed(by: disposeBag)
     }

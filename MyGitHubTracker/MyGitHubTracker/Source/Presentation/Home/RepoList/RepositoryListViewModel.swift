@@ -39,7 +39,7 @@ final class RepositoryListViewModel: ViewModelType {
     private weak var coordinator: RepositoryListCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: RepositoryListCoordinator) {
+    init(coordinator: RepositoryListCoordinator?) {
         self.coordinator = coordinator
         
         // MARK: - Bind Input: viewDidLoad

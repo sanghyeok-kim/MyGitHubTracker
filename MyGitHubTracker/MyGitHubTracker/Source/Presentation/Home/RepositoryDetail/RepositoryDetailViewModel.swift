@@ -36,7 +36,7 @@ final class RepositoryDetailViewModel: ViewModelType {
     private weak var coordinator: RepositoryListCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: RepositoryListCoordinator, repository: RepositoryEntity) {
+    init(coordinator: RepositoryListCoordinator?, repository: RepositoryEntity) {
         
         // MARK: - Bind Input: viewDidLoad
         
