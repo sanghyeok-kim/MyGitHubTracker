@@ -31,6 +31,10 @@ final class AccountViewController: UIViewController, ViewType {
         let output = viewModel.output
         
     }
+    
+    deinit {
+        CustomLogger.logDeallocation(object: self)   
+    }
 }
 
 // MARK: - UI Configuration
@@ -41,7 +45,6 @@ private extension AccountViewController {
         navigationItem.title = "Account"
     }
 }
-
 
 // MARK: - UI Layout
 
