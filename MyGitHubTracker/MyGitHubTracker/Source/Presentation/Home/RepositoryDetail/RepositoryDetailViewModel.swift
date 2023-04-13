@@ -23,7 +23,6 @@ final class RepositoryDetailViewModel: ViewModelType {
         let description = BehaviorRelay<String?>(value: nil)
         let starCount = BehaviorRelay<Int>(value: .zero)
         let isStarredByUser = BehaviorRelay<Bool>(value: false)
-        let userDidStar = PublishRelay<Bool>()
         let showErrorMessage = PublishRelay<String>()
     }
     
@@ -97,28 +96,6 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         // MARK: - Bind Input: starringButtonDidTap
         
-        let fetchedRepositoryDetailWhenStarringButtonDidTap = input.starringButtonDidTap
-            .withLatestFrom(Observable.combineLatest(output.ownerName, output.name))
-            .withUnretained(self)
-            .flatMapMaterialized { `self`, repositoryInfo -> Observable<RepositoryEntity> in
-                let (owenrName, repositoryName) = repositoryInfo
-                return self.repositorySearchUseCase.fetchRepositoryDetail(ownerName: owenrName, repositoryName: repositoryName)
-            }
-            .share()
-        
-        fetchedRepositoryDetailWhenStarringButtonDidTap
-            .compactMap { $0.error }
-            .doLogError()
-            .toastMeessageMap(to: .failToStarring)
-            .bind(to: output.showErrorMessage)
-            .disposed(by: disposeBag)
-        
-        fetchedRepositoryDetailWhenStarringButtonDidTap
-            .compactMap { $0.element }
-            .map { $0.stargazersCount }
-            .bind(to: output.starCount)
-            .disposed(by: disposeBag)
-        
         let isStarredByUserWhenStarringButtonDidTap = input.starringButtonDidTap
             .withLatestFrom(Observable.combineLatest(output.ownerName, output.name))
             .withUnretained(self) { ($0, $1) }
@@ -156,7 +133,7 @@ final class RepositoryDetailViewModel: ViewModelType {
         repositoryDidStar
             .compactMap { $0.element }
             .map { true }
-            .bind(to: output.userDidStar)
+            .bind(to: output.isStarredByUser)
             .disposed(by: disposeBag)
         
         let repositoryDidUnstar = isStarredByUserWhenStarringButtonDidTap
@@ -180,7 +157,7 @@ final class RepositoryDetailViewModel: ViewModelType {
         repositoryDidUnstar
             .compactMap { $0.element }
             .map { false }
-            .bind(to: output.userDidStar)
+            .bind(to: output.isStarredByUser)
             .disposed(by: disposeBag)
         
         let starringDidFinished = Observable.merge(repositoryDidStar, repositoryDidUnstar)

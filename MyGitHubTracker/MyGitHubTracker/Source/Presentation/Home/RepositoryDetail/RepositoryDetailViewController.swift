@@ -148,14 +148,6 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
                 self.toggleStarringButtonStarMark(by: isStarred)
             }
             .disposed(by: disposeBag)
-        
-        output.userDidStar
-            .asSignal()
-            .emit(with: self) { `self`, isStarred in
-                self.stargazerView.toggleStarMark(by: isStarred)
-                self.toggleStarringButtonStarMark(by: isStarred)
-            }
-            .disposed(by: disposeBag)
     }
     
     deinit {
