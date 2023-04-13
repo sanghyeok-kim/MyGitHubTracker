@@ -6,9 +6,9 @@
 //
 
 import RxSwift
-import RxRelay
 
 protocol StarringUseCase {
-    var errorDidOccur: PublishRelay<ToastError> { get }
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Observable<Bool>
+    func starRepository(ownerName: String, repositoryName: String) -> Completable
+    func unstarRepository(ownerName: String, repositoryName: String) -> Completable
 }

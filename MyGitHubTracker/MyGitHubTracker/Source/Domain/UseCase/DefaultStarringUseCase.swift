@@ -6,22 +6,24 @@
 //
 
 import RxSwift
-import RxRelay
 
 final class DefaultStarringUseCase: StarringUseCase {
     
-    let errorDidOccur = PublishRelay<ToastError>()
-    
     @Inject private var starringRepository: StarringRepository
-    private let disposeBag = DisposeBag()
     
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Observable<Bool> {
         return starringRepository
             .checkRepositoryIsStarred(ownerName: ownerName, repositoryName: repositoryName)
-            .do(onError: { [weak self] error in
-                CustomLogger.log(message: error.localizedDescription, category: .network, type: .error)
-                self?.errorDidOccur.accept(.failToFetchRepositories)
-            })
             .asObservable()
+    }
+    
+    func starRepository(ownerName: String, repositoryName: String) -> Completable {
+        return starringRepository
+            .starRepository(ownerName: ownerName, repositoryName: repositoryName)
+    }
+    
+    func unstarRepository(ownerName: String, repositoryName: String) -> Completable {
+        return starringRepository
+            .unstarRepository(ownerName: ownerName, repositoryName: repositoryName)
     }
 }
