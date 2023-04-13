@@ -16,11 +16,10 @@ final class RepositoryListViewController: UIViewController, ViewType {
     
     private let repositoryRefreshControll = UIRefreshControl()
     
-    private lazy var loadingIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.hidesWhenStopped = true
-        return indicator
-    }()
+    private lazy var loadingIndicator = UIActivityIndicatorView().then {
+        $0.style = .large
+        $0.hidesWhenStopped = true
+    }
     
     private lazy var repositoryTableViewDataSource: RxTableViewSectionedReloadDataSource<RepositorySection> = {
         return .init { (cell: RepositoryViewCell, cellViewModel: RepositoryCellViewModel) in
