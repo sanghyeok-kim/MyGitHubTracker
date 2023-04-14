@@ -729,14 +729,14 @@
 			isa = PBXGroup;
 			children = (
 				1E8FB8DE29D1596400847578 /* DefaultHomeCoordinator.swift */,
-				1E8FB8C629D1581800847578 /* RepoList */,
+				1E8FB8C629D1581800847578 /* RepositoryList */,
 				1E800D3929DDC09700614811 /* RepositoryDetail */,
 				1E8FB8C729D1581F00847578 /* Account */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		1E8FB8C629D1581800847578 /* RepoList */ = {
+		1E8FB8C629D1581800847578 /* RepositoryList */ = {
 			isa = PBXGroup;
 			children = (
 				1E43BF2029D453CD00C718D4 /* RepositoryTableView */,
@@ -744,7 +744,7 @@
 				1E8FB8CA29D1583C00847578 /* RepositoryListViewController.swift */,
 				1E8FB8C829D1583200847578 /* RepositoryListViewModel.swift */,
 			);
-			path = RepoList;
+			path = RepositoryList;
 			sourceTree = "<group>";
 		};
 		1E8FB8C729D1581F00847578 /* Account */ = {
