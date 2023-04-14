@@ -45,7 +45,7 @@ final class RepositoryDetailViewModel: ViewModelType {
         self.coordinator = coordinator
         self.state = State(repository: BehaviorRelay<RepositoryEntity>(value: repository))
         
-        // MARK: - Binding Input - ViewDidLoad
+        // MARK: - Binding Input - viewDidLoad
         
         let repositoryStarringInfoDidFetch = input.viewDidLoad
             .withLatestFrom(state.repository)
