@@ -45,7 +45,7 @@ final class RepositoryDetailViewModel: ViewModelType {
         self.coordinator = coordinator
         self.state = State(repository: BehaviorRelay<RepositoryEntity>(value: repository))
         
-        // MARK: - Bind Input: viewDidLoad
+        // MARK: - Binding Input - ViewDidLoad
         
         let repositoryStarringInfoDidFetch = input.viewDidLoad
             .withLatestFrom(state.repository)
@@ -77,39 +77,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .bind(to: output.isFetchingData)
             .disposed(by: disposeBag)
         
-        // MARK: - Bind State: repository
-        
-        state.repository
-            .map { $0.avatarImageURL }
-            .bind(to: output.avatarImageURL)
-            .disposed(by: disposeBag)
-        
-        state.repository
-            .map { $0.ownerName }
-            .bind(to: output.ownerName)
-            .disposed(by: disposeBag)
-        
-        state.repository
-            .map { $0.name }
-            .bind(to: output.name)
-            .disposed(by: disposeBag)
-        
-        state.repository
-            .map { $0.description }
-            .bind(to: output.description)
-            .disposed(by: disposeBag)
-        
-        state.repository
-            .map { $0.stargazersCount }
-            .bind(to: output.starCount)
-            .disposed(by: disposeBag)
-        
-        state.repository
-            .map { $0.isStarredByUser }
-            .bind(to: output.isStarredByUser)
-            .disposed(by: disposeBag)
-        
-        // MARK: - Bind Input: starringButtonDidTap
+        // MARK: - Bind Input - starringButtonDidTap
         
         input.starringButtonDidTap
             .withLatestFrom(state.repository)
@@ -226,6 +194,38 @@ final class RepositoryDetailViewModel: ViewModelType {
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
             .bind(to: output.showErrorMessage)
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind State - repository
+        
+        state.repository
+            .map { $0.avatarImageURL }
+            .bind(to: output.avatarImageURL)
+            .disposed(by: disposeBag)
+        
+        state.repository
+            .map { $0.ownerName }
+            .bind(to: output.ownerName)
+            .disposed(by: disposeBag)
+        
+        state.repository
+            .map { $0.name }
+            .bind(to: output.name)
+            .disposed(by: disposeBag)
+        
+        state.repository
+            .map { $0.description }
+            .bind(to: output.description)
+            .disposed(by: disposeBag)
+        
+        state.repository
+            .map { $0.stargazersCount }
+            .bind(to: output.starCount)
+            .disposed(by: disposeBag)
+        
+        state.repository
+            .map { $0.isStarredByUser }
+            .bind(to: output.isStarredByUser)
             .disposed(by: disposeBag)
     }
 }

@@ -30,6 +30,8 @@ final class LoginViewModel: ViewModelType {
     init(coordinator: LoginCoordinator?) {
         self.coordinator = coordinator
         
+        // MARK: - Bind Input - gitHubLoginButtonDidTap
+        
         input.gitHubLoginButtonDidTap
             .withUnretained(self)
             .compactMap { `self`, _ in

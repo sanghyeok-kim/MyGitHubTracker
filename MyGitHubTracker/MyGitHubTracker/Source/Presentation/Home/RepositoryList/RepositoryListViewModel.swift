@@ -42,7 +42,7 @@ final class RepositoryListViewModel: ViewModelType {
     init(coordinator: RepositoryListCoordinator?) {
         self.coordinator = coordinator
         
-        // MARK: - Bind Input: viewDidLoad
+        // MARK: - Bind Input - viewDidLoad
         
         let fetchedUserRepositories = input.viewDidLoad
             .withUnretained(self)
@@ -70,7 +70,35 @@ final class RepositoryListViewModel: ViewModelType {
             .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
-        // MARK: - Bind State: userRepositories
+        // MARK: - Bind Input - tableViewDidRefresh
+        
+        input.tableViewDidRefresh
+            .withUnretained(self)
+            .bind { `self`, _ in
+                self.refreshToInitialPage()
+            }
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind Input - cellWillDisplay
+        
+        input.cellWillDisplay
+            .withUnretained(self)
+            .bind { `self`, indexPath in
+                self.loadNextPageIfNeeded(for: indexPath)
+            }
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind Input - cellDidTap
+        
+        input.cellDidTap
+            .withLatestFrom(output.repositoryCellViewModels) { ($0, $1)  }
+            .map { indexPath, cellViewModel -> RepositoryCellViewModel in
+                return cellViewModel[indexPath.row]
+            }
+            .bind { $0.cellDidTap() }
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind State - userRepositories
         
         let fetchedRepositoryEntities = state.userRepositories
             .filter { !$0.isEmpty }
@@ -109,34 +137,6 @@ final class RepositoryListViewModel: ViewModelType {
             .map { _ in false }
             .distinctUntilChanged()
             .bind(to: output.isLoadingIndicatorVisible)
-            .disposed(by: disposeBag)
-        
-        // MARK: - Bind Input: tableViewDidRefresh
-        
-        input.tableViewDidRefresh
-            .withUnretained(self)
-            .bind { `self`, _ in
-                self.refreshToInitialPage()
-            }
-            .disposed(by: disposeBag)
-        
-        // MARK: - Bind Input: cellWillDisplay
-        
-        input.cellWillDisplay
-            .withUnretained(self)
-            .bind { `self`, indexPath in
-                self.loadNextPageIfNeeded(for: indexPath)
-            }
-            .disposed(by: disposeBag)
-        
-        // MARK: - Bind Input: cellDidTap
-        
-        input.cellDidTap
-            .withLatestFrom(output.repositoryCellViewModels) { ($0, $1)  }
-            .map { indexPath, cellViewModel -> RepositoryCellViewModel in
-                return cellViewModel[indexPath.row]
-            }
-            .bind { $0.cellDidTap() }
             .disposed(by: disposeBag)
     }
 }
