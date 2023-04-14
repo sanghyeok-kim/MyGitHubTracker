@@ -11,7 +11,6 @@ import RxRelay
 final class RepositoryCellViewModel: ViewModelType {
     
     struct Input {
-        let cellDidLoad = PublishRelay<Void>()
         let cellDidTap = PublishRelay<Void>()
     }
     
@@ -24,57 +23,62 @@ final class RepositoryCellViewModel: ViewModelType {
         let updatedDate = BehaviorRelay<String>(value: "")
     }
     
+    struct State {
+        let repository: BehaviorRelay<RepositoryEntity>
+    }
+    
     let input = Input()
     let output = Output()
-    private let repositoryEntity: RepositoryEntity
+    let state: State
     
     @Inject private var starringUseCase: StarringUseCase
     
     private weak var coordinator: RepositoryListCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: RepositoryListCoordinator?, repositoryEntity: RepositoryEntity) {
+    init(coordinator: RepositoryListCoordinator?, repository: RepositoryEntity) {
         self.coordinator = coordinator
-        self.repositoryEntity = repositoryEntity
+        self.state = State(repository: BehaviorRelay<RepositoryEntity>(value: repository))
         
-        // MARK: - Bind Input: cellDidLoad
+        // MARK: - Bind State: repository
         
-        input.cellDidLoad
-            .map { repositoryEntity.name }
+        state.repository
+            .map { $0.name }
             .bind(to: output.name)
             .disposed(by: disposeBag)
         
-        input.cellDidLoad
-            .map { repositoryEntity.isPrivate }
+        state.repository
+            .map { $0.isPrivate }
             .bind(to: output.isPrivate)
             .disposed(by: disposeBag)
         
-        input.cellDidLoad
-            .map { repositoryEntity.description }
+        state.repository
+            .map { $0.description }
             .bind(to: output.description)
             .disposed(by: disposeBag)
         
-        input.cellDidLoad
-            .map { repositoryEntity.stargazersCount }
+        state.repository
+            .map { $0.stargazersCount }
             .bind(to: output.starCount)
             .disposed(by: disposeBag)
         
-        input.cellDidLoad
-            .map { repositoryEntity.updatedDate }
+        state.repository
+            .map { $0.updatedDate }
             .bind(to: output.updatedDate)
             .disposed(by: disposeBag)
         
-        input.cellDidLoad
-            .map { repositoryEntity.isStarredByUser }
+        state.repository
+            .map { $0.isStarredByUser }
             .bind(to: output.isStarred)
             .disposed(by: disposeBag)
         
         // MARK: - Bind Input: cellDidTap
         
         input.cellDidTap
-            .map { RepositoryDetailViewModel(coordinator: coordinator, repository: repositoryEntity) }
-            .do { [weak self] detailViewModel in
-                self?.bindOutput(from: detailViewModel)
+            .withLatestFrom(state.repository)
+            .map { RepositoryDetailViewModel(coordinator: coordinator, repository: $0) }
+            .do { [weak self] in
+                self?.bindState(from: $0)
             }
             .bind {
                 coordinator?.coordinate(by: .cellDidTap(viewModel: $0))
@@ -94,13 +98,9 @@ extension RepositoryCellViewModel {
 // MARK: - Supporting Methods
 
 private extension RepositoryCellViewModel {
-    func bindOutput(from detailViewModel: RepositoryDetailViewModel) {
-        detailViewModel.output.isStarredByUser
-            .bind(to: output.isStarred)
-            .disposed(by: disposeBag)
-        
-        detailViewModel.output.starCount
-            .bind(to: output.starCount)
+    func bindState(from detailViewModel: RepositoryDetailViewModel) {
+        detailViewModel.state.repository
+            .bind(to: state.repository)
             .disposed(by: disposeBag)
     }
 }
