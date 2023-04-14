@@ -61,6 +61,9 @@ extension Container {
         Container.shared.register(service: StarringRepository.self) { DefaultStarringRepository() }
         Container.shared.register(service: StarringUseCase.self) { DefaultStarringUseCase() }
         
+        // RepositoryDetail
+        Container.shared.register(service: RepositoryUseCase.self) { DefaultRepositoryUseCase() }
+        
         // Account
         Container.shared.register(service: AccountUseCase.self) { DefaultAccountUseCase() }
         Container.shared.register(service: AccountRepository.self) { DefaultAccountRepository() }
