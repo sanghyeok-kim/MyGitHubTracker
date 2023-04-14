@@ -117,7 +117,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .withUnretained(self)
             .flatMapCompletableMaterialized { `self`, starringStatus in
                 let (isRemoteStarred, ownerName, repositoryName) = starringStatus
-                return self.starringUseCase.toggleStarringRepository(ownerName: ownerName, repositoryName: repositoryName, shouldStar: isRemoteStarred)
+                return self.starringUseCase.toggleStarringRepository(ownerName: ownerName, repositoryName: repositoryName, isStarred: isRemoteStarred)
             }
             .share()
         

@@ -9,5 +9,5 @@ import RxSwift
 
 protocol StarringUseCase {
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Observable<Bool>
-    func toggleStarringRepository(ownerName: String, repositoryName: String, shouldStar: Bool) -> Completable
+    func toggleStarringRepository(ownerName: String, repositoryName: String, isStarred: Bool) -> Completable
 }
