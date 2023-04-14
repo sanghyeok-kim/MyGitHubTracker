@@ -65,7 +65,6 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
     func bindInput(to viewModel: RepositoryCellViewModel) {
         let input = viewModel.input
         
-        input.cellDidLoad.accept(())
     }
     
     func bindOutput(from viewModel: RepositoryCellViewModel) {
