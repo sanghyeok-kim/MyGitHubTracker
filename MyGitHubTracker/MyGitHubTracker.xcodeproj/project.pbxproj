@@ -124,6 +124,9 @@
 		1E90047B29E6B04C008F9895 /* Rx+flatMapMaterialized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */; };
 		1E90047F29E905B5008F9895 /* DefaultRepositoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90047E29E905B5008F9895 /* DefaultRepositoryUseCase.swift */; };
 		1E90048129E90A8C008F9895 /* RepositoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048029E90A8C008F9895 /* RepositoryUseCase.swift */; };
+		1E90048329E91107008F9895 /* PaginationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048229E91107008F9895 /* PaginationUseCase.swift */; };
+		1E90048529E981AE008F9895 /* PaginationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048429E981AE008F9895 /* PaginationState.swift */; };
+		1E90048729E981D0008F9895 /* DefaultPaginationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048629E981D0008F9895 /* DefaultPaginationUseCase.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -268,6 +271,9 @@
 		1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+flatMapMaterialized.swift"; sourceTree = "<group>"; };
 		1E90047E29E905B5008F9895 /* DefaultRepositoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositoryUseCase.swift; sourceTree = "<group>"; };
 		1E90048029E90A8C008F9895 /* RepositoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryUseCase.swift; sourceTree = "<group>"; };
+		1E90048229E91107008F9895 /* PaginationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationUseCase.swift; sourceTree = "<group>"; };
+		1E90048429E981AE008F9895 /* PaginationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationState.swift; sourceTree = "<group>"; };
+		1E90048629E981D0008F9895 /* DefaultPaginationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPaginationUseCase.swift; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -638,9 +644,10 @@
 		1E8FB88229D12E3300847578 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1E43BF3529D7CB1F00C718D4 /* GitHubAuthorizationEntity.swift */,
 				1E8FB8A929D150CB00847578 /* UserEntity.swift */,
 				1E8FB8AB29D150D000847578 /* RepositoryEntity.swift */,
-				1E43BF3529D7CB1F00C718D4 /* GitHubAuthorizationEntity.swift */,
+				1E90048429E981AE008F9895 /* PaginationState.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -663,6 +670,7 @@
 				1E90047E29E905B5008F9895 /* DefaultRepositoryUseCase.swift */,
 				1E8FB8B329D151C600847578 /* DefaultRepositorySearchUseCase.swift */,
 				1E800D2429DC1A7900614811 /* DefaultStarringUseCase.swift */,
+				1E90048629E981D0008F9895 /* DefaultPaginationUseCase.swift */,
 				1E8FB8B529D151DC00847578 /* DefaultAccountUseCase.swift */,
 				1E8FB88529D12E6000847578 /* Protocol */,
 			);
@@ -676,6 +684,7 @@
 				1E90048029E90A8C008F9895 /* RepositoryUseCase.swift */,
 				1E8FB8B929D1522600847578 /* RepositorySearchUseCase.swift */,
 				1E800D2A29DC668800614811 /* StarringUseCase.swift */,
+				1E90048229E91107008F9895 /* PaginationUseCase.swift */,
 				1E8FB8B729D1521E00847578 /* AccountUseCase.swift */,
 			);
 			path = Protocol;
@@ -1067,6 +1076,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8FB89C29D14E6800847578 /* Rx+decodeMap.swift in Sources */,
+				1E90048329E91107008F9895 /* PaginationUseCase.swift in Sources */,
 				1E800D3429DD028100614811 /* EndpointService.swift in Sources */,
 				1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */,
 				1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */,
@@ -1085,6 +1095,7 @@
 				1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */,
 				1E8FB89129D12F4800847578 /* LoginRepository.swift in Sources */,
 				1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */,
+				1E90048529E981AE008F9895 /* PaginationState.swift in Sources */,
 				1E800D2F29DC68F400614811 /* Rx+validateStatusCode.swift in Sources */,
 				1E66CA6729D31D9700EA117A /* RepositoryCellViewModel.swift in Sources */,
 				1E8FB8DB29D1590B00847578 /* AccountCoordinator.swift in Sources */,
@@ -1121,6 +1132,7 @@
 				1E800D2D29DC687700614811 /* NetworkResult.swift in Sources */,
 				1E43BF2629D530E000C718D4 /* Rx+toastMessageMap.swift in Sources */,
 				1E8FB8E229D167BE00847578 /* ToastLabel.swift in Sources */,
+				1E90048729E981D0008F9895 /* DefaultPaginationUseCase.swift in Sources */,
 				1E8FB8CD29D1584B00847578 /* DefaultRepositoryListCoordinator.swift in Sources */,
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
 				1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */,
