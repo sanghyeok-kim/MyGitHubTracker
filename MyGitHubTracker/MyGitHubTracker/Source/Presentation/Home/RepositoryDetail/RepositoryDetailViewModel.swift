@@ -47,7 +47,7 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         // MARK: - Binding Input - viewDidLoad
         
-        let repositoryStarringInfoDidFetch = input.viewDidLoad
+        let remoteRepositoryDetailDidFetch = input.viewDidLoad
             .withLatestFrom(state.repository)
             .withUnretained(self)
             .flatMap { `self`, repository in
@@ -67,11 +67,11 @@ final class RepositoryDetailViewModel: ViewModelType {
             }
             .share()
         
-        repositoryStarringInfoDidFetch
+        remoteRepositoryDetailDidFetch
             .bind(to: state.repository)
             .disposed(by: disposeBag)
         
-        repositoryStarringInfoDidFetch
+        remoteRepositoryDetailDidFetch
             .map { _ in false }
             .distinctUntilChanged()
             .bind(to: output.isFetchingData)
@@ -95,7 +95,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .bind(to: state.repository)
             .disposed(by: disposeBag)
         
-        let checkRepositoryIsStarredWhenStarringButtonDidTap = input.starringButtonDidTap
+        let remoteRepositoryIsStarred = input.starringButtonDidTap
             .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
             .withUnretained(self)
             .flatMapMaterialized { `self`, name -> Observable<Bool> in
@@ -104,14 +104,14 @@ final class RepositoryDetailViewModel: ViewModelType {
             }
             .share()
         
-        checkRepositoryIsStarredWhenStarringButtonDidTap
+        remoteRepositoryIsStarred
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
-        let repositoryStarringDidFinish = checkRepositoryIsStarredWhenStarringButtonDidTap
+        let remoteRpositoryDidToggle = remoteRepositoryIsStarred
             .compactMap { $0.element }
             .withLatestFrom(state.repository) { (isRemoteStarred: $0, ownerName: $1.ownerName, repositoryName: $1.name) }
             .withUnretained(self)
@@ -121,14 +121,14 @@ final class RepositoryDetailViewModel: ViewModelType {
             }
             .share()
         
-        repositoryStarringDidFinish
+        remoteRpositoryDidToggle
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
-        let starringDidFinished = repositoryStarringDidFinish
+        let remoteRepositoryDetailDidFetchAfterStarring = remoteRpositoryDidToggle
             .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
             .withUnretained(self)
             .flatMapMaterialized { `self`, repositoryInfo -> Observable<RepositoryEntity> in
@@ -137,18 +137,18 @@ final class RepositoryDetailViewModel: ViewModelType {
             }
             .share()
         
-        starringDidFinished
+        remoteRepositoryDetailDidFetchAfterStarring
             .compactMap { $0.element }
             .map { $0.stargazersCount }
-            .withLatestFrom(state.repository) { ($0, $1) }
+            .withLatestFrom(state.repository) { (remoteRepositoryStarCount: $0, displayedRepository: $1) }
             .filter { $0 != $1.stargazersCount }
-            .compactMap { [weak self] count, repository in
-                self?.repositoryUseCase.changeStargazersCount(repository, count: count)
+            .compactMap { [weak self] remoteCount, repository in
+                self?.repositoryUseCase.changeStargazersCount(repository, count: remoteCount)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)
         
-        starringDidFinished
+        remoteRepositoryDetailDidFetchAfterStarring
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
