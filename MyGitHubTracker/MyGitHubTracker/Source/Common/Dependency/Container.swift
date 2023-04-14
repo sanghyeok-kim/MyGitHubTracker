@@ -55,6 +55,7 @@ extension Container {
         // RepositoryList
         Container.shared.register(service: RepositorySearchRepository.self) { DefaultRepositorySearchRepository() }
         Container.shared.register(service: RepositorySearchUseCase.self) { DefaultRepositorySearchUseCase() }
+        Container.shared.register(service: PaginationUseCase.self) { DefaultPaginationUseCase() }
         Container.shared.register(service: AnyTransformer.self) { AnyTransformer(RepositoryTransformer()) }
         
         //Starring
