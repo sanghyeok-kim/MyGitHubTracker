@@ -8,7 +8,8 @@
 import Foundation
 
 protocol RepositoryUseCase {
-    func toggleStarCount(of repository: RepositoryEntity) -> RepositoryEntity
-    func toggleIsStarredByUser(of repository: RepositoryEntity, isStarred: Bool) -> RepositoryEntity
-    func changeStargazersCount(of repository: RepositoryEntity, count: Int) -> RepositoryEntity
+    func toggleStargazersCount(_ repository: RepositoryEntity) -> RepositoryEntity
+    func toggleIsStarredByUser(_ repository: RepositoryEntity) -> RepositoryEntity
+    func changeIsStarredByUser(_ repository: RepositoryEntity, isStarred: Bool) -> RepositoryEntity
+    func changeStargazersCount(_ repository: RepositoryEntity, count: Int) -> RepositoryEntity
 }

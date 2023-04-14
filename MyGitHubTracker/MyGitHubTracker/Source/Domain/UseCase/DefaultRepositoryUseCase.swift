@@ -8,7 +8,7 @@
 import Foundation
 
 final class DefaultRepositoryUseCase: RepositoryUseCase {
-    func toggleStarCount(of repository: RepositoryEntity) -> RepositoryEntity {
+    func toggleStargazersCount(_ repository: RepositoryEntity) -> RepositoryEntity {
         var newRepository = repository
         let (isStarred, starCount) = (repository.isStarredByUser, repository.stargazersCount)
         let newStarCount = isStarred ? starCount - 1 : starCount + 1
@@ -16,13 +16,19 @@ final class DefaultRepositoryUseCase: RepositoryUseCase {
         return newRepository
     }
     
-    func toggleIsStarredByUser(of repository: RepositoryEntity, isStarred: Bool) -> RepositoryEntity {
+    func toggleIsStarredByUser(_ repository: RepositoryEntity) -> RepositoryEntity {
+        var newRepository = repository
+        newRepository.isStarredByUser = !repository.isStarredByUser
+        return newRepository
+    }
+    
+    func changeIsStarredByUser(_ repository: RepositoryEntity, isStarred: Bool) -> RepositoryEntity {
         var newRepository = repository
         newRepository.isStarredByUser = isStarred
         return newRepository
     }
     
-    func changeStargazersCount(of repository: RepositoryEntity, count: Int) -> RepositoryEntity {
+    func changeStargazersCount(_ repository: RepositoryEntity, count: Int) -> RepositoryEntity {
         var newRepository = repository
         newRepository.stargazersCount = count
         return newRepository
