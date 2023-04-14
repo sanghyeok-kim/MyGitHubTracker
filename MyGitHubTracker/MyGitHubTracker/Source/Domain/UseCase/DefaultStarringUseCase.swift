@@ -17,13 +17,14 @@ final class DefaultStarringUseCase: StarringUseCase {
             .asObservable()
     }
     
-    func starRepository(ownerName: String, repositoryName: String) -> Completable {
-        return starringRepository
-            .starRepository(ownerName: ownerName, repositoryName: repositoryName)
-    }
-    
-    func unstarRepository(ownerName: String, repositoryName: String) -> Completable {
-        return starringRepository
-            .unstarRepository(ownerName: ownerName, repositoryName: repositoryName)
+    func toggleStarringRepository(ownerName: String, repositoryName: String, shouldStar: Bool) -> Completable {
+        switch shouldStar {
+        case true:
+            return starringRepository
+                .unstarRepository(ownerName: ownerName, repositoryName: repositoryName)
+        case false:
+            return starringRepository
+                .starRepository(ownerName: ownerName, repositoryName: repositoryName)
+        }
     }
 }
