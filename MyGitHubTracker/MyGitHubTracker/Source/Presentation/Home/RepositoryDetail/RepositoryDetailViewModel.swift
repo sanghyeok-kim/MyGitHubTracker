@@ -34,6 +34,7 @@ final class RepositoryDetailViewModel: ViewModelType {
     let output = Output()
     let state: State
     
+    @Inject private var repositoryUseCase: RepositoryUseCase
     @Inject private var repositorySearchUseCase: RepositorySearchUseCase
     @Inject private var starringUseCase: StarringUseCase
     
@@ -112,12 +113,8 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         input.starringButtonDidTap
             .withLatestFrom(state.repository)
-            .map {
-                var newRepository = $0
-                let (isStarred, starCount) = ($0.isStarredByUser, $0.stargazersCount)
-                let newStarCount = isStarred ? starCount - 1 : starCount + 1
-                newRepository.stargazersCount = newStarCount
-                return newRepository
+            .compactMap { [weak self] in
+                self?.repositoryUseCase.toggleStarCount(of: $0)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)
@@ -169,10 +166,8 @@ final class RepositoryDetailViewModel: ViewModelType {
         repositoryDidStar
             .compactMap { $0.element }
             .withLatestFrom(state.repository)
-            .map {
-                var newRepository = $0
-                newRepository.isStarredByUser = true
-                return newRepository
+            .compactMap { [weak self] in
+                self?.repositoryUseCase.toggleIsStarredByUser(of: $0, isStarred: true)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)
@@ -197,11 +192,9 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         repositoryDidUnstar
             .compactMap { $0.element }
-            .withLatestFrom(state.repository) { ($0, $1) }
-            .map {
-                var newRepository = $1
-                newRepository.isStarredByUser = false
-                return newRepository
+            .withLatestFrom(state.repository)
+            .compactMap { [weak self] in
+                self?.repositoryUseCase.toggleIsStarredByUser(of: $0, isStarred: false)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)
