@@ -181,10 +181,8 @@ final class RepositoryDetailViewModel: ViewModelType {
             .map { $0.stargazersCount }
             .withLatestFrom(state.repository) { ($0, $1) }
             .filter { $0 != $1.stargazersCount }
-            .map {
-                var newRepository = $1
-                newRepository.stargazersCount = $0
-                return newRepository
+            .compactMap { [weak self] count, repository in
+                self?.repositoryUseCase.changeStargazersCount(of: repository, count: count)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)

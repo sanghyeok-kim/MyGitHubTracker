@@ -10,4 +10,5 @@ import Foundation
 protocol RepositoryUseCase {
     func toggleStarCount(of repository: RepositoryEntity) -> RepositoryEntity
     func toggleIsStarredByUser(of repository: RepositoryEntity, isStarred: Bool) -> RepositoryEntity
+    func changeStargazersCount(of repository: RepositoryEntity, count: Int) -> RepositoryEntity
 }

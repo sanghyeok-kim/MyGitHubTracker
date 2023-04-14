@@ -21,4 +21,10 @@ final class DefaultRepositoryUseCase: RepositoryUseCase {
         newRepository.isStarredByUser = isStarred
         return newRepository
     }
+    
+    func changeStargazersCount(of repository: RepositoryEntity, count: Int) -> RepositoryEntity {
+        var newRepository = repository
+        newRepository.stargazersCount = count
+        return newRepository
+    }
 }
