@@ -24,7 +24,6 @@ extension UIImageView {
     func setImageWithCaching(from url: URL, using imageLoader: ImageLoader) -> Disposable {
         return imageLoader
             .fetchImage(from: url)
-            .debug()
             .observe(on: MainScheduler.instance)
             .subscribe(with: self, onSuccess: { `self`, image in
                 self.image = image
