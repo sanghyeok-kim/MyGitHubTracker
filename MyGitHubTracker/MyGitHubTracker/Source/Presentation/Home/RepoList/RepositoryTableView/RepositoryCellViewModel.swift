@@ -37,6 +37,8 @@ final class RepositoryCellViewModel: ViewModelType {
         self.coordinator = coordinator
         self.repositoryEntity = repositoryEntity
         
+        // MARK: - Bind Input: cellDidLoad
+        
         input.cellDidLoad
             .map { repositoryEntity.name }
             .bind(to: output.name)
@@ -67,8 +69,13 @@ final class RepositoryCellViewModel: ViewModelType {
             .bind(to: output.isStarred)
             .disposed(by: disposeBag)
         
+        // MARK: - Bind Input: cellDidTap
+        
         input.cellDidTap
             .map { RepositoryDetailViewModel(coordinator: coordinator, repository: repositoryEntity) }
+            .do { [weak self] detailViewModel in
+                self?.bindOutput(from: detailViewModel)
+            }
             .bind {
                 coordinator?.coordinate(by: .cellDidTap(viewModel: $0))
             }
@@ -81,5 +88,19 @@ final class RepositoryCellViewModel: ViewModelType {
 extension RepositoryCellViewModel {
     func cellDidTap() {
         input.cellDidTap.accept(())
+    }
+}
+
+// MARK: - Supporting Methods
+
+private extension RepositoryCellViewModel {
+    func bindOutput(from detailViewModel: RepositoryDetailViewModel) {
+        detailViewModel.output.isStarredByUser
+            .bind(to: output.isStarred)
+            .disposed(by: disposeBag)
+        
+        detailViewModel.output.starCount
+            .bind(to: output.starCount)
+            .disposed(by: disposeBag)
     }
 }
