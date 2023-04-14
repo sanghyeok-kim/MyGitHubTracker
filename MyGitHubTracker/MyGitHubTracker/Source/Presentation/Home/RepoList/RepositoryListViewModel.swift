@@ -31,7 +31,7 @@ final class RepositoryListViewModel: ViewModelType {
     
     let input = Input()
     let output = Output()
-    private var state = State()
+    var state = State()
     
     @Inject private var repositorySearchUseCase: RepositorySearchUseCase
     @Inject private var starringUseCase: StarringUseCase
@@ -100,7 +100,7 @@ final class RepositoryListViewModel: ViewModelType {
             .share()
         
         updatedIsStarredRepositoryEntities
-            .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repositoryEntity: $0) } }
+            .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repository: $0) } }
             .withLatestFrom(output.repositoryCellViewModels) { $1 + $0 }
             .bind(to: output.repositoryCellViewModels)
             .disposed(by: disposeBag)
