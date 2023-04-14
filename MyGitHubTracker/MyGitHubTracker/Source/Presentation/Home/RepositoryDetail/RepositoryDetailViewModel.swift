@@ -26,8 +26,13 @@ final class RepositoryDetailViewModel: ViewModelType {
         let showErrorMessage = PublishRelay<String>()
     }
     
+    struct State {
+        let repository: BehaviorRelay<RepositoryEntity>
+    }
+    
     let input = Input()
     let output = Output()
+    let state: State
     
     @Inject private var repositorySearchUseCase: RepositorySearchUseCase
     @Inject private var starringUseCase: StarringUseCase
@@ -36,12 +41,15 @@ final class RepositoryDetailViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     init(coordinator: RepositoryListCoordinator?, repository: RepositoryEntity) {
+        self.coordinator = coordinator
+        self.state = State(repository: BehaviorRelay<RepositoryEntity>(value: repository))
         
         // MARK: - Bind Input: viewDidLoad
         
-        let fetchedRepositoryDetail = input.viewDidLoad
+        let repositoryStarringInfoDidFetch = input.viewDidLoad
+            .withLatestFrom(state.repository)
             .withUnretained(self)
-            .flatMap { `self`, _ in
+            .flatMap { `self`, repository in
                 self.repositorySearchUseCase.fetchRepositoryDetail(
                     ownerName: repository.ownerName,
                     repositoryName: repository.name
@@ -58,38 +66,44 @@ final class RepositoryDetailViewModel: ViewModelType {
             }
             .share()
         
-        fetchedRepositoryDetail
+        repositoryStarringInfoDidFetch
+            .bind(to: state.repository)
+            .disposed(by: disposeBag)
+        
+        repositoryStarringInfoDidFetch
             .map { _ in false }
             .distinctUntilChanged()
             .bind(to: output.isFetchingData)
             .disposed(by: disposeBag)
         
-        fetchedRepositoryDetail
+        // MARK: - Bind State: repository
+        
+        state.repository
             .map { $0.avatarImageURL }
             .bind(to: output.avatarImageURL)
             .disposed(by: disposeBag)
         
-        fetchedRepositoryDetail
+        state.repository
             .map { $0.ownerName }
             .bind(to: output.ownerName)
             .disposed(by: disposeBag)
         
-        fetchedRepositoryDetail
+        state.repository
             .map { $0.name }
             .bind(to: output.name)
             .disposed(by: disposeBag)
         
-        fetchedRepositoryDetail
+        state.repository
             .map { $0.description }
             .bind(to: output.description)
             .disposed(by: disposeBag)
         
-        fetchedRepositoryDetail
+        state.repository
             .map { $0.stargazersCount }
             .bind(to: output.starCount)
             .disposed(by: disposeBag)
         
-        fetchedRepositoryDetail
+        state.repository
             .map { $0.isStarredByUser }
             .bind(to: output.isStarredByUser)
             .disposed(by: disposeBag)
@@ -97,21 +111,29 @@ final class RepositoryDetailViewModel: ViewModelType {
         // MARK: - Bind Input: starringButtonDidTap
         
         input.starringButtonDidTap
-            .withLatestFrom(Observable.combineLatest(output.isStarredByUser, output.starCount))
-            .map { isStarred, starCount -> Int in
-                return isStarred ? starCount - 1 : starCount + 1
+            .withLatestFrom(state.repository)
+            .map {
+                var newRepository = $0
+                let (isStarred, starCount) = ($0.isStarredByUser, $0.stargazersCount)
+                let newStarCount = isStarred ? starCount - 1 : starCount + 1
+                newRepository.stargazersCount = newStarCount
+                return newRepository
             }
-            .bind(to: output.starCount)
+            .bind(to: state.repository)
             .disposed(by: disposeBag)
         
         input.starringButtonDidTap
-            .withLatestFrom(output.isStarredByUser)
-            .map { !$0 }
-            .bind(to: output.isStarredByUser)
+            .withLatestFrom(state.repository)
+            .map {
+                var newRepository = $0
+                newRepository.isStarredByUser = !$0.isStarredByUser
+                return newRepository
+            }
+            .bind(to: state.repository)
             .disposed(by: disposeBag)
         
         let isStarredByUserWhenStarringButtonDidTap = input.starringButtonDidTap
-            .withLatestFrom(Observable.combineLatest(output.ownerName, output.name))
+            .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
             .withUnretained(self) { ($0, $1) }
             .flatMapMaterialized { `self`, name -> Observable<Bool> in
                 let (userName, repositoryName) = name
@@ -129,11 +151,11 @@ final class RepositoryDetailViewModel: ViewModelType {
         let repositoryDidStar = isStarredByUserWhenStarringButtonDidTap
             .compactMap { $0.element }
             .filter { !$0 }
-            .withLatestFrom(Observable.combineLatest(output.ownerName, output.name))
+            .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
             .withUnretained(self)
             .flatMapCompletableMaterialized { `self`, name in
-                let (userName, repositoryName) = name
-                return self.starringUseCase.starRepository(ownerName: userName, repositoryName: repositoryName)
+                let (ownerName, repositoryName) = name
+                return self.starringUseCase.starRepository(ownerName: ownerName, repositoryName: repositoryName)
             }
             .share()
         
@@ -146,14 +168,19 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         repositoryDidStar
             .compactMap { $0.element }
-            .map { true }
-            .bind(to: output.isStarredByUser)
+            .withLatestFrom(state.repository)
+            .map {
+                var newRepository = $0
+                newRepository.isStarredByUser = true
+                return newRepository
+            }
+            .bind(to: state.repository)
             .disposed(by: disposeBag)
         
         let repositoryDidUnstar = isStarredByUserWhenStarringButtonDidTap
             .compactMap { $0.element }
             .filter { $0 }
-            .withLatestFrom(Observable.combineLatest(output.ownerName, output.name))
+            .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
             .withUnretained(self)
             .flatMapCompletableMaterialized { `self`, nameInfo in
                 let (ownerName, repositoryName) = nameInfo
@@ -170,12 +197,17 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         repositoryDidUnstar
             .compactMap { $0.element }
-            .map { false }
-            .bind(to: output.isStarredByUser)
+            .withLatestFrom(state.repository) { ($0, $1) }
+            .map {
+                var newRepository = $1
+                newRepository.isStarredByUser = false
+                return newRepository
+            }
+            .bind(to: state.repository)
             .disposed(by: disposeBag)
         
         let starringDidFinished = Observable.merge(repositoryDidStar, repositoryDidUnstar)
-            .withLatestFrom(Observable.combineLatest(output.ownerName, output.name))
+            .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
             .withUnretained(self)
             .flatMapMaterialized { `self`, repositoryInfo -> Observable<RepositoryEntity> in
                 let (owenrName, repositoryName) = repositoryInfo
@@ -186,10 +218,14 @@ final class RepositoryDetailViewModel: ViewModelType {
         starringDidFinished
             .compactMap { $0.element }
             .map { $0.stargazersCount }
-            .withLatestFrom(output.starCount) { ($0, $1) }
-            .filter { $0 != $1 }
-            .map { $0.0 }
-            .bind(to: output.starCount)
+            .withLatestFrom(state.repository) { ($0, $1) }
+            .filter { $0 != $1.stargazersCount }
+            .map {
+                var newRepository = $1
+                newRepository.stargazersCount = $0
+                return newRepository
+            }
+            .bind(to: state.repository)
             .disposed(by: disposeBag)
         
         starringDidFinished
