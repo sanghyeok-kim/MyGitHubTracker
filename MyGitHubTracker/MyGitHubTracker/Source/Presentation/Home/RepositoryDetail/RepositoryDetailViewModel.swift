@@ -82,92 +82,53 @@ final class RepositoryDetailViewModel: ViewModelType {
         input.starringButtonDidTap
             .withLatestFrom(state.repository)
             .compactMap { [weak self] in
-                self?.repositoryUseCase.toggleStarCount(of: $0)
+                self?.repositoryUseCase.toggleStargazersCount($0)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)
         
         input.starringButtonDidTap
             .withLatestFrom(state.repository)
-            .map {
-                var newRepository = $0
-                newRepository.isStarredByUser = !$0.isStarredByUser
-                return newRepository
+            .compactMap { [weak self] in
+                self?.repositoryUseCase.toggleIsStarredByUser($0)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)
         
-        let isStarredByUserWhenStarringButtonDidTap = input.starringButtonDidTap
+        let checkRepositoryIsStarredWhenStarringButtonDidTap = input.starringButtonDidTap
             .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
-            .withUnretained(self) { ($0, $1) }
+            .withUnretained(self)
             .flatMapMaterialized { `self`, name -> Observable<Bool> in
                 let (userName, repositoryName) = name
                 return self.starringUseCase.checkRepositoryIsStarred(ownerName: userName, repositoryName: repositoryName)
             }
             .share()
         
-        isStarredByUserWhenStarringButtonDidTap
+        checkRepositoryIsStarredWhenStarringButtonDidTap
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
-        let repositoryDidStar = isStarredByUserWhenStarringButtonDidTap
+        let repositoryStarringDidFinish = checkRepositoryIsStarredWhenStarringButtonDidTap
             .compactMap { $0.element }
-            .filter { !$0 }
-            .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
+            .withLatestFrom(state.repository) { (isRemoteStarred: $0, ownerName: $1.ownerName, repositoryName: $1.name) }
             .withUnretained(self)
-            .flatMapCompletableMaterialized { `self`, name in
-                let (ownerName, repositoryName) = name
-                return self.starringUseCase.starRepository(ownerName: ownerName, repositoryName: repositoryName)
+            .flatMapCompletableMaterialized { `self`, starringStatus in
+                let (isRemoteStarred, ownerName, repositoryName) = starringStatus
+                return self.starringUseCase.toggleStarringRepository(ownerName: ownerName, repositoryName: repositoryName, shouldStar: isRemoteStarred)
             }
             .share()
         
-        repositoryDidStar
+        repositoryStarringDidFinish
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
             .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
         
-        repositoryDidStar
-            .compactMap { $0.element }
-            .withLatestFrom(state.repository)
-            .compactMap { [weak self] in
-                self?.repositoryUseCase.toggleIsStarredByUser(of: $0, isStarred: true)
-            }
-            .bind(to: state.repository)
-            .disposed(by: disposeBag)
-        
-        let repositoryDidUnstar = isStarredByUserWhenStarringButtonDidTap
-            .compactMap { $0.element }
-            .filter { $0 }
-            .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
-            .withUnretained(self)
-            .flatMapCompletableMaterialized { `self`, nameInfo in
-                let (ownerName, repositoryName) = nameInfo
-                return self.starringUseCase.unstarRepository(ownerName: ownerName, repositoryName: repositoryName)
-            }
-            .share()
-        
-        repositoryDidUnstar
-            .compactMap { $0.error }
-            .doLogError()
-            .toastMeessageMap(to: .failToStarring)
-            .bind(to: output.showErrorMessage)
-            .disposed(by: disposeBag)
-        
-        repositoryDidUnstar
-            .compactMap { $0.element }
-            .withLatestFrom(state.repository)
-            .compactMap { [weak self] in
-                self?.repositoryUseCase.toggleIsStarredByUser(of: $0, isStarred: false)
-            }
-            .bind(to: state.repository)
-            .disposed(by: disposeBag)
-        
-        let starringDidFinished = Observable.merge(repositoryDidStar, repositoryDidUnstar)
+        let starringDidFinished = repositoryStarringDidFinish
             .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
             .withUnretained(self)
             .flatMapMaterialized { `self`, repositoryInfo -> Observable<RepositoryEntity> in
@@ -182,7 +143,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .withLatestFrom(state.repository) { ($0, $1) }
             .filter { $0 != $1.stargazersCount }
             .compactMap { [weak self] count, repository in
-                self?.repositoryUseCase.changeStargazersCount(of: repository, count: count)
+                self?.repositoryUseCase.changeStargazersCount(repository, count: count)
             }
             .bind(to: state.repository)
             .disposed(by: disposeBag)
