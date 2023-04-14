@@ -96,6 +96,20 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         // MARK: - Bind Input: starringButtonDidTap
         
+        input.starringButtonDidTap
+            .withLatestFrom(Observable.combineLatest(output.isStarredByUser, output.starCount))
+            .map { isStarred, starCount -> Int in
+                return isStarred ? starCount - 1 : starCount + 1
+            }
+            .bind(to: output.starCount)
+            .disposed(by: disposeBag)
+        
+        input.starringButtonDidTap
+            .withLatestFrom(output.isStarredByUser)
+            .map { !$0 }
+            .bind(to: output.isStarredByUser)
+            .disposed(by: disposeBag)
+        
         let isStarredByUserWhenStarringButtonDidTap = input.starringButtonDidTap
             .withLatestFrom(Observable.combineLatest(output.ownerName, output.name))
             .withUnretained(self) { ($0, $1) }
@@ -172,6 +186,9 @@ final class RepositoryDetailViewModel: ViewModelType {
         starringDidFinished
             .compactMap { $0.element }
             .map { $0.stargazersCount }
+            .withLatestFrom(output.starCount) { ($0, $1) }
+            .filter { $0 != $1 }
+            .map { $0.0 }
             .bind(to: output.starCount)
             .disposed(by: disposeBag)
         
