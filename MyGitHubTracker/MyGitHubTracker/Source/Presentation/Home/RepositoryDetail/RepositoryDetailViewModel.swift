@@ -63,7 +63,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .withUnretained(self)
             .map { `self`, result -> RepositoryEntity in
                 let (repositoryEntity, isStarredByUser) = result
-                return self.updateIsStarredByUser(of: repositoryEntity, bool: isStarredByUser)
+                return self.repositoryUseCase.changeIsStarredByUser(repositoryEntity, isStarred: isStarredByUser)
             }
             .share()
         
@@ -199,17 +199,5 @@ private extension RepositoryDetailViewModel {
             repositoryName: repositoryName
         )
         return Observable.zip(Observable.just(repositoryEntity), isStarredByUserObservable)
-    }
-    
-    func updateIsStarredByUser(of repositoryEntity: RepositoryEntity, bool: Bool) -> RepositoryEntity {
-        var updatedRepositoryEntity = repositoryEntity
-        updatedRepositoryEntity.isStarredByUser = bool
-        return updatedRepositoryEntity
-    }
-    
-    func updateStargazerCount(of repositoryEntity: RepositoryEntity, count: Int) -> RepositoryEntity {
-        var updatedRepositoryEntity = repositoryEntity
-        updatedRepositoryEntity.stargazersCount = count
-        return updatedRepositoryEntity
     }
 }
