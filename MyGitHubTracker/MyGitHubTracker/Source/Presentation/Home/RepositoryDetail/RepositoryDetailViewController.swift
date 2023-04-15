@@ -114,9 +114,9 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
             .disposed(by: disposeBag)
         
         output.avatarImageURL
+            .asDriver()
             .compactMap { $0 }
-            .withUnretained(self)
-            .bind { `self`, url in
+            .drive(with: self) { `self`, url in
                 self.userProfileImageView
                     .setImageWithCaching(from: url, using: self.imageLoader)
                     .disposed(by: self.disposeBag)
