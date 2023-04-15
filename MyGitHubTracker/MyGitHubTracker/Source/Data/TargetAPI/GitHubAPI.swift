@@ -26,7 +26,6 @@ enum GitHubAPI {
 }
 
 extension GitHubAPI: TargetType {
-    
     var baseURL: URL? {
         switch self {
         case .fetchTempCode, .fetchAccessToken:

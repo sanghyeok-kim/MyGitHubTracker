@@ -600,14 +600,11 @@
 		1E8FB86E29D12BFB00847578 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB87029D12C4000847578 /* GitHubAPI.swift */,
-				1E8FB87229D12C5000847578 /* HTTPMethod.swift */,
-				1E8FB87429D12C5800847578 /* TargetType.swift */,
-				1E800D2C29DC687700614811 /* NetworkResult.swift */,
+				1E90048D29EAA246008F9895 /* HTTPComponent */,
+				1E90048B29EAA1D6008F9895 /* TargetAPI */,
+				1E90048A29EAA00D008F9895 /* Service */,
 				1E8FB88E29D12F1D00847578 /* Repository */,
 				1E8FB8EA29D254C400847578 /* Error */,
-				1E800D4429DECA6B00614811 /* Storage */,
-				1E8FB87829D12CAA00847578 /* Service */,
 				1E8FB88329D12E3B00847578 /* Transformer */,
 				1E8FB87D29D12D7400847578 /* DTO */,
 			);
@@ -623,7 +620,7 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		1E8FB87829D12CAA00847578 /* Service */ = {
+		1E8FB87829D12CAA00847578 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				1E8FB87929D12CE900847578 /* URLSessionEndpointService.swift */,
@@ -631,7 +628,7 @@
 				1E8F51FD29DEFC590001CA9E /* URLSessionURLDataService.swift */,
 				1E800D3229DD027600614811 /* Protocol */,
 			);
-			path = Service;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		1E8FB87D29D12D7400847578 /* DTO */ = {
@@ -814,6 +811,41 @@
 				1E90047829E5ACA4008F9895 /* CachedImageLoader.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1E90048A29EAA00D008F9895 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB87829D12CAA00847578 /* Network */,
+				1E800D4429DECA6B00614811 /* Storage */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1E90048B29EAA1D6008F9895 /* TargetAPI */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB87029D12C4000847578 /* GitHubAPI.swift */,
+				1E90048C29EAA226008F9895 /* Protocol */,
+			);
+			path = TargetAPI;
+			sourceTree = "<group>";
+		};
+		1E90048C29EAA226008F9895 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB87429D12C5800847578 /* TargetType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1E90048D29EAA246008F9895 /* HTTPComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FB87229D12C5000847578 /* HTTPMethod.swift */,
+				1E800D2C29DC687700614811 /* NetworkResult.swift */,
+			);
+			path = HTTPComponent;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
