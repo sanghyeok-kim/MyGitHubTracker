@@ -116,11 +116,7 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
         output.avatarImageURL
             .asDriver()
             .compactMap { $0 }
-            .drive(with: self) { `self`, url in
-                self.userProfileImageView
-                    .setImageWithCaching(from: url, using: self.imageLoader)
-                    .disposed(by: self.disposeBag)
-            }
+            .drive(userProfileImageView.rx.loadImage(using: imageLoader, disposeBag: disposeBag))
             .disposed(by: disposeBag)
         
         output.ownerName
