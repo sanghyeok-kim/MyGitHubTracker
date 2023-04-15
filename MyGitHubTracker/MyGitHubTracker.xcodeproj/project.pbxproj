@@ -127,6 +127,7 @@
 		1E90048329E91107008F9895 /* PaginationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048229E91107008F9895 /* PaginationUseCase.swift */; };
 		1E90048529E981AE008F9895 /* PaginationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048429E981AE008F9895 /* PaginationState.swift */; };
 		1E90048729E981D0008F9895 /* DefaultPaginationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048629E981D0008F9895 /* DefaultPaginationUseCase.swift */; };
+		1E90048929EA8013008F9895 /* Rx+UIImageView+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90048829EA8013008F9895 /* Rx+UIImageView+loadImage.swift */; };
 		4098E2CC4C6496DCFA4F2EF7 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA9D444EAB6116527466096 /* Pods_MyGitHubTracker_MyGitHubTrackerUITests.framework */; };
 		C4444B5041DD4D03FDF48A8D /* Pods_MyGitHubTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */; };
 		C86B5D8FC92057B8EC53B524 /* Pods_MyGitHubTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E9D353D9675CEA4675B41A /* Pods_MyGitHubTracker.framework */; };
@@ -274,6 +275,7 @@
 		1E90048229E91107008F9895 /* PaginationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationUseCase.swift; sourceTree = "<group>"; };
 		1E90048429E981AE008F9895 /* PaginationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationState.swift; sourceTree = "<group>"; };
 		1E90048629E981D0008F9895 /* DefaultPaginationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPaginationUseCase.swift; sourceTree = "<group>"; };
+		1E90048829EA8013008F9895 /* Rx+UIImageView+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UIImageView+loadImage.swift"; sourceTree = "<group>"; };
 		2A11EF61278CA2268FFC28E7 /* Pods-MyGitHubTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.debug.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		67B45D26E868601C762F92A0 /* Pods-MyGitHubTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGitHubTracker.release.xcconfig"; path = "Target Support Files/Pods-MyGitHubTracker/Pods-MyGitHubTracker.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A2752A2A80785F305D8C /* Pods_MyGitHubTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGitHubTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -565,6 +567,7 @@
 				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
 				1E8FB8E829D251D500847578 /* Rx+doLogError.swift */,
 				1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */,
+				1E90048829EA8013008F9895 /* Rx+UIImageView+loadImage.swift */,
 				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */,
 				1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */,
 				1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */,
@@ -1173,6 +1176,7 @@
 				1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */,
 				1E8FB84B29D08F0500847578 /* CoordinatorType.swift in Sources */,
 				1E90047729E59CFA008F9895 /* TokenRepository.swift in Sources */,
+				1E90048929EA8013008F9895 /* Rx+UIImageView+loadImage.swift in Sources */,
 				1E90046B29E45717008F9895 /* CachedURLImageLoader.swift in Sources */,
 				1E8FB87C29D12CF800847578 /* GitHubAuthorizationService.swift in Sources */,
 				1E8FB88729D12E6F00847578 /* LoginUseCase.swift in Sources */,
