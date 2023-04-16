@@ -16,7 +16,7 @@ final class RepositoryDetailViewModel: ViewModelType {
     }
     
     struct Output {
-        let isFetchingData = BehaviorRelay<Bool>(value: true)
+        let isLoadingIndicatorVisible = BehaviorRelay<Bool>(value: true)
         let avatarImageURL = BehaviorRelay<URL?>(value: nil)
         let ownerName = BehaviorRelay<String>(value: "")
         let name = BehaviorRelay<String>(value: "")
@@ -74,7 +74,7 @@ final class RepositoryDetailViewModel: ViewModelType {
         remoteRepositoryDetailDidFetch
             .map { _ in false }
             .distinctUntilChanged()
-            .bind(to: output.isFetchingData)
+            .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
         // MARK: - Bind Input - starringButtonDidTap

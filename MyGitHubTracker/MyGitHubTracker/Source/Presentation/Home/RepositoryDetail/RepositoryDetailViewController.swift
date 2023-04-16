@@ -104,7 +104,7 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
     func bindOutput(from viewModel: RepositoryDetailViewModel) {
         let output = viewModel.output
         
-        output.isFetchingData
+        output.isLoadingIndicatorVisible
             .asDriver()
             .drive(
                 loadingIndicator.rx.isAnimating,
