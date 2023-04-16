@@ -33,8 +33,8 @@ final class RepositoryListViewModel: ViewModelType {
     let output = Output()
     let state = State()
     
-    @Inject private var repositorySearchUseCase: RepositorySearchUseCase
     @Inject private var starringUseCase: StarringUseCase
+    @Inject private var repositoryListUseCase: RepositoryListUseCase
     @Inject private var paginationUseCase: PaginationUseCase
     
     private weak var coordinator: RepositoryListCoordinator?
@@ -50,7 +50,7 @@ final class RepositoryListViewModel: ViewModelType {
             .withUnretained(self)
             .flatMapMaterialized { `self`, fetchParameters in
                 let (perPage, page) = fetchParameters
-                return self.repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
+                return self.repositoryListUseCase.fetchUserRepositories(perPage: perPage, page: page)
             }
             .share()
         
@@ -88,7 +88,7 @@ final class RepositoryListViewModel: ViewModelType {
             .withUnretained(self)
             .flatMapMaterialized { `self`, fetchParameters in
                 let (perPage, page) = fetchParameters
-                return self.repositorySearchUseCase.fetchUserRepositories(perPage: perPage, page: page)
+                return self.repositoryListUseCase.fetchUserRepositories(perPage: perPage, page: page)
             }
             .share()
         

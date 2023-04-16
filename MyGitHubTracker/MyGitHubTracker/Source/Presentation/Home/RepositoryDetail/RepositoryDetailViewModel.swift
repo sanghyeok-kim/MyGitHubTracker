@@ -35,7 +35,7 @@ final class RepositoryDetailViewModel: ViewModelType {
     let state: State
     
     @Inject private var repositoryUseCase: RepositoryUseCase
-    @Inject private var repositorySearchUseCase: RepositorySearchUseCase
+    @Inject private var repositoryDetailUseCase: RepositoryDetailUseCase
     @Inject private var starringUseCase: StarringUseCase
     
     private weak var coordinator: RepositoryListCoordinator?
@@ -51,7 +51,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .withLatestFrom(state.repository)
             .withUnretained(self)
             .flatMap { `self`, repository in
-                self.repositorySearchUseCase.fetchRepositoryDetail(
+                self.repositoryDetailUseCase.fetchRepositoryDetail(
                     ownerName: repository.ownerName,
                     repositoryName: repository.name
                 )
@@ -133,7 +133,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .withUnretained(self)
             .flatMapMaterialized { `self`, repositoryInfo -> Observable<RepositoryEntity> in
                 let (owenrName, repositoryName) = repositoryInfo
-                return self.repositorySearchUseCase.fetchRepositoryDetail(ownerName: owenrName, repositoryName: repositoryName)
+                return self.repositoryDetailUseCase.fetchRepositoryDetail(ownerName: owenrName, repositoryName: repositoryName)
             }
             .share()
         
