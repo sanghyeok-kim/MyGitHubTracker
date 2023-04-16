@@ -62,7 +62,7 @@ final class RepositoryListViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         fetchedRepositories
-            .compactMap { $0.isStopEvent }
+            .filter { $0.isStopEvent }
             .map { _ in false }
             .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
@@ -105,7 +105,7 @@ final class RepositoryListViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         refreshedRepositories
-            .compactMap { $0.isStopEvent }
+            .filter { $0.isStopEvent }
             .map { _ in false }
             .bind(to: output.isTableViewRefreshIndicatorVisible)
             .disposed(by: disposeBag)
@@ -181,7 +181,7 @@ private extension RepositoryListViewModel {
             .disposed(by: disposeBag)
         
         fetchedNextPageUserRepositories
-            .compactMap { $0.isStopEvent }
+            .filter { $0.isStopEvent }
             .map { _ in false }
             .bind(to: output.isFooterLoadingIndicatorVisible)
             .disposed(by: disposeBag)
