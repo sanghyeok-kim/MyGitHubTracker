@@ -9,23 +9,27 @@ import Foundation
 
 struct PaginationState {
     private let startPage: Int
-    private let repositoryCountPerPage: Int
-    var currentPage: Int
-    var isLoading = false
+    private let countPerPage: Int
+    private var currentPage: Int
+    private var isLoading = false
     
     var fetchParameters: (perPage: Int, currentPage: Int) {
-        return (repositoryCountPerPage, currentPage)
+        return (countPerPage, currentPage)
     }
     
-    init(startPage: Int = 1, repositoryCountPerPage: Int = 10, isLoading: Bool = false) {
+    var canLoad: Bool {
+        return !isLoading
+    }
+    
+    init(startPage: Int = 1, countPerPage: Int = 10, isLoading: Bool = false) {
         self.startPage = startPage
-        self.repositoryCountPerPage = repositoryCountPerPage
+        self.countPerPage = countPerPage
         self.currentPage = startPage
         self.isLoading = isLoading
     }
     
-    mutating func toggle(isLoading: Bool) {
-        self.isLoading = isLoading
+    mutating func finishLoading() {
+        isLoading = false
     }
     
     mutating func resetToInitial() {

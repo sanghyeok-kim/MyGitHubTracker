@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PaginationUseCase {
-    func toggle(_ paginationState: PaginationState, isLoading: Bool) -> PaginationState
+    func finishLoading(_ paginationState: PaginationState) -> PaginationState
     func prepareNextPage(_ paginationState: PaginationState) -> PaginationState
     func resetToInitial(_ paginationState: PaginationState) -> PaginationState
 }

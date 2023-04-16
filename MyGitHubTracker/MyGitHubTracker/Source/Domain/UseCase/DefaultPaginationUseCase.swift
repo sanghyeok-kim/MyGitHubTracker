@@ -8,16 +8,15 @@
 import Foundation
 
 final class DefaultPaginationUseCase: PaginationUseCase {
-    func toggle(_ paginationState: PaginationState, isLoading: Bool) -> PaginationState {
+    func finishLoading(_ paginationState: PaginationState) -> PaginationState {
         var newPaginationState = paginationState
-        newPaginationState.toggle(isLoading: isLoading)
+        newPaginationState.finishLoading()
         return newPaginationState
     }
     
     func prepareNextPage(_ paginationState: PaginationState) -> PaginationState {
         var newState = paginationState
-        newState.isLoading = true
-        newState.currentPage += 1
+        newState.prepareNextPage()
         return newState
     }
     
