@@ -14,7 +14,7 @@ import SnapKit
 
 final class RepositoryListViewController: UIViewController, ViewType {
     
-    private let repositoryRefreshControll = UIRefreshControl()
+    private lazy var repositoryRefreshControll = UIRefreshControl()
     
     private lazy var loadingIndicator = UIActivityIndicatorView().then {
         $0.style = .large
@@ -32,9 +32,14 @@ final class RepositoryListViewController: UIViewController, ViewType {
         $0.estimatedRowHeight = 120
         $0.rowHeight = UITableView.automaticDimension
         $0.register(RepositoryViewCell.self, forCellReuseIdentifier: RepositoryViewCell.identifier)
+        $0.tableFooterView = repositoryTableFooterLoadingView
     }
     
-    private let errorToastMessageLabel = ToastLabel()
+    private lazy var repositoryTableFooterLoadingView = LoadingIndicatorView().then {
+        $0.frame.size.height = 120
+    }
+    
+    private lazy var errorToastMessageLabel = ToastLabel()
     
     var viewModel: RepositoryListViewModel?
     private let disposeBag = DisposeBag()
@@ -60,7 +65,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
             .map { $0.1 }
             .bind(to: input.cellWillDisplay)
             .disposed(by: disposeBag)
-
+        
         repositoryTableView.rx.itemSelected
             .bind(to: input.cellDidTap)
             .disposed(by: disposeBag)
@@ -85,12 +90,17 @@ final class RepositoryListViewController: UIViewController, ViewType {
             .emit(onNext: errorToastMessageLabel.show(message:))
             .disposed(by: disposeBag)
         
-        output.endTableViewRefresh
-            .asSignal()
-            .withUnretained(self)
-            .emit { `self`, _ in
-                self.repositoryRefreshControll.endRefreshing()
-            }
+        output.isTableViewRefreshIndicatorVisible
+            .asDriver()
+            .drive(repositoryRefreshControll.rx.isRefreshing)
+            .disposed(by: disposeBag)
+        
+        output.isFooterLoadingIndicatorVisible
+            .asDriver()
+            .drive(with: self, onNext: { `self`, isVisible in
+                self.repositoryTableView.tableFooterView = isVisible ? self.repositoryTableFooterLoadingView : nil
+                self.repositoryTableFooterLoadingView.showLoadingIndicatorIfNeeded(isVisible)
+            })
             .disposed(by: disposeBag)
     }
 }
