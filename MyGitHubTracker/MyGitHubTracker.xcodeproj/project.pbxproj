@@ -20,6 +20,7 @@
 		1E43BF3629D7CB1F00C718D4 /* GitHubAuthorizationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E43BF3529D7CB1F00C718D4 /* GitHubAuthorizationEntity.swift */; };
 		1E65103D29EB906A002D6A02 /* DefaultRepositoryDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65103C29EB906A002D6A02 /* DefaultRepositoryDetailUseCase.swift */; };
 		1E65103F29EB906F002D6A02 /* RepositoryDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65103E29EB906F002D6A02 /* RepositoryDetailUseCase.swift */; };
+		1E65104129EBBF9A002D6A02 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104029EBBF9A002D6A02 /* LoadingIndicatorView.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
@@ -166,6 +167,7 @@
 		1E43BF3529D7CB1F00C718D4 /* GitHubAuthorizationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAuthorizationEntity.swift; sourceTree = "<group>"; };
 		1E65103C29EB906A002D6A02 /* DefaultRepositoryDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositoryDetailUseCase.swift; sourceTree = "<group>"; };
 		1E65103E29EB906F002D6A02 /* RepositoryDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailUseCase.swift; sourceTree = "<group>"; };
+		1E65104029EBBF9A002D6A02 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
@@ -779,6 +781,7 @@
 				1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */,
 				1E800D2629DC615B00614811 /* StargazerView.swift */,
 				1E800D3A29DEBDC800614811 /* CircularImageView.swift */,
+				1E65104029EBBF9A002D6A02 /* LoadingIndicatorView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1187,6 +1190,7 @@
 				1E43BF3129D677B600C718D4 /* LoginCoordinateAction.swift in Sources */,
 				1E800D3B29DEBDC800614811 /* CircularImageView.swift in Sources */,
 				1E800D2529DC1A7900614811 /* DefaultStarringUseCase.swift in Sources */,
+				1E65104129EBBF9A002D6A02 /* LoadingIndicatorView.swift in Sources */,
 				1E8FB87529D12C5800847578 /* TargetType.swift in Sources */,
 				1E8FB8B829D1521E00847578 /* AccountUseCase.swift in Sources */,
 				1E65103F29EB906F002D6A02 /* RepositoryDetailUseCase.swift in Sources */,
