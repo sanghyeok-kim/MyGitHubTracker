@@ -221,9 +221,17 @@ private extension RepositoryListViewModel {
 
 private extension RepositoryListViewModel {
     func bindOutput(from repositoryCreationViewModel: RepositoryCreationViewModel) {
-        repositoryCreationViewModel.output
+        let repositoryDidCreate = repositoryCreationViewModel.output
             .repositoryCreationDidFinish
+            .share()
+        
+        repositoryDidCreate
             .bind(to: input.tableViewDidRefresh)
+            .disposed(by: disposeBag)
+        
+        repositoryDidCreate
+            .toastMeessageMap(to: .repositoryCreated)
+            .bind(to: output.showErrorMessage)
             .disposed(by: disposeBag)
     }
 }
