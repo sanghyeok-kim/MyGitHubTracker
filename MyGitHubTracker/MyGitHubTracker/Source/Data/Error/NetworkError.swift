@@ -16,6 +16,7 @@ enum NetworkError: LocalizedError {
     case invalidResponseData
     case invalidRequest
     case decodeError
+    case encodeError
     case errorDetected(error: Error)
     
     var errorDescription: String? {
@@ -34,6 +35,8 @@ enum NetworkError: LocalizedError {
             return "Invalid request."
         case .decodeError:
             return "Fail to decode."
+        case .encodeError:
+            return "Fail to encode."
         case .errorDetected(let error):
             return "Error detected: \(error.localizedDescription)"
         }
