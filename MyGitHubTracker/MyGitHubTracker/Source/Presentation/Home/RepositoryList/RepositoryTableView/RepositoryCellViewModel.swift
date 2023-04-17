@@ -95,7 +95,7 @@ extension RepositoryCellViewModel {
     }
 }
 
-// MARK: - Supporting Methods
+// MARK: - Binding Other ViewModels
 
 private extension RepositoryCellViewModel {
     func bindState(from detailViewModel: RepositoryDetailViewModel) {
