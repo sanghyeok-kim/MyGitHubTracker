@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum RepositoryVisibility {
+    case `public`
+    case `private`
+}
