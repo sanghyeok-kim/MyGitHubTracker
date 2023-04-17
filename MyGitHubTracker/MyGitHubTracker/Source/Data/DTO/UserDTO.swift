@@ -12,11 +12,15 @@ struct UserDTO: Decodable {
     let avatarURL: String
     let url: String
     let name: String
+    let followers: Int
+    let following: Int
 
     enum CodingKeys: String, CodingKey {
         case login
         case avatarURL = "avatar_url"
         case url
         case name
+        case followers
+        case following
     }
 }

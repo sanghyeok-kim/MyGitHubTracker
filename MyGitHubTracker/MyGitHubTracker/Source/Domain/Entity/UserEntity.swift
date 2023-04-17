@@ -9,6 +9,9 @@ import Foundation
 
 struct UserEntity {
     let loginID: String
-    let avatarImageURL: String
+    let avatarImageURL: URL?
+    let gitHubURL: URL?
     let name: String
+    let followersCount: Int
+    let followingCount: Int
 }
