@@ -147,7 +147,7 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
             }
             .disposed(by: disposeBag)
         
-        output.showErrorMessage
+        output.showToastMessage
             .asSignal()
             .emit(onNext: errorToastMessageLabel.show(message:))
             .disposed(by: disposeBag)

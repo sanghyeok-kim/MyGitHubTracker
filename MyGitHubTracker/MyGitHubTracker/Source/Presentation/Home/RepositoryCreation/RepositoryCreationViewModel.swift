@@ -22,7 +22,7 @@ final class RepositoryCreationViewModel: ViewModelType {
         let isDoneButtonEnabled = BehaviorRelay<Bool>(value: false)
         let repositoryVisibility = BehaviorRelay<RepositoryVisibility>(value: .public)
         let isDoneButtonLoading = BehaviorRelay<Bool>(value: false)
-        let showErrorMessage = PublishRelay<String>()
+        let showToastMessage = PublishRelay<String>()
         let repositoryCreationDidFinish = PublishRelay<Void>()
     }
     
@@ -78,7 +78,7 @@ final class RepositoryCreationViewModel: ViewModelType {
             .compactMap { $0.error }
             .doLogError(logType: .error)
             .toastMeessageMap(to: .failToCreatRepository)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         repositoryCreationResult

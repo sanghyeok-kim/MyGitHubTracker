@@ -21,7 +21,7 @@ final class RepositoryListViewModel: ViewModelType {
     struct Output {
         let isLoadingIndicatorVisible = BehaviorRelay<Bool>(value: true)
         let repositoryCellViewModels = BehaviorRelay<[RepositoryCellViewModel]>(value: [])
-        let showErrorMessage = PublishRelay<String>()
+        let showToastMessage = PublishRelay<String>()
         let isTableViewRefreshIndicatorVisible = BehaviorRelay<Bool>(value: false)
         let isFooterLoadingIndicatorVisible = BehaviorRelay<Bool>(value: false)
     }
@@ -59,7 +59,7 @@ final class RepositoryListViewModel: ViewModelType {
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToFetchRepositories)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         fetchedRepositories
@@ -109,7 +109,7 @@ final class RepositoryListViewModel: ViewModelType {
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToFetchRepositories)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         refreshedRepositories
@@ -190,7 +190,7 @@ private extension RepositoryListViewModel {
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToFetchRepositories)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         fetchedNextPageUserRepositories
@@ -205,6 +205,7 @@ private extension RepositoryListViewModel {
             .bind(to: state.repositories)
             .disposed(by: disposeBag)
         
+        //empty -> 더 이상 요청할 데이터 없음 -> isLoading을 다시 false로 안바꿔줌 (계속 true로 유지해서 더 이상 요청하지 못하도록)
         fetchedNextPageUserRepositories
             .compactMap { $0.element }
             .filter { !$0.isEmpty }
@@ -231,7 +232,7 @@ private extension RepositoryListViewModel {
         
         repositoryDidCreate
             .toastMeessageMap(to: .repositoryCreated)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
     }
 }

@@ -23,7 +23,7 @@ final class RepositoryDetailViewModel: ViewModelType {
         let description = BehaviorRelay<String?>(value: nil)
         let starCount = BehaviorRelay<Int>(value: .zero)
         let isStarredByUser = BehaviorRelay<Bool>(value: false)
-        let showErrorMessage = PublishRelay<String>()
+        let showToastMessage = PublishRelay<String>()
     }
     
     struct State {
@@ -101,7 +101,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         let remoteRpositoryStarringDidToggle = remoteRepositoryIsStarred
@@ -122,7 +122,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         let remoteRepositoryResultAfterStarring = remoteRpositoryStarringDidToggle
@@ -149,7 +149,7 @@ final class RepositoryDetailViewModel: ViewModelType {
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToStarring)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         // MARK: - Bind State - repository

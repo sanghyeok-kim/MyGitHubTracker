@@ -16,7 +16,7 @@ final class LoginViewModel: ViewModelType {
     }
     
     struct Output {
-        let showErrorMessage = PublishRelay<String>()
+        let showToastMessage = PublishRelay<String>()
     }
     
     let input = Input()
@@ -61,7 +61,7 @@ final class LoginViewModel: ViewModelType {
             .compactMap { $0.error }
             .doLogError()
             .toastMeessageMap(to: .failToFetchAccessToken)
-            .bind(to: output.showErrorMessage)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
     }
 }

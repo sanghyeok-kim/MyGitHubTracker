@@ -91,7 +91,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
             .drive(repositoryTableView.rx.items(dataSource: repositoryTableViewDataSource))
             .disposed(by: disposeBag)
         
-        output.showErrorMessage
+        output.showToastMessage
             .asSignal()
             .emit(onNext: errorToastMessageLabel.show(message:))
             .disposed(by: disposeBag)
