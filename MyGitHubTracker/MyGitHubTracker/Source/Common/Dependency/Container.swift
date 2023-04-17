@@ -58,6 +58,10 @@ extension Container {
         Container.shared.register(service: PaginationUseCase.self) { DefaultPaginationUseCase() }
         Container.shared.register(service: AnyTransformer.self) { AnyTransformer(RepositoryTransformer()) }
         
+        // RepositoryCreation
+        Container.shared.register(service: RepositoryCreationUseCase.self) { DefaultRepositoryCreationUseCase() }
+        Container.shared.register(service: RepositoryCreationRepository.self) { DefaultRepositoryCreationRepository() }
+        
         //Starring
         Container.shared.register(service: StarringRepository.self) { DefaultStarringRepository() }
         Container.shared.register(service: StarringUseCase.self) { DefaultStarringUseCase() }
