@@ -205,7 +205,6 @@ private extension RepositoryListViewModel {
             .bind(to: state.repositories)
             .disposed(by: disposeBag)
         
-        //empty -> 더 이상 요청할 데이터 없음 -> isLoading을 다시 false로 안바꿔줌 (계속 true로 유지해서 더 이상 요청하지 못하도록)
         fetchedNextPageUserRepositories
             .compactMap { $0.element }
             .filter { !$0.isEmpty }
