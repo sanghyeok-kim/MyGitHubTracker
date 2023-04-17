@@ -76,7 +76,7 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
         $0.isHidden = true
     }
     
-    private let errorToastMessageLabel = ToastLabel()
+    private let toastMessageLabel = ToastLabel()
     
     @Inject private var imageLoader: ImageLoader
     
@@ -149,7 +149,7 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
         
         output.showToastMessage
             .asSignal()
-            .emit(onNext: errorToastMessageLabel.show(message:))
+            .emit(onNext: toastMessageLabel.show(message:))
             .disposed(by: disposeBag)
     }
     
@@ -191,7 +191,7 @@ private extension RepositoryDetailViewController {
         view.addSubview(repositoryStackView)
         view.addSubview(starringButton)
         view.addSubview(loadingIndicator)
-        view.addSubview(errorToastMessageLabel)
+        view.addSubview(toastMessageLabel)
         
         userProfileStackView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
@@ -215,7 +215,7 @@ private extension RepositoryDetailViewController {
             make.center.equalToSuperview()
         }
         
-        errorToastMessageLabel.snp.makeConstraints { make in
+        toastMessageLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(12)
             make.width.lessThanOrEqualTo(view.snp.width).multipliedBy(0.8)

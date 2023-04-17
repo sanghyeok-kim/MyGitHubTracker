@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, ViewType {
         $0.configuration = configuration
     }
     
-    private let errorToastMessageLabel = ToastLabel()
+    private let toastMessageLabel = ToastLabel()
     
     var viewModel: LoginViewModel?
     private let disposeBag = DisposeBag()
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, ViewType {
         
         output.showToastMessage
             .asSignal()
-            .emit(onNext: errorToastMessageLabel.show)
+            .emit(onNext: toastMessageLabel.show)
             .disposed(by: disposeBag)
     }
 }
@@ -64,7 +64,7 @@ private extension LoginViewController {
 private extension LoginViewController {
     func layoutUI() {
         view.addSubview(gitHubLoginButton)
-        view.addSubview(errorToastMessageLabel)
+        view.addSubview(toastMessageLabel)
         
         gitHubLoginButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -72,7 +72,7 @@ private extension LoginViewController {
             $0.height.equalTo(56)
         }
         
-        errorToastMessageLabel.snp.makeConstraints { make in
+        toastMessageLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(12)
             make.width.lessThanOrEqualTo(view.snp.width).multipliedBy(0.8)

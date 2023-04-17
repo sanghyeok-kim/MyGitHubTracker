@@ -41,7 +41,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
         $0.frame.size.height = 120
     }
     
-    private lazy var errorToastMessageLabel = ToastLabel()
+    private lazy var toastMessageLabel = ToastLabel()
     
     var viewModel: RepositoryListViewModel?
     private let disposeBag = DisposeBag()
@@ -93,7 +93,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
         
         output.showToastMessage
             .asSignal()
-            .emit(onNext: errorToastMessageLabel.show(message:))
+            .emit(onNext: toastMessageLabel.show(message:))
             .disposed(by: disposeBag)
         
         output.isTableViewRefreshIndicatorVisible
@@ -127,7 +127,7 @@ private extension RepositoryListViewController {
     func layoutUI() {
         view.addSubview(repositoryTableView)
         view.addSubview(loadingIndicator)
-        view.addSubview(errorToastMessageLabel)
+        view.addSubview(toastMessageLabel)
         
         repositoryTableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -139,7 +139,7 @@ private extension RepositoryListViewController {
             make.center.equalToSuperview()
         }
         
-        errorToastMessageLabel.snp.makeConstraints { make in
+        toastMessageLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view.snp.centerX)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(12)
             make.width.lessThanOrEqualTo(view.snp.width).multipliedBy(0.8)
