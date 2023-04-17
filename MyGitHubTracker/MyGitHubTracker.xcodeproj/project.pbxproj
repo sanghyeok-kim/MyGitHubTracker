@@ -23,6 +23,7 @@
 		1E65104129EBBF9A002D6A02 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104029EBBF9A002D6A02 /* LoadingIndicatorView.swift */; };
 		1E65104C29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */; };
 		1E65104E29EC2BE7002D6A02 /* LoadingIndicatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */; };
+		1E65105029ED00A7002D6A02 /* Rx+textfield+textChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */; };
 		1E65105229ED4E36002D6A02 /* RepositoryVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105129ED4E36002D6A02 /* RepositoryVisibility.swift */; };
 		1E65105429ED5008002D6A02 /* EmptyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105329ED5008002D6A02 /* EmptyBody.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
@@ -175,6 +176,7 @@
 		1E65104729EC1328002D6A02 /* RepositoryCreationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCreationDTO.swift; sourceTree = "<group>"; };
 		1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+asCompletableForStatusCode.swift"; sourceTree = "<group>"; };
 		1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorButton.swift; sourceTree = "<group>"; };
+		1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+textfield+textChanged.swift"; sourceTree = "<group>"; };
 		1E65105129ED4E36002D6A02 /* RepositoryVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryVisibility.swift; sourceTree = "<group>"; };
 		1E65105329ED5008002D6A02 /* EmptyBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmptyBody.swift; path = /Users/CodeSquad/MyGitHubTracker/MyGitHubTracker/MyGitHubTracker/Source/Presentation/Support/Common/EmptyBody.swift; sourceTree = "<absolute>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				1E8FB8E829D251D500847578 /* Rx+doLogError.swift */,
 				1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */,
 				1E90048829EA8013008F9895 /* Rx+UIImageView+loadImage.swift */,
+				1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */,
 				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */,
 				1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */,
 				1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */,
@@ -1138,6 +1141,7 @@
 				1E800D3429DD028100614811 /* EndpointService.swift in Sources */,
 				1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */,
 				1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */,
+				1E65105029ED00A7002D6A02 /* Rx+textfield+textChanged.swift in Sources */,
 				1E65104E29EC2BE7002D6A02 /* LoadingIndicatorButton.swift in Sources */,
 				1E8FB8D529D158D800847578 /* RepositoryListCoordinateAction.swift in Sources */,
 				1E8FB8AC29D150D000847578 /* RepositoryEntity.swift in Sources */,
