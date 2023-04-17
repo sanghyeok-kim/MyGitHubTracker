@@ -9,4 +9,7 @@ import Foundation
 
 enum RepositoryListCoordinateAction {
     case cellDidTap(viewModel: RepositoryDetailViewModel)
+    case createRepositoryButtonDidTap(viewModel: RepositoryCreationViewModel)
+    case repositoryDidCreate
+    case repositoryCreationDidCancel
 }
