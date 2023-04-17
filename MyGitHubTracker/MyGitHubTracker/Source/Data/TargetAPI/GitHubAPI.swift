@@ -16,6 +16,9 @@ enum GitHubAPI {
     case fetchUserRepositories(perPage: Int, page: Int)
     case fetchRepositoryDetail(ownerName: String, repositoryName: String)
     
+    // RepositoryCreation
+    case createRepository
+    
     // Account
     case fetchUserInfo
     
@@ -33,6 +36,7 @@ extension GitHubAPI: TargetType {
         case .fetchUserRepositories,
                 .fetchUserInfo,
                 .fetchRepositoryDetail,
+                .createRepository,
                 .checkRepositoryIsStarredByUser,
                 .starRepository,
                 .unstarRepository:
@@ -48,7 +52,7 @@ extension GitHubAPI: TargetType {
             return "/login/oauth/access_token"
         case .fetchUserInfo:
             return "/user"
-        case .fetchUserRepositories:
+        case .fetchUserRepositories, .createRepository:
             return "/user/repos"
         case .fetchRepositoryDetail(let ownerName, let repositoryName):
             return "/repos/\(ownerName)/\(repositoryName)"
@@ -67,7 +71,7 @@ extension GitHubAPI: TargetType {
                 .fetchRepositoryDetail,
                 .checkRepositoryIsStarredByUser:
             return .get
-        case .fetchAccessToken:
+        case .fetchAccessToken, .createRepository:
             return .post
         case .starRepository:
             return .put
@@ -86,6 +90,7 @@ extension GitHubAPI: TargetType {
         case .fetchUserInfo,
                 .fetchUserRepositories,
                 .fetchRepositoryDetail,
+                .createRepository,
                 .checkRepositoryIsStarredByUser,
                 .starRepository,
                 .unstarRepository:
@@ -99,6 +104,7 @@ extension GitHubAPI: TargetType {
         switch self {
         case .fetchUserInfo,
                 .fetchRepositoryDetail,
+                .createRepository,
                 .checkRepositoryIsStarredByUser,
                 .starRepository,
                 .unstarRepository:
