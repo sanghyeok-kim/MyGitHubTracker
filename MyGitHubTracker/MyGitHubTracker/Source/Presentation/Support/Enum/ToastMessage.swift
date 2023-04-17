@@ -13,6 +13,7 @@ enum ToastMessage {
     case failToFetchUserInformation
     case failToStarring
     case failToCreatRepository
+    case repositoryCreated
     
     var localized: String { // TODO: Localizing
         switch self {
@@ -26,6 +27,8 @@ enum ToastMessage {
             return "Star 정보를 변경하는 데 실패했습니다."
         case .failToCreatRepository:
             return "레포지토리를 생성하는 데 실패했습니다."
+        case .repositoryCreated:
+            return "레포지토리가 생성되었습니다."
         }
     }
 }
