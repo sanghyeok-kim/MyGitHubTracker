@@ -8,5 +8,5 @@
 import RxSwift
 
 protocol AccountUseCase {
-    func fetchUserInfo() -> Single<UserEntity>
+    func fetchUserInfo() -> Observable<UserEntity>
 }

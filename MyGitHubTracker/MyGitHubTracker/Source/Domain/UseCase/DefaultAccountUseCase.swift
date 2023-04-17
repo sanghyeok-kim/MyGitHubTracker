@@ -11,8 +11,9 @@ final class DefaultAccountUseCase: AccountUseCase {
     
     @Inject private var accountRepository: AccountRepository
     
-    func fetchUserInfo() -> Single<UserEntity> {
+    func fetchUserInfo() -> Observable<UserEntity> {
         return accountRepository
             .fetchUserInfo()
+            .asObservable()
     }
 }
