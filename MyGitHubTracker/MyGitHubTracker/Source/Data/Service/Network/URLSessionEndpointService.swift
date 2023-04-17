@@ -13,11 +13,15 @@ final class URLSessionEndpointService: EndpointService {
     
     private init() {}
     
-    func fetchData(endpoint: TargetType, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchData<E: Encodable>(
+        endpoint: TargetType,
+        with objectBody: E,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
         let request: URLRequest
         
         do {
-            request = try buildRequest(from: endpoint)
+            request = try buildRequest(from: endpoint, with: objectBody)
         } catch {
             completion(.failure(NetworkError.invalidRequest))
             return
@@ -48,11 +52,11 @@ final class URLSessionEndpointService: EndpointService {
         }.resume()
     }
     
-    func fetchData(endpoint: TargetType) async throws -> Data {
+    func fetchData<E: Encodable>(endpoint: TargetType, with objectBody: E) async throws -> Data {
         let request: URLRequest
         
         do {
-            request = try buildRequest(from: endpoint)
+            request = try buildRequest(from: endpoint, with: objectBody)
         } catch {
             throw NetworkError.invalidRequest
         }
@@ -78,14 +82,14 @@ final class URLSessionEndpointService: EndpointService {
         }
     }
     
-    func fetchData(endpoint: TargetType) -> Single<Data> {
-        return performRequest(endpoint: endpoint)
+    func fetchData<E: Encodable>(endpoint: TargetType, with bodyObject: E) -> Single<Data> {
+        return performRequest(endpoint: endpoint, bodyObject: bodyObject)
             .validateStatusCode()
             .unwrapData()
     }
     
-    func fetchStatusCode(endpoint: TargetType) -> Single<Int> {
-        return performRequest(endpoint: endpoint)
+    func fetchStatusCode<E: Encodable>(endpoint: TargetType, with bodyObject: E) -> Single<Int> {
+        return performRequest(endpoint: endpoint, bodyObject: bodyObject)
             .map { $0.statusCode }
     }
 }
@@ -93,7 +97,7 @@ final class URLSessionEndpointService: EndpointService {
 // MARK: - Supporting Methods
 
 private extension URLSessionEndpointService {
-    private func buildRequest(from endpoint: TargetType) throws -> URLRequest {
+    private func buildRequest<E: Encodable>(from endpoint: TargetType, with bodyObject: E) throws -> URLRequest {
         guard let url = endpoint.baseURL?.appendingPathComponent(endpoint.path) else {
             throw NetworkError.invalidURL
         }
@@ -121,25 +125,22 @@ private extension URLSessionEndpointService {
             }
         }
         
+        if bodyObject is EmptyBody {
+            return request
+        }
+        
+        let encoder = JSONEncoder()
+        do {
+            request.httpBody = try encoder.encode(bodyObject)
+        } catch {
+            throw NetworkError.encodeError
+        }
+        
         return request
     }
     
-    private func performRequest(endpoint: TargetType) -> Single<NetworkResult> {
-        return Single.create { [weak self] single -> Disposable in
-            guard let self = self else {
-                single(.failure(NetworkError.objectDeallocated))
-                return Disposables.create()
-            }
-            
-            let request: URLRequest
-            
-            do {
-                request = try self.buildRequest(from: endpoint)
-            } catch {
-                single(.failure(NetworkError.invalidRequest))
-                return Disposables.create()
-            }
-            
+    private func performDataTask(with request: URLRequest) -> Single<NetworkResult> {
+        return Single.create { single -> Disposable in
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     single(.failure(NetworkError.errorDetected(error: error)))
@@ -159,6 +160,31 @@ private extension URLSessionEndpointService {
             return Disposables.create {
                 task.cancel()
             }
+        }
+    }
+    
+    private func performRequest<E: Encodable>(endpoint: TargetType, bodyObject: E) -> Single<NetworkResult> {
+        return Single.create { [weak self] single -> Disposable in
+            guard let self = self else {
+                single(.failure(NetworkError.objectDeallocated))
+                return Disposables.create()
+            }
+            
+            let request: URLRequest
+            
+            do {
+                request = try self.buildRequest(from: endpoint, with: bodyObject)
+            } catch {
+                single(.failure(NetworkError.invalidRequest))
+                return Disposables.create()
+            }
+            
+            return self.performDataTask(with: request)
+                .subscribe(onSuccess: { result in
+                    single(.success(result))
+                }, onFailure: { error in
+                    single(.failure(error))
+                })
         }
     }
 }
