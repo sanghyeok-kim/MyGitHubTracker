@@ -19,13 +19,13 @@ extension OSLog {
         var value: String {
             switch self {
             case .`default`:
-                return Constant.OSLogCategory.defaultCategory
+                return Constant.OSLogCategory.`default`
             case .allocation:
                 return Constant.OSLogCategory.allocation
             case .network:
-                return Constant.OSLogCategory.networkCategory
+                return Constant.OSLogCategory.network
             case .database:
-                return Constant.OSLogCategory.databaseCategory
+                return Constant.OSLogCategory.database
             }
         }
     }

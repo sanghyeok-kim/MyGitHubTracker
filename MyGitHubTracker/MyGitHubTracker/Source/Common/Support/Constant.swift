@@ -38,9 +38,9 @@ extension Constant {
 
 extension Constant {
     enum OSLogCategory {
-        static let defaultCategory = "Default"
+        static let `default` = "Default"
         static let allocation = "Allocation"
-        static let networkCategory = "Network"
-        static let databaseCategory = "Database"
+        static let network = "Network"
+        static let database = "Database"
     }
 }
