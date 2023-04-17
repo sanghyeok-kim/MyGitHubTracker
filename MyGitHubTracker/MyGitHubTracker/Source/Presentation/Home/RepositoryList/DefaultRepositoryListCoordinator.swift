@@ -22,9 +22,17 @@ final class DefaultRepositoryListCoordinator: Coordinator, RepositoryListCoordin
     }
     
     func coordinate(by action: RepositoryListCoordinateAction) {
-        switch action {
-        case .cellDidTap(let viewModel):
-            pushRepositoryDetailViewController(with: viewModel)
+        DispatchQueue.main.async { [weak self] in
+            switch action {
+            case .cellDidTap(let viewModel):
+                self?.pushRepositoryDetailViewController(with: viewModel)
+            case .createRepositoryButtonDidTap(let viewModel):
+                self?.presentRepositoryCreationViewController(with: viewModel)
+            case .repositoryDidCreate:
+                self?.dismissPresentedViewController()
+            case .repositoryCreationDidCancel:
+                self?.dismissPresentedViewController()
+            }
         }
     }
     
@@ -37,14 +45,25 @@ final class DefaultRepositoryListCoordinator: Coordinator, RepositoryListCoordin
 
 private extension DefaultRepositoryListCoordinator {
     func showRepositoryListViewController() {
-        let repositoryListViewController = RepositoryListViewController()
-        repositoryListViewController.bind(viewModel: RepositoryListViewModel(coordinator: self))
-        navigationController.setViewControllers([repositoryListViewController], animated: false)
+        let viewController = RepositoryListViewController()
+        viewController.bind(viewModel: RepositoryListViewModel(coordinator: self))
+        navigationController.setViewControllers([viewController], animated: false)
     }
     
     func pushRepositoryDetailViewController(with viewModel: RepositoryDetailViewModel) {
-        let repositoryDetailViewController = RepositoryDetailViewController()
-        repositoryDetailViewController.bind(viewModel: viewModel)
-        navigationController.pushViewController(repositoryDetailViewController, animated: true)
+        let viewController = RepositoryDetailViewController()
+        viewController.bind(viewModel: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func presentRepositoryCreationViewController(with viewModel: RepositoryCreationViewModel) {
+        let viewController = RepositoryCreationViewController()
+        viewController.bind(viewModel: viewModel)
+        let newNavigationController = UINavigationController(rootViewController: viewController)
+        navigationController.present(newNavigationController, animated: true)
+    }
+    
+    func dismissPresentedViewController() {
+        navigationController.dismiss(animated: true)
     }
 }

@@ -12,6 +12,7 @@ final class RepositoryListViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoad = PublishRelay<Void>()
+        let createRepositoryButtonDidTap = PublishRelay<Void>()
         let cellDidTap = PublishRelay<IndexPath>()
         let tableViewDidRefresh = PublishRelay<Void>()
         let cellWillDisplay = PublishRelay<IndexPath>()
@@ -70,6 +71,18 @@ final class RepositoryListViewModel: ViewModelType {
         fetchedRepositories
             .compactMap { $0.element }
             .bind(to: state.repositories)
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind Input - createRepositoryButtonDidTap
+        
+        input.createRepositoryButtonDidTap
+            .map { RepositoryCreationViewModel(coordinator: coordinator) }
+            .do { [weak self] in
+                self?.bindOutput(from: $0)
+            }
+            .bind {
+                coordinator?.coordinate(by: .createRepositoryButtonDidTap(viewModel: $0))
+            }
             .disposed(by: disposeBag)
         
         // MARK: - Bind Input - tableViewDidRefresh
@@ -192,6 +205,7 @@ private extension RepositoryListViewModel {
             .bind(to: state.repositories)
             .disposed(by: disposeBag)
         
+        //empty -> 더 이상 요청할 데이터 없음 -> isLoading을 다시 false로 안바꿔줌 (계속 true로 유지해서 더 이상 요청하지 못하도록)
         fetchedNextPageUserRepositories
             .compactMap { $0.element }
             .filter { !$0.isEmpty }
@@ -200,6 +214,17 @@ private extension RepositoryListViewModel {
                 self?.paginationUseCase.finishLoading($0)
             }
             .bind(to: state.paginationState)
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Binding Other ViewModels
+
+private extension RepositoryListViewModel {
+    func bindOutput(from repositoryCreationViewModel: RepositoryCreationViewModel) {
+        repositoryCreationViewModel.output
+            .repositoryCreationDidFinish
+            .bind(to: input.tableViewDidRefresh)
             .disposed(by: disposeBag)
     }
 }

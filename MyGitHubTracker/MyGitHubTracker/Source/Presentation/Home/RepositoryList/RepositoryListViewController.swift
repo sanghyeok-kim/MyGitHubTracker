@@ -16,6 +16,8 @@ final class RepositoryListViewController: UIViewController, ViewType {
     
     private lazy var repositoryRefreshControll = UIRefreshControl()
     
+    private lazy var createRepositoryBarButtonItem = UIBarButtonItem(systemItem: .add)
+    
     private lazy var loadingIndicator = UIActivityIndicatorView().then {
         $0.style = .large
         $0.hidesWhenStopped = true
@@ -55,6 +57,10 @@ final class RepositoryListViewController: UIViewController, ViewType {
         
         rx.viewDidLoad
             .bind(to: input.viewDidLoad)
+            .disposed(by: disposeBag)
+        
+        createRepositoryBarButtonItem.rx.tap
+            .bind(to: input.createRepositoryButtonDidTap)
             .disposed(by: disposeBag)
         
         repositoryRefreshControll.rx.controlEvent(.valueChanged)
@@ -111,6 +117,7 @@ private extension RepositoryListViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Repository"
+        navigationItem.rightBarButtonItem = createRepositoryBarButtonItem
     }
 }
 
