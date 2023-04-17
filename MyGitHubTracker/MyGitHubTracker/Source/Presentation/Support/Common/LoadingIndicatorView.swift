@@ -29,8 +29,8 @@ final class LoadingIndicatorView: UIView {
 // MARK: - External Methods
 
 extension LoadingIndicatorView {
-    func showLoadingIndicatorIfNeeded(_ show: Bool) {
-        if show {
+    func showLoadingIndicatorIfNeeded(_ shouldAnimate: Bool) {
+        if shouldAnimate {
             activityIndicator.startAnimating()
         } else {
             activityIndicator.stopAnimating()
