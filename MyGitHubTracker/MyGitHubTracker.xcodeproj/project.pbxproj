@@ -21,6 +21,7 @@
 		1E65103D29EB906A002D6A02 /* DefaultRepositoryDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65103C29EB906A002D6A02 /* DefaultRepositoryDetailUseCase.swift */; };
 		1E65103F29EB906F002D6A02 /* RepositoryDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65103E29EB906F002D6A02 /* RepositoryDetailUseCase.swift */; };
 		1E65104129EBBF9A002D6A02 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104029EBBF9A002D6A02 /* LoadingIndicatorView.swift */; };
+		1E65104E29EC2BE7002D6A02 /* LoadingIndicatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
@@ -168,6 +169,7 @@
 		1E65103C29EB906A002D6A02 /* DefaultRepositoryDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositoryDetailUseCase.swift; sourceTree = "<group>"; };
 		1E65103E29EB906F002D6A02 /* RepositoryDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailUseCase.swift; sourceTree = "<group>"; };
 		1E65104029EBBF9A002D6A02 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
+		1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorButton.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
@@ -779,6 +781,7 @@
 			children = (
 				1E8FB8E129D167BE00847578 /* ToastLabel.swift */,
 				1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */,
+				1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */,
 				1E800D2629DC615B00614811 /* StargazerView.swift */,
 				1E800D3A29DEBDC800614811 /* CircularImageView.swift */,
 				1E65104029EBBF9A002D6A02 /* LoadingIndicatorView.swift */,
@@ -1124,6 +1127,7 @@
 				1E800D3429DD028100614811 /* EndpointService.swift in Sources */,
 				1E800D3829DDC08700614811 /* RepositoryDetailViewModel.swift in Sources */,
 				1E43BF1F29D44ECA00C718D4 /* CellIdentifiable.swift in Sources */,
+				1E65104E29EC2BE7002D6A02 /* LoadingIndicatorButton.swift in Sources */,
 				1E8FB8D529D158D800847578 /* RepositoryListCoordinateAction.swift in Sources */,
 				1E8FB8AC29D150D000847578 /* RepositoryEntity.swift in Sources */,
 				1E800D2729DC615B00614811 /* StargazerView.swift in Sources */,
