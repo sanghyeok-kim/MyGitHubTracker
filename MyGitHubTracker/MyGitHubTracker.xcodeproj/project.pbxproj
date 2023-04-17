@@ -25,7 +25,7 @@
 		1E65104E29EC2BE7002D6A02 /* LoadingIndicatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */; };
 		1E65105029ED00A7002D6A02 /* Rx+textfield+textChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */; };
 		1E65105229ED4E36002D6A02 /* RepositoryVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105129ED4E36002D6A02 /* RepositoryVisibility.swift */; };
-		1E65105429ED5008002D6A02 /* EmptyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105329ED5008002D6A02 /* EmptyBody.swift */; };
+		1E65105C29ED62E0002D6A02 /* EmptyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105B29ED62E0002D6A02 /* EmptyBody.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
@@ -178,7 +178,7 @@
 		1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorButton.swift; sourceTree = "<group>"; };
 		1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+textfield+textChanged.swift"; sourceTree = "<group>"; };
 		1E65105129ED4E36002D6A02 /* RepositoryVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryVisibility.swift; sourceTree = "<group>"; };
-		1E65105329ED5008002D6A02 /* EmptyBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmptyBody.swift; path = /Users/CodeSquad/MyGitHubTracker/MyGitHubTracker/MyGitHubTracker/Source/Presentation/Support/Common/EmptyBody.swift; sourceTree = "<absolute>"; };
+		1E65105B29ED62E0002D6A02 /* EmptyBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBody.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
@@ -869,7 +869,7 @@
 			children = (
 				1E8FB87229D12C5000847578 /* HTTPMethod.swift */,
 				1E800D2C29DC687700614811 /* NetworkResult.swift */,
-				1E65105329ED5008002D6A02 /* EmptyBody.swift */,
+				1E65105B29ED62E0002D6A02 /* EmptyBody.swift */,
 			);
 			path = HTTPComponent;
 			sourceTree = "<group>";
@@ -1217,7 +1217,6 @@
 				1E65103F29EB906F002D6A02 /* RepositoryDetailUseCase.swift in Sources */,
 				1E8F520029DEFC700001CA9E /* URLDataFetchRepository.swift in Sources */,
 				1E8FB8A829D14FE900847578 /* Transformable.swift in Sources */,
-				1E65105429ED5008002D6A02 /* EmptyBody.swift in Sources */,
 				1E8FB8B629D151DC00847578 /* DefaultAccountUseCase.swift in Sources */,
 				1E90047B29E6B04C008F9895 /* Rx+flatMapMaterialized.swift in Sources */,
 				1E8FB8C929D1583200847578 /* RepositoryListViewModel.swift in Sources */,
@@ -1238,6 +1237,7 @@
 				1E65103D29EB906A002D6A02 /* DefaultRepositoryDetailUseCase.swift in Sources */,
 				1E800D3F29DEC77F00614811 /* CachedURLDataFetchRepository.swift in Sources */,
 				1E90046D29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift in Sources */,
+				1E65105C29ED62E0002D6A02 /* EmptyBody.swift in Sources */,
 				1E8FB86729D09A8600847578 /* Bundle+GitHubClientKey.swift in Sources */,
 				1E8FB8C229D153A700847578 /* AccountRepository.swift in Sources */,
 				1E8FB84B29D08F0500847578 /* CoordinatorType.swift in Sources */,
