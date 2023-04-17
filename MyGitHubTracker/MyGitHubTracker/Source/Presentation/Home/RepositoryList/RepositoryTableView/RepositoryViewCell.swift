@@ -91,15 +91,15 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
             .drive(updatedDateLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.isPrivate
+        output.visibility
             .asDriver()
-            .map { $0 ? "private" : "public" }
+            .map { $0.text }
             .drive(accessLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.isPrivate
+        output.visibility
             .asDriver()
-            .map { $0 ? CustomColor.softRed : CustomColor.softGreen }
+            .map { $0.labelBackgroundColor }
             .drive(accessLabel.rx.backgroundColor)
             .disposed(by: disposeBag)
         

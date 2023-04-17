@@ -48,12 +48,12 @@ class RepositoryCreationViewController: UIViewController, ViewType {
     }
     
     private lazy var publicButton = UIButton().then {
-        $0.setTitle("Public", for: .normal)
+        $0.setTitle(RepositoryVisibility.public.capitalizedText, for: .normal)
         $0.backgroundColor = .tintColor
     }
     
     private lazy var privateButton = UIButton().then {
-        $0.setTitle("Private", for: .normal)
+        $0.setTitle(RepositoryVisibility.private.capitalizedText, for: .normal)
         $0.backgroundColor = .lightGray
     }
     

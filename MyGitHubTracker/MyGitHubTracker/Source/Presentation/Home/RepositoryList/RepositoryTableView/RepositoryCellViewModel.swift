@@ -16,7 +16,7 @@ final class RepositoryCellViewModel: ViewModelType {
     
     struct Output {
         let name = BehaviorRelay<String>(value: "")
-        let isPrivate = BehaviorRelay<Bool>(value: false)
+        let visibility = BehaviorRelay<RepositoryVisibility>(value: .public)
         let isStarred = BehaviorRelay<Bool>(value: false)
         let description = BehaviorRelay<String?>(value: nil)
         let starCount = BehaviorRelay<Int>(value: .zero)
@@ -48,8 +48,8 @@ final class RepositoryCellViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         state.repository
-            .map { $0.isPrivate }
-            .bind(to: output.isPrivate)
+            .map { $0.isPrivate ? .private : .public }
+            .bind(to: output.visibility)
             .disposed(by: disposeBag)
         
         state.repository
