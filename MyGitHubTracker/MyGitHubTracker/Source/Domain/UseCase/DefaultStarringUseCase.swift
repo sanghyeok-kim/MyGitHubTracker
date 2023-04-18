@@ -27,4 +27,10 @@ final class DefaultStarringUseCase: StarringUseCase {
                 .starRepository(ownerName: ownerName, repositoryName: repositoryName)
         }
     }
+    
+    func fetchUserStarredRepositories(perPage: Int, page: Int) -> Observable<[RepositoryEntity]> {
+        return starringRepository
+            .fetchUserStarredRepositories(perPage: perPage, page: page)
+            .asObservable()
+    }
 }

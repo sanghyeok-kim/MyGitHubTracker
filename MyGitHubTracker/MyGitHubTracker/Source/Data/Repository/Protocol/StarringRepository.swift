@@ -11,4 +11,5 @@ protocol StarringRepository {
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Single<Bool>
     func starRepository(ownerName: String, repositoryName: String) -> Completable
     func unstarRepository(ownerName: String, repositoryName: String) -> Completable
+    func fetchUserStarredRepositories(perPage: Int, page: Int) -> Single<[RepositoryEntity]>
 }

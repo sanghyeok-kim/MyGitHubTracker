@@ -26,6 +26,7 @@ enum GitHubAPI {
     case checkRepositoryIsStarredByUser(ownerName: String, repositoryName: String)
     case starRepository(ownerName: String, repositoryName: String)
     case unstarRepository(ownerName: String, repositoryName: String)
+    case fetchUserStarredRepositories(perPage: Int, page: Int)
 }
 
 extension GitHubAPI: TargetType {
@@ -39,7 +40,8 @@ extension GitHubAPI: TargetType {
                 .createRepository,
                 .checkRepositoryIsStarredByUser,
                 .starRepository,
-                .unstarRepository:
+                .unstarRepository,
+                .fetchUserStarredRepositories:
             return URL(string: "https://api.github.com")
         }
     }
@@ -60,6 +62,8 @@ extension GitHubAPI: TargetType {
                 .starRepository(let ownerName, let repositoryName),
                 .unstarRepository(let ownerName, let repositoryName):
             return "user/starred/\(ownerName)/\(repositoryName)"
+        case .fetchUserStarredRepositories:
+            return "user/starred"
         }
     }
     
@@ -69,7 +73,8 @@ extension GitHubAPI: TargetType {
                 .fetchUserInfo,
                 .fetchUserRepositories,
                 .fetchRepositoryDetail,
-                .checkRepositoryIsStarredByUser:
+                .checkRepositoryIsStarredByUser,
+                .fetchUserStarredRepositories:
             return .get
         case .fetchAccessToken, .createRepository:
             return .post
@@ -93,7 +98,8 @@ extension GitHubAPI: TargetType {
                 .createRepository,
                 .checkRepositoryIsStarredByUser,
                 .starRepository,
-                .unstarRepository:
+                .unstarRepository,
+                .fetchUserStarredRepositories:
             return ["Accept": "application/vnd.github+json",
                     "Authorization": "Bearer \(TokenStorage.shared.accessToken ?? "")",
                     "X-GitHub-Api-Version": "2022-11-28"]
@@ -120,6 +126,10 @@ extension GitHubAPI: TargetType {
         case .fetchUserRepositories(let perPage, let page):
             return ["sort": "created",
                     "type": "owner",
+                    "per_page": perPage,
+                    "page": page]
+        case .fetchUserStarredRepositories(let perPage, let page):
+            return ["sort": "updated",
                     "per_page": perPage,
                     "page": page]
         }
