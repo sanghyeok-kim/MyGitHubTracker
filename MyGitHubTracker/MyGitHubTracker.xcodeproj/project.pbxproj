@@ -33,6 +33,7 @@
 		1E65105829ED6273002D6A02 /* DefaultRepositoryCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105729ED6273002D6A02 /* DefaultRepositoryCreationRepository.swift */; };
 		1E65105A29ED62A9002D6A02 /* RepositoryCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105929ED62A9002D6A02 /* RepositoryCreationRepository.swift */; };
 		1E65105C29ED62E0002D6A02 /* EmptyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105B29ED62E0002D6A02 /* EmptyBody.swift */; };
+		1E65107629EE9C2A002D6A02 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107529EE9C2A002D6A02 /* PaddingButton.swift */; };
 		1E65107829EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
@@ -193,6 +194,7 @@
 		1E65105729ED6273002D6A02 /* DefaultRepositoryCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositoryCreationRepository.swift; sourceTree = "<group>"; };
 		1E65105929ED62A9002D6A02 /* RepositoryCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCreationRepository.swift; sourceTree = "<group>"; };
 		1E65105B29ED62E0002D6A02 /* EmptyBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBody.swift; sourceTree = "<group>"; };
+		1E65107529EE9C2A002D6A02 /* PaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
 		1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxCollectionViewSectionedReloadDataSource+init.swift"; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 			children = (
 				1E8FB8E129D167BE00847578 /* ToastLabel.swift */,
 				1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */,
+				1E65107529EE9C2A002D6A02 /* PaddingButton.swift */,
 				1E65104D29EC2BE7002D6A02 /* LoadingIndicatorButton.swift */,
 				1E800D2629DC615B00614811 /* StargazerView.swift */,
 				1E800D3A29DEBDC800614811 /* CircularImageView.swift */,
@@ -1238,6 +1241,7 @@
 				1E8FB84329D08E4400847578 /* MVVMInterface.swift in Sources */,
 				1E8FB8DF29D1596400847578 /* DefaultHomeCoordinator.swift in Sources */,
 				1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */,
+				1E65107629EE9C2A002D6A02 /* PaddingButton.swift in Sources */,
 				1E8FB87F29D12DC800847578 /* TokenDTO.swift in Sources */,
 				1E8FB86D29D12B9B00847578 /* LoginViewModel.swift in Sources */,
 				1E8FB86429D09A6300847578 /* KeychainValue.swift in Sources */,
