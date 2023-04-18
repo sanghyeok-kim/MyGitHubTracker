@@ -73,6 +73,9 @@ final class RepositoryListViewController: UIViewController, ViewType {
             .disposed(by: disposeBag)
         
         repositoryTableView.rx.itemSelected
+            .do { [weak self] indexPath in
+                self?.repositoryTableView.deselectRow(at: indexPath, animated: true)
+            }
             .bind(to: input.cellDidTap)
             .disposed(by: disposeBag)
     }
