@@ -15,7 +15,7 @@ enum Padding {
     var insets: UIEdgeInsets {
         switch self {
         case .small:
-            return UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+            return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         case .medium:
             return UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         case .large:
