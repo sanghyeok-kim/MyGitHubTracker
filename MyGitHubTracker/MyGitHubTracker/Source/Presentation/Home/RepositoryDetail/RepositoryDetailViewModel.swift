@@ -27,12 +27,12 @@ final class RepositoryDetailViewModel: ViewModelType {
     }
     
     struct State {
-        let repository: BehaviorRelay<RepositoryEntity>
+        let repository = PublishRelay<RepositoryEntity>()
     }
     
     let input = Input()
     let output = Output()
-    let state: State
+    let state = State()
     
     @Inject private var repositoryUseCase: RepositoryUseCase
     @Inject private var repositoryDetailUseCase: RepositoryDetailUseCase
@@ -43,12 +43,11 @@ final class RepositoryDetailViewModel: ViewModelType {
     
     init(coordinator: RepositoryListCoordinator?, repository: RepositoryEntity) {
         self.coordinator = coordinator
-        self.state = State(repository: BehaviorRelay<RepositoryEntity>(value: repository))
         
         // MARK: - Binding Input - viewDidLoad
         
         let remoteRepositoryDetailDidFetch = input.viewDidLoad
-            .withLatestFrom(state.repository) { ($1.ownerName, $1.name) }
+            .map { (repository.ownerName, repository.name) }
             .withUnretained(self)
             .flatMap { `self`, repositoryNameInfo in
                 let (ownerName, repositoryName) = repositoryNameInfo
