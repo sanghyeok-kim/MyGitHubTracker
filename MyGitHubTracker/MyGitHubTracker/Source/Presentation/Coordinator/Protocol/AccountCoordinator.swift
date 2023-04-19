@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AccountCoordinator: Coordinator {
-    
+    func coordinate(by action: AccountCoordinateAction)
 }

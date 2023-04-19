@@ -8,6 +8,6 @@
 import Foundation
 
 enum AccountCoordinateAction {
-    
+    case showAllButtonDidTap
 }
 
