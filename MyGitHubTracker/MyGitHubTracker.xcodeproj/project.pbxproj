@@ -33,8 +33,15 @@
 		1E65105829ED6273002D6A02 /* DefaultRepositoryCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105729ED6273002D6A02 /* DefaultRepositoryCreationRepository.swift */; };
 		1E65105A29ED62A9002D6A02 /* RepositoryCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105929ED62A9002D6A02 /* RepositoryCreationRepository.swift */; };
 		1E65105C29ED62E0002D6A02 /* EmptyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105B29ED62E0002D6A02 /* EmptyBody.swift */; };
+		1E65105E29EE2D56002D6A02 /* StarredRepositoryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105D29EE2D56002D6A02 /* StarredRepositoryCollectionViewLayout.swift */; };
+		1E65106029EE3FBD002D6A02 /* StarredRepositoryCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65105F29EE3FBD002D6A02 /* StarredRepositoryCollectionCellViewModel.swift */; };
+		1E65106229EE401B002D6A02 /* StarredRepositoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65106129EE401B002D6A02 /* StarredRepositoryCollectionViewCell.swift */; };
+		1E65107029EE50BE002D6A02 /* StarredRepositorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65106F29EE50BE002D6A02 /* StarredRepositorySection.swift */; };
+		1E65107229EE735B002D6A02 /* StarredRepositoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107129EE735B002D6A02 /* StarredRepositoryHeaderView.swift */; };
 		1E65107629EE9C2A002D6A02 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107529EE9C2A002D6A02 /* PaddingButton.swift */; };
 		1E65107829EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */; };
+		1E65114929EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65114829EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift */; };
+		1E65116729F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */; };
 		1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */; };
 		1E66CA6029D2BA4100EA117A /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA5F29D2BA4100EA117A /* Padding.swift */; };
 		1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */; };
@@ -194,8 +201,15 @@
 		1E65105729ED6273002D6A02 /* DefaultRepositoryCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepositoryCreationRepository.swift; sourceTree = "<group>"; };
 		1E65105929ED62A9002D6A02 /* RepositoryCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCreationRepository.swift; sourceTree = "<group>"; };
 		1E65105B29ED62E0002D6A02 /* EmptyBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBody.swift; sourceTree = "<group>"; };
+		1E65105D29EE2D56002D6A02 /* StarredRepositoryCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryCollectionViewLayout.swift; sourceTree = "<group>"; };
+		1E65105F29EE3FBD002D6A02 /* StarredRepositoryCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		1E65106129EE401B002D6A02 /* StarredRepositoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		1E65106F29EE50BE002D6A02 /* StarredRepositorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositorySection.swift; sourceTree = "<group>"; };
+		1E65107129EE735B002D6A02 /* StarredRepositoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryHeaderView.swift; sourceTree = "<group>"; };
 		1E65107529EE9C2A002D6A02 /* PaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
 		1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxCollectionViewSectionedReloadDataSource+init.swift"; sourceTree = "<group>"; };
+		1E65114829EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StarredRepositoryHeaderViewModel.swift; path = /Users/CodeSquad/MyGitHubTracker/MyGitHubTracker/MyGitHubTracker/Source/Presentation/Support/Common/StarredRepositoryHeaderViewModel.swift; sourceTree = "<absolute>"; };
+		1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		1E66CA5D29D2B53700EA117A /* RoundedPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPaddingLabel.swift; sourceTree = "<group>"; };
 		1E66CA5F29D2BA4100EA117A /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
@@ -382,6 +396,20 @@
 				1E65104529EBDB31002D6A02 /* RepositoryCreationViewModel.swift */,
 			);
 			path = RepositoryCreation;
+			sourceTree = "<group>";
+		};
+		1E65107B29EEA824002D6A02 /* StarredRepositoryCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				1E65106F29EE50BE002D6A02 /* StarredRepositorySection.swift */,
+				1E65105D29EE2D56002D6A02 /* StarredRepositoryCollectionViewLayout.swift */,
+				1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */,
+				1E65107129EE735B002D6A02 /* StarredRepositoryHeaderView.swift */,
+				1E65114829EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift */,
+				1E65106129EE401B002D6A02 /* StarredRepositoryCollectionViewCell.swift */,
+				1E65105F29EE3FBD002D6A02 /* StarredRepositoryCollectionCellViewModel.swift */,
+			);
+			path = StarredRepositoryCollectionView;
 			sourceTree = "<group>";
 		};
 		1E66CA6129D2BA5A00EA117A /* Enum */ = {
@@ -803,10 +831,10 @@
 		1E8FB8C629D1581800847578 /* RepositoryList */ = {
 			isa = PBXGroup;
 			children = (
-				1E43BF2029D453CD00C718D4 /* RepositoryTableView */,
 				1E8FB8CC29D1584B00847578 /* DefaultRepositoryListCoordinator.swift */,
 				1E8FB8CA29D1583C00847578 /* RepositoryListViewController.swift */,
 				1E8FB8C829D1583200847578 /* RepositoryListViewModel.swift */,
+				1E43BF2029D453CD00C718D4 /* RepositoryTableView */,
 			);
 			path = RepositoryList;
 			sourceTree = "<group>";
@@ -817,6 +845,7 @@
 				1E8FB8CE29D1588B00847578 /* DefaultAccountCoordinator.swift */,
 				1E8FB8D029D1589D00847578 /* AccountViewController.swift */,
 				1E8FB8D229D158AF00847578 /* AccountViewModel.swift */,
+				1E65107B29EEA824002D6A02 /* StarredRepositoryCollectionView */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1193,7 +1222,9 @@
 				1E66CA6529D31D7300EA117A /* RepositoryViewCell.swift in Sources */,
 				1E800D3129DC68FE00614811 /* Rx+unwrapData.swift in Sources */,
 				1E8FB89829D12FAA00847578 /* Inject.swift in Sources */,
+				1E65107829EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift in Sources */,
 				1E66CA6929D335D400EA117A /* CustomColor.swift in Sources */,
+				1E65114929EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift in Sources */,
 				1E65105629ED6258002D6A02 /* RepositoryCreationUseCase.swift in Sources */,
 				1E8FB89129D12F4800847578 /* LoginRepository.swift in Sources */,
 				1E66CA6329D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift in Sources */,
@@ -1211,14 +1242,17 @@
 				1E8FB8CB29D1583C00847578 /* RepositoryListViewController.swift in Sources */,
 				1E8FB8B029D150F500847578 /* RepositoryTransformer.swift in Sources */,
 				1E8F51FE29DEFC590001CA9E /* URLSessionURLDataService.swift in Sources */,
+				1E65116729F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift in Sources */,
 				1E8FB8C429D155AB00847578 /* Rx+transformMap.swift in Sources */,
 				1E65104829EC1328002D6A02 /* RepositoryCreationDTO.swift in Sources */,
 				1E8FB85D29D09A2600847578 /* Constant.swift in Sources */,
 				1E8FB8BC29D1530800847578 /* DefaultRepositorySearchRepository.swift in Sources */,
+				1E65107229EE735B002D6A02 /* StarredRepositoryHeaderView.swift in Sources */,
 				1E8FB8CF29D1588B00847578 /* DefaultAccountCoordinator.swift in Sources */,
 				1E43BF3629D7CB1F00C718D4 /* GitHubAuthorizationEntity.swift in Sources */,
 				1E8FB85629D099E000847578 /* DefaultAppCoordinator.swift in Sources */,
 				1E8FB8E929D251D500847578 /* Rx+doLogError.swift in Sources */,
+				1E65105E29EE2D56002D6A02 /* StarredRepositoryCollectionViewLayout.swift in Sources */,
 				1E8FB85A29D099FB00847578 /* AppCoordinateAction.swift in Sources */,
 				1E8FB8A529D14FD600847578 /* AnyTransformer.swift in Sources */,
 				1E800D2B29DC668800614811 /* StarringUseCase.swift in Sources */,
@@ -1243,6 +1277,7 @@
 				1E66CA5E29D2B53700EA117A /* RoundedPaddingLabel.swift in Sources */,
 				1E65107629EE9C2A002D6A02 /* PaddingButton.swift in Sources */,
 				1E8FB87F29D12DC800847578 /* TokenDTO.swift in Sources */,
+				1E65106029EE3FBD002D6A02 /* StarredRepositoryCollectionCellViewModel.swift in Sources */,
 				1E8FB86D29D12B9B00847578 /* LoginViewModel.swift in Sources */,
 				1E8FB86429D09A6300847578 /* KeychainValue.swift in Sources */,
 				1E43BF2429D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift in Sources */,
@@ -1284,6 +1319,7 @@
 				1E90047729E59CFA008F9895 /* TokenRepository.swift in Sources */,
 				1E90048929EA8013008F9895 /* Rx+UIImageView+loadImage.swift in Sources */,
 				1E90046B29E45717008F9895 /* CachedURLImageLoader.swift in Sources */,
+				1E65107029EE50BE002D6A02 /* StarredRepositorySection.swift in Sources */,
 				1E8FB87C29D12CF800847578 /* GitHubAuthorizationService.swift in Sources */,
 				1E8FB88729D12E6F00847578 /* LoginUseCase.swift in Sources */,
 				1E90047929E5ACA4008F9895 /* CachedImageLoader.swift in Sources */,
@@ -1299,6 +1335,7 @@
 				1E8FB89329D12F7500847578 /* DefaultLoginRepository.swift in Sources */,
 				1E90048129E90A8C008F9895 /* RepositoryUseCase.swift in Sources */,
 				1E43BF2D29D6774600C718D4 /* DefaultLoginCoordinator.swift in Sources */,
+				1E65106229EE401B002D6A02 /* StarredRepositoryCollectionViewCell.swift in Sources */,
 				1E43BF2229D4541000C718D4 /* RepositorySection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
