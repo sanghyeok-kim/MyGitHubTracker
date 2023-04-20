@@ -16,6 +16,7 @@ final class AccountViewModel: ViewModelType {
     }
     
     struct Output {
+        let starredRepositorySections = BehaviorRelay<[StarredRepositorySection]>(value: [])
         let loginID = BehaviorRelay<String>(value: "")
         let avatarImageURL = BehaviorRelay<URL?>(value: nil)
         let gitHubURL = BehaviorRelay<URL?>(value: nil)
@@ -29,6 +30,9 @@ final class AccountViewModel: ViewModelType {
     
     struct State {
         let user = PublishRelay<UserEntity>()
+        let starredRepositories = PublishRelay<[RepositoryEntity]>()
+        let starredRepositoryCellViewModels = BehaviorRelay<[StarredRepositoryCellViewModel]>(value: [])
+        let headerViewModel = PublishRelay<StarredRepositoryHeaderViewModel>()
     }
     
     let input = Input()
@@ -36,6 +40,7 @@ final class AccountViewModel: ViewModelType {
     let state = State()
     
     @Inject private var accountUseCase: AccountUseCase
+    @Inject private var starringUseCase: StarringUseCase
     
     private weak var coordinator: AccountCoordinator?
     private let disposeBag = DisposeBag()
@@ -44,6 +49,23 @@ final class AccountViewModel: ViewModelType {
         self.coordinator = coordinator
         
         // MARK: - Bind Input - viewDidLoad
+        
+        input.viewDidLoad
+            .map { StarredRepositoryHeaderViewModel(coordinator: coordinator) }
+            .bind(to: state.headerViewModel)
+            .disposed(by: disposeBag)
+        
+        let starredRepositories = input.viewDidLoad
+            .withUnretained(self)
+            .flatMapMaterialized { `self`, _ in
+                self.starringUseCase.fetchUserStarredRepositories(perPage: 5, page: 1)
+            }
+            .share()
+        
+        starredRepositories
+            .compactMap { $0.element }
+            .bind(to: state.starredRepositories)
+            .disposed(by: disposeBag)
         
         let userInfo = input.viewDidLoad
             .withUnretained(self)
@@ -94,6 +116,17 @@ final class AccountViewModel: ViewModelType {
         state.user
             .map { $0.followingCount }
             .bind(to: output.followingCount)
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind State - starredRepositories, headerViewModel
+        
+        Observable.combineLatest(state.starredRepositories, state.headerViewModel)
+            .map { (repositories, headerViewModel) -> [StarredRepositorySection] in
+                let items = repositories.map { StarredRepositoryCellViewModel(coordinator: coordinator, repository: $0) }
+                let section = StarredRepositorySection(items: items, headerViewModel: headerViewModel)
+                return [section]
+            }
+            .bind(to: output.starredRepositorySections)
             .disposed(by: disposeBag)
     }
 }

@@ -52,6 +52,33 @@ final class AccountViewController: UIViewController, ViewType {
         $0.setCustomSpacing(16, after: loginIDLabel)
     }
     
+    private lazy var starredRepositoryCollectionViewDataSource = StarredRepositoryCollectionViewDataSource()
+    private lazy var starredRepositoryCollectionViewLayout = StarredRepositoryCollectionViewLayout()
+    private lazy var starredRepositoryCompositionalLayout: UICollectionViewCompositionalLayout = {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        let compositionalLayout = UICollectionViewCompositionalLayout(
+            sectionProvider: starredRepositoryCollectionViewLayout.sectionProvider,
+            configuration: configuration
+        )
+        return compositionalLayout
+    }()
+    private lazy var starredRepositoryCollectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: starredRepositoryCompositionalLayout
+    ).then {
+        $0.showsHorizontalScrollIndicator = false
+        $0.isScrollEnabled = false
+        $0.register(
+            StarredRepositoryCollectionViewCell.self,
+            forCellWithReuseIdentifier: StarredRepositoryCollectionViewCell.identifier
+        )
+        $0.register(
+            StarredRepositoryHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: StarredRepositoryHeaderView.reuseIdentifier
+        )
+    }
+    
     private lazy var toastMessageLabel = ToastLabel()
     
     @Inject private var imageLoader: ImageLoader
@@ -65,6 +92,11 @@ final class AccountViewController: UIViewController, ViewType {
         layoutUI()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        starredRepositoryCollectionViewLayout.collectionViewSize = starredRepositoryCollectionView.bounds.size
+    }
+    
     func bindInput(to viewModel: AccountViewModel) {
         let input = viewModel.input
         
@@ -75,6 +107,11 @@ final class AccountViewController: UIViewController, ViewType {
     
     func bindOutput(from viewModel: AccountViewModel) {
         let output = viewModel.output
+        
+        output.starredRepositorySections
+            .asDriver()
+            .drive(starredRepositoryCollectionView.rx.items(dataSource: starredRepositoryCollectionViewDataSource))
+            .disposed(by: disposeBag)
         
         output.loginID
             .asDriver()
@@ -132,6 +169,7 @@ private extension AccountViewController {
     func layoutUI() {
         view.addSubview(avatarImageView)
         view.addSubview(userInfoStackView)
+        view.addSubview(starredRepositoryCollectionView)
         view.addSubview(toastMessageLabel)
         
         avatarImageView.snp.makeConstraints { make in
@@ -143,6 +181,13 @@ private extension AccountViewController {
             make.centerY.equalTo(avatarImageView)
             make.leading.equalTo(avatarImageView.snp.trailing).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(32)
+        }
+        
+        starredRepositoryCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(avatarImageView.snp.bottom).offset(156)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(124)
         }
         
         toastMessageLabel.snp.makeConstraints { make in
