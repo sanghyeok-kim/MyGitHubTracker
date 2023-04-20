@@ -88,9 +88,8 @@ final class RepositoryListViewController: UIViewController, ViewType {
             .drive(loadingIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
         
-        output.repositoryCellViewModels
+        output.repositorySections
             .asDriver()
-            .map { [RepositorySection(items: $0)] }
             .drive(repositoryTableView.rx.items(dataSource: repositoryTableViewDataSource))
             .disposed(by: disposeBag)
         

@@ -7,7 +7,6 @@
 
 import RxSwift
 import RxRelay
-import RxCocoa
 
 final class AccountViewModel: ViewModelType {
     
@@ -31,8 +30,8 @@ final class AccountViewModel: ViewModelType {
     struct State {
         let user = PublishRelay<UserEntity>()
         let starredRepositories = PublishRelay<[RepositoryEntity]>()
-        let starredRepositoryCellViewModels = BehaviorRelay<[StarredRepositoryCellViewModel]>(value: [])
         let headerViewModel = PublishRelay<StarredRepositoryHeaderViewModel>()
+        let starredRepositoryCellViewModels = BehaviorRelay<[StarredRepositoryCellViewModel]>(value: [])
     }
     
     let input = Input()
@@ -118,11 +117,18 @@ final class AccountViewModel: ViewModelType {
             .bind(to: output.followingCount)
             .disposed(by: disposeBag)
         
+        // MARK: - Bind State - starredRepositories
+        
+        state.starredRepositories
+            .map { $0.map { StarredRepositoryCellViewModel(coordinator: coordinator, repository: $0) } }
+            .bind(to: state.starredRepositoryCellViewModels)
+            .disposed(by: disposeBag)
+        
+        
         // MARK: - Bind State - starredRepositories, headerViewModel
         
-        Observable.combineLatest(state.starredRepositories, state.headerViewModel)
-            .map { (repositories, headerViewModel) -> [StarredRepositorySection] in
-                let items = repositories.map { StarredRepositoryCellViewModel(coordinator: coordinator, repository: $0) }
+        Observable.combineLatest(state.starredRepositoryCellViewModels, state.headerViewModel)
+            .map { (items, headerViewModel) -> [StarredRepositorySection] in
                 let section = StarredRepositorySection(items: items, headerViewModel: headerViewModel)
                 return [section]
             }

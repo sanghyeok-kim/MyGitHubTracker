@@ -20,7 +20,7 @@ final class RepositoryListViewModel: ViewModelType {
     
     struct Output {
         let isLoadingIndicatorVisible = BehaviorRelay<Bool>(value: true)
-        let repositoryCellViewModels = BehaviorRelay<[RepositoryCellViewModel]>(value: [])
+        let repositorySections = BehaviorRelay<[RepositorySection]>(value: [])
         let showToastMessage = PublishRelay<String>()
         let isTableViewRefreshIndicatorVisible = BehaviorRelay<Bool>(value: false)
         let isFooterLoadingIndicatorVisible = BehaviorRelay<Bool>(value: false)
@@ -29,6 +29,7 @@ final class RepositoryListViewModel: ViewModelType {
     struct State {
         let repositories = BehaviorRelay<[RepositoryEntity]>(value: [])
         let paginationState = BehaviorRelay<PaginationState>(value: PaginationState())
+        let repositoryCellViewModels = BehaviorRelay<[RepositoryCellViewModel]>(value: [])
     }
     
     let input = Input()
@@ -126,7 +127,7 @@ final class RepositoryListViewModel: ViewModelType {
         // MARK: - Bind Input - cellDidTap
         
         input.cellDidTap
-            .withLatestFrom(output.repositoryCellViewModels) { ($0, $1)  }
+            .withLatestFrom(state.repositoryCellViewModels) { ($0, $1)  }
             .map { indexPath, cellViewModel -> RepositoryCellViewModel in
                 return cellViewModel[indexPath.row]
             }
@@ -136,7 +137,7 @@ final class RepositoryListViewModel: ViewModelType {
         // MARK: - Bind Input - cellWillDisplay
         
         let canFetchNextPageWhenTableViewWillDisplayLastIndex = input.cellWillDisplay
-            .withLatestFrom(output.repositoryCellViewModels) { (indexPath: $0, cellViewModels: $1) }
+            .withLatestFrom(state.repositoryCellViewModels) { (indexPath: $0, cellViewModels: $1) }
             .filter { $0.row == $1.count - 1 }
             .map { $0.0 }
             .withLatestFrom(state.paginationState) { (indexPath: $0, paginationState: $1) }
@@ -170,7 +171,14 @@ final class RepositoryListViewModel: ViewModelType {
         
         state.repositories
             .map { $0.map { RepositoryCellViewModel(coordinator: coordinator, repository: $0) } }
-            .bind(to: output.repositoryCellViewModels)
+            .bind(to: state.repositoryCellViewModels)
+            .disposed(by: disposeBag)
+        
+        // MARK: - Bind State - repositoryCellViewModels
+        
+        state.repositoryCellViewModels
+            .map { [RepositorySection(items: $0)] }
+            .bind(to: output.repositorySections)
             .disposed(by: disposeBag)
     }
 }
