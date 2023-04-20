@@ -19,14 +19,18 @@ final class StarredRepositoryCollectionViewDataSource: RxCollectionViewSectioned
         }
         
         let configureSupplementaryView: ConfigureSupplementaryView = { (dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
+            
+            guard let headerViewModel = dataSource.sectionModels[indexPath.section].headerViewModel else {
+                return UICollectionReusableView()
+            }
+            
             if kind == UICollectionView.elementKindSectionHeader {
                 guard let headerView = collectionView.dequeueReusableSupplementaryView(
                     ofKind: kind,
                     withReuseIdentifier: StarredRepositoryHeaderView.reuseIdentifier,
                     for: indexPath
                 ) as? StarredRepositoryHeaderView else { return UICollectionReusableView() }
-                
-                headerView.bind(viewModel: dataSource.sectionModels[indexPath.section].headerViewModel)
+                headerView.bind(viewModel: headerViewModel)
                 return headerView
             }
             return UICollectionReusableView()

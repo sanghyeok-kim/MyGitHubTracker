@@ -9,7 +9,7 @@ import RxDataSources
 
 struct StarredRepositorySection {
     var items: [StarredRepositoryCellViewModel]
-    var headerViewModel: StarredRepositoryHeaderViewModel
+    var headerViewModel: StarredRepositoryHeaderViewModel?
 }
 
 extension StarredRepositorySection: SectionModelType {
