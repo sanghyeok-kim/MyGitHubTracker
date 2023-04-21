@@ -48,6 +48,7 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
     private var disposeBag = DisposeBag()
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         disposeBag = DisposeBag()
     }
     
