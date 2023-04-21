@@ -150,7 +150,6 @@ private extension StarredRepositoryListViewModel {
         fetchedNextPageStarredRepositories
             .compactMap { $0.element }
             .withLatestFrom(state.starredRepositories) { $1 + $0 }
-            .debug()
             .bind(to: state.starredRepositories)
             .disposed(by: disposeBag)
         
