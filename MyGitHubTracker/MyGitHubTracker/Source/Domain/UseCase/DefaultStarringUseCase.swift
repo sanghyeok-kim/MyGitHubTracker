@@ -17,7 +17,7 @@ final class DefaultStarringUseCase: StarringUseCase {
             .asObservable()
     }
     
-    func toggleStarringRepository(ownerName: String, repositoryName: String, isStarred: Bool) -> Completable {
+    func toggleRepositoryStarring(ownerName: String, repositoryName: String, isStarred: Bool) -> Completable {
         switch isStarred {
         case true:
             return starringRepository

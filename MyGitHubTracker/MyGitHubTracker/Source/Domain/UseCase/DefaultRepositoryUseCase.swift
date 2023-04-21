@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DefaultRepositoryUseCase: RepositoryUseCase {
+final class DefaultRepositoryUseCase: RepositoryUseCase { // TODO: RepositoryStargazerUseCase
     func toggleStargazersCount(_ repository: RepositoryEntity) -> RepositoryEntity {
         var newRepository = repository
         let (isStarred, starCount) = (repository.isStarredByUser, repository.stargazersCount)
