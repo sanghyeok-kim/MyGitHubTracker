@@ -575,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				1E90047C29E79045008F9895 /* ImageLoader */,
+				1EF2E7D729F35011000ED464 /* Extension */,
 				1E8FB8E029D167B700847578 /* Common */,
 				1E66CA6129D2BA5A00EA117A /* Enum */,
 				1E8FB84129D08E3A00847578 /* Protocol */,
@@ -637,25 +638,10 @@
 		1E8FB86529D09A7B00847578 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1EF2E7DA29F35242000ED464 /* Sequence */,
 				1E8FB86629D09A8600847578 /* Bundle+GitHubClientKey.swift */,
 				1E8FB8B129D1513400847578 /* String+toDateFormat.swift */,
-				1E800D4229DEC8EF00614811 /* UIImageView+setImagWithCaching.swift */,
-				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
-				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
-				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
-				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
-				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
-				1E8FB8E829D251D500847578 /* Rx+doLogError.swift */,
-				1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */,
-				1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */,
-				1E90048829EA8013008F9895 /* Rx+UIImageView+loadImage.swift */,
-				1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */,
-				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */,
-				1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */,
-				1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */,
-				1EF2E7D529F28A42000ED464 /* Rx+prepareForReuse.swift */,
 				1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */,
-				1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -968,6 +954,52 @@
 				1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */,
 			);
 			path = StarredRepositoryTableView;
+			sourceTree = "<group>";
+		};
+		1EF2E7D729F35011000ED464 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1EF2E7D929F351EC000ED464 /* UIKit */,
+				1EF2E7D829F35176000ED464 /* Reactive */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1EF2E7D829F35176000ED464 /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+				1EF2E7D529F28A42000ED464 /* Rx+prepareForReuse.swift */,
+				1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */,
+				1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */,
+				1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */,
+				1E90048829EA8013008F9895 /* Rx+UIImageView+loadImage.swift */,
+			);
+			path = Reactive;
+			sourceTree = "<group>";
+		};
+		1EF2E7D929F351EC000ED464 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				1E800D4229DEC8EF00614811 /* UIImageView+setImagWithCaching.swift */,
+				1E66CA6229D2BF8300EA117A /* UIStackView+AddArrangedSubviews.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		1EF2E7DA29F35242000ED464 /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
+				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
+				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
+				1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */,
+				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
+				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
+				1E8FB8E829D251D500847578 /* Rx+doLogError.swift */,
+				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */,
+				1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */,
+			);
+			path = Sequence;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
