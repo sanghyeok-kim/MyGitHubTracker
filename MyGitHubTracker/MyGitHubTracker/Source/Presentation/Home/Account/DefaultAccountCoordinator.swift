@@ -13,12 +13,6 @@ final class DefaultAccountCoordinator: AccountCoordinator {
     var navigationController: UINavigationController
     var type: CoordinatorType = .account
     
-    private lazy var accountViewController: AccountViewController = {
-        let accountViewController = AccountViewController()
-        accountViewController.bind(viewModel: AccountViewModel(coordinator: self))
-        return accountViewController
-    }()
-    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -28,7 +22,12 @@ final class DefaultAccountCoordinator: AccountCoordinator {
     }
     
     func coordinate(by action: AccountCoordinateAction) {
-        
+        DispatchQueue.main.async { [weak self] in
+            switch action {
+            case .showAllButtonDidTap:
+                self?.pushStarredRepositoryListViewController()
+            }
+        }
     }
     
     deinit {
@@ -36,11 +35,18 @@ final class DefaultAccountCoordinator: AccountCoordinator {
     }
 }
 
-
-// MARK: - Scene Changing Methods
+// MARK: - Coordinating Methods
 
 private extension DefaultAccountCoordinator {
     func showAccountViewController() {
+        let accountViewController = AccountViewController()
+        accountViewController.bind(viewModel: AccountViewModel(coordinator: self))
         navigationController.setViewControllers([accountViewController], animated: false)
+    }
+    
+    func pushStarredRepositoryListViewController() {
+        let viewController = StarredRepositoryListViewController()
+        viewController.bind(viewModel: StarredRepositoryListViewModel(coordinator: self))
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

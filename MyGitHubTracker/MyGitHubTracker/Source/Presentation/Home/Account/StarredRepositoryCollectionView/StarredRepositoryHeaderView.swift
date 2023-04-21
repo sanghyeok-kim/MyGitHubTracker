@@ -29,6 +29,7 @@ final class StarredRepositoryHeaderView: UICollectionReusableView, ViewType {
     }
     
     var viewModel: StarredRepositoryHeaderViewModel?
+    private var disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,10 +41,17 @@ final class StarredRepositoryHeaderView: UICollectionReusableView, ViewType {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     func bindInput(to viewModel: StarredRepositoryHeaderViewModel) {
         let input = viewModel.input
         
-        
+        showAllButton.rx.tap
+            .bind(to: input.showAllButtonDidTap)
+            .disposed(by: disposeBag)
     }
     
     func bindOutput(from viewModel: StarredRepositoryHeaderViewModel) {
