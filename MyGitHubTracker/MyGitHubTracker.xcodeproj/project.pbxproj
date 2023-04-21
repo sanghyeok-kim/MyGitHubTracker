@@ -41,7 +41,6 @@
 		1E65107229EE735B002D6A02 /* StarredRepositoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107129EE735B002D6A02 /* StarredRepositoryHeaderView.swift */; };
 		1E65107629EE9C2A002D6A02 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107529EE9C2A002D6A02 /* PaddingButton.swift */; };
 		1E65107829EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */; };
-		1E65107A29EEA1B3002D6A02 /* ShowAllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65107929EEA1B3002D6A02 /* ShowAllCollectionViewCell.swift */; };
 		1E65114929EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65114829EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift */; };
 		1E65116729F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */; };
 		1E65116929F0F3A2002D6A02 /* StarredRepositoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65116829F0F3A2002D6A02 /* StarredRepositoryListViewController.swift */; };
@@ -213,7 +212,6 @@
 		1E65107129EE735B002D6A02 /* StarredRepositoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryHeaderView.swift; sourceTree = "<group>"; };
 		1E65107529EE9C2A002D6A02 /* PaddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
 		1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxCollectionViewSectionedReloadDataSource+init.swift"; sourceTree = "<group>"; };
-		1E65107929EEA1B3002D6A02 /* ShowAllCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllCollectionViewCell.swift; sourceTree = "<group>"; };
 		1E65114829EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StarredRepositoryHeaderViewModel.swift; path = /Users/CodeSquad/MyGitHubTracker/MyGitHubTracker/MyGitHubTracker/Source/Presentation/Support/Common/StarredRepositoryHeaderViewModel.swift; sourceTree = "<absolute>"; };
 		1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		1E65116829F0F3A2002D6A02 /* StarredRepositoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredRepositoryListViewController.swift; sourceTree = "<group>"; };
@@ -406,22 +404,14 @@
 			path = RepositoryCreation;
 			sourceTree = "<group>";
 		};
-		1E65107B29EEA824002D6A02 /* StarredRepositoryCollectionView */ = {
+		1E65107B29EEA824002D6A02 /* StarredRepositoryList */ = {
 			isa = PBXGroup;
 			children = (
-				1E65106F29EE50BE002D6A02 /* StarredRepositorySection.swift */,
-				1E65105D29EE2D56002D6A02 /* StarredRepositoryCollectionViewLayout.swift */,
-				1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */,
-				1E65107129EE735B002D6A02 /* StarredRepositoryHeaderView.swift */,
-				1E65114829EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift */,
-				1E65107929EEA1B3002D6A02 /* ShowAllCollectionViewCell.swift */,
-				1E65106129EE401B002D6A02 /* StarredRepositoryCollectionViewCell.swift */,
-				1E4D2F2D29F220B800A12EF2 /* StarredRepositoryTableViewCell.swift */,
-				1E65105F29EE3FBD002D6A02 /* StarredRepositoryCellViewModel.swift */,
 				1E65116829F0F3A2002D6A02 /* StarredRepositoryListViewController.swift */,
 				1EEB4A8F29F2136900E4A617 /* StarredRepositoryListViewModel.swift */,
+				1EF2E7D029F2622A000ED464 /* StarredRepositoryTableView */,
 			);
-			path = StarredRepositoryCollectionView;
+			path = StarredRepositoryList;
 			sourceTree = "<group>";
 		};
 		1E66CA6129D2BA5A00EA117A /* Enum */ = {
@@ -701,9 +691,9 @@
 		1E8FB86F29D12C1900847578 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB88F29D12F3E00847578 /* RepositoryInterface */,
 				1E8FB88429D12E4200847578 /* UseCase */,
 				1E8FB88229D12E3300847578 /* Entity */,
+				1E8FB88F29D12F3E00847578 /* RepositoryInterface */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -857,7 +847,8 @@
 				1E8FB8CE29D1588B00847578 /* DefaultAccountCoordinator.swift */,
 				1E8FB8D029D1589D00847578 /* AccountViewController.swift */,
 				1E8FB8D229D158AF00847578 /* AccountViewModel.swift */,
-				1E65107B29EEA824002D6A02 /* StarredRepositoryCollectionView */,
+				1EF2E7CF29F261D6000ED464 /* StarredRepositoryCollectionView */,
+				1E65107B29EEA824002D6A02 /* StarredRepositoryList */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -946,6 +937,28 @@
 				1E65105B29ED62E0002D6A02 /* EmptyBody.swift */,
 			);
 			path = HTTPComponent;
+			sourceTree = "<group>";
+		};
+		1EF2E7CF29F261D6000ED464 /* StarredRepositoryCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				1E65106F29EE50BE002D6A02 /* StarredRepositorySection.swift */,
+				1E65107129EE735B002D6A02 /* StarredRepositoryHeaderView.swift */,
+				1E65114829EFD279002D6A02 /* StarredRepositoryHeaderViewModel.swift */,
+				1E65106129EE401B002D6A02 /* StarredRepositoryCollectionViewCell.swift */,
+				1E65105F29EE3FBD002D6A02 /* StarredRepositoryCellViewModel.swift */,
+			);
+			path = StarredRepositoryCollectionView;
+			sourceTree = "<group>";
+		};
+		1EF2E7D029F2622A000ED464 /* StarredRepositoryTableView */ = {
+			isa = PBXGroup;
+			children = (
+				1E4D2F2D29F220B800A12EF2 /* StarredRepositoryTableViewCell.swift */,
+				1E65105D29EE2D56002D6A02 /* StarredRepositoryCollectionViewLayout.swift */,
+				1E65116629F0D2FF002D6A02 /* StarredRepositoryCollectionViewDataSource.swift */,
+			);
+			path = StarredRepositoryTableView;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
@@ -1250,7 +1263,6 @@
 				1E8FB84829D08EBE00847578 /* Coordinator.swift in Sources */,
 				1E65105829ED6273002D6A02 /* DefaultRepositoryCreationRepository.swift in Sources */,
 				1E8FB80C29D08BA000847578 /* AppDelegate.swift in Sources */,
-				1E65107A29EEA1B3002D6A02 /* ShowAllCollectionViewCell.swift in Sources */,
 				1E8FB8B429D151C600847578 /* DefaultRepositoryListUseCase.swift in Sources */,
 				1EEB4A9029F2136900E4A617 /* StarredRepositoryListViewModel.swift in Sources */,
 				1E8FB86229D09A5C00847578 /* UserDefaultsValue.swift in Sources */,
