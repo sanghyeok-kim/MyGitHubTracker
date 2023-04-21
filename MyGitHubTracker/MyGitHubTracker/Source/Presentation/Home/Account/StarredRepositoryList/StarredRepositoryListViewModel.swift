@@ -73,6 +73,44 @@ final class StarredRepositoryListViewModel: ViewModelType {
             .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
+        // MARK: - Bind Input - tableViewDidRefresh
+        
+        input.tableViewDidRefresh
+            .withLatestFrom(state.paginationState)
+            .withUnretained(self)
+            .compactMap { `self`, paginationState in
+                self.paginationUseCase.resetToInitial(paginationState)
+            }
+            .bind(to: state.paginationState)
+            .disposed(by: disposeBag)
+        
+        let refreshedRepositories = input.tableViewDidRefresh
+            .withLatestFrom(state.paginationState) { $1.fetchParameters }
+            .withUnretained(self)
+            .flatMapMaterialized { `self`, fetchParameters in
+                let (perPage, page) = fetchParameters
+                return self.starringUseCase.fetchUserStarredRepositories(perPage: perPage, page: page)
+            }
+            .share()
+        
+        refreshedRepositories
+            .compactMap { $0.error }
+            .doLogError()
+            .toastMeessageMap(to: .failToFetchRepositories)
+            .bind(to: output.showToastMessage)
+            .disposed(by: disposeBag)
+        
+        refreshedRepositories
+            .compactMap { $0.element }
+            .bind(to: state.starredRepositories)
+            .disposed(by: disposeBag)
+        
+        refreshedRepositories
+            .filter { $0.isStopEvent }
+            .map { _ in false }
+            .bind(to: output.isTableViewRefreshIndicatorVisible)
+            .disposed(by: disposeBag)
+        
         // MARK: - Bind Input - cellWillDisplay
         
         let canFetchNextPageWhenTableViewWillDisplayLastIndex = input.cellWillDisplay
