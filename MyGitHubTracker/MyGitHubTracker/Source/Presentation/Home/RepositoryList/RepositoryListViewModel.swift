@@ -149,7 +149,7 @@ final class RepositoryListViewModel: ViewModelType {
             .bind(to: output.isFooterLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
-         let paginationStateForNextPage = canFetchNextPageWhenTableViewWillDisplayLastIndex
+        let paginationStateForNextPage = canFetchNextPageWhenTableViewWillDisplayLastIndex
             .withLatestFrom(state.paginationState)
             .withUnretained(self) { ($0, $1) }
             .compactMap { `self`, paginationState in
