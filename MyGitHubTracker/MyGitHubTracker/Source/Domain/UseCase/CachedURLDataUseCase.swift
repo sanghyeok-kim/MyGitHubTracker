@@ -27,9 +27,10 @@ final class CachedURLDataUseCase: URLDataUseCase {
     func fetch(from url: URL?) -> Observable<Data> {
         return Observable.create { [weak self] observer in
             let observable = self?.urlDataFetchRepository.fetchCachedData(from: url).asObservable()
-            self?.currentDisposable = observable?.subscribe { event in
+            let disposable = observable?.subscribe { event in
                 observer.on(event)
             }
+            self?.currentDisposable = disposable
             return Disposables.create()
         }
     }
