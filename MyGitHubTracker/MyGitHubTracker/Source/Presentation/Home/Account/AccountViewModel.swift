@@ -29,7 +29,7 @@ final class AccountViewModel: ViewModelType {
     
     struct State {
         let user = PublishRelay<UserEntity>()
-        let starredRepositories = PublishRelay<[RepositoryEntity]>()
+        let starredRepositories = BehaviorRelay<[RepositoryEntity]>(value: [])
         let headerViewModel = PublishRelay<StarredRepositoryHeaderViewModel>()
         let starredRepositoryCellViewModels = BehaviorRelay<[StarredRepositoryCellViewModel]>(value: [])
     }
@@ -124,15 +124,17 @@ final class AccountViewModel: ViewModelType {
             .bind(to: state.starredRepositoryCellViewModels)
             .disposed(by: disposeBag)
         
-        
         // MARK: - Bind State - starredRepositories, headerViewModel
         
-        Observable.combineLatest(state.starredRepositoryCellViewModels, state.headerViewModel)
-            .map { (items, headerViewModel) -> [StarredRepositorySection] in
-                let section = StarredRepositorySection(items: items, headerViewModel: headerViewModel)
-                return [section]
-            }
-            .bind(to: output.starredRepositorySections)
-            .disposed(by: disposeBag)
+        Observable.combineLatest(
+            state.starredRepositoryCellViewModels.filter { !$0.isEmpty },
+            state.headerViewModel
+        )
+        .map { (items, headerViewModel) -> [StarredRepositorySection] in
+            let section = StarredRepositorySection(items: items, headerViewModel: headerViewModel)
+            return [section]
+        }
+        .bind(to: output.starredRepositorySections)
+        .disposed(by: disposeBag)
     }
 }
