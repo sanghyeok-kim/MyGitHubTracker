@@ -19,8 +19,6 @@ final class AccountViewModel: ViewModelType {
         let loginID = BehaviorRelay<String>(value: "")
         let avatarImageURL = BehaviorRelay<URL?>(value: nil)
         let gitHubURL = BehaviorRelay<URL?>(value: nil)
-        let followersURL = BehaviorRelay<String>(value: "")
-        let followingURL = BehaviorRelay<String>(value: "")
         let name = BehaviorRelay<String>(value: "")
         let followersCount = BehaviorRelay<Int>(value: .zero)
         let followingCount = BehaviorRelay<Int>(value: .zero)
