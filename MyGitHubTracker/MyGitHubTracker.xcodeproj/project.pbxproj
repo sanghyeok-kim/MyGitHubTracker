@@ -701,6 +701,7 @@
 		1E8FB86F29D12C1900847578 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FB88F29D12F3E00847578 /* RepositoryInterface */,
 				1E8FB88429D12E4200847578 /* UseCase */,
 				1E8FB88229D12E3300847578 /* Entity */,
 			);
@@ -792,12 +793,11 @@
 				1E8FB8BD29D1532300847578 /* DefaultAccountRepository.swift */,
 				1E800D2229DC169300614811 /* DefaultStarringRepository.swift */,
 				1E800D3E29DEC77F00614811 /* CachedURLDataFetchRepository.swift */,
-				1E8FB88F29D12F3E00847578 /* Protocol */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		1E8FB88F29D12F3E00847578 /* Protocol */ = {
+		1E8FB88F29D12F3E00847578 /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
 				1E8FB89029D12F4800847578 /* LoginRepository.swift */,
@@ -808,7 +808,7 @@
 				1E8FB8C129D153A700847578 /* AccountRepository.swift */,
 				1E8F51FF29DEFC700001CA9E /* URLDataFetchRepository.swift */,
 			);
-			path = Protocol;
+			path = RepositoryInterface;
 			sourceTree = "<group>";
 		};
 		1E8FB89429D12FA100847578 /* Dependency */ = {
