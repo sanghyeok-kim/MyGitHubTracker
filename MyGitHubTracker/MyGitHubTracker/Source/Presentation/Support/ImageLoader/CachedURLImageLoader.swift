@@ -7,6 +7,7 @@
 
 import RxSwift
 
+@available(*, deprecated, message: "ImageLoader 대신 URLDataUseCase 사용")
 final class CachedImageLoader: ImageLoader {
     
     @Inject private var cachedURLDataFetchRepository: URLDataFetchRepository

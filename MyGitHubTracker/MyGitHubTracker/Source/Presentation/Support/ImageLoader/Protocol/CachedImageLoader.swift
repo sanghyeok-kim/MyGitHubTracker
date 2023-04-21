@@ -7,6 +7,7 @@
 
 import RxSwift
 
+@available(*, deprecated, message: "ImageLoader 대신 URLDataUseCase 사용")
 protocol ImageLoader {
     func fetchImage(from url: URL) async throws -> UIImage?
     func fetchImage(from url: URL) -> Single<UIImage?>

@@ -9,6 +9,7 @@ import UIKit.UIImageView
 import RxSwift
 
 extension UIImageView {
+    @available(*, deprecated, message: "ImageLoader 대신 URLDataUseCase 사용")
     func setImageWithCaching(from url: URL, using imageLoader: ImageLoader) async {
         do {
             let image = try await imageLoader.fetchImage(from: url)
@@ -21,6 +22,7 @@ extension UIImageView {
         }
     }
     
+    @available(*, deprecated, message: "ImageLoader 대신 URLDataUseCase 사용")
     func setImageWithCaching(from url: URL, using imageLoader: ImageLoader) -> Disposable {
         return imageLoader
             .fetchImage(from: url)
