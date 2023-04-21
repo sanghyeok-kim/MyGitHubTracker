@@ -87,7 +87,7 @@ final class RepositoryCellViewModel: ViewModelType {
     }
 }
 
-// MARK: - External Methods
+// MARK: - Public Methods
 
 extension RepositoryCellViewModel {
     func cellDidTap() {

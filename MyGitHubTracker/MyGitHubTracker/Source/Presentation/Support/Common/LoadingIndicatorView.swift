@@ -26,7 +26,7 @@ final class LoadingIndicatorView: UIView {
     }
 }
 
-// MARK: - External Methods
+// MARK: - Public Methods
 
 extension LoadingIndicatorView {
     func showLoadingIndicatorIfNeeded(_ shouldAnimate: Bool) {

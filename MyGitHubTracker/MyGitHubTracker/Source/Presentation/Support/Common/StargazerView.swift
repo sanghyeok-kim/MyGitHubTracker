@@ -62,7 +62,7 @@ private extension StargazerView {
     }
 }
 
-// MARK: - External Methods
+// MARK: - Public Methods
 
 extension StargazerView {
     func set(count: Int) {

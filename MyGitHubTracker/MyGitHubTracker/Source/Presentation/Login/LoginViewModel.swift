@@ -66,7 +66,7 @@ final class LoginViewModel: ViewModelType {
     }
 }
 
-// MARK: - External Methods
+// MARK: - Public Methods
 
 extension LoginViewModel {
     func userDidAuthorize(callBack url: URL) {
