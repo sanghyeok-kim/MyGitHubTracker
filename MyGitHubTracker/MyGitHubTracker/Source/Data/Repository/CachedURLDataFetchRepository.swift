@@ -48,12 +48,10 @@ final class CachedURLDataFetchRepository: URLDataFetchRepository {
         
         return fetchFromMemoryCache(dataName: dataName)
             .catch { [weak self] error in
-                print("disk hit")
                 guard let self = self else { return .error(FileSystemError.objectDeallocated) }
                 return self.fetchFromDiskCache(dataName: dataName)
             }
             .catch { [weak self] error in
-                print("fetch")
                 guard let self = self else { return .error(FileSystemError.objectDeallocated) }
                 return self.fetchFromRemoteAndCache(from: url, dataName: dataName)
             }
@@ -71,7 +69,6 @@ private extension CachedURLDataFetchRepository {
             }
             
             if let data = self.memoryCache.lookUpData(by: dataName) {
-                print("mem hit")
                 single(.success(data))
             } else {
                 single(.failure(FileSystemError.dataNotFound))
