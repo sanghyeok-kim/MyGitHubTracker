@@ -21,11 +21,10 @@ struct PaginationState {
         return !isLoading
     }
     
-    init(startPage: Int = 1, countPerPage: Int = 10, isLoading: Bool = false) {
+    init(startPage: Int = 1, countPerPage: Int = 10) {
         self.startPage = startPage
         self.countPerPage = countPerPage
         self.currentPage = startPage
-        self.isLoading = isLoading
     }
     
     mutating func finishLoading() {
