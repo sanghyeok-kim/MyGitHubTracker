@@ -47,6 +47,7 @@ extension Container {
         // Cached Data
         Container.shared.register(service: ImageLoader.self) { CachedImageLoader() }
         Container.shared.register(service: URLDataFetchRepository.self) { CachedURLDataFetchRepository() }
+        Container.shared.register(service: URLDataUseCase.self) { CachedURLDataUseCase() }
         
         // Login
         Container.shared.register(service: LoginRepository.self) { DefaultLoginRepository() }
