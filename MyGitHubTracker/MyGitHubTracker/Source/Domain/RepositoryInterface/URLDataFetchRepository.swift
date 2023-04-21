@@ -8,6 +8,6 @@
 import RxSwift
 
 protocol URLDataFetchRepository {
-    func fetchCachedData(from url: URL) async throws -> Data
-    func fetchCachedData(from url: URL) -> Single<Data>
+    func fetchCachedData(from url: URL?) async throws -> Data
+    func fetchCachedData(from url: URL?) -> Single<Data>
 }
