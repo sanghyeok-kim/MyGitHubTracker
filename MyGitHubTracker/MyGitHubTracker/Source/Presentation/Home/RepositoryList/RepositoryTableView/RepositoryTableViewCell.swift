@@ -10,7 +10,7 @@ import RxCocoa
 import SnapKit
 import Then
 
-final class RepositoryTableViewCell: UITableViewCell, ViewType { //FIXME: RepositoryTableViewCell
+final class RepositoryTableViewCell: UITableViewCell, ViewType {
     
     private lazy var accessLabel = RoundedPaddingLabel(padding: .small).then {
         $0.font = .systemFont(ofSize: 12)
