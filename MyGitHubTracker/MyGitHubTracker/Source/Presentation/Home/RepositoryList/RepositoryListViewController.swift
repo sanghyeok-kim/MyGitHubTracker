@@ -24,7 +24,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
     }
     
     private lazy var repositoryTableViewDataSource: RxTableViewSectionedReloadDataSource<RepositorySection> = {
-        return .init { (cell: RepositoryViewCell, cellViewModel: RepositoryCellViewModel) in
+        return .init { (cell: RepositoryTableViewCell, cellViewModel: RepositoryCellViewModel) in
             cell.bind(viewModel: cellViewModel)
         }
     }()
@@ -33,7 +33,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
         $0.refreshControl = repositoryRefreshControll
         $0.estimatedRowHeight = 120
         $0.rowHeight = UITableView.automaticDimension
-        $0.register(RepositoryViewCell.self, forCellReuseIdentifier: RepositoryViewCell.identifier)
+        $0.register(RepositoryTableViewCell.self, forCellReuseIdentifier: RepositoryTableViewCell.identifier)
         $0.tableFooterView = repositoryTableFooterLoadingView
     }
     

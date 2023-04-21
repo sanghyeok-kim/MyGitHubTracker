@@ -1,5 +1,5 @@
 //
-//  RepositoryViewCell.swift
+//  RepositoryTableViewCell.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/28.
@@ -10,7 +10,7 @@ import RxCocoa
 import SnapKit
 import Then
 
-final class RepositoryViewCell: UITableViewCell, ViewType {
+final class RepositoryTableViewCell: UITableViewCell, ViewType { //FIXME: RepositoryTableViewCell
     
     private lazy var accessLabel = RoundedPaddingLabel(padding: .small).then {
         $0.font = .systemFont(ofSize: 12)
@@ -113,7 +113,7 @@ final class RepositoryViewCell: UITableViewCell, ViewType {
 
 // MARK: - UI Configuration
 
-private extension RepositoryViewCell {
+private extension RepositoryTableViewCell {
     func configureUI() {
         
     }
@@ -121,7 +121,7 @@ private extension RepositoryViewCell {
 
 // MARK: - UI Layout
 
-private extension RepositoryViewCell {
+private extension RepositoryTableViewCell {
     func layoutUI() {
         contentView.addSubview(titleStackView)
         contentView.addSubview(descriptionLabel)
