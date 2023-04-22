@@ -50,6 +50,12 @@ final class AccountViewController: UIViewController, ViewType {
         $0.axis = .vertical
         $0.spacing = 8
         $0.setCustomSpacing(16, after: loginIDLabel)
+        $0.isHidden = true
+    }
+    
+    private lazy var accountInfoLoadingIndicator = UIActivityIndicatorView().then {
+        $0.style = .large
+        $0.hidesWhenStopped = true
     }
     
     private lazy var starredRepositoryCollectionViewDataSource = StarredRepositoryCollectionViewDataSource()
@@ -80,8 +86,6 @@ final class AccountViewController: UIViewController, ViewType {
     }
     
     private lazy var toastMessageLabel = ToastLabel()
-    
-    @Inject private var imageLoader: ImageLoader
     
     var viewModel: AccountViewModel?
     private let disposeBag = DisposeBag()
@@ -118,10 +122,10 @@ final class AccountViewController: UIViewController, ViewType {
             .drive(loginIDLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.avatarImageURL
+        output.avatarImageData
             .asDriver()
             .compactMap { $0 }
-            .drive(avatarImageView.rx.loadImage(using: imageLoader, disposeBag: disposeBag))
+            .drive(avatarImageView.rx.imageData)
             .disposed(by: disposeBag)
         
         output.gitHubURL
@@ -147,6 +151,11 @@ final class AccountViewController: UIViewController, ViewType {
             .drive(followingCountLabel.rx.text)
             .disposed(by: disposeBag)
         
+        output.isLoadingIndicatorVisible
+            .asDriver()
+            .drive(accountInfoLoadingIndicator.rx.isAnimating, userInfoStackView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
         output.showToastMessage
             .asSignal()
             .emit(onNext: toastMessageLabel.show(message:))
@@ -169,6 +178,7 @@ private extension AccountViewController {
     func layoutUI() {
         view.addSubview(avatarImageView)
         view.addSubview(userInfoStackView)
+        view.addSubview(accountInfoLoadingIndicator)
         view.addSubview(starredRepositoryCollectionView)
         view.addSubview(toastMessageLabel)
         
@@ -181,6 +191,11 @@ private extension AccountViewController {
             make.centerY.equalTo(avatarImageView)
             make.leading.equalTo(avatarImageView.snp.trailing).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(32)
+        }
+        
+        accountInfoLoadingIndicator.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(userInfoStackView)
         }
         
         starredRepositoryCollectionView.snp.makeConstraints { make in

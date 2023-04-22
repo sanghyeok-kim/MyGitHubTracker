@@ -17,11 +17,12 @@ final class AccountViewModel: ViewModelType {
     struct Output {
         let starredRepositorySections = BehaviorRelay<[StarredRepositorySection]>(value: [])
         let loginID = BehaviorRelay<String>(value: "")
-        let avatarImageURL = BehaviorRelay<URL?>(value: nil)
+        let avatarImageData = BehaviorRelay<Data?>(value: nil)
         let gitHubURL = BehaviorRelay<URL?>(value: nil)
         let name = BehaviorRelay<String>(value: "")
         let followersCount = BehaviorRelay<Int>(value: .zero)
         let followingCount = BehaviorRelay<Int>(value: .zero)
+        let isLoadingIndicatorVisible = BehaviorRelay<Bool>(value: false)
         let showToastMessage = PublishRelay<String>()
     }
     
@@ -36,6 +37,7 @@ final class AccountViewModel: ViewModelType {
     let output = Output()
     let state = State()
     
+    @Inject private var urlDataUseCase: URLDataUseCase
     @Inject private var accountUseCase: AccountUseCase
     @Inject private var starringUseCase: StarringUseCase
     
@@ -48,20 +50,13 @@ final class AccountViewModel: ViewModelType {
         // MARK: - Bind Input - viewDidLoad
         
         input.viewDidLoad
-            .map { StarredRepositoryHeaderViewModel(coordinator: coordinator) }
-            .bind(to: state.headerViewModel)
+            .map { true }
+            .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
-        let starredRepositories = input.viewDidLoad
-            .withUnretained(self)
-            .flatMapMaterialized { `self`, _ in
-                self.starringUseCase.fetchUserStarredRepositories(perPage: 5, page: 1)
-            }
-            .share()
-        
-        starredRepositories
-            .compactMap { $0.element }
-            .bind(to: state.starredRepositories)
+        input.viewDidLoad
+            .map { StarredRepositoryHeaderViewModel(coordinator: coordinator) }
+            .bind(to: state.headerViewModel)
             .disposed(by: disposeBag)
         
         let userInfo = input.viewDidLoad
@@ -83,6 +78,25 @@ final class AccountViewModel: ViewModelType {
             .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
+        let starredRepositories = input.viewDidLoad
+            .withUnretained(self)
+            .flatMapMaterialized { `self`, _ in
+                self.starringUseCase.fetchUserStarredRepositories(perPage: 5, page: 1)
+            }
+            .share()
+        
+        starredRepositories
+            .compactMap { $0.element }
+            .bind(to: state.starredRepositories)
+            .disposed(by: disposeBag)
+        
+        starredRepositories
+            .compactMap { $0.error }
+            .doLogError()
+            .toastMeessageMap(to: .failToFetchRepositories)
+            .bind(to: output.showToastMessage)
+            .disposed(by: disposeBag)
+        
         // MARK: - Bind State - user
         
         state.user
@@ -90,9 +104,30 @@ final class AccountViewModel: ViewModelType {
             .bind(to: output.loginID)
             .disposed(by: disposeBag)
         
-        state.user
+        let avatarImageData = state.user
             .map { $0.avatarImageURL }
-            .bind(to: output.avatarImageURL)
+            .withUnretained(self)
+            .flatMapMaterialized { `self`, url in
+                self.urlDataUseCase.fetch(from: url)
+            }
+            .share()
+        
+        avatarImageData
+            .compactMap { $0.element }
+            .bind(to: output.avatarImageData)
+            .disposed(by: disposeBag)
+        
+        avatarImageData
+            .compactMap { $0.error }
+            .doLogError()
+            .toastMeessageMap(to: .failToFetchImageData)
+            .bind(to: output.showToastMessage)
+            .disposed(by: disposeBag)
+        
+        avatarImageData
+            .filter { $0.isCompleted }
+            .map { _ in false }
+            .bind(to: output.isLoadingIndicatorVisible)
             .disposed(by: disposeBag)
         
         state.user

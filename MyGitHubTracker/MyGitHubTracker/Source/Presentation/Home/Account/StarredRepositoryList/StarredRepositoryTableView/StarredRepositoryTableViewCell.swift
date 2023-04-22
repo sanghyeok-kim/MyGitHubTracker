@@ -16,12 +16,12 @@ final class StarredRepositoryTableViewCell: UITableViewCell, ViewType {
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFit
         $0.snp.makeConstraints { make in
-            make.width.height.equalTo(40)
+            make.width.height.equalTo(50)
         }
     }
     
     private lazy var ownerNameLabel = UILabel().then {
-        $0.font = .boldSystemFont(ofSize: 16)
+        $0.font = .boldSystemFont(ofSize: 20)
     }
     
     private lazy var titleStackView = UIStackView().then {
@@ -59,8 +59,6 @@ final class StarredRepositoryTableViewCell: UITableViewCell, ViewType {
         $0.alignment = .leading
     }
     
-    @Inject private var imageLoader: ImageLoader
-    
     var viewModel: StarredRepositoryCellViewModel?
     private var disposeBag = DisposeBag()
     
@@ -82,15 +80,20 @@ final class StarredRepositoryTableViewCell: UITableViewCell, ViewType {
     func bindInput(to viewModel: StarredRepositoryCellViewModel) {
         let input = viewModel.input
         
+        input.cellDidDequeue.accept(())
+        
+        rx.prepareForReuse
+            .bind(to: input.prepareForReuse)
+            .disposed(by: disposeBag)
     }
     
     func bindOutput(from viewModel: StarredRepositoryCellViewModel) {
         let output = viewModel.output
         
-        output.avatarImageURL
+        output.avatarImageData
             .asDriver()
             .compactMap { $0 }
-            .drive(avatarImageView.rx.loadImage(using: imageLoader, disposeBag: disposeBag))
+            .drive(avatarImageView.rx.imageData)
             .disposed(by: disposeBag)
         
         output.ownerName

@@ -59,8 +59,6 @@ final class StarredRepositoryCollectionViewCell: UICollectionViewCell, ViewType 
         $0.alignment = .leading
     }
     
-    @Inject private var imageLoader: ImageLoader
-    
     var viewModel: StarredRepositoryCellViewModel?
     private var disposeBag = DisposeBag()
     
@@ -82,15 +80,20 @@ final class StarredRepositoryCollectionViewCell: UICollectionViewCell, ViewType 
     func bindInput(to viewModel: StarredRepositoryCellViewModel) {
         let input = viewModel.input
         
+        input.cellDidDequeue.accept(())
+        
+        rx.prepareForReuse
+            .bind(to: input.prepareForReuse)
+            .disposed(by: disposeBag)
     }
     
     func bindOutput(from viewModel: StarredRepositoryCellViewModel) {
         let output = viewModel.output
         
-        output.avatarImageURL
+        output.avatarImageData
             .asDriver()
             .compactMap { $0 }
-            .drive(avatarImageView.rx.loadImage(using: imageLoader, disposeBag: disposeBag))
+            .drive(avatarImageView.rx.imageData)
             .disposed(by: disposeBag)
         
         output.ownerName

@@ -40,8 +40,6 @@ final class StarredRepositoryListViewController: UIViewController, ViewType {
     
     private lazy var toastMessageLabel = ToastLabel()
     
-    @Inject private var imageLoader: ImageLoader
-    
     var viewModel: StarredRepositoryListViewModel?
     private let disposeBag = DisposeBag()
     
@@ -116,7 +114,6 @@ private extension StarredRepositoryListViewController {
         title = "Starred Repsitory"
     }
 }
-
 
 // MARK: - UI Layout
 
