@@ -27,7 +27,7 @@ final class StarredRepositoryListViewModel: ViewModelType {
     
     struct State {
         let starredRepositories = BehaviorRelay<[RepositoryEntity]>(value: [])
-        let paginationState = BehaviorRelay<PaginationState>(value: PaginationState(startPage: 1, countPerPage: 7))
+        let paginationState = BehaviorRelay<PaginationState>(value: PaginationState(startPage: 1, countPerPage: 10))
         let starredRepositoryCellViewModels = BehaviorRelay<[StarredRepositoryCellViewModel]>(value: [])
     }
     
@@ -151,10 +151,10 @@ final class StarredRepositoryListViewModel: ViewModelType {
             .bind(to: state.starredRepositoryCellViewModels)
             .disposed(by: disposeBag)
         
-        
         // MARK: - Bind State - starredRepositoryCellViewModels
         
         state.starredRepositoryCellViewModels
+            .filter { !$0.isEmpty }
             .map { [StarredRepositorySection(items: $0)] }
             .bind(to: output.starredRepositorySections)
             .disposed(by: disposeBag)
