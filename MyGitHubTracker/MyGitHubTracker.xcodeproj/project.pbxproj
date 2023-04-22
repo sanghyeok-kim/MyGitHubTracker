@@ -990,7 +990,6 @@
 		1EF2E7DA29F35242000ED464 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
 				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
 				1E8FB8E829D251D500847578 /* Rx+doLogError.swift */,
 				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */,
@@ -1006,6 +1005,7 @@
 				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
 				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
 				1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */,
+				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
