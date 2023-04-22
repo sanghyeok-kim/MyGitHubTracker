@@ -10,7 +10,7 @@ import RxSwift
 final class DefaultStarringRepository: StarringRepository {
     
     @Inject private var urlSessionNetworkService: EndpointService
-    @Inject private var repositoryTransformer: AnyTransformer<RepositoryDTO, RepositoryEntity>
+    @Inject private var repositoryDataMapper: AnyDataMapper<RepositoryDTO, RepositoryEntity>
     
     func checkRepositoryIsStarred(ownerName: String, repositoryName: String) -> Single<Bool> {
         return urlSessionNetworkService
@@ -40,6 +40,6 @@ final class DefaultStarringRepository: StarringRepository {
         return urlSessionNetworkService
             .fetchData(endpoint: GitHubAPI.fetchUserStarredRepositories(perPage: perPage, page: page))
             .decodeMap([RepositoryDTO].self)
-            .transformMap(repositoryTransformer)
+            .transformMap(repositoryDataMapper)
     }
 }

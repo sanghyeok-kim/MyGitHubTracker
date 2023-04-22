@@ -1,5 +1,5 @@
 //
-//  RepositoryTransformer.swift
+//  RepositoryDataMapper.swift
 //  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/03/27.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RepositoryTransformer: Transformable {
+struct RepositoryDataMapper: DataMapper {
     func transform(_ repositoryDTO: RepositoryDTO) -> RepositoryEntity {
         return RepositoryEntity(
             name: repositoryDTO.name,

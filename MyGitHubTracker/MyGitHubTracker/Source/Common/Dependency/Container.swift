@@ -57,7 +57,7 @@ extension Container {
         Container.shared.register(service: RepositorySearchRepository.self) { DefaultRepositorySearchRepository() }
         Container.shared.register(service: RepositoryListUseCase.self) { DefaultRepositoryListUseCase() }
         Container.shared.register(service: PaginationUseCase.self) { DefaultPaginationUseCase() }
-        Container.shared.register(service: AnyTransformer.self) { AnyTransformer(RepositoryTransformer()) }
+        Container.shared.register(service: AnyDataMapper.self) { AnyDataMapper(RepositoryDataMapper()) }
         
         // RepositoryCreation
         Container.shared.register(service: RepositoryCreationUseCase.self) { DefaultRepositoryCreationUseCase() }
@@ -74,6 +74,6 @@ extension Container {
         // Account
         Container.shared.register(service: AccountUseCase.self) { DefaultAccountUseCase() }
         Container.shared.register(service: AccountRepository.self) { DefaultAccountRepository() }
-        Container.shared.register(service: AnyTransformer.self) { AnyTransformer(UserTransformer()) }
+        Container.shared.register(service: AnyDataMapper.self) { AnyDataMapper(UserDataMapper()) }
     }
 }

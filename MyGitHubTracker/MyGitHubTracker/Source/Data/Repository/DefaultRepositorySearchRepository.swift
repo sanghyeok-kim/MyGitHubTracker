@@ -10,19 +10,19 @@ import RxSwift
 final class DefaultRepositorySearchRepository: RepositorySearchRepository {
     
     @Inject private var urlSessionNetworkService: EndpointService
-    @Inject private var repositoryTransformer: AnyTransformer<RepositoryDTO, RepositoryEntity>
+    @Inject private var repositoryDataMapper: AnyDataMapper<RepositoryDTO, RepositoryEntity>
     
     func fetchUserRepositories(perPage: Int, page: Int) -> Single<[RepositoryEntity]> {
         return urlSessionNetworkService
             .fetchData(endpoint: GitHubAPI.fetchUserRepositories(perPage: perPage, page: page))
             .decodeMap([RepositoryDTO].self)
-            .transformMap(repositoryTransformer)
+            .transformMap(repositoryDataMapper)
     }
     
     func fetchRepositoryDetail(ownerName: String, repositoryName: String) -> Single<RepositoryEntity> {
         urlSessionNetworkService
             .fetchData(endpoint: GitHubAPI.fetchRepositoryDetail(ownerName: ownerName, repositoryName: repositoryName))
             .decodeMap(RepositoryDTO.self)
-            .transformMap(repositoryTransformer)
+            .transformMap(repositoryDataMapper)
     }
 }
