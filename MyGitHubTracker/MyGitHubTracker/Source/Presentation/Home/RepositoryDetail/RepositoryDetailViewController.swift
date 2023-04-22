@@ -78,8 +78,6 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
     
     private let toastMessageLabel = ToastLabel()
     
-    @Inject private var imageLoader: ImageLoader
-    
     var viewModel: RepositoryDetailViewModel?
     private let disposeBag = DisposeBag()
     
@@ -113,10 +111,10 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
             )
             .disposed(by: disposeBag)
         
-        output.avatarImageURL
+        output.avatarImageData
             .asDriver()
             .compactMap { $0 }
-            .drive(userProfileImageView.rx.loadImage(using: imageLoader, disposeBag: disposeBag))
+            .drive(userProfileImageView.rx.imageData)
             .disposed(by: disposeBag)
         
         output.ownerName

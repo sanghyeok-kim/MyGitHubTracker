@@ -17,7 +17,7 @@ final class RepositoryDetailViewModel: ViewModelType {
     
     struct Output {
         let isLoadingIndicatorVisible = BehaviorRelay<Bool>(value: true)
-        let avatarImageURL = BehaviorRelay<URL?>(value: nil)
+        let avatarImageData = BehaviorRelay<Data?>(value: nil)
         let ownerName = BehaviorRelay<String>(value: "")
         let name = BehaviorRelay<String>(value: "")
         let description = BehaviorRelay<String?>(value: nil)
@@ -37,6 +37,7 @@ final class RepositoryDetailViewModel: ViewModelType {
     @Inject private var repositoryUseCase: RepositoryUseCase
     @Inject private var repositoryDetailUseCase: RepositoryDetailUseCase
     @Inject private var starringUseCase: StarringUseCase
+    @Inject private var urlDataUseCase: URLDataUseCase
     
     private weak var coordinator: RepositoryListCoordinator?
     private let disposeBag = DisposeBag()
@@ -153,9 +154,24 @@ final class RepositoryDetailViewModel: ViewModelType {
         
         // MARK: - Bind State - repository
         
-        state.repository
+        let avatarImageData = state.repository
             .map { $0.avatarImageURL }
-            .bind(to: output.avatarImageURL)
+            .withUnretained(self)
+            .flatMapMaterialized { `self`, url in
+                self.urlDataUseCase.fetch(from: url)
+            }
+            .share()
+        
+        avatarImageData
+            .compactMap { $0.element }
+            .bind(to: output.avatarImageData)
+            .disposed(by: disposeBag)
+        
+        avatarImageData
+            .compactMap { $0.error }
+            .doLogError()
+            .toastMeessageMap(to: .failToFetchImageData)
+            .bind(to: output.showToastMessage)
             .disposed(by: disposeBag)
         
         state.repository
