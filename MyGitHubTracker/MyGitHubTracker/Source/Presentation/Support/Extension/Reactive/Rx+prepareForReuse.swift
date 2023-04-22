@@ -20,10 +20,3 @@ extension Reactive where Base: UITableViewCell {
         return sentMessage(targetSelector).map { _ in }
     }
 }
-
-extension Reactive where Base: UITableViewCell {
-    var cellDidLoad: Observable<Void> {
-        let targetSelector = #selector(Base.init(style:reuseIdentifier:))
-        return sentMessage(targetSelector).map { _ in }
-    }
-}
