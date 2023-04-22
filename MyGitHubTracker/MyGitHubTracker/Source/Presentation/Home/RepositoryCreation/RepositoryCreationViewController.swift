@@ -15,7 +15,7 @@ class RepositoryCreationViewController: UIViewController, ViewType {
     private lazy var cancelBarButtonItem = UIBarButtonItem(systemItem: .close)
     
     private lazy var titleLabel = UILabel().then {
-        $0.text = "Title"
+        $0.text = Constant.Text.title
     }
     
     private lazy var titleTextField = UITextField().then {
@@ -24,13 +24,13 @@ class RepositoryCreationViewController: UIViewController, ViewType {
         $0.spellCheckingType = .no
         $0.smartDashesType = .no
         $0.autocorrectionType = .no
-        $0.placeholder = "Enter repository title"
+        $0.placeholder = Constant.Text.enterRepositoryTitle
         $0.borderStyle = .roundedRect
         $0.becomeFirstResponder()
     }
     
     private lazy var descriptionLabel = UILabel().then {
-        $0.text = "Description (optional)"
+        $0.text = Constant.Text.description
     }
     
     private lazy var descriptionTextField = UITextField().then {
@@ -39,12 +39,12 @@ class RepositoryCreationViewController: UIViewController, ViewType {
         $0.spellCheckingType = .no
         $0.smartDashesType = .no
         $0.autocorrectionType = .no
-        $0.placeholder = "Enter repository description"
+        $0.placeholder = Constant.Text.enterRepositoryDescription
         $0.borderStyle = .roundedRect
     }
     
     private lazy var visibilityLabel = UILabel().then {
-        $0.text = "Visibility"
+        $0.text = Constant.Text.visibility
     }
     
     private lazy var publicButton = UIButton().then {
@@ -96,7 +96,7 @@ class RepositoryCreationViewController: UIViewController, ViewType {
     }()
     
     private lazy var doneButton = LoadingIndicatorButton().then {
-        $0.setOriginTitle("Done", for: .normal)
+        $0.setOriginTitle(Constant.Text.done, for: .normal)
         $0.setBackgroundColorForState(enabledColor: .darkGray, disabledColor: .lightGray)
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 8
@@ -203,7 +203,7 @@ private extension RepositoryCreationViewController {
 private extension RepositoryCreationViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
-        title = "Create Repository"
+        title = Constant.Text.createRepository
         navigationItem.rightBarButtonItem = cancelBarButtonItem
     }
 }

@@ -10,10 +10,10 @@ import Foundation
 extension String {
     var toDateFormat: String? {
         let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        inputFormatter.dateFormat = Constant.DateFormat.iso8601Format
         
         let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = "M월 d일, yyyy년"
+        outputFormatter.dateFormat = Constant.DateFormat.userDisplayFormat
         
         guard let date = inputFormatter.date(from: self) else { return nil }
         return outputFormatter.string(from: date)

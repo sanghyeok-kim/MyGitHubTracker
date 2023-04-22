@@ -16,13 +16,13 @@ final class StarredRepositoryHeaderView: UICollectionReusableView, ViewType {
     }
     
     private lazy var titleLabel = UILabel().then {
-        $0.text = "Starred Repository"
+        $0.text = Constant.Text.starredRepository
         $0.font = .boldSystemFont(ofSize: 18)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private lazy var showAllButton = PaddingButton(padding: .small).then {
-        $0.setTitle("Show All", for: .normal)
+        $0.setTitle(Constant.Text.showAll, for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .tintColor

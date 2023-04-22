@@ -968,9 +968,9 @@
 		1EF2E7D829F35176000ED464 /* Reactive */ = {
 			isa = PBXGroup;
 			children = (
-				1EF2E7D529F28A42000ED464 /* Rx+prepareForReuse.swift */,
 				1E65107729EEA031002D6A02 /* RxCollectionViewSectionedReloadDataSource+init.swift */,
 				1E43BF2329D4577500C718D4 /* RxTableViewSectionedReloadDataSource+init.swift */,
+				1EF2E7D529F28A42000ED464 /* Rx+prepareForReuse.swift */,
 				1E65104F29ED00A7002D6A02 /* Rx+textfield+textChanged.swift */,
 				1E90048829EA8013008F9895 /* Rx+UIImageView+loadImage.swift */,
 			);

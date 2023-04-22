@@ -111,7 +111,7 @@ final class StarredRepositoryListViewController: UIViewController, ViewType {
 private extension StarredRepositoryListViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
-        title = "Starred Repsitory"
+        title = Constant.Text.starredRepository
     }
 }
 

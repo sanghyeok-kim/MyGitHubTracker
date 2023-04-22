@@ -17,8 +17,8 @@ final class DefaultHomeCoordinator: Coordinator {
         let rootNavigationController = UINavigationController()
         let coordinator = DefaultRepositoryListCoordinator(navigationController: rootNavigationController)
         rootNavigationController.tabBarItem = UITabBarItem(
-            title: "Repository",
-            image: UIImage(systemName: "list.bullet.rectangle.portrait"),
+            title: Constant.Text.repository,
+            image: UIImage(systemName: Constant.Image.listBulletRectanglePortrait),
             tag: 0
         )
         return coordinator
@@ -28,8 +28,8 @@ final class DefaultHomeCoordinator: Coordinator {
         let rootNavigationController = UINavigationController()
         let coordinator = DefaultAccountCoordinator(navigationController: rootNavigationController)
         rootNavigationController.tabBarItem = UITabBarItem(
-            title: "Account",
-            image: UIImage(systemName: "person"),
+            title: Constant.Text.account,
+            image: UIImage(systemName: Constant.Image.person),
             tag: 1
         )
         return coordinator

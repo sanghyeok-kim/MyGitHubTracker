@@ -118,7 +118,7 @@ final class RepositoryListViewController: UIViewController, ViewType {
 private extension RepositoryListViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
-        navigationItem.title = "Repository"
+        navigationItem.title = Constant.Text.repository
         navigationItem.rightBarButtonItem = createRepositoryBarButtonItem
     }
 }

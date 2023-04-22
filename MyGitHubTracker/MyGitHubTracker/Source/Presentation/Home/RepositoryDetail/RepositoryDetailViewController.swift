@@ -52,7 +52,7 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
     
     private lazy var starsStackView = UIStackView().then {
         let label = UILabel()
-        label.text = "stars"
+        label.text = Constant.Text.stars
         $0.addArrangedSubviews([stargazerView, label])
         $0.axis = .horizontal
         $0.spacing = 4
@@ -70,7 +70,7 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
     
     private lazy var starringButton = UIButton().then {
         var configuration = UIButton.Configuration.filled()
-        configuration.title = "Star"
+        configuration.title = Constant.Text.star
         configuration.imagePadding = 5
         $0.configuration = configuration
         $0.isHidden = true
@@ -164,9 +164,9 @@ private extension RepositoryDetailViewController {
         var imageName: String
         switch isStarred {
         case true:
-            imageName = "star.fill"
+            imageName = Constant.Image.starFill
         case false:
-            imageName = "star"
+            imageName = Constant.Image.star
         }
         let image = UIImage(systemName: imageName)?.applyingSymbolConfiguration(imageSymbolConfiguration)
         starringButton.configuration?.image = image

@@ -10,7 +10,7 @@ import UIKit
 final class StargazerView: UIView {
     
     private lazy var startImageView: UIImageView = {
-        let image = UIImage(systemName: "star")
+        let image = UIImage(systemName: Constant.Image.star)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -72,9 +72,9 @@ extension StargazerView {
     func toggleStarMark(by isSelected: Bool) {
         switch isSelected {
         case true:
-            startImageView.image = UIImage(systemName: "star.fill")
+            startImageView.image = UIImage(systemName: Constant.Image.starFill)
         case false:
-            startImageView.image = UIImage(systemName: "star")
+            startImageView.image = UIImage(systemName: Constant.Image.star)
         }
     }
 }
