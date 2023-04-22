@@ -638,7 +638,7 @@
 		1E8FB86529D09A7B00847578 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				1EF2E7DA29F35242000ED464 /* Sequence */,
+				1EF2E7DA29F35242000ED464 /* Rx */,
 				1E8FB86629D09A8600847578 /* Bundle+GitHubClientKey.swift */,
 				1E8FB8B129D1513400847578 /* String+toDateFormat.swift */,
 				1E8FB8E529D2512300847578 /* OSLog+LogCategory.swift */,
@@ -670,6 +670,7 @@
 		1E8FB86E29D12BFB00847578 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1EF2E7DB29F37ED8000ED464 /* Extension */,
 				1E90048D29EAA246008F9895 /* HTTPComponent */,
 				1E90048B29EAA1D6008F9895 /* TargetAPI */,
 				1E8FB88E29D12F1D00847578 /* Repository */,
@@ -986,20 +987,27 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		1EF2E7DA29F35242000ED464 /* Sequence */ = {
+		1EF2E7DA29F35242000ED464 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
-				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
-				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
-				1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */,
 				1E8FB8C329D155AB00847578 /* Rx+transformMap.swift */,
 				1E43BF2529D530E000C718D4 /* Rx+toastMessageMap.swift */,
 				1E8FB8E829D251D500847578 /* Rx+doLogError.swift */,
 				1E90046C29E4FC94008F9895 /* Rx+flatMapCompletableMaterialized.swift */,
 				1E90047A29E6B04C008F9895 /* Rx+flatMapMaterialized.swift */,
 			);
-			path = Sequence;
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		1EF2E7DB29F37ED8000ED464 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1E800D2E29DC68F400614811 /* Rx+validateStatusCode.swift */,
+				1E800D3029DC68FE00614811 /* Rx+unwrapData.swift */,
+				1E8FB89B29D14E6800847578 /* Rx+decodeMap.swift */,
+				1E65104B29EC25D5002D6A02 /* Rx+asCompletableForStatusCode.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		6E212E0224CF3AF173960786 /* Frameworks */ = {
