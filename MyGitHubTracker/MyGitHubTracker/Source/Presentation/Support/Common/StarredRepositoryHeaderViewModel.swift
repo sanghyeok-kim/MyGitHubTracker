@@ -1,6 +1,6 @@
 //
 //  StarredRepositoryHeaderViewModel.swift
-//  
+//  MyGitHubTracker
 //
 //  Created by 김상혁 on 2023/04/19.
 //
