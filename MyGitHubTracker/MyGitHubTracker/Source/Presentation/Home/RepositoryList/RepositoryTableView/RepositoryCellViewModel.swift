@@ -42,6 +42,17 @@ final class RepositoryCellViewModel: ViewModelType {
         
         // MARK: - Bind Input: cellDidTap
         
+        input.cellDidTap
+            .withLatestFrom(state.repository)
+            .map { RepositoryDetailViewModel(coordinator: coordinator, repository: $0) }
+            .do { [weak self] in
+                self?.bindState(from: $0)
+            }
+            .bind {
+                coordinator?.coordinate(by: .cellDidTap(viewModel: $0))
+            }
+            .disposed(by: disposeBag)
+        
         // MARK: - Bind State: repository
         
         state.repository
