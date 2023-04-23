@@ -45,7 +45,7 @@ final class RepositoryDetailViewModel: ViewModelType {
     init(coordinator: RepositoryListCoordinator?, repository: RepositoryEntity) {
         self.coordinator = coordinator
         
-        // MARK: - Binding Input - viewDidLoad
+        // MARK: - Bind Input - viewDidLoad
         
         let remoteRepositoryDetailDidFetch = input.viewDidLoad
             .map { (repository.ownerName, repository.name) }

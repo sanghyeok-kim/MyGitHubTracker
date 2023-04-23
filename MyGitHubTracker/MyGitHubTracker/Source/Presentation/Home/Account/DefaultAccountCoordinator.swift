@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DefaultAccountCoordinator: AccountCoordinator {
+final class DefaultAccountCoordinator: AccountCoordinator { // Coordinator Interface
     
     var childCoordinatorMap: [CoordinatorType : Coordinator] = [:]
     var navigationController: UINavigationController

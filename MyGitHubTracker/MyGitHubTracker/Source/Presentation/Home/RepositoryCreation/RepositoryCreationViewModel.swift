@@ -37,11 +37,15 @@ final class RepositoryCreationViewModel: ViewModelType {
     init(coordinator: RepositoryListCoordinator?) {
         self.coordinator = coordinator
         
+        // MARK: - Bind Input - cancelButtonDidTap
+        
         input.cancelButtonDidTap
             .bind {
                 coordinator?.coordinate(by: .repositoryCreationDidCancel)
             }
             .disposed(by: disposeBag)
+        
+        // MARK: - Bind Input - title
         
         input.title
             .withLatestFrom(output.isDoneButtonLoading) { ($0, $1) }
@@ -49,10 +53,14 @@ final class RepositoryCreationViewModel: ViewModelType {
             .bind(to: output.isDoneButtonEnabled)
             .disposed(by: disposeBag)
         
+        // MARK: - Bind Input - isPrivate
+        
         input.isPrivate
             .map { $0 ? .private : .public }
             .bind(to: output.repositoryVisibility)
             .disposed(by: disposeBag)
+        
+        // MARK: - Bind Input - doneButtonDidTap
         
         input.doneButtonDidTap
             .map { false }

@@ -40,6 +40,8 @@ final class RepositoryCellViewModel: ViewModelType {
         self.coordinator = coordinator
         self.state = State(repository: BehaviorRelay<RepositoryEntity>(value: repository))
         
+        // MARK: - Bind Input: cellDidTap
+        
         // MARK: - Bind State: repository
         
         state.repository
@@ -70,19 +72,6 @@ final class RepositoryCellViewModel: ViewModelType {
         state.repository
             .map { $0.isStarredByUser }
             .bind(to: output.isStarred)
-            .disposed(by: disposeBag)
-        
-        // MARK: - Bind Input: cellDidTap
-        
-        input.cellDidTap
-            .withLatestFrom(state.repository)
-            .map { RepositoryDetailViewModel(coordinator: coordinator, repository: $0) }
-            .do { [weak self] in
-                self?.bindState(from: $0)
-            }
-            .bind {
-                coordinator?.coordinate(by: .cellDidTap(viewModel: $0))
-            }
             .disposed(by: disposeBag)
     }
 }
