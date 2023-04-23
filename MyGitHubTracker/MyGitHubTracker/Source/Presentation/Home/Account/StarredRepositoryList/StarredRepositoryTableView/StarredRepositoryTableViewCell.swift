@@ -64,6 +64,7 @@ final class StarredRepositoryTableViewCell: UITableViewCell, ViewType {
     
     override func prepareForReuse() {
         disposeBag = DisposeBag()
+        avatarImageView.image = nil
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -93,7 +94,8 @@ final class StarredRepositoryTableViewCell: UITableViewCell, ViewType {
         output.avatarImageData
             .asDriver()
             .compactMap { $0 }
-            .drive(avatarImageView.rx.imageData)
+            .imageMap()
+            .drive(avatarImageView.rx.image)
             .disposed(by: disposeBag)
         
         output.ownerName

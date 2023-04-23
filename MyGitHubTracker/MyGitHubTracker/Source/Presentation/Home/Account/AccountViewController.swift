@@ -125,7 +125,8 @@ final class AccountViewController: UIViewController, ViewType {
         output.avatarImageData
             .asDriver()
             .compactMap { $0 }
-            .drive(avatarImageView.rx.imageData)
+            .imageMap()
+            .drive(avatarImageView.rx.image)
             .disposed(by: disposeBag)
         
         output.gitHubURL

@@ -10,16 +10,10 @@ import RxSwift
 extension Reactive where Base: UIImageView {
     @available(*, deprecated, message: "ImageLoader 대신 URLDataUseCase 사용")
     func loadImage(using imageLoader: ImageLoader, disposeBag: DisposeBag) -> Binder<URL> {
-        return Binder(self.base) { imageView, url in
+        return Binder(base) { imageView, url in
             imageView
                 .setImageWithCaching(from: url, using: imageLoader)
                 .disposed(by: disposeBag)
-        }
-    }
-    
-    var imageData: Binder<Data> {
-        return Binder(base) { imageView, data in
-            imageView.image = UIImage(data: data)
         }
     }
 }

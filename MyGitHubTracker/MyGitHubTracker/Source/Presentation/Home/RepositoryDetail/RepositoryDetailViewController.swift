@@ -114,7 +114,8 @@ final class RepositoryDetailViewController: UIViewController, ViewType {
         output.avatarImageData
             .asDriver()
             .compactMap { $0 }
-            .drive(userProfileImageView.rx.imageData)
+            .imageMap()
+            .drive(userProfileImageView.rx.image)
             .disposed(by: disposeBag)
         
         output.ownerName
