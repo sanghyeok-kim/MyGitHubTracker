@@ -165,6 +165,10 @@ class RepositoryCreationViewController: UIViewController, ViewType {
             .drive(onNext: doneButton.showLoadingIndicatorIfNeeded)
             .disposed(by: disposeBag)
     }
+    
+    deinit {
+        CustomLogger.logDeallocation(object: self)
+    }
 }
 
 // MARK: - Supporting Methods
