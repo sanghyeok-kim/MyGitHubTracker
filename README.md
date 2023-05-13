@@ -1,7 +1,8 @@
 
 ## 소개
-- GitHub가 제공하는 OAuth와 REST API를 사용한 토이 프로젝트입니다.
 - 개발 기간: 2023.03.26 ~ 2023.04.23
+- GitHub가 제공하는 OAuth와 REST API를 사용한 토이 프로젝트입니다.
+- 레포지토리 목록 확인, 새로운 레포지토리 생성, Starring 기능을 구현했습니다.
 
 - 실행 방법
   1. [GitHub OAuth App](https://github.com/settings/developers)을 생성하여 Client ID와 Client Secret을 발급받습니다. 
