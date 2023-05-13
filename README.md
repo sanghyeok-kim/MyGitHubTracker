@@ -3,6 +3,11 @@
 - GitHub가 제공하는 OAuth와 REST API를 사용한 토이 프로젝트입니다.
 - 개발 기간: 2023.03.26 ~ 2023.04.23
 
+- 실행 방법
+  1. [GitHub OAuth App](https://github.com/settings/developers)을 생성하여 Client ID와 Client Secret을 발급받습니다. 
+  2. [PropertyList/GitHubClientKey.plist](https://github.com/sanghyeok-kim/MyGitHubTracker/blob/main/MyGitHubTracker/MyGitHubTracker/PropertyList/GitHubClientKey.plist)의 ClientSecret, ClientID에 자신의 키를 입력합니다. 
+  3. 로그인 버튼을 눌러 리다이렉션된 GitHub 페이지에서 로그인합니다.
+
 <br>
 
 ## 기술 스택
@@ -10,6 +15,12 @@
 #### DesignPattern & Architecture
 - MVVM-C
 - Clean Architecture
+
+#### Dependency Injection
+- DI Container & Property Wrapper
+
+#### Storage
+- KeychainSwift
 
 #### Reactive
 - RxSwift
@@ -21,11 +32,7 @@
 - SnapKit
 - Then
 
-#### Storage
-- KeychainSwift
 
-#### Dependency Injection
-- DI Container & Property Wrapper
 
 <br>
 <br>
