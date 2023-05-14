@@ -50,6 +50,8 @@
 
 - [User Responsiveness](https://github.com/sanghyeok-kim/MyGitHubTracker/wiki/Star-%EB%B2%84%ED%8A%BC%EC%9D%98-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9D%91%EB%8B%B5%EC%84%B1-%EA%B0%9C%EC%84%A0)
 
+- [Caching](https://github.com/sanghyeok-kim/MyGitHubTracker/wiki/Image-Caching%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B3%BC%EC%A0%95)
+
 
 <br>
 <br>
